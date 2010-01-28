@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ZL_OBJECT CHECKSUM="4B48AAD3F3D5AD1E3CEE87E0FF197ED9" CONNECTOR="39AC0A4B07A5A05AE1000000AC120173" NAME="ZAPLINK_TYPE_DATA" TYPE="CLAS" VERSION="1.0">
+ <DIRECTORY DEVCLASS="ZAPLINK-CONNECTORS-MAIN" MASTERLANG="E"/>
+ <RAW>
+  <A0_MAINDATA VERSION="1" LANGU="E" UUID="8FF9034B756EB95AE1000000AC120173" EXPOSURE="2" STATE="1" CLSFINAL="X" CLSCCINCL="X" FIXPT="X" UNICODE="X">
+   <TEXTS>
+    <ITEM LANGU="E" DESCRIPT="Type Pool Datas"/>
+   </TEXTS>
+  </A0_MAINDATA>
+  <ATTRIBUTS>
+   <ITEM CMPNAME="DATA" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="1 " TYPTYPE="1" TYPE="TS_DATA">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Line Type for Table with Package Data"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="SOURCE" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="2 " ATTRDONLY="X" TYPTYPE="1" TYPE="STRING">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Type-pool ABAP source code"/>
+    </TEXTS>
+   </ITEM>
+  </ATTRIBUTS>
+  <FRIENDS>
+   <ITEM REFCLSNAME="ZAPLINK_EASYXML" VERSION="1" STATE="1"/>
+  </FRIENDS>
+  <LOCAL>
+   <TYPES>*&quot;* USE THIS SOURCE FILE FOR ANY TYPE DECLARATIONS (CLASS
+*&quot;* definitions, interfaces or data types) you need for method
+*&quot;* IMPLEMENTATION OR PRIVATE METHOD&apos;S SIGNATURE</TYPES>
+   <IMPLEMENTATIONS>*&quot;* LOCAL CLASS IMPLEMENTATION FOR PUBLIC CLASS
+*&quot;* use this source file for the implementation part of
+*&quot;* LOCAL HELPER CLASSES</IMPLEMENTATIONS>
+   <MACROS>*&quot;* USE THIS SOURCE FILE FOR ANY MACRO DEFINITIONS YOU NEED
+*&quot;* IN THE IMPLEMENTATION PART OF THE CLASS</MACROS>
+  </LOCAL>
+  <METHODS>
+   <ITEM CMPNAME="GET_SOURCE" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="2 ">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Get source attribute as standard table"/>
+    </TEXTS>
+    <PARAMETERS>
+     <ITEM SCONAME="SOURCE" VERSION="1" CMPTYPE="1" EDITORDER="1 " AUTHOR="TBENSIAL" CREATEDON="20091118" PARDECLTYP="3" TYPTYPE="1" TYPE="TT_ABAPSOURCE">
+      <TEXTS>
+       <ITEM LANGU="E"/>
+      </TEXTS>
+     </ITEM>
+    </PARAMETERS>
+    <SOURCE>SPLIT me-&gt;source AT cl_abap_char_utilities=&gt;newline
+        INTO TABLE source.</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="SET_SOURCE" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="1 ">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Set source attribute from standard table"/>
+    </TEXTS>
+    <PARAMETERS>
+     <ITEM SCONAME="SOURCE" VERSION="1" CMPTYPE="1" EDITORDER="1 " AUTHOR="TBENSIAL" CREATEDON="20091118" PARPASSTYP="1" TYPTYPE="1" TYPE="STANDARD TABLE">
+      <TEXTS>
+       <ITEM LANGU="E"/>
+      </TEXTS>
+     </ITEM>
+    </PARAMETERS>
+    <SOURCE>*  FIELD-SYMBOLS:
+*    &lt;l&gt; like LINE OF source.
+*
+*  clear me-&gt;source.
+*  LOOP AT source ASSIGNING &lt;l&gt;.
+*    IF me-&gt;source IS INITIAL.
+*      me-&gt;source = &lt;l&gt;.
+*    ELSE.
+*      CONCATENATE me-&gt;source cl_abap_char_utilities=&gt;newline &lt;l&gt; INTO me-&gt;source.
+*    ENDIF.
+*  ENDLOOP.
+
+  data s type string.
+
+  clear me-&gt;source.
+  LOOP AT source into s.
+    IF me-&gt;source IS INITIAL.
+      me-&gt;source = s.
+    ELSE.
+      CONCATENATE me-&gt;source cl_abap_char_utilities=&gt;newline s INTO me-&gt;source.
+    ENDIF.
+  ENDLOOP.</SOURCE>
+   </ITEM>
+  </METHODS>
+  <TYPES>
+   <ITEM CMPNAME="TS_DATA" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="1 " TYPTYPE="4" SRCROW1="13 " SRCCOLUMN1="4 " SRCROW2="19 " SRCCOLUMN2="19 " TYPESRC_LENG="204 ">
+    BEGIN OF ts_data,
+        name      TYPE typegroup,
+        lang      TYPE langu,
+        text      TYPE ddtext,
+        devclass  TYPE devclass,
+        uccheck   TYPE uccheck,
+      END OF ts_data
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="General Data"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TT_ABAPSOURCE" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="2 " TYPTYPE="4" SRCROW1="21 " SRCCOLUMN1="4 " SRCROW2="21 " SRCCOLUMN2="67 " TYPESRC_LENG="64 ">
+    tt_abapsource type standard table of ABAPSOURCE with DEFAULT KEY
+    <TEXTS>
+     <ITEM LANGU="E"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TT_STRING" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="3 " TYPTYPE="4" SRCROW1="23 " SRCCOLUMN1="4 " SRCROW2="23 " SRCCOLUMN2="63 " TYPESRC_LENG="60 ">
+    tt_string type standard table of ABAPSOURCE with DEFAULT KEY
+    <TEXTS>
+     <ITEM LANGU="E"/>
+    </TEXTS>
+   </ITEM>
+  </TYPES>
+ </RAW>
+</ZL_OBJECT>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ZL_OBJECT CHECKSUM="3100C6925008B10707526161B67D74E5" CONNECTOR="39AC0A4B07A5A05AE1000000AC120173" NAME="ZAPLINK_RAW_DATA" TYPE="CLAS" VERSION="1.0">
+ <DIRECTORY DEVCLASS="ZAPLINK-FRAMEWORK-CORE" MASTERLANG="E"/>
+ <RAW>
+  <A0_MAINDATA VERSION="1" LANGU="E" UUID="2B095F4B63B3AB69E1000000AC120173" EXPOSURE="2" STATE="1" CLSABSTRCT="X" CLSCCINCL="X" FIXPT="X" UNICODE="X">
+   <TEXTS>
+    <ITEM LANGU="E" DESCRIPT="ZAPLink : Abstract class for component data"/>
+   </TEXTS>
+  </A0_MAINDATA>
+  <DOCUMENTATION>
+   <ITEM APPLICATION="DOKU" ID="CL" OBJECT="ZAPLINK_RAW_DATA" LANGU="E" MASTERLANG="X" TYP="E" DOKFORM="S_DOCU_SHOW" DOKSTYLE="S_DOCUS1">
+    <TEXTS>
+     <ITEM TDSPRAS="E" TDVERSION="00002" TDFUSER="TBENSIAL" TDFRELES="700" TDFDATE="20100127" TDFTIME="172015" TDLUSER="TBENSIAL" TDLRELES="700" TDLDATE="20100127" TDLTIME="172038" TDLINESIZE="072">U1&amp;FUNCTIONALITY&amp;
+ASThis abstract class must be used a root class for Object data. This
+  class has ESAYXML class as friend in order to be able to read an write
+  all public and protected data.
+U1&amp;RELATIONS&amp;
+AS
+U1&amp;EXAMPLE&amp;
+AS
+U1&amp;HINTS&amp;
+AS
+U1&amp;FURTHER_SOURCES_OF_INF&amp;
+AS</ITEM>
+    </TEXTS>
+   </ITEM>
+  </DOCUMENTATION>
+  <FRIENDS>
+   <ITEM REFCLSNAME="ZAPLINK_EASYXML" VERSION="1" STATE="1"/>
+  </FRIENDS>
+  <LOCAL>
+   <TYPES>
+*&quot;* USE THIS SOURCE FILE FOR ANY TYPE DECLARATIONS (CLASS
+*&quot;* definitions, interfaces or data types) you need for method
+*&quot;* implementation or private method&apos;s signature
+</TYPES>
+   <IMPLEMENTATIONS>
+*&quot;* LOCAL CLASS IMPLEMENTATION FOR PUBLIC CLASS
+*&quot;* use this source file for the implementation part of
+*&quot;* local helper classes
+</IMPLEMENTATIONS>
+   <MACROS>
+*&quot;* USE THIS SOURCE FILE FOR ANY MACRO DEFINITIONS YOU NEED
+*&quot;* in the implementation part of the class
+</MACROS>
+  </LOCAL>
+ </RAW>
+</ZL_OBJECT>

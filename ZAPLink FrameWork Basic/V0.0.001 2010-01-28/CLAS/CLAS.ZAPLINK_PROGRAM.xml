@@ -1,0 +1,427 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ZL_OBJECT CHECKSUM="4B5497E31EF4C75F1C612CC535A66647" CONNECTOR="39AC0A4B07A5A05AE1000000AC120173" NAME="ZAPLINK_PROGRAM" TYPE="CLAS" VERSION="1.0">
+ <DIRECTORY DEVCLASS="ZAPLINK-CONNECTORS-MAIN" MASTERLANG="E"/>
+ <RAW>
+  <A0_MAINDATA VERSION="1" LANGU="E" UUID="B32B044B702B371EE1000000AC120173" EXPOSURE="2" STATE="1" CLSFINAL="X" CLSCCINCL="X" FIXPT="X" UNICODE="X">
+   <INHERITANCE REFCLSNAME="ZAPLINK_CONNECTOR_" VERSION="1" STATE="1"/>
+   <TEXTS>
+    <ITEM LANGU="E" DESCRIPT="Data for Class"/>
+   </TEXTS>
+  </A0_MAINDATA>
+  <ATTRIBUTS>
+   <ITEM CMPNAME="R_DOC_ID" VERSION="1" STATE="1" EDITORDER="2 " ATTDECLTYP="1" TYPTYPE="1" TYPE="TR_DOCID">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Documentation Object"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="ST_PROGRAM" VERSION="1" STATE="1" EDITORDER="1 " ATTDECLTYP="2" ATTVALUE="&apos;PROG&apos;" TYPTYPE="1" TYPE="TD_COMPTYPE">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Transport category : ABAP Object"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="_UUID" VERSION="1" STATE="1" EDITORDER="3 " ATTDECLTYP="2" ATTVALUE="&apos;AAAD0A4B07A5A05AE1000000AC120173&apos;" TYPTYPE="1" TYPE="TD_CONNUUID">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="UUID for connector Program"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="_VER" VERSION="1" STATE="1" EDITORDER="4 " ATTDECLTYP="2" ATTVALUE="&apos;1.0&apos;" TYPTYPE="1" TYPE="TD_CONNVER">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Connector Version"/>
+    </TEXTS>
+   </ITEM>
+  </ATTRIBUTS>
+  <LOCAL>
+   <TYPES>*&quot;* USE THIS SOURCE FILE FOR ANY TYPE DECLARATIONS (CLASS
+*&quot;* definitions, interfaces or data types) you need for method
+*&quot;* IMPLEMENTATION OR PRIVATE METHOD&apos;S SIGNATURE</TYPES>
+   <IMPLEMENTATIONS>*&quot;* LOCAL CLASS IMPLEMENTATION FOR PUBLIC CLASS
+*&quot;* use this source file for the implementation part of
+*&quot;* LOCAL HELPER CLASSES</IMPLEMENTATIONS>
+   <MACROS>*&quot;* USE THIS SOURCE FILE FOR ANY MACRO DEFINITIONS YOU NEED
+*&quot;* IN THE IMPLEMENTATION PART OF THE CLASS</MACROS>
+  </LOCAL>
+  <METHODS>
+   <ITEM CMPNAME="CLASS_CONSTRUCTOR" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="2 " MTDTYPE="2" MTDDECLTYP="1">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="CLASS_CONSTRUCTOR"/>
+    </TEXTS>
+    <SOURCE>*table TDCLT
+*DOKCLASS DOKTITEL
+*CF       Program function                                             Program              Function
+*CM       Pull-down menu/menu bar                                      Program              Menu
+*RE       Report/Function Group, Logical DB                            Program/module pool
+  DATA _id LIKE LINE OF r_doc_id.
+
+  _id-sign = &apos;I&apos;.
+  _id-option = &apos;EQ&apos;.
+  _id-low = &apos;CF&apos;. APPEND _id TO r_doc_id.
+  _id-low = &apos;CM&apos;. APPEND _id TO r_doc_id.
+  _id-low = &apos;RE&apos;. APPEND _id TO r_doc_id.</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="CONSTRUCTOR" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="1 " MTDTYPE="2">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="CONSTRUCTOR"/>
+    </TEXTS>
+    <SOURCE>  DATA type LIKE LINE OF supported_types.
+
+  CALL METHOD super-&gt;constructor.
+  type-type = st_program. INSERT type INTO TABLE supported_types.
+
+  uuid = _uuid.
+  version = _ver.</SOURCE>
+   </ITEM>
+  </METHODS>
+  <REDEFINITIONS>
+   <ITEM REFCLSNAME="ZAPLINK_CONNECTOR_" VERSION="1" MTDNAME="ZAPLINK_CNX_EXT_CLEANER~ANONYMIZE">
+    <SOURCE>  DATA o_prog TYPE to_program.
+
+  TRY.
+      super-&gt;zaplink_cnx_ext_cleaner~anonymize( object ).
+    CATCH zaplink_cx_connector INTO o_mycx.
+      RAISE EXCEPTION o_mycx.
+  ENDTRY.
+
+  o_prog ?= object-&gt;raw.
+  clear:
+    o_prog-&gt;A0_MAINDATA-CNAM,
+    o_prog-&gt;A0_MAINDATA-CDAT,
+    o_prog-&gt;A0_MAINDATA-UNAM,
+    o_prog-&gt;A0_MAINDATA-UDAT,
+    o_prog-&gt;A0_MAINDATA-SDATE,
+    o_prog-&gt;A0_MAINDATA-STIME,
+    o_prog-&gt;A0_MAINDATA-IDATE,
+    o_prog-&gt;A0_MAINDATA-ITIME.</SOURCE>
+   </ITEM>
+   <ITEM REFCLSNAME="ZAPLINK_CONNECTOR_" VERSION="1" MTDNAME="ZAPLINK_CNX_EXT_CLEANER~UNANONYMIZE">
+    <SOURCE>  DATA o_prog TYPE to_program.
+
+  TRY.
+      super-&gt;zaplink_cnx_ext_cleaner~unanonymize( object ).
+    CATCH zaplink_cx_connector INTO o_mycx.
+      RAISE EXCEPTION o_mycx.
+  ENDTRY.
+
+  o_prog ?= object-&gt;raw.
+  o_prog-&gt;A0_MAINDATA-CNAM = sy-uname.
+*    o_prog-&gt;A0_MAINDATA-CDAT,
+*    o_prog-&gt;A0_MAINDATA-UNAM,
+*    o_prog-&gt;A0_MAINDATA-UDAT,
+*    o_prog-&gt;A0_MAINDATA-SDATE,
+*    o_prog-&gt;A0_MAINDATA-STIME,
+*    o_prog-&gt;A0_MAINDATA-IDATE,
+*    o_prog-&gt;A0_MAINDATA-ITIME.</SOURCE>
+   </ITEM>
+   <ITEM REFCLSNAME="ZAPLINK_CONNECTOR_" VERSION="1" MTDNAME="ZAPLINK_CONNECTOR~CREATE_NEW_RAW">
+    <SOURCE>  DATA o_prog TYPE to_program.
+
+  CREATE OBJECT object.
+  CASE type.
+    WHEN st_program.
+      CREATE OBJECT o_prog.
+      object-&gt;raw ?= o_prog.
+    WHEN OTHERS.
+      CLEAR object.
+      RAISE EXCEPTION TYPE zaplink_cx.
+  ENDCASE.</SOURCE>
+   </ITEM>
+   <ITEM REFCLSNAME="ZAPLINK_CONNECTOR_" VERSION="1" MTDNAME="ZAPLINK_CONNECTOR~DELETE_FROM_SAP">
+    <SOURCE>DATA program TYPE sy-repid.
+
+  CASE component-&gt;get_type( ).
+    WHEN st_program.
+      program = component-&gt;get_name( ).
+      CALL FUNCTION &apos;RS_DELETE_PROGRAM&apos;
+        EXPORTING
+*          CORRNUMBER                       =
+          program                          = program
+*          SUPPRESS_CHECKS                  = &apos; &apos;
+*          SUPPRESS_COMMIT                  = &apos; &apos;
+          suppress_popup                   = &apos;X&apos;
+*          MASS_DELETE_CALL                 = &apos; &apos;
+*          WITH_CUA                         = &apos;X&apos;
+*          WITH_DOCUMENTATION               = &apos;X&apos;
+*          WITH_DYNPRO                      = &apos;X&apos;
+*          WITH_INCLUDES                    = &apos; &apos;
+*          WITH_TEXTPOOL                    = &apos;X&apos;
+*          WITH_VARIANTS                    = &apos;X&apos;
+*          TADIR_DEVCLASS                   =
+*          SKIP_PROGRESS_IND                = &apos; &apos;
+*          FORCE_DELETE_USED_INCLUDES       = &apos; &apos;
+*        IMPORTING
+*          CORRNUMBER                       =
+*          PROGRAM                          =
+        EXCEPTIONS
+          enqueue_lock                     = 1
+          object_not_found                 = 2
+          permission_failure               = 3
+          reject_deletion                  = 4
+          OTHERS                           = 5.
+      IF sy-subrc &lt;&gt; 0.
+        CASE sy-subrc.
+*          WHEN 2.
+*            RAISE EXCEPTION TYPE zaplink_cx_connector
+*              EXPORTING textid = zaplink_cx_connector=&gt;not_found.
+*          WHEN 1.
+*            RAISE EXCEPTION TYPE zaplink_cx_connector
+*              EXPORTING
+*                textid = zaplink_cx_connector=&gt;error_message
+*                msg = &apos;Program Lock&apos;.
+          WHEN OTHERS.
+            RAISE EXCEPTION TYPE zaplink_cx_connector
+              EXPORTING textid = zaplink_cx_connector=&gt;system_error.
+        ENDCASE.
+      ENDIF.
+    WHEN OTHERS.
+  ENDCASE.</SOURCE>
+   </ITEM>
+   <ITEM REFCLSNAME="ZAPLINK_CONNECTOR_" VERSION="1" MTDNAME="ZAPLINK_CONNECTOR~DO_EXISTS">
+    <SOURCE>DATA _name TYPE trdir-name.
+
+  exists = me-&gt;exists-not_exists.
+  CASE component-&gt;get_type( ).
+    WHEN st_program.
+      _name = component-&gt;get_name( ).
+      SELECT SINGLE name INTO _name
+        FROM trdir
+        WHERE name = _name.
+      IF sy-subrc = 0.
+        exists = me-&gt;exists-exists.
+      ENDIF.
+    WHEN OTHERS.
+  ENDCASE.</SOURCE>
+   </ITEM>
+   <ITEM REFCLSNAME="ZAPLINK_CONNECTOR_" VERSION="1" MTDNAME="ZAPLINK_CONNECTOR~IS_SUPPORTED_VERSION">
+    <SOURCE>  result = abap_false.
+  if version = _ver.
+    result = abap_true.
+  endif.</SOURCE>
+   </ITEM>
+   <ITEM REFCLSNAME="ZAPLINK_CONNECTOR_" VERSION="1" MTDNAME="ZAPLINK_CONNECTOR~READ_FROM_SAP">
+    <SOURCE>*Issue:7
+  TYPES:
+    BEGIN OF ts_doc,
+      prog TYPE programm,
+      wildcard(1) TYPE c,
+    END OF ts_doc.
+  DATA s_obj TYPE ts_doc.
+*Issue:7
+  DATA _data TYPE REF TO zaplink_prog_data.
+  DATA _prog TYPE td_progname.
+  DATA _name TYPE td_compname.
+  DATA _obj  TYPE doku_obj.
+
+  CREATE OBJECT object.
+  object-&gt;set_component( component ).
+  CASE component-&gt;get_type( ).
+    WHEN st_program.
+      _prog = _name = object-&gt;name.
+      CREATE OBJECT _data.
+      SELECT SINGLE *
+        INTO CORRESPONDING FIELDS OF _data-&gt;a0_maindata
+        FROM progdir    &quot; reposrc
+*The databae view &quot;REPOSRC&quot; is write-protected, so it cannot be changed.
+        WHERE name = _name
+          AND state = &apos;A&apos;.        &quot; Active
+      IF sy-subrc &lt;&gt; 0.
+        SELECT SINGLE *
+          INTO CORRESPONDING FIELDS OF _data-&gt;a0_maindata
+          FROM progdir    &quot;reposrc
+          WHERE name = _name
+            AND state = &apos;I&apos;.      &quot; Inactive
+      ENDIF.
+      CLEAR _data-&gt;a0_maindata-state.
+* Source code
+      _data-&gt;source-_ = get_prog_source( _prog ).
+*      IF NOT _data-&gt;source IS INITIAL. CLEAR _data-&gt;a0_main-data. ENDIF.
+*    INCLUDE TYPE reposrc. &quot;The databae view &quot;REPOSRC&quot; is write-protected, so it cannot be changed.
+* Texts Pool
+      _data-&gt;textspool = get_prog_textpool( _prog ).
+* Documentation
+*      CONCATENATE _name &apos;*&apos; INTO _obj. &quot; Issue:7
+      s_obj-prog = _name.
+      s_obj-wildcard = &apos;*&apos;.
+      _obj = s_obj.
+*Issue:7
+      _data-&gt;documentation = zaplink_documentation=&gt;get( ids = r_doc_id
+                                                      object = _obj ).
+      CLEAR _data-&gt;a0_maindata-name.
+      object-&gt;raw ?= _data.
+    WHEN OTHERS.
+      CLEAR object.
+      RAISE EXCEPTION TYPE zaplink_cx.
+  ENDCASE.</SOURCE>
+   </ITEM>
+   <ITEM REFCLSNAME="ZAPLINK_CONNECTOR_" VERSION="1" MTDNAME="ZAPLINK_CONNECTOR~WRITE_TO_SAP">
+    <SOURCE>DATA _data  TYPE REF TO zaplink_prog_data.
+  DATA _prog  TYPE programm.
+  DATA _oname TYPE e071-obj_name.
+  DATA _obj   TYPE doku_obj.
+  DATA _rep   TYPE progdir.
+  DATA _comp  TYPE to_component.
+  DATA _name  TYPE td_compname.
+
+  CASE object-&gt;type.
+    WHEN st_program.
+      _data ?= object-&gt;raw.
+      _prog = _data-&gt;a0_maindata-name = object-&gt;name.
+** Program
+** Add program to tadir with $TMP
+** This prevent include to be inconsistent
+*      CALL FUNCTION &apos;RS_CORR_INSERT&apos;
+*        EXPORTING
+*          object                         = _prog
+*          object_class                   = &apos;ABAP&apos;
+*          mode                           = &apos;I&apos;    &quot; Insert
+**         GLOBAL_LOCK                    = &apos; &apos;
+*          devclass                       = &apos;$TMP&apos;
+**         KORRNUM                        = &apos; &apos;
+**         USE_KORRNUM_IMMEDIATEDLY       = &apos; &apos;
+**         AUTHOR                         = &apos; &apos;
+**         MASTER_LANGUAGE                = &apos; &apos;
+**         GENFLAG                        = &apos; &apos;
+**         PROGRAM                        = &apos; &apos;
+**         OBJECT_CLASS_SUPPORTS_MA       = &apos; &apos;
+**         EXTEND                         = &apos; &apos;
+**         SUPPRESS_DIALOG                = &apos; &apos;
+**         MOD_LANGU                      = &apos; &apos;
+**         ACTIVATION_CALL                = &apos; &apos;
+**       IMPORTING
+**         DEVCLASS                       =
+**         KORRNUM                        =
+**         ORDERNUM                       =
+**         NEW_CORR_ENTRY                 =
+**         AUTHOR                         =
+**         TRANSPORT_KEY                  =
+**         NEW_EXTEND                     =
+*        EXCEPTIONS
+*          cancelled                      = 1
+*          permission_failure             = 2
+*          unknown_objectclass            = 3
+*          OTHERS                         = 4.
+*      IF sy-subrc &lt;&gt; 0.
+*        MESSAGE ID sy-msgid TYPE sy-msgty NUMBER sy-msgno
+*                WITH sy-msgv1 sy-msgv2 sy-msgv3 sy-msgv4.
+*      ENDIF.
+
+      _oname = _prog.
+      CALL FUNCTION &apos;RS_INSERT_INTO_WORKING_AREA&apos;
+        EXPORTING
+          object                  = &apos;REPS&apos;
+          obj_name                = _oname
+*         DELETED_FLAG            = &apos; &apos;
+*       IMPORTING
+*         OBJECT_INSERTED         =
+        EXCEPTIONS
+          wrong_object_name       = 1
+          OTHERS                  = 2.
+      IF sy-subrc &lt;&gt; 0.
+        MESSAGE ID sy-msgid TYPE sy-msgty NUMBER sy-msgno
+                WITH sy-msgv1 sy-msgv2 sy-msgv3 sy-msgv4.
+      ENDIF.
+
+      CALL FUNCTION &apos;RS_INSERT_INTO_WORKING_AREA&apos;
+        EXPORTING
+          object                  = &apos;REPT&apos;
+          obj_name                = _oname
+*         DELETED_FLAG            = &apos; &apos;
+*       IMPORTING
+*         OBJECT_INSERTED         =
+        EXCEPTIONS
+          wrong_object_name       = 1
+          OTHERS                  = 2.
+      IF sy-subrc &lt;&gt; 0.
+        MESSAGE ID sy-msgid TYPE sy-msgty NUMBER sy-msgno
+                WITH sy-msgv1 sy-msgv2 sy-msgv3 sy-msgv4.
+      ENDIF.
+
+      MOVE-CORRESPONDING _data-&gt;a0_maindata TO _rep.
+      _rep-state = &apos;I&apos;.
+*      MODIFY reposrc FROM _rep. &quot;The databae view &quot;REPOSRC&quot; is write-protected, so it cannot be changed.
+      MODIFY progdir FROM _rep.
+      _rep-state = &apos;A&apos;.
+*      MODIFY reposrc FROM _rep. &quot;The databae view &quot;REPOSRC&quot; is write-protected, so it cannot be changed.
+      MODIFY progdir FROM _rep.
+* Source code
+      set_prog_source( program = _prog
+                        source = _data-&gt;source-_ ).
+* Text Pool
+      set_prog_textpool( program = _prog
+                        textpool = _data-&gt;textspool ).
+* Documentation
+      zaplink_documentation=&gt;set( t_docs = _data-&gt;documentation ).
+
+*      COMMIT WORK AND WAIT. &quot; why ?
+
+      CREATE OBJECT _comp.
+      _comp-&gt;set_type( st_program ).
+      _name = _prog.
+      _comp-&gt;set_name( _name ).
+      CREATE OBJECT components.
+      components-&gt;add( _comp ).
+    WHEN OTHERS.
+  ENDCASE.</SOURCE>
+   </ITEM>
+  </REDEFINITIONS>
+  <TYPEGROUPS>
+   <ITEM TYPEGROUP="ABAP" VERSION="1" IMPLICIT="X"/>
+  </TYPEGROUPS>
+  <TYPES>
+   <ITEM CMPNAME="TO_PROGRAM" VERSION="1" EXPOSURE="1" STATE="1" EDITORDER="1 " TYPTYPE="3" TYPE="ZAPLINK_PROG_DATA">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Commun Data for Class &amp; Interface"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TS_PROG_ATTR" VERSION="1" STATE="1" EDITORDER="1 " TYPTYPE="4" SRCROW1="6 " SRCCOLUMN1="4 " SRCROW2="9 " SRCCOLUMN2="22 " TYPESRC_LENG="100 ">
+    BEGIN OF ts_prog_attr.
+  INCLUDE TYPE ts_base_attributs AS base.
+  TYPES:
+    END OF ts_prog_attr
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Program Attributs"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TS_SOURCE" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="5 " TYPTYPE="1" TYPE="STRING">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="ABAP Source code"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TS_TEXT" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="1 " TYPTYPE="4" SRCROW1="13 " SRCCOLUMN1="4 " SRCROW2="17 " SRCCOLUMN2="17 " TYPESRC_LENG="128 ">
+    begin of ts_text,
+      langu   type SPRAS,
+      ENTRY	  type TEXTPOOLTX,
+      LENGTH  type TEXTPOOLLN,
+    end of ts_text
+    <TEXTS>
+     <ITEM LANGU="E"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TS_TEXTPOOL" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="3 " TYPTYPE="4" SRCROW1="21 " SRCCOLUMN1="4 " SRCROW2="25 " SRCCOLUMN2="21 " TYPESRC_LENG="136 ">
+    begin of ts_textpool,
+      ID    type  TEXTPOOLID,
+      KEY	  type  TEXTPOOLKY,
+      texts type  tt_texts,
+    end of ts_textpool
+    <TEXTS>
+     <ITEM LANGU="E"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TT_TEXTPOOLS" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="4 " TYPTYPE="4" SRCROW1="27 " SRCCOLUMN1="4 " SRCROW2="27 " SRCCOLUMN2="71 " TYPESRC_LENG="68 ">
+    TT_TEXTPOOLs type SORTED TABLE OF ts_textpool WITH UNIQUE key ID KEY
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Table of textppool"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TT_TEXTS" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="2 " TYPTYPE="4" SRCROW1="19 " SRCCOLUMN1="4 " SRCROW2="19 " SRCCOLUMN2="62 " TYPESRC_LENG="59 ">
+    tt_texts type SORTED TABLE OF ts_text WITH UNIQUE KEY langu
+    <TEXTS>
+     <ITEM LANGU="E"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="T_RAW" VERSION="1" EXPOSURE="2" STATE="1" TYPTYPE="1" TYPE="RSWSOURCET">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="ABAP Source"/>
+    </TEXTS>
+   </ITEM>
+  </TYPES>
+ </RAW>
+</ZL_OBJECT>

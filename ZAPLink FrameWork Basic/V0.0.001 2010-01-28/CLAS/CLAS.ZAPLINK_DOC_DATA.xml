@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ZL_OBJECT CHECKSUM="4CBB63EB3B22CF20D97FD2B5F32F0DCA" CONNECTOR="39AC0A4B07A5A05AE1000000AC120173" NAME="ZAPLINK_DOC_DATA" TYPE="CLAS" VERSION="1.0">
+ <DIRECTORY DEVCLASS="ZAPLINK-FRAMEWORK-CORE" MASTERLANG="E"/>
+ <RAW>
+  <A0_MAINDATA VERSION="1" LANGU="E" UUID="E4F8034B756EB95AE1000000AC120173" EXPOSURE="2" STATE="1" CLSFINAL="X" CLSCCINCL="X" FIXPT="X" UNICODE="X">
+   <TEXTS>
+    <ITEM LANGU="E" DESCRIPT="Documentation Datas"/>
+   </TEXTS>
+  </A0_MAINDATA>
+  <ATTRIBUTS>
+   <ITEM CMPNAME="DATA" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="1 " TYPTYPE="1" TYPE="TS_DATA">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Line Type for Table with Package Data"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TEXTS" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="2 " TYPTYPE="1" TYPE="TT_TEXTS">
+    <TEXTS>
+     <ITEM LANGU="E"/>
+    </TEXTS>
+   </ITEM>
+  </ATTRIBUTS>
+  <FRIENDS>
+   <ITEM REFCLSNAME="ZAPLINK_DOCUMENTATION" VERSION="1" STATE="1"/>
+  </FRIENDS>
+  <LOCAL>
+   <TYPES>*&quot;* USE THIS SOURCE FILE FOR ANY TYPE DECLARATIONS (CLASS
+*&quot;* definitions, interfaces or data types) you need for method
+*&quot;* IMPLEMENTATION OR PRIVATE METHOD&apos;S SIGNATURE</TYPES>
+   <IMPLEMENTATIONS>*&quot;* LOCAL CLASS IMPLEMENTATION FOR PUBLIC CLASS
+*&quot;* use this source file for the implementation part of
+*&quot;* LOCAL HELPER CLASSES</IMPLEMENTATIONS>
+   <MACROS>*&quot;* USE THIS SOURCE FILE FOR ANY MACRO DEFINITIONS YOU NEED
+*&quot;* IN THE IMPLEMENTATION PART OF THE CLASS</MACROS>
+  </LOCAL>
+  <METHODS>
+   <ITEM CMPNAME="GET_SOURCE" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="2 ">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Get text attribute as standard table"/>
+    </TEXTS>
+    <PARAMETERS>
+     <ITEM SCONAME="TEXT" VERSION="1" CMPTYPE="1" EDITORDER="1 " AUTHOR="TBENSIAL" CREATEDON="20091118" PARDECLTYP="3" TYPTYPE="1" TYPE="TT_RAWTEXT">
+      <TEXTS>
+       <ITEM LANGU="E"/>
+      </TEXTS>
+     </ITEM>
+    </PARAMETERS>
+    <SOURCE>*  SPLIT me-&gt;texts AT cl_abap_char_utilities=&gt;newline
+*        INTO TABLE text.</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="SET_SOURCE" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="1 ">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Set text attribute from standard table"/>
+    </TEXTS>
+    <PARAMETERS>
+     <ITEM SCONAME="TEXT" VERSION="1" CMPTYPE="1" EDITORDER="1 " AUTHOR="TBENSIAL" CREATEDON="20091118" PARPASSTYP="1" TYPTYPE="1" TYPE="TT_RAWTEXT">
+      <TEXTS>
+       <ITEM LANGU="E"/>
+      </TEXTS>
+     </ITEM>
+    </PARAMETERS>
+    <SOURCE>FIELD-SYMBOLS &lt;l&gt; LIKE LINE OF text.
+  DATA str TYPE string.
+
+*  CLEAR me-&gt;text.
+*  LOOP AT text ASSIGNING &lt;l&gt;.
+*    str = &lt;l&gt;.
+*    IF me-&gt;text IS INITIAL.
+*      me-&gt;text = str.
+*    ELSE.
+*      CONCATENATE me-&gt;text cl_abap_char_utilities=&gt;newline str INTO me-&gt;text.
+*    ENDIF.
+*  ENDLOOP.</SOURCE>
+   </ITEM>
+  </METHODS>
+  <TYPES>
+   <ITEM CMPNAME="TS_DATA" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="1 " TYPTYPE="4" SRCROW1="13 " SRCCOLUMN1="4 " SRCROW2="19 " SRCCOLUMN2="19 " TYPESRC_LENG="198 ">
+    BEGIN OF ts_data.
+    INCLUDE TYPE thead AS head.
+    TYPES:
+        selfdef   TYPE dokil-selfdef,
+        state     TYPE dokhl-dokstate,
+        typ       TYPE dokhl-typ,
+      END OF ts_data
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="General Data"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TS_TEXT" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="3 " TYPTYPE="4" SRCROW1="23 " SRCCOLUMN1="4 " SRCROW2="26 " SRCCOLUMN2="19 " TYPESRC_LENG="109 ">
+    begin of ts_text,
+        Langu type sy-langu,
+        _     type string,      &quot; Text
+      end of ts_text
+    <TEXTS>
+     <ITEM LANGU="E"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TT_RAWTEXT" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="5 " TYPTYPE="4" SRCROW1="30 " SRCCOLUMN1="4 " SRCROW2="30 " SRCCOLUMN2="59 " TYPESRC_LENG="56 ">
+    tt_rawtext TYPE STANDARD TABLE OF tline WITH DEFAULT KEY
+    <TEXTS>
+     <ITEM LANGU="E"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TT_TEXT" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="2 " TYPTYPE="4" SRCROW1="21 " SRCCOLUMN1="4 " SRCROW2="21 " SRCCOLUMN2="56 " TYPESRC_LENG="53 ">
+    tt_text TYPE STANDARD TABLE OF tline WITH DEFAULT KEY
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Table of TLINE"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TT_TEXTS" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="4 " TYPTYPE="4" SRCROW1="28 " SRCCOLUMN1="4 " SRCROW2="28 " SRCCOLUMN2="62 " TYPESRC_LENG="59 ">
+    tt_texts type SORTED TABLE OF ts_text with UNIQUE key langu
+    <TEXTS>
+     <ITEM LANGU="E"/>
+    </TEXTS>
+   </ITEM>
+  </TYPES>
+ </RAW>
+</ZL_OBJECT>

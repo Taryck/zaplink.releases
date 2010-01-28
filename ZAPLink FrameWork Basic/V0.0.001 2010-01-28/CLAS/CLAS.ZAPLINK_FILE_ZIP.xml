@@ -1,0 +1,483 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ZL_OBJECT CHECKSUM="49207145FA81CE61C755D70A6C9D2478" CONNECTOR="39AC0A4B07A5A05AE1000000AC120173" NAME="ZAPLINK_FILE_ZIP" TYPE="CLAS" VERSION="1.0">
+ <DIRECTORY DEVCLASS="ZAPLINK-FRAMEWORK-CORE-EXT" MASTERLANG="E"/>
+ <RAW>
+  <A0_MAINDATA VERSION="1" LANGU="E" UUID="FDF8034B756EB95AE1000000AC120173" EXPOSURE="2" STATE="1" CLSCCINCL="X" FIXPT="X" UNICODE="X" MSG_ID="ZAPLINK_FILE">
+   <INHERITANCE REFCLSNAME="ZAPLINK_FILE" VERSION="1" STATE="1"/>
+   <TEXTS>
+    <ITEM LANGU="E" DESCRIPT="Zap Link Extended File Manager"/>
+   </TEXTS>
+  </A0_MAINDATA>
+  <ATTRIBUTS>
+   <ITEM CMPNAME="FILEKINDS" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="1 " ATTDECLTYP="2" TYPTYPE="4" SRCROW1="13 " SRCCOLUMN1="4 " SRCROW2="16 " SRCCOLUMN2="21 " TYPESRC_LENG="193 " TYPESRC="BEGIN OF filekinds,
+        normal    TYPE td_filekind VALUE space,              &quot;#EC NOTEXT
+        zipped    TYPE td_filekind VALUE &apos;Z&apos;,                &quot;#EC NOTEXT
+      END OF filekinds
+">
+    <TEXTS>
+     <ITEM LANGU="E"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="_FILEKIND" VERSION="1" EXPOSURE="1" STATE="1" EDITORDER="2 " TYPTYPE="1" TYPE="TD_FILEKIND">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="File Kind : Normal, Compressed"/>
+    </TEXTS>
+   </ITEM>
+  </ATTRIBUTS>
+  <LOCAL>
+   <TYPES>*&quot;* USE THIS SOURCE FILE FOR ANY TYPE DECLARATIONS (CLASS
+*&quot;* definitions, interfaces or data types) you need for method
+*&quot;* IMPLEMENTATION OR PRIVATE METHOD&apos;S SIGNATURE</TYPES>
+   <IMPLEMENTATIONS>*&quot;* LOCAL CLASS IMPLEMENTATION FOR PUBLIC CLASS
+*&quot;* use this source file for the implementation part of
+*&quot;* LOCAL HELPER CLASSES</IMPLEMENTATIONS>
+   <MACROS>*&quot;* USE THIS SOURCE FILE FOR ANY MACRO DEFINITIONS YOU NEED
+*&quot;* IN THE IMPLEMENTATION PART OF THE CLASS</MACROS>
+  </LOCAL>
+  <METHODS>
+   <ITEM CMPNAME="GET_FILEKIND" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="1 " MTDNEWEXC="X">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="FileKind : Getter"/>
+    </TEXTS>
+    <PARAMETERS>
+     <ITEM SCONAME="RESULT" VERSION="1" CMPTYPE="1" EDITORDER="1 " AUTHOR="TBENSIAL" CREATEDON="20091118" PARDECLTYP="3" TYPTYPE="1" TYPE="TD_FILEKIND">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="File Kind : Normal, Compressed"/>
+      </TEXTS>
+     </ITEM>
+    </PARAMETERS>
+    <EXCEPTIONS>
+     <ITEM SCONAME="ZAPLINK_CX_FILE" VERSION="1" LANGU="E" EDITORDER="1 " AUTHOR="TBENSIAL" CREATEDON="20091118">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="ZAPlink Exception for Files"/>
+      </TEXTS>
+     </ITEM>
+    </EXCEPTIONS>
+    <SOURCE>result = _filekind.</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="SET_FILEKIND" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="2 " MTDNEWEXC="X">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="FileKind : Setter"/>
+    </TEXTS>
+    <PARAMETERS>
+     <ITEM SCONAME="DATA" VERSION="1" CMPTYPE="1" EDITORDER="1 " AUTHOR="TBENSIAL" CREATEDON="20091118" PARPASSTYP="1" TYPTYPE="1" TYPE="TD_FILEKIND">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="File Kind : Normal, Compressed"/>
+      </TEXTS>
+     </ITEM>
+    </PARAMETERS>
+    <EXCEPTIONS>
+     <ITEM SCONAME="ZAPLINK_CX_FILE" VERSION="1" LANGU="E" EDITORDER="1 " AUTHOR="TBENSIAL" CREATEDON="20091118">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="ZAPlink Exception for Files"/>
+      </TEXTS>
+     </ITEM>
+    </EXCEPTIONS>
+    <SOURCE>IF     data &lt;&gt; filekinds-normal
+     AND data &lt;&gt; filekinds-zipped.
+    RAISE EXCEPTION TYPE zaplink_cx_file
+          EXPORTING textid = zaplink_cx_file=&gt;invalid_filekind
+                  filekind = data.
+  ENDIF.
+
+  _filekind = data.</SOURCE>
+   </ITEM>
+  </METHODS>
+  <REDEFINITIONS>
+   <ITEM REFCLSNAME="ZAPLINK_FILE" VERSION="1" MTDNAME="LOAD">
+    <SOURCE>DATA _cx TYPE REF TO zaplink_cx_file.
+  DATA tmptable TYPE STANDARD TABLE OF x.
+  DATA cx_name TYPE string.
+  DATA cx TYPE REF TO cx_root.
+  DATA x_string TYPE xstring.
+  DATA file_type TYPE char10.
+  DATA file_size TYPE i.
+  DATA _str LIKE LINE OF tmptable.
+  FIELD-SYMBOLS:
+    &lt;s&gt; LIKE LINE OF tmptable.
+
+  CASE _filekind.
+    WHEN filekinds-normal.
+      TRY.
+          super-&gt;load( ).
+        CATCH zaplink_cx_file INTO _cx.
+          RAISE EXCEPTION _cx.
+      ENDTRY.
+    WHEN filekinds-zipped.
+
+      IF _filetype = c_ft_local.
+        IF _filename IS INITIAL.
+          load_dialog( ).
+        ELSE.
+          file_type = &apos;BIN&apos;.
+          CALL METHOD cl_gui_frontend_services=&gt;gui_upload
+            EXPORTING
+              filename                 = _filename
+              filetype                 = file_type
+*              has_field_separator     = SPACE
+*              header_length           = 0
+*              read_by_line            = &apos;X&apos;
+*              dat_mode                = SPACE
+*              codepage                = SPACE
+*              ignore_cerr             = ABAP_TRUE
+*              replacement             = &apos;#&apos;
+*              virus_scan_profile      =
+            IMPORTING
+              filelength              = file_size
+*              header                  =
+            CHANGING
+              data_tab                = tmptable
+            EXCEPTIONS
+              file_open_error         = 1
+              file_read_error         = 2
+              no_batch                = 3
+              gui_refuse_filetransfer = 4
+              invalid_type            = 5
+              no_authority            = 6
+              unknown_error           = 7
+              bad_data_format         = 8
+              header_not_allowed      = 9
+              separator_not_allowed   = 10
+              header_too_long         = 11
+              unknown_dp_error        = 12
+              access_denied           = 13
+              dp_out_of_memory        = 14
+              disk_full               = 15
+              dp_timeout              = 16
+              not_supported_by_gui    = 17
+              error_no_gui            = 18
+              OTHERS                  = 19.
+          IF sy-subrc &lt;&gt; 0.
+            CASE sy-subrc.
+              WHEN &apos;1&apos;.
+                cx_name = &apos;&apos;.
+              WHEN OTHERS.
+                cx_name = &apos;OTHERS&apos;.
+            ENDCASE.
+* Exception &amp;cx_name&amp; while saving file &amp;filename&amp; (&amp;filetype&amp;)
+            RAISE EXCEPTION TYPE zaplink_cx_file
+                  EXPORTING textid = zaplink_cx_file=&gt;save_error
+                          filename = _filename
+                          filetype = _filetype
+                           cx_name = cx_name.
+          ENDIF.
+          file_size = LINES( tmptable ).
+          CALL FUNCTION &apos;SCMS_BINARY_TO_XSTRING&apos;
+            EXPORTING
+              input_length       = file_size
+*             FIRST_LINE         = 0
+*             LAST_LINE          = 0
+            IMPORTING
+              buffer             = x_string
+            TABLES
+              binary_tab         = tmptable
+           EXCEPTIONS
+             failed             = 1
+             OTHERS             = 2
+                    .
+          IF sy-subrc &lt;&gt; 0.
+* MESSAGE ID SY-MSGID TYPE SY-MSGTY NUMBER SY-MSGNO
+*         WITH SY-MSGV1 SY-MSGV2 SY-MSGV3 SY-MSGV4.
+          ENDIF.
+
+        ENDIF.
+      ELSEIF _filetype = c_ft_server.
+        TRY.
+            OPEN DATASET _filename FOR INPUT IN BINARY MODE.
+          CATCH cx_root INTO cx.
+* Exception &amp;cx_name&amp; while saving file &amp;filename&amp; (&amp;filetype&amp;)
+            CREATE OBJECT _cx
+              EXPORTING
+                textid   = zaplink_cx_file=&gt;save_error
+                filename = _filename
+                filetype = _filetype
+                previous = cx.
+            _cx-&gt;update( ).
+            RAISE EXCEPTION _cx.
+        ENDTRY.
+        IF sy-subrc &lt;&gt; 0.
+* Exception &amp;cx_name&amp; while saving file &amp;filename&amp; (&amp;filetype&amp;)
+          RAISE EXCEPTION TYPE zaplink_cx_file
+                EXPORTING textid = zaplink_cx_file=&gt;save_error
+                        filename = _filename
+                        filetype = _filetype
+                         cx_name = &apos;OPEN DATASET&apos;.
+        ENDIF.
+
+*    DO.
+        TRY.
+            READ DATASET _filename into x_string.
+          CATCH cx_root INTO cx.
+* Exception &amp;cx_name&amp; while loading file &amp;filename&amp; (&amp;filetype&amp;)
+            CREATE OBJECT _cx
+              EXPORTING
+                textid   = zaplink_cx_file=&gt;load_error
+                filename = _filename
+                filetype = _filetype
+                previous = cx.
+            _cx-&gt;update( ).
+            RAISE EXCEPTION _cx.
+        ENDTRY.
+*      IF sy-subrc &lt;&gt; 0.
+*        EXIT.
+*      ENDIF.
+*      APPEND _str TO tmptable.
+*    ENDDO.
+
+        TRY.
+            CLOSE DATASET _filename.
+          CATCH cx_root INTO cx.
+* Exception &amp;cx_name&amp; while saving file &amp;filename&amp; (&amp;filetype&amp;)
+            CREATE OBJECT _cx
+              EXPORTING
+                textid   = zaplink_cx_file=&gt;save_error
+                filename = _filename
+                filetype = _filetype
+                previous = cx.
+            _cx-&gt;update( ).
+            RAISE EXCEPTION _cx.
+        ENDTRY.
+        IF sy-subrc &lt;&gt; 0.
+* Exception &amp;cx_name&amp; while saving file &amp;filename&amp; (&amp;filetype&amp;)
+          RAISE EXCEPTION TYPE zaplink_cx_file
+                EXPORTING textid = zaplink_cx_file=&gt;save_error
+                        filename = _filename
+                        filetype = _filetype
+                         cx_name = &apos;CLOSE DATASET&apos;.
+        ENDIF.
+      ENDIF.
+
+      TRY.
+          CALL METHOD cl_abap_gzip=&gt;decompress_text
+            EXPORTING
+              gzip_in      = x_string
+*              gzip_in_len  = -1
+*              conversion   = &apos;DEFAULT&apos;
+            IMPORTING
+              text_out     = _content
+*              text_out_len =
+              .
+*           CATCH cx_parameter_invalid_range .
+*           CATCH cx_sy_buffer_overflow .
+*           CATCH cx_sy_conversion_codepage .
+*           CATCH cx_sy_compression_error .
+        CATCH cx_root INTO cx.
+          CREATE OBJECT _cx
+            EXPORTING
+              textid   = zaplink_cx_file=&gt;save_error
+              filename = _filename
+              filetype = _filetype
+              previous = cx.
+          _cx-&gt;update( ).
+          RAISE EXCEPTION _cx.
+      ENDTRY.
+
+    WHEN OTHERS.
+      RAISE EXCEPTION TYPE zaplink_cx_file
+            EXPORTING textid = zaplink_cx_file=&gt;invalid_filetype
+                    filetype = _filetype.
+  ENDCASE.</SOURCE>
+   </ITEM>
+   <ITEM REFCLSNAME="ZAPLINK_FILE" VERSION="1" MTDNAME="SAVE">
+    <SOURCE>DATA _cx TYPE REF TO zaplink_cx_file.
+  DATA tmptable TYPE STANDARD TABLE OF x.
+  DATA cx_name TYPE string.
+  DATA cx TYPE REF TO cx_root.
+  DATA x_string TYPE xstring.
+  DATA file_type TYPE char10.
+  DATA file_size TYPE i.
+  FIELD-SYMBOLS:
+    &lt;s&gt; LIKE LINE OF tmptable.
+
+  CASE _filekind.
+    WHEN filekinds-normal.
+      TRY.
+          super-&gt;save( ).
+        CATCH zaplink_cx_file INTO _cx.
+          RAISE EXCEPTION _cx.
+      ENDTRY.
+    WHEN filekinds-zipped.
+
+      TRY.
+          CALL METHOD cl_abap_gzip=&gt;compress_text
+            EXPORTING
+              text_in        = _content
+*        text_in_len    = -1
+*        compress_level = 6
+*        conversion     = &apos;DEFAULT&apos;
+            IMPORTING
+              gzip_out       = x_string
+*        gzip_out_len   =
+              .
+          file_type = &apos;BIN&apos;.
+          file_size = XSTRLEN( x_string ).
+*     CATCH cx_parameter_invalid_range into cx.
+*     CATCH cx_sy_buffer_overflow into cx.
+*     CATCH cx_sy_conversion_codepage into cx.
+        CATCH cx_root INTO cx.
+          CREATE OBJECT _cx
+            EXPORTING
+              textid   = zaplink_cx_file=&gt;save_error
+              filename = _filename
+              filetype = _filetype
+              previous = cx.
+          _cx-&gt;update( ).
+          RAISE EXCEPTION _cx.
+      ENDTRY.
+
+      IF _filetype = c_ft_local.
+        IF _filename IS INITIAL.
+          save_dialog( ).
+        ELSE.
+          CALL FUNCTION &apos;SCMS_XSTRING_TO_BINARY&apos;
+            EXPORTING
+              buffer                = x_string
+*       APPEND_TO_TABLE       = &apos; &apos;
+           IMPORTING
+             output_length         = file_size
+            TABLES
+              binary_tab            =  tmptable.
+
+          CALL METHOD cl_gui_frontend_services=&gt;gui_download
+            EXPORTING
+              bin_filesize              = file_size
+              filename                  = _filename
+              filetype                  = file_type
+*      append                    = SPACE
+*      write_field_separator     = SPACE
+*      header                    = &apos;00&apos;
+*      trunc_trailing_blanks     = SPACE
+*      write_lf                  = &apos;X&apos;
+*      col_select                = SPACE
+*      col_select_mask           = SPACE
+*      dat_mode                  = SPACE
+*      confirm_overwrite         = SPACE
+*      no_auth_check             = SPACE
+*      codepage                  = SPACE
+*      ignore_cerr               = ABAP_TRUE
+*      replacement               = &apos;#&apos;
+*      write_bom                 = SPACE
+*      trunc_trailing_blanks_eol = &apos;X&apos;
+*      wk1_n_format              = SPACE
+*      wk1_n_size                = SPACE
+*      wk1_t_format              = SPACE
+*      wk1_t_size                = SPACE
+*    IMPORTING
+*      filelength                =
+            CHANGING
+              data_tab                  = tmptable
+            EXCEPTIONS
+              file_write_error          = 1
+              no_batch                  = 2
+              gui_refuse_filetransfer   = 3
+              invalid_type              = 4
+              no_authority              = 5
+              unknown_error             = 6
+              header_not_allowed        = 7
+              separator_not_allowed     = 8
+              filesize_not_allowed      = 9
+              header_too_long           = 10
+              dp_error_create           = 11
+              dp_error_send             = 12
+              dp_error_write            = 13
+              unknown_dp_error          = 14
+              access_denied             = 15
+              dp_out_of_memory          = 16
+              disk_full                 = 17
+              dp_timeout                = 18
+              file_not_found            = 19
+              dataprovider_exception    = 20
+              control_flush_error       = 21
+              not_supported_by_gui      = 22
+              error_no_gui              = 23
+              OTHERS                    = 24.
+          IF sy-subrc &lt;&gt; 0.
+            CASE sy-subrc.
+              WHEN &apos;1&apos;.
+                cx_name = &apos;&apos;.
+              WHEN OTHERS.
+                cx_name = &apos;OTHERS&apos;.
+            ENDCASE.
+* Exception &amp;cx_name&amp; while saving file &amp;filename&amp; (&amp;filetype&amp;)
+            RAISE EXCEPTION TYPE zaplink_cx_file
+                  EXPORTING textid = zaplink_cx_file=&gt;save_error
+                          filename = _filename
+                          filetype = _filetype
+                           cx_name = cx_name.
+          ENDIF.
+        ENDIF.
+      ELSEIF _filetype = c_ft_server.
+        TRY.
+            OPEN DATASET _filename FOR OUTPUT IN BINARY MODE.
+          CATCH cx_root INTO cx.
+* Exception &amp;cx_name&amp; while saving file &amp;filename&amp; (&amp;filetype&amp;)
+            CREATE OBJECT _cx
+              EXPORTING
+                textid   = zaplink_cx_file=&gt;save_error
+                filename = _filename
+                filetype = _filetype
+                previous = cx.
+            _cx-&gt;update( ).
+            RAISE EXCEPTION _cx.
+        ENDTRY.
+        IF sy-subrc &lt;&gt; 0.
+* Exception &amp;cx_name&amp; while saving file &amp;filename&amp; (&amp;filetype&amp;)
+          RAISE EXCEPTION TYPE zaplink_cx_file
+                EXPORTING textid = zaplink_cx_file=&gt;save_error
+                        filename = _filename
+                        filetype = _filetype
+                         cx_name = &apos;OPEN DATASET&apos;.
+        ENDIF.
+
+        TRY.
+            TRANSFER x_string TO _filename.
+          CATCH cx_root INTO cx.
+* Exception &amp;cx_name&amp; while saving file &amp;filename&amp; (&amp;filetype&amp;)
+            CREATE OBJECT _cx
+              EXPORTING
+                textid   = zaplink_cx_file=&gt;save_error
+                filename = _filename
+                filetype = _filetype
+                previous = cx.
+            _cx-&gt;update( ).
+            RAISE EXCEPTION _cx.
+        ENDTRY.
+
+        TRY.
+            CLOSE DATASET _filename.
+          CATCH cx_root INTO cx.
+* Exception &amp;cx_name&amp; while saving file &amp;filename&amp; (&amp;filetype&amp;)
+            CREATE OBJECT _cx
+              EXPORTING
+                textid   = zaplink_cx_file=&gt;save_error
+                filename = _filename
+                filetype = _filetype
+                previous = cx.
+            _cx-&gt;update( ).
+            RAISE EXCEPTION _cx.
+        ENDTRY.
+        IF sy-subrc &lt;&gt; 0.
+* Exception &amp;cx_name&amp; while saving file &amp;filename&amp; (&amp;filetype&amp;)
+          RAISE EXCEPTION TYPE zaplink_cx_file
+                EXPORTING textid = zaplink_cx_file=&gt;save_error
+                        filename = _filename
+                        filetype = _filetype
+                         cx_name = &apos;CLOSE DATASET&apos;.
+        ENDIF.
+      ENDIF.
+    WHEN OTHERS.
+      RAISE EXCEPTION TYPE zaplink_cx_file
+            EXPORTING textid = zaplink_cx_file=&gt;invalid_filetype
+                    filetype = _filetype.
+  ENDCASE.</SOURCE>
+   </ITEM>
+  </REDEFINITIONS>
+  <TYPES>
+   <ITEM CMPNAME="TD_FILEKIND" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="3 " TYPTYPE="1" TYPE="CHAR1">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="File Kind : Normal, Compressed"/>
+    </TEXTS>
+   </ITEM>
+  </TYPES>
+ </RAW>
+</ZL_OBJECT>

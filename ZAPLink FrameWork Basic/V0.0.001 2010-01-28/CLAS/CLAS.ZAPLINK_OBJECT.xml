@@ -1,0 +1,819 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ZL_OBJECT CHECKSUM="34B0CC062C4FDD131C0D14E0C709CB17" CONNECTOR="39AC0A4B07A5A05AE1000000AC120173" NAME="ZAPLINK_OBJECT" TYPE="CLAS" VERSION="1.0">
+ <DIRECTORY DEVCLASS="ZAPLINK-CONNECTORS-MAIN" MASTERLANG="E"/>
+ <RAW>
+  <A0_MAINDATA VERSION="1" LANGU="E" UUID="A32B044B702B371EE1000000AC120173" EXPOSURE="2" STATE="1" CLSCCINCL="X" FIXPT="X" UNICODE="X" MSG_ID="ZAPLINK_OBJECT">
+   <INHERITANCE REFCLSNAME="ZAPLINK_CONNECTOR_" VERSION="1" STATE="1"/>
+   <TEXTS>
+    <ITEM LANGU="E" DESCRIPT="ZAPLink Class &amp; Interface connector"/>
+   </TEXTS>
+  </A0_MAINDATA>
+  <ATTRIBUTS>
+   <ITEM CMPNAME="BALLOG_SUBOBJECT" VERSION="1" STATE="1" EDITORDER="7 " ATTDECLTYP="2" ATTVALUE="&apos;OBJECT&apos;" TYPTYPE="1" TYPE="BALSUBOBJ">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Application Log: Subobject"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="R_DOC_ID_CLASS" VERSION="1" STATE="1" EDITORDER="1 " ATTDECLTYP="1" TYPTYPE="1" TYPE="TR_DOCID">
+    <TEXTS>
+     <ITEM LANGU="E"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="R_DOC_ID_INTERFACE" VERSION="1" STATE="1" EDITORDER="4 " ATTDECLTYP="1" TYPTYPE="1" TYPE="TR_DOCID">
+    <TEXTS>
+     <ITEM LANGU="E"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="ST_CLASS" VERSION="1" STATE="1" EDITORDER="2 " ATTDECLTYP="2" ATTVALUE="&apos;CLAS&apos;" TYPTYPE="1" TYPE="TD_COMPTYPE">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Transport category : ABAP Object"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="ST_INTERFACE" VERSION="1" STATE="1" EDITORDER="3 " ATTDECLTYP="2" ATTVALUE="&apos;INTF&apos;" TYPTYPE="1" TYPE="TD_COMPTYPE">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Transport category : Object Interface"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="_UUID" VERSION="1" STATE="1" EDITORDER="5 " ATTDECLTYP="2" ATTVALUE="&apos;39AC0A4B07A5A05AE1000000AC120173&apos;" TYPTYPE="1" TYPE="TD_CONNUUID">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="UUID for connector Object"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="_VER" VERSION="1" STATE="1" EDITORDER="6 " ATTDECLTYP="2" ATTVALUE="&apos;1.0&apos;" TYPTYPE="1" TYPE="TD_CONNVER">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Connector Version"/>
+    </TEXTS>
+   </ITEM>
+  </ATTRIBUTS>
+  <DEFERRED>
+   <CLASSES>
+    <ITEM TYPEGROUP="ZAPLINK_OBJECT_DATA" VERSION="1" TPUTYPE="1" IMPLICIT="X"/>
+   </CLASSES>
+  </DEFERRED>
+  <FRIENDS>
+   <ITEM REFCLSNAME="ZAPLINK_OBJECT_DATA" VERSION="1" STATE="1"/>
+  </FRIENDS>
+  <LOCAL>
+   <TYPES>*&quot;* USE THIS SOURCE FILE FOR ANY TYPE DECLARATIONS (CLASS
+*&quot;* definitions, interfaces or data types) you need for method
+*&quot;* IMPLEMENTATION OR PRIVATE METHOD&apos;S SIGNATURE</TYPES>
+   <IMPLEMENTATIONS>*&quot;* LOCAL CLASS IMPLEMENTATION FOR PUBLIC CLASS
+*&quot;* use this source file for the implementation part of
+*&quot;* LOCAL HELPER CLASSES</IMPLEMENTATIONS>
+   <MACROS>*&quot;* USE THIS SOURCE FILE FOR ANY MACRO DEFINITIONS YOU NEED
+*&quot;* IN THE IMPLEMENTATION PART OF THE CLASS</MACROS>
+  </LOCAL>
+  <METHODS>
+   <ITEM CMPNAME="CLASS_CONSTRUCTOR" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="2 " MTDTYPE="2" MTDDECLTYP="1">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="CLASS_CONSTRUCTOR"/>
+    </TEXTS>
+    <SOURCE>*table TDCLT
+*DOKCLASS DOKTITEL
+*CA       Class attribute
+*CE       Class event
+*CL       Class
+*CO       Class method
+*CT       Class type
+  DATA _id LIKE LINE OF r_doc_id_class.
+
+  _id-sign = &apos;I&apos;.
+  _id-option = &apos;EQ&apos;.
+  _id-low = &apos;CA&apos;. APPEND _id TO r_doc_id_class.
+  _id-low = &apos;CE&apos;. APPEND _id TO r_doc_id_class.
+  _id-low = &apos;CL&apos;. APPEND _id TO r_doc_id_class.
+  _id-low = &apos;CO&apos;. APPEND _id TO r_doc_id_class.
+  _id-low = &apos;CT&apos;. APPEND _id TO r_doc_id_class.
+
+  _id-low = &apos;IA&apos;. APPEND _id TO r_doc_id_interface.
+  _id-low = &apos;IE&apos;. APPEND _id TO r_doc_id_interface.
+  _id-low = &apos;IF&apos;. APPEND _id TO r_doc_id_interface.
+  _id-low = &apos;IO&apos;. APPEND _id TO r_doc_id_interface.</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="CONSTRUCTOR" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="1 " MTDTYPE="2">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="CONSTRUCTOR"/>
+    </TEXTS>
+    <SOURCE>  DATA type LIKE LINE OF supported_types.
+
+  CALL METHOD super-&gt;constructor.
+
+  type-type = st_class. INSERT type INTO TABLE supported_types.
+  type-type = st_interface. INSERT type INTO TABLE supported_types.
+
+  uuid = _uuid.
+  version = _ver.
+
+  CALL METHOD application_log-&gt;init
+    EXPORTING
+      id_object      = BALLOG_OBJECT
+      id_subobject   = BALLOG_SUBOBJECT
+*      id_extnumber   =
+      auto_upd_custo = ABAP_true
+*      id_activity    = ACT_CREATE
+    EXCEPTIONS
+      error          = 1
+      others         = 2.
+  IF sy-subrc &lt;&gt; 0.
+   MESSAGE ID SY-MSGID TYPE &apos;I&apos; NUMBER SY-MSGNO
+              WITH SY-MSGV1 SY-MSGV2 SY-MSGV3 SY-MSGV4.
+  ENDIF.</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="EXPORT_FROM_SAP_CLASS" VERSION="1" STATE="1" EDITORDER="2 ">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Export Class from SAP System"/>
+    </TEXTS>
+    <PARAMETERS>
+     <ITEM SCONAME="COMPONENT" VERSION="1" CMPTYPE="1" EDITORDER="1 " AUTHOR="TBENSIAL" CREATEDON="20091118" CHANGEDBY="TBENSIAL" CHANGEDON="20091127" PARPASSTYP="1" TYPTYPE="1" TYPE="TO_COMPONENT">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="Component key"/>
+      </TEXTS>
+     </ITEM>
+     <ITEM SCONAME="OBJECT" VERSION="1" CMPTYPE="1" EDITORDER="2 " AUTHOR="TBENSIAL" CREATEDON="20091118" CHANGEDBY="TBENSIAL" CHANGEDON="20091127" PARDECLTYP="3" TYPTYPE="1" TYPE="TO_CLASS">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="Class data"/>
+      </TEXTS>
+     </ITEM>
+    </PARAMETERS>
+    <SOURCE>  DATA obj_mask   TYPE doku_obj.
+  DATA docu_key   TYPE ts_doc_key.
+  DATA classkey   TYPE seoclskey.
+  DATA _d         TYPE t_fm_data.
+
+  CHECK component-&gt;get_type( ) = st_class.
+
+*  _objtype = COMPONENT-type.
+  classkey-clsname = component-&gt;get_name( ).
+  CALL FUNCTION &apos;SEO_CLASS_TYPEINFO_GET&apos;
+    EXPORTING
+      clskey                              = classkey
+*     VERSION                             = SEOC_VERSION_INACTIVE
+*     STATE                               = &apos;1&apos;
+*     WITH_DESCRIPTIONS                   = SEOX_TRUE
+      resolve_eventhandler_typeinfo       = seox_true
+      with_master_language                = seox_true
+      with_enhancements                   = seox_true
+*     READ_ACTIVE_ENHA                    = SEOX_FALSE
+    IMPORTING
+      class                               = _d-class
+      attributes                          = _d-attributes
+      methods                             = _d-methods
+      events                              = _d-events
+      types                               = _d-types
+      PARAMETERS                          = _d-parameters
+      exceps                              = _d-exceps
+      implementings                       = _d-implementings
+      inheritance                         = _d-inheritance
+      redefinitions                       = _d-redefinitions
+      impl_details                        = _d-impl_details
+      friendships                         = _d-friendships
+      typepusages                         = _d-typeusages
+      clsdeferrds                         = _d-clsdeferrds
+      intdeferrds                         = _d-intdeferrds
+      explore_inheritance                 = _d-explore_inheritance
+      explore_implementings               = _d-explore_implementings
+      aliases                             = _d-aliases
+      enhancement_methods                 = _d-enhancement_methods
+      enhancement_attributes              = _d-enhancement_attributes
+      enhancement_events                  = _d-enhancement_events
+      enhancement_implementings           = _d-enhancement_implementings
+    EXCEPTIONS
+      not_existing                        = 1
+      is_interface                        = 2
+      model_only                          = 3
+      OTHERS                              = 4
+            .
+  IF sy-subrc &lt;&gt; 0.
+    application_log-&gt;add_symsg( ).
+    exit.
+  ENDIF.
+
+  CREATE OBJECT object.
+  object-&gt;complete_data( CHANGING fm_data = _d ).
+* Issue 1
+  _d-textspool = get_prog_textpool( _d-includes-classpool ).
+* Issue 1
+  object-&gt;from_data( _d ).
+
+* Documentations
+  docu_key-name = component-&gt;get_name( ).
+  docu_key-other = &apos;*&apos;.
+  obj_mask = docu_key.
+
+  object-&gt;documentation = zaplink_documentation=&gt;get( ids = r_doc_id_class
+                                                   object = obj_mask ).</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="EXPORT_FROM_SAP_INTERFACE" VERSION="1" STATE="1" EDITORDER="3 ">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Export Interface from SAP System"/>
+    </TEXTS>
+    <PARAMETERS>
+     <ITEM SCONAME="COMPONENT" VERSION="1" CMPTYPE="1" EDITORDER="1 " AUTHOR="TBENSIAL" CREATEDON="20091118" CHANGEDBY="TBENSIAL" CHANGEDON="20091127" PARPASSTYP="1" TYPTYPE="1" TYPE="TO_COMPONENT">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="Component key"/>
+      </TEXTS>
+     </ITEM>
+     <ITEM SCONAME="OBJECT" VERSION="1" CMPTYPE="1" EDITORDER="2 " AUTHOR="TBENSIAL" CREATEDON="20091118" CHANGEDBY="TBENSIAL" CHANGEDON="20091127" PARDECLTYP="3" TYPTYPE="1" TYPE="TO_INTERFACE">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="Class data"/>
+      </TEXTS>
+     </ITEM>
+    </PARAMETERS>
+    <SOURCE>DATA obj_mask       TYPE doku_obj.
+  DATA docu_key       TYPE ts_doc_key.
+  DATA classkey TYPE seoclskey.
+  DATA _d       TYPE t_fm_data.
+
+  CHECK component-&gt;get_type( ) = st_interface.
+
+  classkey-clsname = component-&gt;get_name( ).
+  CALL FUNCTION &apos;SEO_INTERFACE_TYPEINFO_GET&apos;
+    EXPORTING
+      intkey                        = classkey
+*     VERSION                       = SEOC_VERSION_INACTIVE
+*     STATE                         = &apos;1&apos;
+      with_master_language          = seox_true
+      with_enhancements             = seox_true
+*     READ_ACTIVE_ENHA              = SEOX_FALSE
+    IMPORTING
+      interface                     = _d-interface
+      attributes                    = _d-attributes
+      methods                       = _d-methods
+      events                        = _d-events
+      PARAMETERS                    = _d-parameters
+      exceps                        = _d-exceps
+      comprisings                   = _d-comprisings
+      typepusages                   = _d-typeusages
+      clsdeferrds                   = _d-clsdeferrds
+      intdeferrds                   = _d-intdeferrds
+      explore_comprisings           = _d-explore_comprisings
+      aliases                       = _d-aliases
+      types                         = _d-types
+      enhancement_methods           = _d-enhancement_methods
+      enhancement_attributes        = _d-enhancement_attributes
+      enhancement_events            = _d-enhancement_events
+      enhancement_comprisings       = _d-enhancement_comprisings
+    EXCEPTIONS
+      not_existing                  = 1
+      is_class                      = 2
+      model_only                    = 3
+      OTHERS                        = 4.
+  IF sy-subrc &lt;&gt; 0.
+* MESSAGE ID SY-MSGID TYPE SY-MSGTY NUMBER SY-MSGNO
+*         WITH SY-MSGV1 SY-MSGV2 SY-MSGV3 SY-MSGV4.
+  ENDIF.
+
+  CREATE OBJECT object.
+  object-&gt;complete_data( changing fm_data = _d ).
+  object-&gt;from_data( _d ).
+
+* Documentations
+  docu_key-name = component-&gt;get_name( ).
+  docu_key-other = &apos;*&apos;.
+  obj_mask = docu_key.
+
+  object-&gt;documentation = zaplink_documentation=&gt;get( ids = r_doc_id_interface
+                                                   object = obj_mask ).</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="IMPORT_TO_SAP_CLASS" VERSION="1" STATE="1" EDITORDER="1 ">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Import Class into SAP system"/>
+    </TEXTS>
+    <PARAMETERS>
+     <ITEM SCONAME="COMPONENTS" VERSION="1" CMPTYPE="1" EDITORDER="2 " AUTHOR="TBENSIAL" CREATEDON="20091118" CHANGEDBY="TBENSIAL" CHANGEDON="20091127" PARDECLTYP="3" TYPTYPE="1" TYPE="TO_LIST">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="Components"/>
+      </TEXTS>
+     </ITEM>
+     <ITEM SCONAME="O_DATA" VERSION="1" CMPTYPE="1" EDITORDER="1 " AUTHOR="TBENSIAL" CREATEDON="20091118" CHANGEDBY="TBENSIAL" CHANGEDON="20091127" PARPASSTYP="1" TYPTYPE="1" TYPE="TO_CLASS">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="Class data"/>
+      </TEXTS>
+     </ITEM>
+    </PARAMETERS>
+    <SOURCE>  DATA _d               TYPE t_fm_data.
+  DATA i_korrnr         TYPE trkorr.
+  DATA _component       TYPE to_component.
+  DATA _name            TYPE td_compname.
+
+  _d = o_data-&gt;to_data( ).
+
+  CALL FUNCTION &apos;SEO_BUFFER_INIT&apos;.
+  CALL FUNCTION &apos;SEO_CLASS_CREATE_COMPLETE&apos;
+   EXPORTING
+*     corrnr                             = e_corrnr
+*     devclass                           = &apos;$TMP&apos;                &quot;devclass
+*     version                            = e_version
+*     genflag                            = e_genflag
+*     authority_check                    = e_authority_check
+     overwrite                          = &apos;X&apos;                   &quot;overwrite
+*   SUPPRESS_METHOD_GENERATION         = e_suppress_meth_gen
+*   SUPPRESS_REFACTORING_SUPPORT       = e_suppress_refac_gen
+     method_sources                     = _d-method_sources    &quot; Methods source
+     locals_def                         = _d-locals_def        &quot; LOCAL_TYPES
+     locals_imp                         = _d-locals_imp        &quot; LOCAL_IMP
+     locals_mac                         = _d-locals_mac        &quot; MACROS
+*   SUPPRESS_INDEX_UPDATE              = e_suppress_ind_update
+   IMPORTING
+     korrnr                             = i_korrnr
+   TABLES
+     class_descriptions                 = _d-class_desc
+     component_descriptions             = _d-component_desc
+     subcomponent_descriptions          = _d-subcomponent_desc
+   CHANGING
+     class                              = _d-class
+     inheritance                        = _d-inheritance
+     redefinitions                      = _d-redefinitions
+     implementings                      = _d-implementings
+     impl_details                       = _d-impl_details
+     attributes                         = _d-attributes
+     methods                            = _d-methods
+     events                             = _d-events
+     types                              = _d-types
+*   TYPE_SOURCE                        = ch_type_source &quot;???
+     PARAMETERS                         = _d-parameters
+     exceps                             = _d-exceps
+     aliases                            = _d-aliases
+     typepusages                        = _d-typeusages
+     clsdeferrds                        = _d-clsdeferrds
+     intdeferrds                        = _d-intdeferrds
+     friendships                        = _d-friendships
+   EXCEPTIONS
+     existing                           = 1
+     is_interface                       = 2
+     db_error                           = 3
+     component_error                    = 4
+     no_access                          = 5
+     other                              = 6
+     OTHERS                             = 7.
+  CASE sy-subrc.
+    WHEN 0.
+** i guess if we made it this far, we will assume success
+** successful install
+    WHEN OTHERS.
+      RAISE EXCEPTION TYPE zaplink_cx_connector
+        EXPORTING textid = zaplink_cx_connector=&gt;system_error.
+  ENDCASE.
+
+* Exceptions texts
+  if not _d-exceptions_texts is INITIAL.
+*  zaplink_clas_data=&gt;update_concept( EXPORTING msg_col = application_log
+*                                     CHANGING  fm_data = _d ).
+  endif.
+
+* Issue 1
+  _d-includes = zaplink_object_data=&gt;get_includes( _d-class-clsname ).
+  set_prog_textpool( program = _d-includes-classpool
+                    textpool = _d-textspool ).
+* Issue 1
+
+  zaplink_documentation=&gt;set( o_data-&gt;documentation ).
+
+  CREATE OBJECT _component.
+  _component-&gt;set_type( st_class ).
+  _name = _d-class-clsname.
+  _component-&gt;set_name( _name ).
+  CREATE OBJECT components.
+  components-&gt;add( _component ).</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="IMPORT_TO_SAP_INTERFACE" VERSION="1" STATE="1" EDITORDER="4 ">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Import Interface into SAP system"/>
+    </TEXTS>
+    <PARAMETERS>
+     <ITEM SCONAME="COMPONENTS" VERSION="1" CMPTYPE="1" EDITORDER="2 " AUTHOR="TBENSIAL" CREATEDON="20091118" CHANGEDBY="TBENSIAL" CHANGEDON="20091127" PARDECLTYP="3" TYPTYPE="1" TYPE="TO_LIST">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="Components"/>
+      </TEXTS>
+     </ITEM>
+     <ITEM SCONAME="O_DATA" VERSION="1" CMPTYPE="1" EDITORDER="1 " AUTHOR="TBENSIAL" CREATEDON="20091118" CHANGEDBY="TBENSIAL" CHANGEDON="20091127" PARPASSTYP="1" TYPTYPE="1" TYPE="TO_INTERFACE">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="Interface data"/>
+      </TEXTS>
+     </ITEM>
+    </PARAMETERS>
+    <SOURCE>  DATA _d           TYPE t_fm_data.
+  DATA i_korrnr     TYPE trkorr.
+  DATA _component   TYPE to_component.
+  DATA _name        TYPE td_compname.
+
+  _d = o_data-&gt;to_data( ).
+
+  CALL FUNCTION &apos;SEO_BUFFER_INIT&apos;.
+  CALL FUNCTION &apos;SEO_INTERFACE_CREATE_COMPLETE&apos;
+    EXPORTING
+*     CORRNR                             =
+*     devclass                           = &apos;$TMP&apos;
+*     VERSION                            = SEOC_VERSION_INACTIVE
+*     GENFLAG                            = &apos; &apos;
+*     AUTHORITY_CHECK                    = SEOX_TRUE
+      overwrite                          = seox_true
+*     SUPPRESS_REFACTORING_SUPPORT       = SEOX_TRUE
+    IMPORTING
+      korrnr                             = i_korrnr
+    TABLES
+      class_descriptions                 = _d-class_desc
+      component_descriptions             = _d-component_desc
+      subcomponent_descriptions          = _d-subcomponent_desc
+    CHANGING
+      interface                          = _d-interface
+      comprisings                        = _d-comprisings
+      attributes                         = _d-attributes
+      methods                            = _d-methods
+      events                             = _d-events
+      PARAMETERS                         = _d-parameters
+      exceps                             = _d-exceps
+      aliases                            = _d-aliases
+      typepusages                        = _d-typeusages
+      clsdeferrds                        = _d-clsdeferrds
+      intdeferrds                        = _d-intdeferrds
+      types                              = _d-types
+    EXCEPTIONS
+      existing                           = 1
+      is_class                           = 2
+      db_error                           = 3
+      component_error                    = 4
+      no_access                          = 5
+      other                              = 6
+      OTHERS                             = 7.
+  CASE sy-subrc.
+    WHEN &apos;0&apos;.
+** i guess if we made it this far, we will assume success
+** successful install
+    WHEN OTHERS.
+      RAISE EXCEPTION TYPE zaplink_cx_connector
+        EXPORTING textid = zaplink_cx_connector=&gt;system_error.
+  ENDCASE.
+
+* Patch SAP do not create type alias.
+  DATA  intkey TYPE seoclskey.
+  DATA  type   TYPE vseotype.
+  FIELD-SYMBOLS &lt;alias&gt; LIKE LINE OF _d-aliases.
+
+  LOOP AT _d-aliases ASSIGNING &lt;alias&gt;
+          WHERE cmptype = seoo_cmptype_type.
+    MOVE-CORRESPONDING &lt;alias&gt; TO type.
+    type-alias = seox_true.
+    type-state = seoc_state_implemented.
+    CALL FUNCTION &apos;SEO_TYPE_CREATE_F_DATA&apos;
+      EXPORTING
+        save   = seox_false
+      CHANGING
+        type   = type
+      EXCEPTIONS
+        OTHERS = 1.
+  ENDLOOP.
+  MOVE-CORRESPONDING _d-interface TO intkey.
+  CALL FUNCTION &apos;SEO_CLIF_SAVE_ALL&apos;
+    EXPORTING
+      cifkey                        = intkey
+      suppress_refactoring_entries  = seox_true
+      suppress_modification_support = seox_true
+*    CHANGING
+*      corrnr                        = corrnr
+*      devclass                      = devclass
+*      genflag                       = genflag
+    EXCEPTIONS
+      db_error                      = 1
+      OTHERS                        = 2.
+
+  zaplink_documentation=&gt;set( o_data-&gt;documentation ).
+
+  CREATE OBJECT _component.
+  _component-&gt;set_type( st_interface ).
+  _name = _d-interface-clsname.
+  _component-&gt;set_name( _name ).
+  CREATE OBJECT components.
+  components-&gt;add( _component ).</SOURCE>
+   </ITEM>
+  </METHODS>
+  <REDEFINITIONS>
+   <ITEM REFCLSNAME="ZAPLINK_CONNECTOR_" VERSION="1" MTDNAME="ZAPLINK_CNX_EXT_CLEANER~ANONYMIZE">
+    <SOURCE>  DATA _o_class       TYPE to_class.
+  DATA _o_interface   TYPE to_interface.
+
+  TRY.
+      super-&gt;zaplink_cnx_ext_cleaner~anonymize( object ).
+    CATCH zaplink_cx_connector INTO o_mycx.
+      RAISE EXCEPTION o_mycx.
+  ENDTRY.
+
+  CASE object-&gt;type.
+    WHEN st_class.
+      _o_class ?= object-&gt;raw.
+      _o_class-&gt;anonymize( ).
+    WHEN st_interface.
+      _o_interface ?= object-&gt;raw.
+      _o_interface-&gt;anonymize( ).
+    WHEN OTHERS.
+  ENDCASE.
+</SOURCE>
+   </ITEM>
+   <ITEM REFCLSNAME="ZAPLINK_CONNECTOR_" VERSION="1" MTDNAME="ZAPLINK_CNX_EXT_CLEANER~UNANONYMIZE">
+    <SOURCE>  DATA _o_class       TYPE to_class.
+  DATA _o_interface   TYPE to_interface.
+
+  TRY.
+      super-&gt;zaplink_cnx_ext_cleaner~unanonymize( object ).
+    CATCH zaplink_cx_connector INTO o_mycx.
+      RAISE EXCEPTION o_mycx.
+  ENDTRY.
+
+  CASE object-&gt;type.
+    WHEN st_class.
+      _o_class ?= object-&gt;raw.
+      _o_class-&gt;unanonymize( ).
+    WHEN st_interface.
+      _o_interface ?= object-&gt;raw.
+      _o_interface-&gt;unanonymize( ).
+    WHEN OTHERS.
+  ENDCASE.
+</SOURCE>
+   </ITEM>
+   <ITEM REFCLSNAME="ZAPLINK_CONNECTOR_" VERSION="1" MTDNAME="ZAPLINK_CONNECTOR~CREATE_NEW_RAW">
+    <SOURCE>  DATA o_clas TYPE to_class.
+  DATA o_intf TYPE to_interface.
+
+  CREATE OBJECT object.
+  CASE type.
+    WHEN st_class.
+      CREATE OBJECT o_clas.
+      object-&gt;raw ?= o_clas.
+*      create object object type TO_CLASS.
+    WHEN st_interface.
+      CREATE OBJECT o_intf.
+      object-&gt;raw ?= o_intf.
+*      create object object type TO_CLASS.
+    WHEN OTHERS.
+      CLEAR object.
+      RAISE EXCEPTION TYPE zaplink_cx.
+  ENDCASE.</SOURCE>
+   </ITEM>
+   <ITEM REFCLSNAME="ZAPLINK_CONNECTOR_" VERSION="1" MTDNAME="ZAPLINK_CONNECTOR~DELETE_FROM_SAP">
+    <SOURCE>DATA clskey TYPE seoclskey.
+
+  CASE component-&gt;get_type( ).
+    WHEN st_class.
+      clskey-clsname = component-&gt;get_name( ).
+      CALL FUNCTION &apos;SEO_CLASS_DELETE_W_DEPS&apos;
+        EXPORTING
+          clskey       = clskey
+        EXCEPTIONS
+          not_existing = 1
+          is_interface = 2
+          not_deleted  = 3
+          db_error     = 4
+          OTHERS       = 5.
+      IF sy-subrc &lt;&gt; 0.
+        CASE sy-subrc.
+          WHEN 1.
+            RAISE EXCEPTION TYPE zaplink_cx_connector
+              EXPORTING textid = zaplink_cx_connector=&gt;not_found.
+          WHEN OTHERS.
+            RAISE EXCEPTION TYPE zaplink_cx_connector
+              EXPORTING textid = zaplink_cx_connector=&gt;system_error.
+        ENDCASE.
+      ENDIF.
+    WHEN st_interface.
+      clskey-clsname = component-&gt;get_name( ).
+* Not working
+*      CALL FUNCTION &apos;SEO_INTERFACE_DELETE_W_DEPS&apos;
+*        EXPORTING
+*          intkey       = clskey
+*          save         = seox_true
+*        EXCEPTIONS
+*          not_existing = 1
+*          is_class     = 2
+*          not_deleted  = 3
+*          db_error     = 4
+*          OTHERS       = 5.
+      CALL FUNCTION &apos;SEO_INTERFACE_DELETE_COMPLETE&apos;
+        EXPORTING
+          intkey                     = clskey
+*         GENFLAG                    = &apos; &apos;
+          AUTHORITY_CHECK            = SEOX_TRUE
+          SUPPRESS_DOCU_DELETE       = SEOX_TRUE
+*         SUPPRESS_COMMIT            = SEOX_FALSE
+*       CHANGING
+*         CORRNR                     =
+        EXCEPTIONS
+          NOT_EXISTING               = 1
+          IS_CLASS                   = 2
+          DB_ERROR                   = 3
+          NO_ACCESS                  = 4
+          OTHER                      = 5
+          OTHERS                     = 6
+                .
+      IF sy-subrc &lt;&gt; 0.
+        CASE sy-subrc.
+          WHEN 1.
+            RAISE EXCEPTION TYPE zaplink_cx_connector
+              EXPORTING textid = zaplink_cx_connector=&gt;not_found.
+          WHEN OTHERS.
+            RAISE EXCEPTION TYPE zaplink_cx_connector
+              EXPORTING textid = zaplink_cx_connector=&gt;system_error.
+        ENDCASE.
+      ENDIF.
+    WHEN OTHERS.
+  ENDCASE.</SOURCE>
+   </ITEM>
+   <ITEM REFCLSNAME="ZAPLINK_CONNECTOR_" VERSION="1" MTDNAME="ZAPLINK_CONNECTOR~DO_EXISTS">
+    <SOURCE>DATA clskey TYPE seoclskey.
+*  DATA not_active TYPE  seox_boolean.
+
+  CASE component-&gt;get_type( ).
+    WHEN st_class.
+      clskey-clsname = component-&gt;get_name( ).
+
+      CALL FUNCTION &apos;SEO_CLASS_EXISTENCE_CHECK&apos;
+        EXPORTING
+          clskey        = clskey
+*        IMPORTING
+*          not_active    = not_active
+        EXCEPTIONS
+          not_specified = 1
+          not_existing  = 2
+          is_interface  = 3
+          no_text       = 4
+          inconsistent  = 5
+          OTHERS        = 6.
+
+      IF sy-subrc = 0.
+        exists = &apos;X&apos;.
+      ENDIF.
+    WHEN st_interface.
+      clskey-clsname = component-&gt;get_name( ).
+
+      CALL FUNCTION &apos;SEO_INTERFACE_EXISTENCE_CHECK&apos;
+        EXPORTING
+          intkey              = clskey
+*       IMPORTING
+*         NOT_ACTIVE          =
+       EXCEPTIONS
+         not_specified       = 1
+         not_existing        = 2
+         is_class            = 3
+         no_text             = 4
+         inconsistent        = 5
+         OTHERS              = 6.
+
+      IF sy-subrc = 0.
+        exists = &apos;X&apos;.
+      ENDIF.
+    WHEN OTHERS.
+  ENDCASE.</SOURCE>
+   </ITEM>
+   <ITEM REFCLSNAME="ZAPLINK_CONNECTOR_" VERSION="1" MTDNAME="ZAPLINK_CONNECTOR~IS_SUPPORTED_VERSION">
+    <SOURCE>  result = abap_false.
+  if version = _ver.
+    result = abap_true.
+  endif.</SOURCE>
+   </ITEM>
+   <ITEM REFCLSNAME="ZAPLINK_CONNECTOR_" VERSION="1" MTDNAME="ZAPLINK_CONNECTOR~READ_FROM_SAP">
+    <SOURCE>  DATA o_clas TYPE to_class.
+  DATA o_intf TYPE to_interface.
+
+  CREATE OBJECT object.
+  object-&gt;set_component( component ).
+
+  CASE component-&gt;get_type( ).
+    WHEN st_class.
+      TRY.
+          o_clas = export_from_sap_class( component ).
+        CATCH zaplink_cx_connector INTO o_mycx.
+          IF NOT o_mycx-&gt;messages IS BOUND.
+            o_mycx-&gt;messages = application_log.
+            o_mycx-&gt;update( ).
+          ENDIF.
+          RAISE EXCEPTION o_mycx.
+      ENDTRY.
+      CLEAR o_clas-&gt;a0_maindata-clsname.
+      object-&gt;raw ?= o_clas.
+    WHEN st_interface.
+      TRY.
+          o_intf = export_from_sap_interface( component ).
+        CATCH zaplink_cx_connector INTO o_mycx.
+          IF NOT o_mycx-&gt;messages IS BOUND.
+            o_mycx-&gt;messages = application_log.
+            o_mycx-&gt;update( ).
+          ENDIF.
+          RAISE EXCEPTION o_mycx.
+      ENDTRY.
+      CLEAR o_intf-&gt;a0_maindata-clsname.
+      object-&gt;raw ?= o_intf.
+    WHEN OTHERS.
+      CLEAR object.
+      RAISE EXCEPTION TYPE zaplink_cx.
+  ENDCASE.</SOURCE>
+   </ITEM>
+   <ITEM REFCLSNAME="ZAPLINK_CONNECTOR_" VERSION="1" MTDNAME="ZAPLINK_CONNECTOR~WRITE_TO_SAP">
+    <SOURCE>  DATA _o_class       TYPE to_class.
+  DATA _o_interface   TYPE to_interface.
+
+  CASE object-&gt;type.
+    WHEN st_class.
+      _o_class ?= object-&gt;raw.
+      _o_class-&gt;a0_maindata-clsname = object-&gt;name.
+      TRY.
+          components = import_to_sap_class( _o_class ).
+        CATCH zaplink_cx_connector INTO o_mycx.
+          IF NOT o_mycx-&gt;messages IS BOUND.
+            o_mycx-&gt;messages = application_log.
+            o_mycx-&gt;update( ).
+          ENDIF.
+          RAISE EXCEPTION o_mycx.
+      ENDTRY.
+    WHEN st_interface.
+      _o_interface ?= object-&gt;raw.
+      _o_interface-&gt;a0_maindata-clsname = object-&gt;name.
+      TRY.
+          components = import_to_sap_interface( _o_interface ).
+        CATCH zaplink_cx_connector INTO o_mycx.
+          IF NOT o_mycx-&gt;messages IS BOUND.
+            o_mycx-&gt;messages = application_log.
+            o_mycx-&gt;update( ).
+          ENDIF.
+          RAISE EXCEPTION o_mycx.
+      ENDTRY.
+    WHEN OTHERS.
+  ENDCASE.</SOURCE>
+   </ITEM>
+  </REDEFINITIONS>
+  <TYPEGROUPS>
+   <ITEM TYPEGROUP="SEOF" VERSION="1" EXPLICIT="X"/>
+   <ITEM TYPEGROUP="SEOK" VERSION="1" EXPLICIT="X"/>
+   <ITEM TYPEGROUP="SEOP" VERSION="1" EXPLICIT="X"/>
+   <ITEM TYPEGROUP="SEOR" VERSION="1" EXPLICIT="X"/>
+   <ITEM TYPEGROUP="SEOS" VERSION="1" EXPLICIT="X"/>
+   <ITEM TYPEGROUP="SEOT" VERSION="1" EXPLICIT="X"/>
+   <ITEM TYPEGROUP="SEOX" VERSION="1" EXPLICIT="X"/>
+  </TYPEGROUPS>
+  <TYPES>
+   <ITEM CMPNAME="TO_CLASS" VERSION="1" EXPOSURE="1" STATE="1" EDITORDER="2 " TYPTYPE="3" TYPE="ZAPLINK_CLAS_DATA">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Class data"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TO_INTERFACE" VERSION="1" EXPOSURE="1" STATE="1" EDITORDER="3 " TYPTYPE="3" TYPE="ZAPLINK_INTF_DATA">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Interface data"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TS_BAPI_DATA" VERSION="1" STATE="1" EDITORDER="1 " TYPTYPE="4" SRCROW1="6 " SRCCOLUMN1="4 " SRCROW2="29 " SRCCOLUMN2="20 " TYPESRC_LENG="1312 ">
+    BEGIN OF ts_bapi_data,
+    class                       TYPE  vseoclass,
+    attributes                  TYPE  seoo_attributes_r,
+    methods                     TYPE  seoo_methods_r,
+    events                      TYPE  seoo_events_r,
+    types                       TYPE  seoo_types_r,
+    parameters                  TYPE  seos_parameters_r,
+    exceps                      TYPE  seos_exceptions_r,
+    implementings               TYPE  seor_implementings_r,
+    inheritance                 TYPE  vseoextend,
+    redefinitions               TYPE  seor_redefinitions_r,
+    impl_details                TYPE  seor_redefinitions_r,
+    friendships                 TYPE  seof_friendships_r,
+    typepusages                 TYPE  seot_typepusages_r,
+    clsdeferrds                 TYPE  seot_clsdeferrds_r,
+    intdeferrds                 TYPE  seot_intdeferrds_r,
+    explore_inheritance         TYPE  seok_cls_typeinfos,
+    explore_implementings       TYPE  seok_int_typeinfos,
+    aliases                     TYPE  seoo_aliases_r,
+    enhancement_methods         TYPE  enhmeth_tabheader,
+    enhancement_attributes      TYPE  enhclasstabattrib,
+    enhancement_events          TYPE  enhclasstabevent,
+    enhancement_implementings   TYPE enhclasstabimplementing,
+  END OF ts_bapi_data
+
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="All Data for BAPI call of class creation"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TS_CLAS_ATTR" VERSION="1" STATE="1" EDITORDER="3 " TYPTYPE="4" SRCROW1="36 " SRCCOLUMN1="4 " SRCROW2="39 " SRCCOLUMN2="22 " TYPESRC_LENG="102 ">
+    BEGIN OF ts_clas_attr.
+  INCLUDE TYPE ts_base_attributs AS base.
+  TYPES:
+    END OF ts_clas_attr
+
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Root attributs for CLAS"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TS_DOC_KEY" VERSION="1" STATE="1" EDITORDER="2 " TYPTYPE="4" SRCROW1="31 " SRCCOLUMN1="4 " SRCROW2="34 " SRCCOLUMN2="18 " TYPESRC_LENG="200 ">
+    BEGIN OF ts_doc_key,                                    &quot; equiv DOKU_OBJ = CHAR 60
+    name       TYPE seoclsname,                             &quot; CHAR 30
+    other(30)  TYPE c,
+  END OF ts_doc_key
+
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="DOCU key structure"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="T_FM_DATA" VERSION="1" EXPOSURE="1" STATE="1" EDITORDER="1 " TYPTYPE="1" TYPE="ZAPLINK_OBJECT_DATA=&gt;T_FM_DATA">
+    <TEXTS>
+     <ITEM LANGU="E"/>
+    </TEXTS>
+   </ITEM>
+  </TYPES>
+ </RAW>
+</ZL_OBJECT>

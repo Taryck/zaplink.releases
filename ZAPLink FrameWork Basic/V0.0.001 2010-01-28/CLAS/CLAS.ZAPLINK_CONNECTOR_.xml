@@ -1,0 +1,931 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ZL_OBJECT CHECKSUM="1D9C4AFA5A182CE3207ABA73CCCC3B0C" CONNECTOR="39AC0A4B07A5A05AE1000000AC120173" NAME="ZAPLINK_CONNECTOR_" TYPE="CLAS" VERSION="1.0">
+ <DIRECTORY DEVCLASS="ZAPLINK-CONNECTORS-MAIN" MASTERLANG="E"/>
+ <RAW>
+  <A0_MAINDATA VERSION="1" LANGU="E" UUID="47F8034B756EB95AE1000000AC120173" EXPOSURE="2" STATE="1" CLSABSTRCT="X" CLSCCINCL="X" FIXPT="X" UNICODE="X" MSG_ID="ZAPLINK_CONNECTOR">
+   <TEXTS>
+    <ITEM LANGU="E" DESCRIPT="Zap Link Connector base implementation"/>
+   </TEXTS>
+  </A0_MAINDATA>
+  <ALIASES>
+   <ITEM CMPNAME="ANONYMIZE" VERSION="1" EXPOSURE="2" CMPTYPE="1" REFCLSNAME="ZAPLINK_CNX_EXT_CLEANER" REFCMPNAME="ANONYMIZE">
+    <TEXTS>
+     <ITEM LANGU="E"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="APPLICATION_LOG" VERSION="1" EXPOSURE="2" REFCLSNAME="ZAPLINK_CONNECTOR" REFCMPNAME="APPLICATION_LOG">
+    <TEXTS>
+     <ITEM LANGU="E"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="BALLOG_OBJECT" VERSION="1" EXPOSURE="2" REFCLSNAME="ZAPLINK_CONNECTOR" REFCMPNAME="BALLOG_OBJECT">
+    <TEXTS>
+     <ITEM LANGU="E"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="COMP_NODENAME" VERSION="1" EXPOSURE="2" REFCLSNAME="ZAPLINK_CONNECTOR" REFCMPNAME="COMP_NODENAME">
+    <TEXTS>
+     <ITEM LANGU="E"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="CREATE_NEW_RAW" VERSION="1" EXPOSURE="2" CMPTYPE="1" REFCLSNAME="ZAPLINK_CONNECTOR" REFCMPNAME="CREATE_NEW_RAW">
+    <TEXTS>
+     <ITEM LANGU="E"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="DELETE_FROM_SAP" VERSION="1" EXPOSURE="2" CMPTYPE="1" REFCLSNAME="ZAPLINK_CONNECTOR" REFCMPNAME="DELETE_FROM_SAP">
+    <TEXTS>
+     <ITEM LANGU="E"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="DO_EXISTS" VERSION="1" EXPOSURE="2" CMPTYPE="1" REFCLSNAME="ZAPLINK_CONNECTOR" REFCMPNAME="DO_EXISTS">
+    <TEXTS>
+     <ITEM LANGU="E"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="EXISTS" VERSION="1" EXPOSURE="2" REFCLSNAME="ZAPLINK_CONNECTOR" REFCMPNAME="EXISTS">
+    <TEXTS>
+     <ITEM LANGU="E"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="EXPORT_FROM_SAP" VERSION="1" EXPOSURE="2" CMPTYPE="1" REFCLSNAME="ZAPLINK_CONNECTOR" REFCMPNAME="EXPORT_FROM_SAP">
+    <TEXTS>
+     <ITEM LANGU="E"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="GET_VALUES" VERSION="1" EXPOSURE="2" CMPTYPE="1" REFCLSNAME="ZAPLINK_CONNECTOR" REFCMPNAME="GET_VALUES">
+    <TEXTS>
+     <ITEM LANGU="E"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="IMPORT_TO_SAP" VERSION="1" EXPOSURE="2" CMPTYPE="1" REFCLSNAME="ZAPLINK_CONNECTOR" REFCMPNAME="IMPORT_TO_SAP">
+    <TEXTS>
+     <ITEM LANGU="E"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="IS_SUPPORTED_VERSION" VERSION="1" EXPOSURE="2" CMPTYPE="1" REFCLSNAME="ZAPLINK_CONNECTOR" REFCMPNAME="IS_SUPPORTED_VERSION">
+    <TEXTS>
+     <ITEM LANGU="E"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="LINE_SEPARATOR" VERSION="1" EXPOSURE="2" REFCLSNAME="ZAPLINK_DATATYPES" REFCMPNAME="LINE_SEPARATOR">
+    <TEXTS>
+     <ITEM LANGU="E"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="OPTIONS" VERSION="1" EXPOSURE="2" REFCLSNAME="ZAPLINK_CONNECTOR" REFCMPNAME="OPTIONS">
+    <TEXTS>
+     <ITEM LANGU="E"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="READ_FROM_SAP" VERSION="1" EXPOSURE="2" CMPTYPE="1" REFCLSNAME="ZAPLINK_CONNECTOR" REFCMPNAME="READ_FROM_SAP">
+    <TEXTS>
+     <ITEM LANGU="E"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="SUPPORTED_TYPES" VERSION="1" EXPOSURE="2" REFCLSNAME="ZAPLINK_CONNECTOR" REFCMPNAME="SUPPORTED_TYPES">
+    <TEXTS>
+     <ITEM LANGU="E"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TD_ABAPSOURCE" VERSION="1" EXPOSURE="2" CMPTYPE="3" REFCLSNAME="ZAPLINK_DATATYPES" REFCMPNAME="TD_ABAPSOURCE">
+    <TEXTS>
+     <ITEM LANGU="E"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TD_CLASSNAME" VERSION="1" EXPOSURE="2" CMPTYPE="3" REFCLSNAME="ZAPLINK_DATATYPES" REFCMPNAME="TD_CLASSNAME">
+    <TEXTS>
+     <ITEM LANGU="E"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TD_COMPEXISTS" VERSION="1" EXPOSURE="2" CMPTYPE="3" REFCLSNAME="ZAPLINK_CONNECTOR" REFCMPNAME="TD_COMPEXISTS">
+    <TEXTS>
+     <ITEM LANGU="E"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TD_COMPNAME" VERSION="1" EXPOSURE="2" CMPTYPE="3" REFCLSNAME="ZAPLINK_CONNECTOR" REFCMPNAME="TD_COMPNAME">
+    <TEXTS>
+     <ITEM LANGU="E"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TD_COMPTYPE" VERSION="1" EXPOSURE="2" CMPTYPE="3" REFCLSNAME="ZAPLINK_CONNECTOR" REFCMPNAME="TD_COMPTYPE">
+    <TEXTS>
+     <ITEM LANGU="E"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TD_CONNCLASS" VERSION="1" EXPOSURE="2" CMPTYPE="3" REFCLSNAME="ZAPLINK_CONNECTOR" REFCMPNAME="TD_CONNCLASS">
+    <TEXTS>
+     <ITEM LANGU="E"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TD_CONNEXISTS" VERSION="1" EXPOSURE="2" CMPTYPE="3" REFCLSNAME="ZAPLINK_CONNECTOR" REFCMPNAME="TD_CONNEXISTS">
+    <TEXTS>
+     <ITEM LANGU="E"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TD_CONNUUID" VERSION="1" EXPOSURE="2" CMPTYPE="3" REFCLSNAME="ZAPLINK_CONNECTOR" REFCMPNAME="TD_CONNUUID">
+    <TEXTS>
+     <ITEM LANGU="E"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TD_CONNVER" VERSION="1" EXPOSURE="2" CMPTYPE="3" REFCLSNAME="ZAPLINK_CONNECTOR" REFCMPNAME="TD_CONNVER">
+    <TEXTS>
+     <ITEM LANGU="E"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TD_DEVCLASS" VERSION="1" EXPOSURE="2" CMPTYPE="3" REFCLSNAME="ZAPLINK_DATATYPES" REFCMPNAME="TD_DEVCLASS">
+    <TEXTS>
+     <ITEM LANGU="E"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TD_DOC_ID" VERSION="1" EXPOSURE="2" CMPTYPE="3" REFCLSNAME="ZAPLINK_DATATYPES" REFCMPNAME="TD_DOC_ID">
+    <TEXTS>
+     <ITEM LANGU="E"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TD_EXISTS" VERSION="1" EXPOSURE="2" CMPTYPE="3" REFCLSNAME="ZAPLINK_DATATYPES" REFCMPNAME="TD_EXISTS">
+    <TEXTS>
+     <ITEM LANGU="E"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TD_LANG" VERSION="1" EXPOSURE="2" CMPTYPE="3" REFCLSNAME="ZAPLINK_DATATYPES" REFCMPNAME="TD_LANG">
+    <TEXTS>
+     <ITEM LANGU="E"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TD_LIGHT" VERSION="1" EXPOSURE="2" CMPTYPE="3" REFCLSNAME="ZAPLINK_DATATYPES" REFCMPNAME="TD_LIGHT">
+    <TEXTS>
+     <ITEM LANGU="E"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TD_OBJ_TYPE" VERSION="1" EXPOSURE="2" CMPTYPE="3" REFCLSNAME="ZAPLINK_DATATYPES" REFCMPNAME="TD_OBJ_TYPE">
+    <TEXTS>
+     <ITEM LANGU="E"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TD_PROGNAME" VERSION="1" EXPOSURE="2" CMPTYPE="3" REFCLSNAME="ZAPLINK_DATATYPES" REFCMPNAME="TD_PROGNAME">
+    <TEXTS>
+     <ITEM LANGU="E"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TD_SEL_ACTION" VERSION="1" EXPOSURE="2" CMPTYPE="3" REFCLSNAME="ZAPLINK_DATATYPES" REFCMPNAME="TD_SEL_ACTION">
+    <TEXTS>
+     <ITEM LANGU="E"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TD_TXTP_ID" VERSION="1" EXPOSURE="2" CMPTYPE="3" REFCLSNAME="ZAPLINK_DATATYPES" REFCMPNAME="TD_TXTP_ID">
+    <TEXTS>
+     <ITEM LANGU="E"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TD_TXTP_KIND" VERSION="1" EXPOSURE="2" CMPTYPE="3" REFCLSNAME="ZAPLINK_DATATYPES" REFCMPNAME="TD_TXTP_KIND">
+    <TEXTS>
+     <ITEM LANGU="E"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TD_TXTP_LEN" VERSION="1" EXPOSURE="2" CMPTYPE="3" REFCLSNAME="ZAPLINK_DATATYPES" REFCMPNAME="TD_TXTP_LEN">
+    <TEXTS>
+     <ITEM LANGU="E"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TD_TXTP_TEXT" VERSION="1" EXPOSURE="2" CMPTYPE="3" REFCLSNAME="ZAPLINK_DATATYPES" REFCMPNAME="TD_TXTP_TEXT">
+    <TEXTS>
+     <ITEM LANGU="E"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TEXTPOOL_KINDS" VERSION="1" EXPOSURE="2" REFCLSNAME="ZAPLINK_DATATYPES" REFCMPNAME="TEXTPOOL_KINDS">
+    <TEXTS>
+     <ITEM LANGU="E"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TO_COMPONENT" VERSION="1" EXPOSURE="2" CMPTYPE="3" REFCLSNAME="ZAPLINK_CONNECTOR" REFCMPNAME="TO_COMPONENT">
+    <TEXTS>
+     <ITEM LANGU="E"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TO_CONNECTOR" VERSION="1" EXPOSURE="2" CMPTYPE="3" REFCLSNAME="ZAPLINK_CONNECTOR" REFCMPNAME="TO_CONNECTOR">
+    <TEXTS>
+     <ITEM LANGU="E"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TO_EZ_XML" VERSION="1" EXPOSURE="2" CMPTYPE="3" REFCLSNAME="ZAPLINK_CONNECTOR" REFCMPNAME="TO_EZ_XML">
+    <TEXTS>
+     <ITEM LANGU="E"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TO_LIST" VERSION="1" EXPOSURE="2" CMPTYPE="3" REFCLSNAME="ZAPLINK_CONNECTOR" REFCMPNAME="TO_LIST">
+    <TEXTS>
+     <ITEM LANGU="E"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TO_MSG_COLL" VERSION="1" EXPOSURE="2" CMPTYPE="3" REFCLSNAME="ZAPLINK_CONNECTOR" REFCMPNAME="TO_MSG_COLL">
+    <TEXTS>
+     <ITEM LANGU="E"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TO_OPTIONS" VERSION="1" EXPOSURE="2" CMPTYPE="3" REFCLSNAME="ZAPLINK_CONNECTOR" REFCMPNAME="TO_OPTIONS">
+    <TEXTS>
+     <ITEM LANGU="E"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TO_RAW" VERSION="1" EXPOSURE="2" CMPTYPE="3" REFCLSNAME="ZAPLINK_CONNECTOR" REFCMPNAME="TO_RAW">
+    <TEXTS>
+     <ITEM LANGU="E"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TO_XML" VERSION="1" EXPOSURE="2" CMPTYPE="3" REFCLSNAME="ZAPLINK_CONNECTOR" REFCMPNAME="TO_XML">
+    <TEXTS>
+     <ITEM LANGU="E"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TR_DLVUNIT" VERSION="1" EXPOSURE="2" CMPTYPE="3" REFCLSNAME="ZAPLINK_DATATYPES" REFCMPNAME="TR_DLVUNIT">
+    <TEXTS>
+     <ITEM LANGU="E"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TR_DOCID" VERSION="1" EXPOSURE="2" CMPTYPE="3" REFCLSNAME="ZAPLINK_DATATYPES" REFCMPNAME="TR_DOCID">
+    <TEXTS>
+     <ITEM LANGU="E"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TR_PACKAGES" VERSION="1" EXPOSURE="2" CMPTYPE="3" REFCLSNAME="ZAPLINK_DATATYPES" REFCMPNAME="TR_PACKAGES">
+    <TEXTS>
+     <ITEM LANGU="E"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TR_TR" VERSION="1" EXPOSURE="2" CMPTYPE="3" REFCLSNAME="ZAPLINK_DATATYPES" REFCMPNAME="TR_TR">
+    <TEXTS>
+     <ITEM LANGU="E"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TS_BASE_ATTRIBUTS" VERSION="1" EXPOSURE="2" CMPTYPE="3" REFCLSNAME="ZAPLINK_CONNECTOR" REFCMPNAME="TS_BASE_ATTRIBUTS">
+    <TEXTS>
+     <ITEM LANGU="E"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TS_COMPKEY" VERSION="1" EXPOSURE="2" CMPTYPE="3" REFCLSNAME="ZAPLINK_DATATYPES" REFCMPNAME="TS_COMPKEY">
+    <TEXTS>
+     <ITEM LANGU="E"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TS_CONNDATA" VERSION="1" EXPOSURE="2" CMPTYPE="3" REFCLSNAME="ZAPLINK_CONNECTOR" REFCMPNAME="TS_CONNDATA">
+    <TEXTS>
+     <ITEM LANGU="E"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TS_CONN_CLASS" VERSION="1" EXPOSURE="2" CMPTYPE="3" REFCLSNAME="ZAPLINK_DATATYPES" REFCMPNAME="TS_CONN_CLASS">
+    <TEXTS>
+     <ITEM LANGU="E"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TS_CONN_DEF" VERSION="1" EXPOSURE="2" CMPTYPE="3" REFCLSNAME="ZAPLINK_DATATYPES" REFCMPNAME="TS_CONN_DEF">
+    <TEXTS>
+     <ITEM LANGU="E"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TS_TXTP_TEXT" VERSION="1" EXPOSURE="2" CMPTYPE="3" REFCLSNAME="ZAPLINK_DATATYPES" REFCMPNAME="TS_TXTP_TEXT">
+    <TEXTS>
+     <ITEM LANGU="E"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TS_TXTP_TEXTPOOL" VERSION="1" EXPOSURE="2" CMPTYPE="3" REFCLSNAME="ZAPLINK_DATATYPES" REFCMPNAME="TS_TXTP_TEXTPOOL">
+    <TEXTS>
+     <ITEM LANGU="E"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TS_TYPE" VERSION="1" EXPOSURE="2" CMPTYPE="3" REFCLSNAME="ZAPLINK_DATATYPES" REFCMPNAME="TS_TYPE">
+    <TEXTS>
+     <ITEM LANGU="E"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TT_ABAPRAWSOURCE" VERSION="1" EXPOSURE="2" CMPTYPE="3" REFCLSNAME="ZAPLINK_DATATYPES" REFCMPNAME="TT_ABAPRAWSOURCE">
+    <TEXTS>
+     <ITEM LANGU="E"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TT_COMPKEYS" VERSION="1" EXPOSURE="2" CMPTYPE="3" REFCLSNAME="ZAPLINK_DATATYPES" REFCMPNAME="TT_COMPKEYS">
+    <TEXTS>
+     <ITEM LANGU="E"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TT_CONNECTORLIST" VERSION="1" EXPOSURE="2" CMPTYPE="3" REFCLSNAME="ZAPLINK_DATATYPES" REFCMPNAME="TT_CONNECTORLIST">
+    <TEXTS>
+     <ITEM LANGU="E"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TT_CONN_CLASSES" VERSION="1" EXPOSURE="2" CMPTYPE="3" REFCLSNAME="ZAPLINK_DATATYPES" REFCMPNAME="TT_CONN_CLASSES">
+    <TEXTS>
+     <ITEM LANGU="E"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TT_TXTP_TEXTPOOLS" VERSION="1" EXPOSURE="2" CMPTYPE="3" REFCLSNAME="ZAPLINK_DATATYPES" REFCMPNAME="TT_TXTP_TEXTPOOLS">
+    <TEXTS>
+     <ITEM LANGU="E"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TT_TXTP_TEXTS" VERSION="1" EXPOSURE="2" CMPTYPE="3" REFCLSNAME="ZAPLINK_DATATYPES" REFCMPNAME="TT_TXTP_TEXTS">
+    <TEXTS>
+     <ITEM LANGU="E"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TT_TYPES" VERSION="1" EXPOSURE="2" CMPTYPE="3" REFCLSNAME="ZAPLINK_CONNECTOR" REFCMPNAME="TT_TYPES">
+    <TEXTS>
+     <ITEM LANGU="E"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="UNANONYMIZE" VERSION="1" EXPOSURE="2" CMPTYPE="1" REFCLSNAME="ZAPLINK_CNX_EXT_CLEANER" REFCMPNAME="UNANONYMIZE">
+    <TEXTS>
+     <ITEM LANGU="E"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="UUID" VERSION="1" EXPOSURE="2" REFCLSNAME="ZAPLINK_CONNECTOR" REFCMPNAME="UUID">
+    <TEXTS>
+     <ITEM LANGU="E"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="VERSION" VERSION="1" EXPOSURE="2" REFCLSNAME="ZAPLINK_CONNECTOR" REFCMPNAME="VERSION">
+    <TEXTS>
+     <ITEM LANGU="E"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="WRITE_TO_SAP" VERSION="1" EXPOSURE="2" CMPTYPE="1" REFCLSNAME="ZAPLINK_CONNECTOR" REFCMPNAME="WRITE_TO_SAP">
+    <TEXTS>
+     <ITEM LANGU="E"/>
+    </TEXTS>
+   </ITEM>
+  </ALIASES>
+  <ATTRIBUTS>
+   <ITEM CMPNAME="O_CX" EXPOSURE="1" STATE="1" EDITORDER="2 " ATTDECLTYP="1" TYPTYPE="1" TYPE="TO_ROOT_EXCEPTION">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="ZAPlink ROOT Exception"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="O_MYCX" EXPOSURE="1" STATE="1" EDITORDER="1 " ATTDECLTYP="1" TYPTYPE="1" TYPE="TO_EXCEPTION">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Exception for connector"/>
+    </TEXTS>
+   </ITEM>
+  </ATTRIBUTS>
+  <INTERFACES>
+   <ITEM REFCLSNAME="ZAPLINK_CNX_EXT_CLEANER" VERSION="1" EXPOSURE="2" STATE="1" RELTYPE="1">
+    <COMPONENTS>
+     <ITEM VERSION="1" MTDNAME="ANONYMIZE">
+      <SOURCE>  CHECK object IS BOUND.
+  object-&gt;anonymize( ).</SOURCE>
+     </ITEM>
+     <ITEM VERSION="1" MTDNAME="UNANONYMIZE">
+      <SOURCE>  CHECK object IS BOUND.
+  object-&gt;unanonymize( ).</SOURCE>
+     </ITEM>
+    </COMPONENTS>
+   </ITEM>
+   <ITEM REFCLSNAME="ZAPLINK_CONNECTOR" VERSION="1" EXPOSURE="2" STATE="1" RELTYPE="1">
+    <COMPONENTS>
+     <ITEM VERSION="1" MTDNAME="CREATE_NEW_RAW" MTDABSTRCT="X"/>
+     <ITEM VERSION="1" MTDNAME="DELETE_FROM_SAP" MTDABSTRCT="X"/>
+     <ITEM VERSION="1" MTDNAME="DO_EXISTS" MTDABSTRCT="X"/>
+     <ITEM VERSION="1" MTDNAME="EXPORT_FROM_SAP">
+      <SOURCE>  DATA ez_xml          TYPE to_ez_xml.
+  DATA o_data          TYPE to_raw.
+
+  o_data = read_from_sap( component ).
+  IF o_data IS BOUND.
+    o_data-&gt;connector = me-&gt;uuid.
+    o_data-&gt;version = me-&gt;version.
+    CREATE OBJECT ez_xml.
+
+    TRY.
+      object = ez_xml-&gt;any2xml( any       = o_data
+                                type      = comp_nodename ).
+* control content
+    ENDTRY.
+  ENDIF.</SOURCE>
+     </ITEM>
+     <ITEM VERSION="1" MTDNAME="GET_VALUES">
+      <SOURCE>  DATA _obj_type TYPE  euobj-id.
+  DATA _name TYPE td_compname.
+
+  _obj_type = type.
+
+  CALL FUNCTION &apos;REPOSITORY_INFO_SYSTEM_F4&apos;
+    EXPORTING
+      object_type           = _obj_type
+      object_name           = name
+      suppress_selection    = abap_true
+      use_alv_grid          = abap_false
+      without_personal_list = abap_false
+    IMPORTING
+      object_name_selected  = _name
+    EXCEPTIONS
+      cancel                = 1.
+  IF sy-subrc = 0.
+    name = _name.
+  ENDIF.</SOURCE>
+     </ITEM>
+     <ITEM VERSION="1" MTDNAME="IMPORT_TO_SAP">
+      <SOURCE>  DATA root_node TYPE REF TO if_ixml_node.
+  DATA o_raw     TYPE to_raw.
+  DATA _name     TYPE string.
+  DATA ez_xml    TYPE REF TO zaplink_easyxml.
+  DATA o_cx      TYPE REF TO cx_root.
+  DATA o_zlcx    TYPE REF TO zaplink_cx.
+
+  CHECK object IS BOUND.
+
+  TRY.
+      root_node = object-&gt;get_root_element( ).
+      IF NOT root_node IS BOUND.
+        _name = &apos;$NONE$&apos;(001).
+        RAISE EXCEPTION TYPE zaplink_cx_connector EXPORTING
+              textid = zaplink_cx_connector=&gt;invalid_xml
+           node_name = _name.
+      ENDIF.
+
+      _name = root_node-&gt;get_name( ).
+      IF _name &lt;&gt; comp_nodename.
+        RAISE EXCEPTION TYPE zaplink_cx_connector EXPORTING
+              textid = zaplink_cx_connector=&gt;invalid_xml
+           node_name = _name.
+      ENDIF.
+
+      TRY.
+          o_raw = zaplink_connectors=&gt;node_2_raw( root_node ).
+        CATCH zaplink_cx_connector INTO o_mycx.
+          RAISE EXCEPTION o_mycx.
+      ENDTRY.
+
+* Version handling to develop
+      IF is_supported_version( o_raw-&gt;version ) = abap_false.
+* Version &apos;&amp;CONN_VER&amp;&apos; is not (or no longer) suported by this connector.
+        RAISE EXCEPTION TYPE zaplink_cx_connector EXPORTING
+              textid = zaplink_cx_connector=&gt;unsuported_version
+            conn_ver = o_raw-&gt;version.
+      ENDIF.
+
+      o_raw = create_new_raw( o_raw-&gt;type ).
+      CREATE OBJECT ez_xml.
+      CALL METHOD ez_xml-&gt;xml2any
+        EXPORTING
+          xmldoc = object
+        CHANGING
+          any    = o_raw.
+
+      components = write_to_sap( o_raw ).
+    CATCH zaplink_cx_connector INTO o_mycx.
+      RAISE EXCEPTION o_mycx.
+    CATCH zaplink_cx INTO o_zlcx.
+      create OBJECT o_mycx EXPORTING
+             textid = zaplink_cx=&gt;system_error
+           prev_cx = o_zlcx.
+      o_mycx-&gt;update( ).
+      raise EXCEPTION o_mycx.
+    CATCH cx_root INTO o_cx.
+      create OBJECT o_mycx EXPORTING
+             textid = zaplink_cx=&gt;system_error
+           previous = o_cx.
+      o_mycx-&gt;update( ).
+      raise EXCEPTION o_mycx.
+  ENDTRY.</SOURCE>
+     </ITEM>
+     <ITEM VERSION="1" MTDNAME="IS_SUPPORTED_VERSION" MTDABSTRCT="X"/>
+     <ITEM VERSION="1" MTDNAME="READ_FROM_SAP" MTDABSTRCT="X"/>
+     <ITEM VERSION="1" MTDNAME="WRITE_TO_SAP" MTDABSTRCT="X"/>
+    </COMPONENTS>
+   </ITEM>
+  </INTERFACES>
+  <LOCAL>
+   <TYPES>*&quot;* USE THIS SOURCE FILE FOR ANY TYPE DECLARATIONS (CLASS
+*&quot;* definitions, interfaces or data types) you need for method
+*&quot;* IMPLEMENTATION OR PRIVATE METHOD&apos;S SIGNATURE</TYPES>
+   <IMPLEMENTATIONS>*&quot;* LOCAL CLASS IMPLEMENTATION FOR PUBLIC CLASS
+*&quot;* use this source file for the implementation part of
+*&quot;* LOCAL HELPER CLASSES</IMPLEMENTATIONS>
+   <MACROS>*&quot;* USE THIS SOURCE FILE FOR ANY MACRO DEFINITIONS YOU NEED
+*&quot;* IN THE IMPLEMENTATION PART OF THE CLASS</MACROS>
+  </LOCAL>
+  <METHODS>
+   <ITEM CMPNAME="CONSTRUCTOR" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="1 " MTDTYPE="2">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="CONSTRUCTOR"/>
+    </TEXTS>
+    <SOURCE>  CREATE OBJECT application_log.
+*  CALL METHOD application_log-&gt;init
+*    EXPORTING
+*      id_object      = ballog_object
+*      id_subobject   = space
+**      id_extnumber   =
+*      auto_upd_custo = abap_true
+**      id_activity    = ACT_CREATE
+*    EXCEPTIONS
+*      error          = 1
+*      OTHERS         = 2.
+*  IF sy-subrc &lt;&gt; 0.
+*    MESSAGE ID sy-msgid TYPE &apos;I&apos; NUMBER sy-msgno
+*               WITH sy-msgv1 sy-msgv2 sy-msgv3 sy-msgv4.
+*  ENDIF.
+</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="CONV_ABAP_RAW2SOURCE" VERSION="1" EXPOSURE="1" STATE="1" EDITORDER="6 " MTDDECLTYP="1">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Raw data to structured source data"/>
+    </TEXTS>
+    <PARAMETERS>
+     <ITEM SCONAME="RAW" VERSION="1" CMPTYPE="1" EDITORDER="1 " AUTHOR="TBENSIAL" CREATEDON="20091118" PARPASSTYP="1" TYPTYPE="1" TYPE="TT_ABAPRAWSOURCE">
+      <TEXTS>
+       <ITEM LANGU="E"/>
+      </TEXTS>
+     </ITEM>
+     <ITEM SCONAME="RESULT" VERSION="1" CMPTYPE="1" EDITORDER="2 " AUTHOR="TBENSIAL" CREATEDON="20091118" PARDECLTYP="3" TYPTYPE="1" TYPE="TD_ABAPSOURCE">
+      <TEXTS>
+       <ITEM LANGU="E"/>
+      </TEXTS>
+     </ITEM>
+    </PARAMETERS>
+    <SOURCE>  FIELD-SYMBOLS:
+    &lt;c&gt; LIKE LINE OF raw.
+
+  LOOP AT raw ASSIGNING &lt;c&gt;.
+    IF result IS INITIAL.
+      result = &lt;c&gt;.
+    ELSE.
+      CONCATENATE result &lt;c&gt; INTO result
+                  SEPARATED BY line_separator.
+    ENDIF.
+  ENDLOOP.</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="CONV_ABAP_SOURCE2RAW" VERSION="1" EXPOSURE="1" STATE="1" EDITORDER="7 " MTDDECLTYP="1">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Structured source data to Raw data"/>
+    </TEXTS>
+    <PARAMETERS>
+     <ITEM SCONAME="RESULT" VERSION="1" CMPTYPE="1" EDITORDER="2 " AUTHOR="TBENSIAL" CREATEDON="20091118" PARDECLTYP="3" TYPTYPE="1" TYPE="TT_ABAPRAWSOURCE">
+      <TEXTS>
+       <ITEM LANGU="E"/>
+      </TEXTS>
+     </ITEM>
+     <ITEM SCONAME="SOURCE" VERSION="1" CMPTYPE="1" EDITORDER="1 " AUTHOR="TBENSIAL" CREATEDON="20091118" PARPASSTYP="1" TYPTYPE="1" TYPE="TD_ABAPSOURCE">
+      <TEXTS>
+       <ITEM LANGU="E"/>
+      </TEXTS>
+     </ITEM>
+    </PARAMETERS>
+    <SOURCE>SPLIT source AT line_separator INTO TABLE result.</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="GET_PROG_RAWSOURCE" VERSION="1" EXPOSURE="1" STATE="1" EDITORDER="5 " MTDDECLTYP="1">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Get program RAW source code"/>
+    </TEXTS>
+    <PARAMETERS>
+     <ITEM SCONAME="PROGRAM" VERSION="1" CMPTYPE="1" EDITORDER="1 " AUTHOR="TBENSIAL" CREATEDON="20091118" PARPASSTYP="1" TYPTYPE="1" TYPE="TD_PROGNAME">
+      <TEXTS>
+       <ITEM LANGU="E"/>
+      </TEXTS>
+     </ITEM>
+     <ITEM SCONAME="RESULT" VERSION="1" CMPTYPE="1" EDITORDER="2 " AUTHOR="TBENSIAL" CREATEDON="20091118" PARDECLTYP="3" TYPTYPE="1" TYPE="TT_ABAPRAWSOURCE">
+      <TEXTS>
+       <ITEM LANGU="E"/>
+      </TEXTS>
+     </ITEM>
+    </PARAMETERS>
+    <SOURCE>  READ REPORT PROGRAM INTO result STATE &apos;I&apos;.
+  IF sy-subrc &lt;&gt; 0.
+    READ REPORT PROGRAM INTO result STATE &apos;A&apos;.
+  ENDIF.</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="GET_PROG_SOURCE" VERSION="1" EXPOSURE="1" STATE="1" EDITORDER="4 " MTDDECLTYP="1">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Get program source code"/>
+    </TEXTS>
+    <PARAMETERS>
+     <ITEM SCONAME="PROGRAM" VERSION="1" CMPTYPE="1" EDITORDER="1 " AUTHOR="TBENSIAL" CREATEDON="20091118" PARPASSTYP="1" TYPTYPE="1" TYPE="TD_PROGNAME">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="ABAP Program Name"/>
+      </TEXTS>
+     </ITEM>
+     <ITEM SCONAME="RESULT" VERSION="1" CMPTYPE="1" EDITORDER="2 " AUTHOR="TBENSIAL" CREATEDON="20091118" PARDECLTYP="3" TYPTYPE="1" TYPE="TD_ABAPSOURCE">
+      <TEXTS>
+       <ITEM LANGU="E"/>
+      </TEXTS>
+     </ITEM>
+    </PARAMETERS>
+    <SOURCE>DATA code TYPE tt_abaprawsource.
+
+  code = get_prog_rawsource( program ).
+  result = conv_abap_raw2source( code ).</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="GET_PROG_TEXTPOOL" VERSION="1" EXPOSURE="1" STATE="1" EDITORDER="10 " MTDDECLTYP="1">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Get program Texts pool"/>
+    </TEXTS>
+    <PARAMETERS>
+     <ITEM SCONAME="PROGRAM" VERSION="1" CMPTYPE="1" EDITORDER="1 " AUTHOR="TBENSIAL" CREATEDON="20091118" PARPASSTYP="1" TYPTYPE="1" TYPE="TD_PROGNAME">
+      <TEXTS>
+       <ITEM LANGU="E"/>
+      </TEXTS>
+     </ITEM>
+     <ITEM SCONAME="RESULT" VERSION="1" CMPTYPE="1" EDITORDER="2 " AUTHOR="TBENSIAL" CREATEDON="20091118" PARDECLTYP="3" TYPTYPE="1" TYPE="TT_TXTP_TEXTPOOLS">
+      <TEXTS>
+       <ITEM LANGU="E"/>
+      </TEXTS>
+     </ITEM>
+    </PARAMETERS>
+    <SOURCE>DATA t_textpool TYPE STANDARD TABLE OF textpool.
+  DATA t_langlist TYPE instlang.
+  TYPES:
+    BEGIN OF ts_text,
+      id      TYPE  textpoolid,
+      key	    TYPE  textpoolky,
+      langu   TYPE spras,
+      entry	  TYPE textpooltx,
+      length  TYPE textpoolln,
+    END OF ts_text.
+  DATA: t_texts TYPE STANDARD TABLE OF ts_text.
+  DATA _text LIKE LINE OF t_texts.
+  DATA _textpool LIKE LINE OF result.
+  DATA _tpool LIKE LINE OF _textpool-texts.
+  FIELD-SYMBOLS:
+    &lt;l&gt; LIKE LINE OF t_langlist,
+    &lt;t&gt; LIKE LINE OF t_textpool.
+
+  CALL FUNCTION &apos;RS_TEXTLOG_GET_PARAMETERS&apos;
+    CHANGING
+      installed_languages = t_langlist.
+
+  LOOP AT t_langlist ASSIGNING &lt;l&gt;.
+    READ TEXTPOOL program INTO t_textpool LANGUAGE &lt;l&gt;.
+    IF sy-subrc = 0.
+      _text-langu = &lt;l&gt;.
+      LOOP AT t_textpool ASSIGNING &lt;t&gt;.
+        _text-id = &lt;t&gt;-id.
+        _text-key = &lt;t&gt;-key.
+        _text-entry = &lt;t&gt;-entry.
+        _text-length = &lt;t&gt;-length.
+        APPEND _text TO t_texts.
+      ENDLOOP.
+    ENDIF.
+  ENDLOOP.
+
+  SORT t_texts BY id key langu.
+  DELETE ADJACENT DUPLICATES FROM t_texts COMPARING id key langu.
+
+  LOOP AT t_texts INTO _text.
+    AT NEW key. &quot; ID
+      CLEAR _textpool.
+      _textpool-id = _text-id.
+      _textpool-key = _text-key.
+    ENDAT.
+    AT NEW langu.
+      CLEAR _tpool.
+      _tpool-langu = _text-langu.
+    ENDAT.
+
+    _tpool-entry = _text-entry.
+    _tpool-length = _text-length.
+
+    AT END OF langu.
+      APPEND _tpool TO _textpool-texts.
+    ENDAT.
+    AT END OF key.
+      APPEND _textpool TO result.
+    ENDAT.
+
+  ENDLOOP.</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="GET_TYPE_FROM_XML" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="3 " MTDDECLTYP="1" MTDNEWEXC="X">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Get component type"/>
+    </TEXTS>
+    <PARAMETERS>
+     <ITEM SCONAME="OBJECT" VERSION="1" CMPTYPE="1" EDITORDER="1 " AUTHOR="TBENSIAL" CREATEDON="20091118" PARPASSTYP="1" TYPTYPE="1" TYPE="TO_XML">
+      <TEXTS>
+       <ITEM LANGU="E"/>
+      </TEXTS>
+     </ITEM>
+     <ITEM SCONAME="RESULT" VERSION="1" CMPTYPE="1" EDITORDER="2 " AUTHOR="TBENSIAL" CREATEDON="20091118" PARDECLTYP="3" TYPTYPE="1" TYPE="TD_COMPTYPE">
+      <TEXTS>
+       <ITEM LANGU="E"/>
+      </TEXTS>
+     </ITEM>
+    </PARAMETERS>
+    <EXCEPTIONS>
+     <ITEM SCONAME="ZAPLINK_CX_CONNECTOR" VERSION="1" LANGU="E" EDITORDER="1 " AUTHOR="TBENSIAL" CREATEDON="20091125">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="ZAPlink ROOT Exception for Connectors"/>
+      </TEXTS>
+     </ITEM>
+    </EXCEPTIONS>
+    <SOURCE>  DATA root_node TYPE REF TO if_ixml_node.
+  DATA o_raw     TYPE to_raw.
+  DATA _name     TYPE string.
+  DATA _cx       TYPE REF TO cx_root.
+  DATA o_mycx	   TYPE	to_exception.
+
+  CHECK object IS BOUND.
+
+  root_node = object-&gt;get_root_element( ).
+  IF NOT root_node IS BOUND.
+    _name = &apos;$NONE$&apos;(001).
+    RAISE EXCEPTION TYPE zaplink_cx_connector EXPORTING
+          textid = zaplink_cx_connector=&gt;invalid_xml
+       node_name = _name.
+  ENDIF.
+
+  _name = root_node-&gt;get_name( ).
+  IF _name &lt;&gt; comp_nodename.
+    RAISE EXCEPTION TYPE zaplink_cx_connector EXPORTING
+          textid = zaplink_cx_connector=&gt;invalid_xml
+       node_name = _name.
+  ENDIF.
+
+  TRY.
+      o_raw = zaplink_connectors=&gt;node_2_raw( root_node ).
+      result = o_raw-&gt;type.
+    CATCH zaplink_cx_connector INTO o_mycx.
+      RAISE EXCEPTION o_mycx.
+  ENDTRY.
+</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="SET_BASE_ATTRIBUTS" EXPOSURE="1" STATE="1" EDITORDER="2 " MTDNEWEXC="X">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Build default Connector Base Attributs"/>
+    </TEXTS>
+    <PARAMETERS>
+     <ITEM SCONAME="ATTRIBUTS" VERSION="1" CMPTYPE="1" EDITORDER="2 " AUTHOR="TBENSIAL" CREATEDON="20091118" PARDECLTYP="3" TYPTYPE="1" TYPE="TS_BASE_ATTRIBUTS">
+      <TEXTS>
+       <ITEM LANGU="E"/>
+      </TEXTS>
+     </ITEM>
+     <ITEM SCONAME="COMPONENT" VERSION="1" CMPTYPE="1" EDITORDER="1 " AUTHOR="TBENSIAL" CREATEDON="20091118" PARPASSTYP="1" TYPTYPE="1" TYPE="TO_COMPONENT">
+      <TEXTS>
+       <ITEM LANGU="E"/>
+      </TEXTS>
+     </ITEM>
+    </PARAMETERS>
+    <EXCEPTIONS>
+     <ITEM SCONAME="ZAPLINK_CX_CONNECTOR" LANGU="E" EDITORDER="1 " AUTHOR="TBENSIAL" CREATEDON="20100127">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="ZAPlink ROOT Exception for Connectors"/>
+      </TEXTS>
+     </ITEM>
+    </EXCEPTIONS>
+    <SOURCE>  DATA o_desc    TYPE REF TO cl_abap_typedescr.
+  DATA string    TYPE string.
+  DATA _name     TYPE tadir-obj_name.
+  DATA _type     TYPE tadir-object.
+
+  o_desc = cl_abap_typedescr=&gt;describe_by_object_ref( p_object_ref = me ).
+  string = o_desc-&gt;get_relative_name( ).
+
+  TRY.
+      _name = attributs-name = component-&gt;get_name( ).
+      _type = component-&gt;get_type( ).
+    CATCH zaplink_cx INTO o_cx.
+      mac_cascade_raise o_mycx o_cx.
+  ENDTRY.
+  attributs-class = string.
+  attributs-version = me-&gt;version.
+
+  CALL FUNCTION &apos;TRINT_TADIR_QUERY&apos;
+    EXPORTING
+      iv_pgmid           = &apos;R3TR&apos;
+      iv_object          = _type
+      iv_obj_name        = _name
+    IMPORTING
+*     EV_OBJECT          =
+*     EV_SRCSYSTEM       =
+      ev_devclass        = attributs-devclass
+*     EV_AUTHOR          =
+*     EV_GENFLAG         =
+*     EV_EXIST           =
+            .</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="SET_PROG_RAWSOURCE" VERSION="1" EXPOSURE="1" STATE="1" EDITORDER="8 " MTDDECLTYP="1">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Set program RAW source code"/>
+    </TEXTS>
+    <PARAMETERS>
+     <ITEM SCONAME="PROGRAM" VERSION="1" CMPTYPE="1" EDITORDER="1 " AUTHOR="TBENSIAL" CREATEDON="20091118" PARPASSTYP="1" TYPTYPE="1" TYPE="TD_PROGNAME">
+      <TEXTS>
+       <ITEM LANGU="E"/>
+      </TEXTS>
+     </ITEM>
+     <ITEM SCONAME="RAW" VERSION="1" CMPTYPE="1" EDITORDER="2 " AUTHOR="TBENSIAL" CREATEDON="20091118" PARPASSTYP="1" TYPTYPE="1" TYPE="TT_ABAPRAWSOURCE">
+      <TEXTS>
+       <ITEM LANGU="E"/>
+      </TEXTS>
+     </ITEM>
+    </PARAMETERS>
+    <SOURCE>INSERT REPORT program FROM raw STATE &apos;I&apos;.
+  IF sy-subrc = 0.
+    INSERT REPORT program FROM raw STATE &apos;A&apos;.
+  ENDIF.</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="SET_PROG_SOURCE" VERSION="1" EXPOSURE="1" STATE="1" EDITORDER="9 " MTDDECLTYP="1">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Set program source code"/>
+    </TEXTS>
+    <PARAMETERS>
+     <ITEM SCONAME="PROGRAM" VERSION="1" CMPTYPE="1" EDITORDER="1 " AUTHOR="TBENSIAL" CREATEDON="20091118" PARPASSTYP="1" TYPTYPE="1" TYPE="TD_PROGNAME">
+      <TEXTS>
+       <ITEM LANGU="E"/>
+      </TEXTS>
+     </ITEM>
+     <ITEM SCONAME="SOURCE" VERSION="1" CMPTYPE="1" EDITORDER="2 " AUTHOR="TBENSIAL" CREATEDON="20091118" PARPASSTYP="1" TYPTYPE="1" TYPE="TD_ABAPSOURCE">
+      <TEXTS>
+       <ITEM LANGU="E"/>
+      </TEXTS>
+     </ITEM>
+    </PARAMETERS>
+    <SOURCE>DATA _raw TYPE tt_abaprawsource.
+
+  _raw = conv_abap_source2raw( source ).
+  set_prog_rawsource( program = program
+                          raw = _raw ).</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="SET_PROG_TEXTPOOL" VERSION="1" EXPOSURE="1" STATE="1" EDITORDER="11 " MTDDECLTYP="1">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Set program Texts pool"/>
+    </TEXTS>
+    <PARAMETERS>
+     <ITEM SCONAME="PROGRAM" VERSION="1" CMPTYPE="1" EDITORDER="1 " AUTHOR="TBENSIAL" CREATEDON="20091118" PARPASSTYP="1" TYPTYPE="1" TYPE="TD_PROGNAME">
+      <TEXTS>
+       <ITEM LANGU="E"/>
+      </TEXTS>
+     </ITEM>
+     <ITEM SCONAME="TEXTPOOL" VERSION="1" CMPTYPE="1" EDITORDER="2 " AUTHOR="TBENSIAL" CREATEDON="20091118" PARPASSTYP="1" TYPTYPE="1" TYPE="TT_TXTP_TEXTPOOLS">
+      <TEXTS>
+       <ITEM LANGU="E"/>
+      </TEXTS>
+     </ITEM>
+    </PARAMETERS>
+    <SOURCE>TYPES:
+    BEGIN OF ts_text,
+      langu   TYPE spras,
+      id      TYPE  textpoolid,
+      key	    TYPE  textpoolky,
+      entry	  TYPE textpooltx,
+      length  TYPE textpoolln,
+    END OF ts_text.
+  DATA t_textpool TYPE STANDARD TABLE OF textpool.
+  DATA t_langlist TYPE instlang.
+  DATA: t_texts TYPE STANDARD TABLE OF ts_text.
+  DATA _text LIKE LINE OF t_texts.
+  DATA _textpool LIKE LINE OF t_textpool.
+*  DATA _tpool LIKE LINE OF _textpool-texts.
+  FIELD-SYMBOLS:
+    &lt;t&gt; LIKE LINE OF textpool,
+    &lt;l&gt; LIKE LINE OF &lt;t&gt;-texts.
+
+  LOOP AT textpool ASSIGNING &lt;t&gt;.
+    _text-id = &lt;t&gt;-id.
+    _text-key = &lt;t&gt;-key.
+    LOOP AT &lt;t&gt;-texts ASSIGNING &lt;l&gt;.
+      _text-langu = &lt;l&gt;-langu.
+      _text-entry = &lt;l&gt;-entry.
+      _text-length = &lt;l&gt;-length.
+      APPEND _text TO t_texts.
+    ENDLOOP.
+  ENDLOOP.
+
+  SORT t_texts BY langu id key.
+  DELETE ADJACENT DUPLICATES FROM t_texts COMPARING langu id key.
+
+  LOOP AT t_texts INTO _text.
+    AT NEW langu. &quot; ID
+      CLEAR: t_textpool, _textpool.
+    ENDAT.
+
+    _textpool-id = _text-id.
+    _textpool-key = _text-key.
+    _textpool-entry = _text-entry.
+    _textpool-length = _text-length.
+    APPEND _textpool TO t_textpool.
+
+    AT END OF langu.
+      INSERT textpool program FROM t_textpool LANGUAGE _text-langu.
+    ENDAT.
+
+  ENDLOOP.</SOURCE>
+   </ITEM>
+  </METHODS>
+  <TEXTSPOOL>
+   <ITEM ID="I" KEY="001">
+    <TEXTS>
+     <ITEM LANGU="E" ENTRY="$NONE$" LENGTH="6 "/>
+    </TEXTS>
+   </ITEM>
+  </TEXTSPOOL>
+  <TYPES>
+   <ITEM CMPNAME="TO_EXCEPTION" VERSION="1" EXPOSURE="1" STATE="1" EDITORDER="1 " TYPTYPE="3" TYPE="ZAPLINK_CX_CONNECTOR">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="ZAPlink ROOT Exception for Connectors"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TO_ROOT_EXCEPTION" EXPOSURE="2" STATE="1" TYPTYPE="3" TYPE="ZAPLINK_CX">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="ZAPlink ROOT Exception"/>
+    </TEXTS>
+   </ITEM>
+  </TYPES>
+ </RAW>
+</ZL_OBJECT>

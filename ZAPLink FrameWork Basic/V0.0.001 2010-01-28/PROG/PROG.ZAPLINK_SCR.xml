@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ZL_OBJECT CHECKSUM="68A780BF091D241105683EE2B3B46763" CONNECTOR="AAAD0A4B07A5A05AE1000000AC120173" NAME="ZAPLINK_SCR" TYPE="PROG" VERSION="1.0">
+ <DIRECTORY DEVCLASS="ZAPLINK-FRAMEWORK-CORE" MASTERLANG="E"/>
+ <RAW>
+  <A0_MAINDATA EDTX="X" VARCL="X" SUBC="I" VERN="000063" LEVL="700" RSTAT="K" RMAND="220" RLOAD="E" UCCHECK="X"/>
+  <SOURCE>*&amp;---------------------------------------------------------------------*
+*&amp;  Include           ZAPLINLK_SCR
+*&amp;---------------------------------------------------------------------*
+
+*/------------------------SELECTION SCREEN----------------------------\
+
+SELECTION-SCREEN BEGIN OF BLOCK main WITH FRAME.
+SELECTION-SCREEN BEGIN OF BLOCK mode WITH FRAME TITLE text-bac.
+PARAMETERS a_import TYPE c RADIOBUTTON GROUP r3 DEFAULT &apos;X&apos;
+  USER-COMMAND updown.
+PARAMETERS a_dsp TYPE c RADIOBUTTON GROUP r3.
+SELECTION-SCREEN ULINE.
+PARAMETERS a_uninst TYPE c RADIOBUTTON GROUP r3.  &quot;uninstall
+SELECTION-SCREEN ULINE.
+PARAMETERS a_create TYPE c RADIOBUTTON GROUP r3.
+PARAMETERS a_add TYPE c RADIOBUTTON GROUP r3.
+PARAMETERS a_add_p TYPE c RADIOBUTTON GROUP r3.
+PARAMETERS a_add_tr TYPE c RADIOBUTTON GROUP r3.
+SELECTION-SCREEN END OF BLOCK mode.
+
+SELECTION-SCREEN BEGIN OF BLOCK opt WITH FRAME TITLE text-bop.
+PARAMETERS c_name(300) TYPE c MODIF ID nnm.
+PARAMETERS co_type TYPE  ko100-object MODIF ID npg.
+PARAMETERS co_name(40) TYPE c MODIF ID npg.
+*      parameters co_type type  KO100-object modif id npg.
+PARAMETER package      TYPE tadir-devclass MODIF ID npc.
+SELECT-OPTIONS  p_tr FOR e071-trkorr NO INTERVALS
+  NO-EXTENSION MODIF ID rnm.
+PARAMETER p_file(300) LOWER CASE TYPE c MODIF ID nfl.
+
+SELECTION-SCREEN:
+  BEGIN OF TABBED BLOCK t_block FOR 5 LINES,
+    TAB (35) text-dev USER-COMMAND devc DEFAULT SCREEN 110,
+    TAB (35) text-tro USER-COMMAND tr DEFAULT SCREEN 120,
+  END OF BLOCK t_block.
+
+SELECTION-SCREEN END OF BLOCK opt.
+SELECTION-SCREEN END OF BLOCK main.
+
+SELECTION-SCREEN BEGIN OF SCREEN 110 AS SUBSCREEN.
+PARAMETERS devc_no TYPE c RADIOBUTTON GROUP rd DEFAULT &apos;X&apos; MODIF ID now.
+PARAMETERS devc_uc TYPE c RADIOBUTTON GROUP rd MODIF ID now.
+PARAMETERS devc_ke TYPE c RADIOBUTTON GROUP rd MODIF ID now.
+PARAMETERS devc_lo TYPE c RADIOBUTTON GROUP rd MODIF ID now.
+SELECTION-SCREEN BEGIN OF LINE.
+PARAMETERS devc_f TYPE c RADIOBUTTON GROUP rd MODIF ID now.
+SELECTION-SCREEN COMMENT (35) text-dvf FOR FIELD devclass ID now.
+PARAMETERS devclass TYPE tadir-devclass MODIF ID now DEFAULT &apos;$TMP&apos;.
+SELECTION-SCREEN END OF LINE.
+SELECTION-SCREEN END OF SCREEN 110.
+
+SELECTION-SCREEN BEGIN OF SCREEN 120 AS SUBSCREEN.
+SELECTION-SCREEN BEGIN OF LINE.
+PARAMETERS tr_fi TYPE c RADIOBUTTON GROUP rt MODIF ID now.
+SELECTION-SCREEN COMMENT (35) text-trf FOR FIELD tr ID now.
+PARAMETERS tr TYPE zaplink_opt_transport_request=&gt;td_transport_request MODIF ID now.
+SELECTION-SCREEN END OF LINE.
+PARAMETERS tr_uc TYPE c RADIOBUTTON GROUP rt MODIF ID now.
+PARAMETERS tr_us TYPE c RADIOBUTTON GROUP rt MODIF ID now DEFAULT &apos;X&apos;.
+PARAMETERS tr_in TYPE c RADIOBUTTON GROUP rt MODIF ID now.
+SELECTION-SCREEN END OF SCREEN 120.
+
+*\--------------------------------------------------------------------/
+
+*/----------------------selection screen events-----------------------\
+INITIALIZATION.
+*DATA: BEGIN OF dynp_id,            &quot;Identifika. eines Dynpros für IMPORT
+*        prog LIKE progname,
+*        dnum LIKE d020s-dnum,
+*      END OF dynp_id.
+*DATA: h               TYPE d020s.      &quot;Header
+*DATA: f TYPE dynpro_field_list         &quot;Felder
+*         WITH HEADER LINE.
+*DATA: e          TYPE dyn_flowlist       &quot;Ablauflogik
+*          WITH HEADER LINE.
+*DATA: m               TYPE d023s       &quot;Dynpro-Parameter
+*          OCCURS 0 WITH HEADER LINE.
+*    IMPORT DYNPRO h f e m ID dynp_id.
+
+  CREATE OBJECT zaplink_gui=&gt;o_options.
+
+AT SELECTION-SCREEN.
+
+AT SELECTION-SCREEN OUTPUT.
+* Options : DEVC &amp; TR
+  DATA _active TYPE i.
+  IF a_import IS INITIAL. _active = 0. ELSE. _active = 1. ENDIF.
+  LOOP AT SCREEN.
+    CASE screen-name.
+      WHEN &apos;%FDVF007_0110&apos; OR &apos;%_17NNJ0000543372_%_%_%_%_%_%_&apos; &quot; scr 110
+        OR &apos;%FTRF003_0120&apos; OR &apos;%_17NNJ0000543372_%_%_%_%_%_%_&apos; &quot; scr 120
+        OR &apos;TABSTRIP_T_BLOCK&apos; OR &apos;%PDEV020_1000&apos; OR &apos;%PTRO021_1000&apos; OR &apos;%_SUBSCREEN_T_BLOCK&apos; OR &apos;%_17SNS0000543372_%_%_%_%_%_%_&apos;. &quot; Scr 1000
+        screen-active = _active. MODIFY SCREEN.
+    ENDCASE.
+  ENDLOOP.
+  LOOP AT SCREEN.
+    IF a_create = &apos;X&apos;.
+      IF screen-group1 = &apos;NNM&apos;.
+        screen-active = &apos;1&apos;.
+        screen-invisible = &apos;0&apos;.
+        MODIFY SCREEN.
+      ELSEIF screen-group1 = &apos;NPG&apos; OR screen-group1 = &apos;NFL&apos;
+        OR screen-group1 = &apos;NOW&apos; OR screen-group1 = &apos;NPC&apos;
+        OR screen-group1 = &apos;RNM&apos;.
+        screen-active = &apos;0&apos;.
+        screen-invisible = &apos;1&apos;.
+        MODIFY SCREEN.
+      ENDIF.
+    ELSEIF a_import = &apos;X&apos;.
+      IF screen-group1 = &apos;NFL&apos; OR screen-group1 = &apos;NOW&apos;.
+        screen-active = &apos;1&apos;.
+        screen-invisible = &apos;0&apos;.
+        MODIFY SCREEN.
+      ELSEIF screen-group1 = &apos;NNM&apos; OR screen-group1 =&apos;NPG&apos;
+         OR screen-group1 = &apos;NPC&apos; OR screen-group1 = &apos;RNM&apos;.
+        screen-active = &apos;0&apos;.
+        screen-invisible = &apos;1&apos;.
+        MODIFY SCREEN.
+      ENDIF.
+    ELSEIF a_add = &apos;X&apos;.
+      IF screen-group1 = &apos;NFL&apos; OR screen-group1 = &apos;NPG&apos;.
+        screen-active = &apos;1&apos;.
+        screen-invisible = &apos;0&apos;.
+        MODIFY SCREEN.
+      ELSEIF screen-group1 = &apos;NNM&apos; OR screen-group1 = &apos;NOW&apos;
+         OR screen-group1 = &apos;NPC&apos; OR screen-group1 = &apos;RNM&apos;.
+        screen-active = &apos;0&apos;.
+        screen-invisible = &apos;1&apos;.
+        MODIFY SCREEN.
+      ENDIF.
+    ELSEIF a_add_p = &apos;X&apos;.
+      IF screen-group1 = &apos;NFL&apos; OR screen-group1 = &apos;NPC&apos;.
+        screen-active = &apos;1&apos;.
+        screen-invisible = &apos;0&apos;.
+        MODIFY SCREEN.
+      ELSEIF screen-group1 = &apos;NNM&apos; OR screen-group1 = &apos;NOW&apos;
+        OR screen-group1 = &apos;NPG&apos; OR screen-group1 = &apos;RNM&apos;.
+        screen-active = &apos;0&apos;.
+        screen-invisible = &apos;1&apos;.
+        MODIFY SCREEN.
+      ENDIF.
+    ELSEIF a_dsp = &apos;X&apos; OR a_uninst = &apos;X&apos;.
+      IF screen-group1 = &apos;NFL&apos;.
+        screen-active = &apos;1&apos;.
+        screen-invisible = &apos;0&apos;.
+        MODIFY SCREEN.
+      ELSEIF screen-group1 = &apos;NNM&apos; OR screen-group1 =&apos;NPG&apos;
+       OR screen-group1 = &apos;NOW&apos; OR screen-group1 = &apos;NPC&apos;
+       OR screen-group1 = &apos;RNM&apos;.
+        screen-active = &apos;0&apos;.
+        screen-invisible = &apos;1&apos;.
+        MODIFY SCREEN.
+      ENDIF.
+    ELSEIF a_add_tr = &apos;X&apos;.
+      IF screen-group1 = &apos;NFL&apos; OR screen-group1 = &apos;RNM&apos;.
+        screen-active = &apos;1&apos;.
+        screen-invisible = &apos;0&apos;.
+        MODIFY SCREEN.
+      ELSEIF screen-group1 = &apos;NNM&apos; OR screen-group1 = &apos;NOW&apos;
+        OR screen-group1 = &apos;NPG&apos; OR screen-group1 = &apos;NPC&apos;.
+        screen-active = &apos;0&apos;.
+        screen-invisible = &apos;1&apos;.
+        MODIFY SCREEN.
+      ENDIF.
+    ENDIF.
+  ENDLOOP.
+
+*** value request for input fields
+AT SELECTION-SCREEN ON VALUE-REQUEST FOR co_type.
+  zaplink_connectors=&gt;get_values( CHANGING type = co_type ).
+
+AT SELECTION-SCREEN ON VALUE-REQUEST FOR p_file.
+  DATA l_file TYPE zaplink_gui=&gt;td_filename.
+
+  l_file = p_file.
+  CALL METHOD zaplink_gui=&gt;containerfile_select
+    CHANGING
+      filename = l_file.
+  p_file = l_file.
+
+AT SELECTION-SCREEN ON VALUE-REQUEST FOR p_tr-low.
+  iv_organizer_type = &apos;W&apos;.
+*  is_selection-reqstatus = &apos;R&apos;.
+  CALL FUNCTION &apos;TR_PRESENT_REQUESTS_SEL_POPUP&apos;
+    EXPORTING
+      iv_organizer_type   = iv_organizer_type
+      is_selection        = is_selection
+    IMPORTING
+      es_selected_request = es_selected_request
+      es_selected_task    = es_selected_task.
+
+  p_tr-low = es_selected_request-trkorr.
+
+*\--------------------------------------------------------------------/</SOURCE>
+  <TEXTSPOOL>
+   <ITEM ID="R">
+    <TEXTS>
+     <ITEM LANGU="E" ENTRY="Screen definition of ZAPLINK" LENGTH="28 "/>
+    </TEXTS>
+   </ITEM>
+  </TEXTSPOOL>
+ </RAW>
+</ZL_OBJECT>

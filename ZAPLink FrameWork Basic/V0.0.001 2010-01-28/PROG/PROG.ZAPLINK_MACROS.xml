@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ZL_OBJECT CHECKSUM="87BD14BC3313D59AB2C37BC05C67FF73" CONNECTOR="AAAD0A4B07A5A05AE1000000AC120173" NAME="ZAPLINK_MACROS" TYPE="PROG" VERSION="1.0">
+ <DIRECTORY DEVCLASS="ZAPLINK-FRAMEWORK-CORE" MASTERLANG="E"/>
+ <RAW>
+  <A0_MAINDATA EDTX="X" VARCL="X" SUBC="I" VERN="000003" RSTAT="K" RMAND="200" RLOAD="E" UCCHECK="X"/>
+  <SOURCE>*---------------------------------------------------------------------*
+*  Include           ZAPLINK_MACROS
+*---------------------------------------------------------------------*
+* Contains macros uses in framework objects
+*---------------------------------------------------------------------*
+
+* Macro for raising exception from symsg
+DEFINE mac_raise_symsg.
+  try.
+      o_mycx ?= zaplink_cx=&gt;create_from_symsg( classname = &amp;1 &quot; &apos;ZAPLINK_CX_CONNECTOR&apos;
+                                               textid    = &amp;2 ). &quot; zaplink_cx_connector=&gt;system_error
+    catch zaplink_cx into o_cx.
+      raise exception o_cx.
+  endtry.
+  raise exception o_mycx.
+END-OF-DEFINITION.
+
+* Create a ZAPLink Cascade exception
+DEFINE mac_cascade_raise.
+* Exception &apos;&amp;CX_NAME&amp;&apos; has occured
+  create object &amp;1
+    exporting
+      textid  = zaplink_cx=&gt;system_error
+      prev_cx = &amp;2.
+  &amp;1-&gt;update( ).
+  raise exception &amp;1.
+END-OF-DEFINITION.
+
+* Create a Cascade exception
+DEFINE mac_cascade_raise_root.
+* Exception &apos;&amp;CX_NAME&amp;&apos; has occured
+  create object &amp;1
+    exporting
+      textid   = zaplink_cx=&gt;system_error
+      previous = &amp;2.
+  &amp;1-&gt;update( ).
+  raise exception &amp;1.
+END-OF-DEFINITION.</SOURCE>
+  <TEXTSPOOL>
+   <ITEM ID="R">
+    <TEXTS>
+     <ITEM LANGU="E" ENTRY="ZAPLink - Macros - Internal use only" LENGTH="36 "/>
+    </TEXTS>
+   </ITEM>
+  </TEXTSPOOL>
+ </RAW>
+</ZL_OBJECT>
