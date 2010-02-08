@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ZL_OBJECT CHECKSUM="04F6D86EA6E68A50DB0129B225BD1D55" CONNECTOR="39AC0A4B07A5A05AE1000000AC120173" NAME="ZAPLINK_INTF_DATA" TYPE="CLAS" VERSION="1.0">
+ <DIRECTORY DEVCLASS="ZAPLINK-CONNECTORS-MAIN" MASTERLANG="E"/>
+ <RAW>
+  <A0_MAINDATA VERSION="1" LANGU="E" UUID="B348064B8305545DE1000000AC120173" EXPOSURE="2" STATE="1" CLSFINAL="X" CLSCCINCL="X" FIXPT="X" UNICODE="X">
+   <INHERITANCE REFCLSNAME="ZAPLINK_OBJECT_DATA" VERSION="1" STATE="1"/>
+   <TEXTS>
+    <ITEM LANGU="E" DESCRIPT="Data for ABAP Object Interface"/>
+   </TEXTS>
+  </A0_MAINDATA>
+  <ATTRIBUTS>
+   <ITEM CMPNAME="A0_MAINDATA" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="1 " TYPTYPE="1" TYPE="TS_MAIN_DATA">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Maindata of Class"/>
+    </TEXTS>
+   </ITEM>
+  </ATTRIBUTS>
+  <DOCUMENTATION>
+   <ITEM APPLICATION="DOKU" ID="CA" OBJECT="ZAPLINK_INTF_DATA             A0_MAINDATA" LANGU="E" MASTERLANG="X" TYP="E" DOKFORM="S_DOCU_SHOW" DOKSTYLE="S_DOCUS1">
+    <TEXTS>
+     <ITEM TDSPRAS="E" TDVERSION="00001" TDFUSER="TBENSIAL" TDFRELES="700" TDFDATE="20100126" TDFTIME="122329" TDLINESIZE="072">U1&amp;MEANING&amp;
+ASStore Interface main data. &quot;A0_&quot; prefix has been use to keep this
+  segment on the top of the list.
+U1History
+AS1) Using &quot;/&quot; as prefix
+ASUsing &quot;/&quot; as prefix to ensure that this attributes will be the first in
+  alphabetic order. Using &quot;/&quot;, for SAP, means namespace. In order to work
+  you should also add another &quot;/&quot; which is the end of the namespace
+  prefix. Because this attributes doesn&apos;t have anything after the second
+  &quot;/&quot;, this namespace prefix is not controlled against the authorized
+  namespaces list.
+ASSo it&apos;s OK to use field starting with /.
+AS
+AS2) XML Node starting with &quot;/&quot;
+ASThis kind of node is expected as a closing node, which is a problem for
+  XML parser
+AS
+AS3) Using &quot;_&quot; as prefix
+ASUsing &quot;_&quot; as prefix let this attributes at the end in the alphabetic
+  order. So not working
+U1&amp;HINTS&amp;
+ASUse &quot;/&quot; as prefix with care or prefer simple attribute names without
+  &quot;/&quot;.
+*</ITEM>
+    </TEXTS>
+   </ITEM>
+  </DOCUMENTATION>
+  <LOCAL>
+   <TYPES>
+*&quot;* USE THIS SOURCE FILE FOR ANY TYPE DECLARATIONS (CLASS
+*&quot;* definitions, interfaces or data types) you need for method
+*&quot;* IMPLEMENTATION OR PRIVATE METHOD&apos;S SIGNATURE</TYPES>
+   <IMPLEMENTATIONS>
+*&quot;* LOCAL CLASS IMPLEMENTATION FOR PUBLIC CLASS
+*&quot;* use this source file for the implementation part of
+*&quot;* LOCAL HELPER CLASSES</IMPLEMENTATIONS>
+   <MACROS>
+*&quot;* USE THIS SOURCE FILE FOR ANY MACRO DEFINITIONS YOU NEED
+*&quot;* IN THE IMPLEMENTATION PART OF THE CLASS</MACROS>
+  </LOCAL>
+  <REDEFINITIONS>
+   <ITEM REFCLSNAME="ZAPLINK_OBJECT_DATA" VERSION="1" MTDNAME="ANONYMIZE">
+    <SOURCE>
+  super-&gt;anonymize( ).
+  CLEAR:
+    a0_maindata-author,
+    a0_maindata-createdon,
+    a0_maindata-changedby,
+    a0_maindata-changedon,
+    a0_maindata-chgdanyby,
+    a0_maindata-chgdanyon,
+    a0_maindata-r3release.
+</SOURCE>
+   </ITEM>
+   <ITEM REFCLSNAME="ZAPLINK_OBJECT_DATA" VERSION="1" MTDNAME="COMPLETE_DATA">
+    <SOURCE>
+* Issue 23 : start
+  obj_name = fm_data-interface-clsname.
+  super-&gt;complete_data( CHANGING fm_data = fm_data ).
+* Issue 23 : end</SOURCE>
+   </ITEM>
+   <ITEM REFCLSNAME="ZAPLINK_OBJECT_DATA" VERSION="1" MTDNAME="FROM_DATA">
+    <SOURCE>
+  DATA _t   LIKE LINE OF a0_maindata-texts.
+  DATA _in  LIKE LINE OF interfaces.
+  FIELD-SYMBOLS:
+    &lt;co&gt;  LIKE LINE OF fm_data-comprisings,
+    &lt;ec&gt;  LIKE LINE OF fm_data-explore_comprisings.
+
+  a0_maindata-hdr = fm_data-interface.
+  obj_name = a0_maindata-clsname.
+  obj_version = a0_maindata-version.
+  obj_langu = a0_maindata-langu.
+
+*CLASS_DESC  TYPE tt_SEOCLASSTX,
+  a0_maindata-texts = fm_data-class_desc.
+  MODIFY a0_maindata-texts FROM _t TRANSPORTING clsname WHERE clsname &lt;&gt; _t-clsname.
+  CLEAR a0_maindata-descript.
+
+* Get all common attributes between Class and Interface
+  CALL METHOD super-&gt;from_data
+    EXPORTING
+      fm_data = fm_data.
+
+*COMPRISINGS TYPE  SEOR_COMPRISINGS_R
+  LOOP AT fm_data-comprisings ASSIGNING &lt;co&gt;
+    WHERE clsname = a0_maindata-clsname.
+    CLEAR _in.
+    MOVE-CORRESPONDING &lt;co&gt; to _in.
+
+    CLEAR _in-clsname.
+    INSERT _in INTO TABLE interfaces.
+  ENDLOOP.</SOURCE>
+   </ITEM>
+   <ITEM REFCLSNAME="ZAPLINK_OBJECT_DATA" VERSION="1" MTDNAME="TO_DATA">
+    <SOURCE>
+DATA _t   LIKE LINE OF a0_maindata-texts.
+  DATA _co  LIKE LINE OF fm_data-comprisings.
+  DATA _ec  LIKE LINE OF fm_data-explore_comprisings.
+  FIELD-SYMBOLS:
+    &lt;in&gt;  LIKE LINE OF interfaces.
+
+  obj_name = a0_maindata-clsname.
+  obj_version = a0_maindata-version.
+  obj_langu = a0_maindata-langu.
+
+* Warning recieving (will reset FM_DATA)
+  CALL METHOD super-&gt;to_data
+    RECEIVING
+      fm_data = fm_data.
+
+  fm_data-interface = a0_maindata-hdr.
+  READ TABLE a0_maindata-texts INTO _t
+       WITH TABLE KEY langu = a0_maindata-langu.
+  IF sy-subrc = 0.
+    fm_data-interface-descript = _t-descript.
+  ENDIF.
+
+*CLASS_DESC  TYPE tt_SEOCLASSTX,
+  fm_data-class_desc = a0_maindata-texts.
+  _t-clsname = a0_maindata-clsname.
+  MODIFY fm_data-class_desc FROM _t TRANSPORTING clsname WHERE clsname &lt;&gt; _t-clsname.
+
+*COMPRISINGS TYPE  SEOR_COMPRISINGS_R
+  LOOP AT interfaces ASSIGNING &lt;in&gt;.
+    CLEAR: _co.
+    MOVE-CORRESPONDING &lt;in&gt; to _co.
+    _co-clsname = a0_maindata-clsname.
+    INSERT _co INTO TABLE fm_data-comprisings.
+  ENDLOOP.</SOURCE>
+   </ITEM>
+  </REDEFINITIONS>
+  <TYPEGROUPS>
+   <ITEM TYPEGROUP="ABAP" VERSION="1" IMPLICIT="X"/>
+   <ITEM TYPEGROUP="SEOF" VERSION="1" EXPLICIT="X"/>
+   <ITEM TYPEGROUP="SEOK" VERSION="1" EXPLICIT="X"/>
+   <ITEM TYPEGROUP="SEOO" VERSION="1" EXPLICIT="X"/>
+   <ITEM TYPEGROUP="SEOR" VERSION="1" EXPLICIT="X"/>
+   <ITEM TYPEGROUP="SEOS" VERSION="1" EXPLICIT="X"/>
+   <ITEM TYPEGROUP="SEOT" VERSION="1" EXPLICIT="X"/>
+  </TYPEGROUPS>
+  <TYPES>
+   <ITEM CMPNAME="TS_MAIN_DATA" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="1 " TYPTYPE="4" SRCROW1="18 " SRCCOLUMN1="4 " SRCROW2="23 " SRCCOLUMN2="24 " TYPESRC_LENG="188 ">
+    BEGIN OF ts_main_data.
+    INCLUDE TYPE vseointerf AS hdr.
+    TYPES:
+        texts       TYPE tt_seoclasstx_s,
+        textpool    TYPE tt_txtp_textpools,
+      END OF ts_main_data
+
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Interface main Data"/>
+    </TEXTS>
+   </ITEM>
+  </TYPES>
+ </RAW>
+</ZL_OBJECT>

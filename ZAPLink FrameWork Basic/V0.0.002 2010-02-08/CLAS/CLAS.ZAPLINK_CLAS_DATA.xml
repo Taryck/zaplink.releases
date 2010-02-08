@@ -1,0 +1,934 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ZL_OBJECT CHECKSUM="51CA96E89B3602BECF55D8340D3BBE7D" CONNECTOR="39AC0A4B07A5A05AE1000000AC120173" NAME="ZAPLINK_CLAS_DATA" TYPE="CLAS" VERSION="1.0">
+ <DIRECTORY DEVCLASS="ZAPLINK-CONNECTORS-MAIN" MASTERLANG="E"/>
+ <RAW>
+  <A0_MAINDATA VERSION="1" LANGU="E" UUID="66FF044B26B30C5BE1000000AC120173" EXPOSURE="2" STATE="1" CLSFINAL="X" CLSCCINCL="X" FIXPT="X" UNICODE="X">
+   <INHERITANCE REFCLSNAME="ZAPLINK_OBJECT_DATA" VERSION="1" STATE="1"/>
+   <TEXTS>
+    <ITEM LANGU="E" DESCRIPT="Data for Class"/>
+   </TEXTS>
+  </A0_MAINDATA>
+  <ATTRIBUTS>
+   <ITEM CMPNAME="A0_MAINDATA" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="1 " TYPTYPE="1" TYPE="TS_CLASS_DATA">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Maindata of Class"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="DYNPROS" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="7 " TYPTYPE="1" TYPE="TT_DYNPROS">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Class Dynpro"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="EXCEPTIONS_TEXTS" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="5 " TYPTYPE="1" TYPE="TT_EXCEPTIONS_TEXTS"/>
+   <ITEM CMPNAME="FRIENDS" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="2 " TYPTYPE="1" TYPE="TT_FRIENDS">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Class Friends list"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="LOCAL" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="4 " TYPTYPE="1" TYPE="TS_LOCALS">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Local data : Type, Implementaiton &amp; Macros"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="O_CX" VERSION="1" STATE="1" EDITORDER="2 " ATTDECLTYP="1" TYPTYPE="1" TYPE="TO_ROOT_EXCEPTION">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="ZAPlink ROOT Exception"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="O_MYCX" VERSION="1" STATE="1" EDITORDER="1 " ATTDECLTYP="1" TYPTYPE="1" TYPE="TO_EXCEPTION">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="ZAPlink ROOT Exception for Connectors"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="REDEFINITIONS" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="3 " TYPTYPE="1" TYPE="TT_REDEFINITIONS">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Class&apos;s Methods redefinitions"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TEXTSPOOL" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="6 " TYPTYPE="1" TYPE="TT_TXTP_TEXTPOOLS">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Textpool table"/>
+    </TEXTS>
+   </ITEM>
+  </ATTRIBUTS>
+  <DOCUMENTATION>
+   <ITEM APPLICATION="DOKU" ID="CA" OBJECT="ZAPLINK_CLAS_DATA             A0_MAINDATA" LANGU="E" MASTERLANG="X" TYP="E" DOKFORM="S_DOCU_SHOW" DOKSTYLE="S_DOCUS1">
+    <TEXTS>
+     <ITEM TDSPRAS="E" TDVERSION="00002" TDFUSER="TBENSIAL" TDFRELES="700" TDFDATE="20100126" TDFTIME="120515" TDLUSER="TBENSIAL" TDLRELES="700" TDLDATE="20100126" TDLTIME="120551" TDLINESIZE="072">U1&amp;MEANING&amp;
+ASStore Class main data. &quot;A0_&quot; prefix has been use to keep this segment on
+  the top of the list.
+U1History
+AS1) Using &quot;/&quot; as prefix
+ASUsing &quot;/&quot; as prefix to ensure that this attributes will be the first in
+  alphabetic order. Using &quot;/&quot;, for SAP, means namespace. In order to work
+  you should also add another &quot;/&quot; which is the end of the namespace
+  prefix. Because this attributes doesn&apos;t have anything after the second
+  &quot;/&quot;, this namespace prefix is not controlled against the authorized
+  namespaces list.
+ASSo it&apos;s OK to use field starting with /.
+AS
+AS2) XML Node starting with &quot;/&quot;
+ASThis kind of node is expected as a closing node, which is a problem for
+  XML parser
+AS
+AS3) Using &quot;_&quot; as prefix
+ASUsing &quot;_&quot; as prefix let this attributes at the end in the alphabetic
+  order. So not working
+U1&amp;HINTS&amp;
+ASUse &quot;/&quot; as prefix with care or prefer simple attribute names without
+  &quot;/&quot;.</ITEM>
+    </TEXTS>
+   </ITEM>
+  </DOCUMENTATION>
+  <LOCAL>
+   <TYPES>
+*&quot;* USE THIS SOURCE FILE FOR ANY TYPE DECLARATIONS (CLASS
+*&quot;* definitions, interfaces or data types) you need for method
+*&quot;* IMPLEMENTATION OR PRIVATE METHOD&apos;S SIGNATURE</TYPES>
+   <IMPLEMENTATIONS>
+*&quot;* LOCAL CLASS IMPLEMENTATION FOR PUBLIC CLASS
+*&quot;* use this source file for the implementation part of
+*&quot;* LOCAL HELPER CLASSES</IMPLEMENTATIONS>
+   <MACROS>
+*&quot;* USE THIS SOURCE FILE FOR ANY MACRO DEFINITIONS YOU NEED
+*&quot;* in the implementation part of the class
+
+INCLUDE ZAPLINK_MACROS.</MACROS>
+  </LOCAL>
+  <METHODS>
+   <ITEM CMPNAME="GET_SOURCE" VERSION="1" STATE="1" EDITORDER="1 " MTDDECLTYP="1">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Clean ABAP Source code"/>
+    </TEXTS>
+    <PARAMETERS>
+     <ITEM SCONAME="PROGRAM" VERSION="1" CMPTYPE="1" EDITORDER="1 " PARPASSTYP="1" TYPTYPE="1" TYPE="PROGRAMM">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="ABAP Program Name"/>
+      </TEXTS>
+     </ITEM>
+     <ITEM SCONAME="SOURCE" VERSION="1" CMPTYPE="1" EDITORDER="2 " PARDECLTYP="3" TYPTYPE="1" TYPE="TD_ABAPSOURCE"/>
+    </PARAMETERS>
+    <SOURCE>
+  DATA code TYPE zaplink_object=&gt;tt_abaprawsource.
+  DATA linecount TYPE i.
+  FIELD-SYMBOLS:
+    &lt;l&gt; LIKE LINE OF code.
+
+  code = zaplink_object=&gt;get_prog_rawsource( program ).
+
+  IF NOT code IS INITIAL.
+    linecount = LINES( code ).
+    IF linecount &gt; 1.
+      READ TABLE code ASSIGNING &lt;l&gt; INDEX linecount.
+      TRANSLATE &lt;l&gt; TO UPPER CASE.  &quot;#EC SYNTCHAR
+      IF &lt;l&gt; CP &apos;ENDMETHOD.*&apos;.
+        DELETE code INDEX linecount.
+      ENDIF.
+    ENDIF.
+    READ TABLE code ASSIGNING &lt;l&gt; INDEX 1.
+    TRANSLATE &lt;l&gt; TO UPPER CASE.  &quot;#EC *
+    IF &lt;l&gt; CP &apos;METHOD *&apos;. &quot;#EC SYNTCHAR
+      DELETE code INDEX 1.
+    ENDIF.
+  ENDIF.
+
+  source = zaplink_object=&gt;conv_abap_raw2source( code ).</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="SOTR2VALUE" VERSION="1" STATE="1" EDITORDER="3 " MTDDECLTYP="1">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Convert SOTR_CONC to Attrvalue"/>
+    </TEXTS>
+    <PARAMETERS>
+     <ITEM SCONAME="DATA" VERSION="1" CMPTYPE="1" EDITORDER="1 " PARPASSTYP="1" TYPTYPE="1" TYPE="SOTR_CONC">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="Initial value"/>
+      </TEXTS>
+     </ITEM>
+     <ITEM SCONAME="RESULT" VERSION="1" CMPTYPE="1" EDITORDER="2 " PARDECLTYP="3" TYPTYPE="1" TYPE="SEOVALUE">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="Key for Logical Object in the OTR"/>
+      </TEXTS>
+     </ITEM>
+    </PARAMETERS>
+    <SOURCE>
+  concatenate &apos;&apos;&apos;&apos; data &apos;&apos;&apos;&apos; into result.</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="UPDATE_CONCEPT" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="1 " MTDDECLTYP="1" MTDNEWEXC="X">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Update Concepts"/>
+    </TEXTS>
+    <PARAMETERS>
+     <ITEM SCONAME="FM_DATA" VERSION="1" CMPTYPE="1" EDITORDER="2 " PARDECLTYP="2" PARPASSTYP="1" TYPTYPE="1" TYPE="T_FM_DATA"/>
+     <ITEM SCONAME="MSG_COL" VERSION="1" CMPTYPE="1" EDITORDER="1 " PARPASSTYP="1" TYPTYPE="1" TYPE="TO_MSG_COL">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="Message Collector"/>
+      </TEXTS>
+     </ITEM>
+    </PARAMETERS>
+    <EXCEPTIONS>
+     <ITEM SCONAME="ZAPLINK_CX_CONNECTOR" VERSION="1" LANGU="E" EDITORDER="1 ">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="ZAPlink ROOT Exception for Connectors"/>
+      </TEXTS>
+     </ITEM>
+    </EXCEPTIONS>
+    <SOURCE>
+  DATA lt_types TYPE sotr_objects.
+  DATA _type    LIKE LINE OF lt_types.
+  DATA _paket   TYPE sotr_pack.
+  DATA _entries TYPE sotr_text_tt.
+  DATA _entry   LIKE LINE OF _entries.
+  DATA lt_cx    TYPE tt_cx_texts.
+  DATA ls_cx    LIKE LINE OF fm_data-exceptions_texts.
+  FIELD-SYMBOLS:
+    &lt;at&gt; LIKE LINE OF fm_data-attributes,
+    &lt;cx&gt; LIKE LINE OF fm_data-exceptions_texts.
+
+  TRY.
+      LOOP AT fm_data-exceptions_texts ASSIGNING &lt;cx&gt;.
+
+        CALL FUNCTION &apos;SOTR_OBJECT_GET_OBJECTS&apos;
+          EXPORTING
+            object_vector    = &lt;cx&gt;-objid_vec
+          IMPORTING
+            OBJECTS          = lt_types
+          EXCEPTIONS
+            object_not_found = 1
+            OTHERS           = 2.
+        IF sy-subrc &lt;&gt; 0 OR lt_types IS INITIAL.
+          CALL METHOD msg_col-&gt;add_symsg( ).
+          CONTINUE.
+        ENDIF.
+        READ TABLE lt_types INTO _type INDEX 1.
+
+        _paket-paket = &lt;cx&gt;-paket.
+        _entries = &lt;cx&gt;-texts.
+        MODIFY _entries FROM _entry TRANSPORTING concept WHERE concept &lt;&gt; _entry-concept.
+        ls_cx = &lt;cx&gt;.
+
+        CALL FUNCTION &apos;SOTR_GET_CONCEPT&apos;
+          EXPORTING
+            concept              = &lt;cx&gt;-concept
+*       IMPORTING
+*         HEADER               =
+*       TABLES
+*         ENTRIES              =
+         EXCEPTIONS
+           no_entry_found       = 1
+           OTHERS               = 2.
+        IF sy-subrc = 0.
+          CALL FUNCTION &apos;SOTR_DELETE_CONCEPT&apos;
+            EXPORTING
+              concept                     = &lt;cx&gt;-concept
+*           IN_UPDATE_TASK              =
+*           FLAG_CHECK_USAGE            =
+*           FLAG_CHECK_AUTHORITY        =
+*           FLAG_CHECK_MASTER           =
+*           LANGU                       = SY-LANGU
+*           FLAG_CORRECTION_ENTRY       =
+*         IMPORTING
+*           FLAG_CANCELLED              =
+            EXCEPTIONS
+              no_authorization            = 1
+              no_entry_found              = 2
+              concept_used                = 3
+              no_master_language          = 4
+              no_source_system            = 5
+              no_tadir_entry              = 6
+              error_in_correction         = 7
+              user_cancelled              = 8
+              text_not_found              = 9
+              invalid_package             = 10
+              text_not_changeable         = 11
+              text_enqueued               = 12
+              no_correction               = 13
+              parameter_error             = 14
+              OTHERS                      = 15.
+          IF sy-subrc &lt;&gt; 0.
+            o_mycx ?= zaplink_cx=&gt;create_from_mf_cx( subrc = sy-subrc
+                                                 classname = &apos;ZAPLINK_CX_CONNECTOR&apos;
+                                                  funcname = &apos;SOTR_DELETE_CONCEPT&apos; ).
+            IF NOT msg_col IS BOUND.
+              RAISE EXCEPTION o_mycx.
+            ELSE.
+              CALL METHOD msg_col-&gt;add_exception
+                EXPORTING
+                  exception    = o_mycx
+*            id_detlevel  =
+*            id_probclass =
+                  .
+            ENDIF.
+          ENDIF.
+        ENDIF.
+
+        TRY.
+            CALL FUNCTION &apos;SOTR_CREATE_CONCEPT&apos;
+              EXPORTING
+                paket                               = _paket
+                crea_lan                            = &lt;cx&gt;-crea_lan
+                alias_name                          = &lt;cx&gt;-alias_name
+*       CATEGORY                            =
+                object                              = _type
+                entries                             = _entries
+*       FLAG_CORRECTION_ENTRY               =
+*       IN_UPDATE_TASK                      =
+                concept_default                     = &lt;cx&gt;-concept
+*       FLAG_COPY_TEXT                      =
+              IMPORTING
+                concept                             = ls_cx-concept
+*       NEW_ENTRIES                         =
+              EXCEPTIONS
+                package_missing                     = 1
+                crea_lan_missing                    = 2
+                object_missing                      = 3
+                paket_does_not_exist                = 4
+                alias_already_exist                 = 5
+                object_type_not_found               = 6
+                langu_missing                       = 7
+                identical_context_not_allowed       = 8
+                text_too_long                       = 9
+                error_in_update                     = 10
+                no_master_langu                     = 11
+                error_in_concept_id                 = 12
+                alias_not_allowed                   = 13
+                tadir_entry_creation_failed         = 14
+                internal_error                      = 15
+                error_in_correction                 = 16
+                user_cancelled                      = 17
+                no_entry_found                      = 18
+                OTHERS                              = 19.
+          CATCH cx_root.
+*        CALL METHOD msg_col-&gt;add_warning
+
+* Concept can&apos;t be created try build new one
+            CALL FUNCTION &apos;SOTR_CREATE_CONCEPT&apos;
+              EXPORTING
+                paket                               = _paket
+                crea_lan                            = &lt;cx&gt;-crea_lan
+                alias_name                          = &lt;cx&gt;-alias_name
+*       CATEGORY                            =
+                object                              = _type
+                entries                             = _entries
+*       FLAG_CORRECTION_ENTRY               =
+*       IN_UPDATE_TASK                      =
+*       CONCEPT_DEFAULT                     =
+*       FLAG_COPY_TEXT                      =
+              IMPORTING
+                concept                             = ls_cx-concept
+*       NEW_ENTRIES                         =
+              EXCEPTIONS
+                package_missing                     = 1
+                crea_lan_missing                    = 2
+                object_missing                      = 3
+                paket_does_not_exist                = 4
+                alias_already_exist                 = 5
+                object_type_not_found               = 6
+                langu_missing                       = 7
+                identical_context_not_allowed       = 8
+                text_too_long                       = 9
+                error_in_update                     = 10
+                no_master_langu                     = 11
+                error_in_concept_id                 = 12
+                alias_not_allowed                   = 13
+                tadir_entry_creation_failed         = 14
+                internal_error                      = 15
+                error_in_correction                 = 16
+                user_cancelled                      = 17
+                no_entry_found                      = 18
+                OTHERS                              = 19.
+        ENDTRY.
+        IF sy-subrc &lt;&gt; 0.
+          o_mycx ?= zaplink_cx=&gt;create_from_mf_cx( subrc = sy-subrc
+                                               classname = &apos;ZAPLINK_CX_CONNECTOR&apos;
+                                                funcname = &apos;SOTR_CREATE_CONCEPT&apos; ).
+          IF NOT msg_col IS BOUND.
+            RAISE EXCEPTION o_mycx.
+          ELSE.
+            CALL METHOD msg_col-&gt;add_exception
+              EXPORTING
+                exception    = o_mycx
+*            id_detlevel  =
+*            id_probclass =
+                .
+          ENDIF.
+          CONTINUE.
+        ENDIF.
+
+        CHECK ls_cx-concept &lt;&gt; &lt;cx&gt;-concept.
+
+        INSERT ls_cx INTO TABLE lt_cx.
+        DELETE fm_data-exceptions_texts.
+
+        READ TABLE fm_data-attributes ASSIGNING &lt;at&gt;
+             WITH KEY cmpname = ls_cx-cmpname.
+        IF sy-subrc = 0.
+          &lt;at&gt;-attvalue = sotr2value( ls_cx-concept ).
+        ELSE.
+* MESSAGE ID SY-MSGID TYPE SY-MSGTY NUMBER SY-MSGNO
+*         WITH SY-MSGV1 SY-MSGV2 SY-MSGV3 SY-MSGV4.
+        ENDIF.
+      ENDLOOP.
+
+      INSERT LINES OF fm_data-exceptions_texts INTO TABLE lt_cx.
+      fm_data-exceptions_texts = lt_cx.
+    CATCH zaplink_cx_connector INTO o_mycx.
+      RAISE EXCEPTION o_mycx.
+    CATCH zaplink_cx INTO o_cx.
+      mac_cascade_raise o_mycx o_cx.
+  ENDTRY.
+</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="VALUE2SOTR" VERSION="1" STATE="1" EDITORDER="2 " MTDDECLTYP="1">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Convert Attrvalue to SOTR_CONC"/>
+    </TEXTS>
+    <PARAMETERS>
+     <ITEM SCONAME="DATA" VERSION="1" CMPTYPE="1" EDITORDER="1 " PARPASSTYP="1" TYPTYPE="1" TYPE="SEOVALUE">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="Initial value"/>
+      </TEXTS>
+     </ITEM>
+     <ITEM SCONAME="RESULT" VERSION="1" CMPTYPE="1" EDITORDER="2 " PARDECLTYP="3" TYPTYPE="1" TYPE="SOTR_CONC">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="Key for Logical Object in the OTR"/>
+      </TEXTS>
+     </ITEM>
+    </PARAMETERS>
+    <SOURCE>
+  DATA _val TYPE seovalue.
+
+  _val = data.
+  REPLACE ALL OCCURRENCES OF &apos;&apos;&apos;&apos; IN _val WITH space.
+  CONDENSE _val.
+  result = _val.
+</SOURCE>
+   </ITEM>
+  </METHODS>
+  <REDEFINITIONS>
+   <ITEM REFCLSNAME="ZAPLINK_OBJECT_DATA" VERSION="1" MTDNAME="ANONYMIZE">
+    <SOURCE>
+  super-&gt;anonymize( ).
+  CLEAR:
+    a0_maindata-author,
+    a0_maindata-createdon,
+    a0_maindata-changedby,
+    a0_maindata-changedon,
+    a0_maindata-chgdanyby,
+    a0_maindata-chgdanyon,
+    a0_maindata-r3release,
+    a0_maindata-inheritance-author,
+    a0_maindata-inheritance-createdon,
+    a0_maindata-inheritance-changedby,
+    a0_maindata-inheritance-changedon.
+
+  DATA s_fr LIKE LINE OF friends.
+  DATA s_et LIKE LINE OF exceptions_texts.
+
+* FRIENDS
+  MODIFY friends FROM s_fr TRANSPORTING author createdon changedby changedon
+         WHERE NOT refclsname IS INITIAL.
+
+*REDEFINITIONS : OK
+*LOCAL : OK
+*EXCEPTIONS_TEXTS
+  MODIFY exceptions_texts FROM s_et TRANSPORTING author createdon changedby changedon r3release crea_name crea_tstut chan_name chan_tstut
+         WHERE NOT cmpname IS INITIAL.
+</SOURCE>
+   </ITEM>
+   <ITEM REFCLSNAME="ZAPLINK_OBJECT_DATA" VERSION="1" MTDNAME="COMPLETE_DATA">
+    <SOURCE>
+  DATA _val TYPE seovalue.
+  DATA _sotr LIKE LINE OF fm_data-exceptions_texts.
+  DATA _text TYPE STANDARD TABLE OF sotr_text.
+  DATA _attr_text LIKE LINE OF fm_data-component_desc.
+  FIELD-SYMBOLS:
+    &lt;pt&gt; LIKE LINE OF fm_data-component_desc,
+    &lt;st&gt; LIKE LINE OF _sotr-texts,
+    &lt;a&gt; LIKE LINE OF fm_data-attributes.
+
+  obj_name = fm_data-class-clsname.                         &quot; Issue 23
+  CALL METHOD super-&gt;complete_data
+    CHANGING
+      fm_data = fm_data.
+
+  IF fm_data-class-category = &apos;40&apos;.  &quot; 40	Exception Class
+    LOOP AT fm_data-attributes ASSIGNING &lt;a&gt;
+         WHERE attdecltyp = &apos;2&apos;   &quot; Constant
+           AND locked = abap_true
+           AND type = &apos;SOTR_CONC&apos;
+           AND NOT attvalue IS INITIAL.
+      CLEAR _sotr.
+      _sotr-concept = value2sotr( &lt;a&gt;-attvalue ).
+      CALL FUNCTION &apos;SOTR_GET_CONCEPT&apos;
+        EXPORTING
+          concept        = _sotr-concept
+        IMPORTING
+          header         = _sotr-hdr
+        TABLES
+          entries        = _text
+        EXCEPTIONS
+          no_entry_found = 1
+          OTHERS         = 2.
+      IF sy-subrc &lt;&gt; 0.
+        CLEAR: _sotr, _val, _text.
+        CONTINUE.
+      ENDIF.
+
+      _sotr-texts = _text.
+      _sotr-cmpname = &lt;a&gt;-cmpname.
+      INSERT _sotr INTO TABLE fm_data-exceptions_texts.
+      LOOP AT _sotr-texts ASSIGNING &lt;st&gt;
+           WHERE NOT text IS INITIAL.
+        READ TABLE fm_data-component_desc ASSIGNING &lt;pt&gt;
+             WITH KEY cmpname = &lt;a&gt;-cmpname
+                        langu = &lt;st&gt;-langu.
+        IF sy-subrc = 0.
+          IF &lt;pt&gt;-descript IS INITIAL.
+            &lt;pt&gt;-descript = &lt;st&gt;-text.
+          ENDIF.
+        ELSE.
+          MOVE-CORRESPONDING &lt;a&gt; TO _attr_text.
+          _attr_text-langu = &lt;st&gt;-langu.
+          _attr_text-descript = &lt;st&gt;-text.
+          INSERT _attr_text INTO TABLE fm_data-component_desc.
+        ENDIF.
+      ENDLOOP.
+
+    ENDLOOP.
+  ENDIF.
+</SOURCE>
+   </ITEM>
+   <ITEM REFCLSNAME="ZAPLINK_OBJECT_DATA" VERSION="1" MTDNAME="FROM_DATA">
+    <SOURCE>
+  DATA _in  LIKE LINE OF interfaces.
+*  DATA _ia  LIKE LINE OF _in-attributes_redefinition.
+  DATA _ia  LIKE LINE OF _in-components.
+  DATA _t   LIKE LINE OF a0_maindata-texts.
+  DATA _fr  LIKE LINE OF friends.
+  DATA _re  LIKE LINE OF me-&gt;redefinitions.
+  DATA _me  LIKE LINE OF methods.
+  DATA _mk  TYPE seocpdkey.
+  DATA _source TYPE zaplink_program=&gt;ts_source.
+  FIELD-SYMBOLS:
+    &lt;m_&gt;  LIKE LINE OF fm_data-includes-methods,
+    &lt;im&gt;  LIKE LINE OF fm_data-implementings,
+    &lt;ei&gt;  LIKE LINE OF fm_data-explore_implementings,
+    &lt;ic&gt;  LIKE LINE OF &lt;ei&gt;-comprisings,
+    &lt;rd&gt;  LIKE LINE OF fm_data-impl_details,
+    &lt;me&gt;  LIKE LINE OF methods,
+    &lt;fr&gt;  LIKE LINE OF fm_data-friendships,
+    &lt;re&gt;  LIKE LINE OF fm_data-redefinitions.
+
+* added for exception classes
+  FIELD-SYMBOLS:
+    &lt;cx&gt; LIKE LINE OF fm_data-exceptions_texts,
+    &lt;at&gt; LIKE LINE OF fm_data-attributes.
+  DATA _cx_text  LIKE LINE OF exceptions_texts.
+  DATA _sotr_key TYPE sotr_conc.
+  DATA _text     LIKE LINE OF _cx_text-longtexts.
+  DATA _fm_data  TYPE t_fm_data.
+
+  a0_maindata-hdr = fm_data-class.
+  obj_name = a0_maindata-clsname.
+  obj_version = a0_maindata-version.
+  obj_langu = a0_maindata-langu.
+
+*CLASS_DESC  TYPE tt_SEOCLASSTX,
+  a0_maindata-texts = fm_data-class_desc.
+  MODIFY a0_maindata-texts FROM _t TRANSPORTING clsname WHERE clsname &lt;&gt; _t-clsname.
+  CLEAR a0_maindata-descript.
+  a0_maindata-inheritance = fm_data-inheritance.
+  CLEAR a0_maindata-inheritance-clsname.
+
+* Attribute to Exception_text for exception class, must stand before calling super
+  _fm_data = fm_data.
+  IF fm_data-class-category = &apos;40&apos;.  &quot; 40	Exception Class
+    LOOP AT _fm_data-attributes ASSIGNING &lt;at&gt;
+         WHERE attdecltyp = &apos;2&apos;   &quot; Constant
+           AND locked = abap_true
+           AND type = &apos;SOTR_CONC&apos;
+           AND NOT attvalue IS INITIAL.
+      _sotr_key = value2sotr( &lt;at&gt;-attvalue ).
+      READ TABLE fm_data-exceptions_texts ASSIGNING &lt;cx&gt;
+           WITH TABLE KEY concept = _sotr_key.
+      IF sy-subrc &lt;&gt; 0.
+        CONTINUE.
+      ENDIF.
+      _cx_text-attr = &lt;at&gt;.
+      _cx_text-cx = &lt;cx&gt;-hdr.
+      _cx_text-longtexts = &lt;cx&gt;-texts.
+      _cx_text-texts = fd_comp_desc( descriptions = fm_data-component_desc
+                                        component = &lt;at&gt;-cmpname ).
+*      _cx_text-texts = &lt;cx&gt;-texts.
+*      MODIFY _cx_text-texts FROM _text TRANSPORTING concept WHERE concept &lt;&gt; _text-concept.    &quot; SOTR
+      MODIFY _cx_text-longtexts FROM _text TRANSPORTING concept WHERE concept &lt;&gt; _text-concept.    &quot; SOTR
+      CLEAR: _cx_text-attvalue, _cx_text-clsname, _cx_text-langu, _cx_text-descript.    &quot; Attribut
+* SOTR can&apos;t be change or created using external key.
+* When you change texts of an exception it&apos;s SOTR GUID change :-(
+      CLEAR: _cx_text-concept.                                                          &quot; SOTR
+* So don&apos;t save KEY to component useless
+      INSERT _cx_text INTO TABLE exceptions_texts.
+      DELETE _fm_data-attributes.                 &quot; exception text no logner an attribute
+    ENDLOOP.
+  ENDIF.
+
+  CALL METHOD super-&gt;from_data
+    EXPORTING
+      fm_data = _fm_data.
+
+* Dynpro : Issue 8
+  dynpros = _fm_data-dynpros.
+
+* TEXTPools : Issue 1
+  textspool = _fm_data-textspool.
+
+*LOCAL definitions
+  local-types-_ = get_source( fm_data-includes-ccdef ).
+  local-implementations-_ = get_source( fm_data-includes-ccimp ).
+  local-macros-_ = get_source( fm_data-includes-ccmac ).
+
+*IMPLEMENTINGS  TYPE  SEOR_IMPLEMENTINGS_R
+  LOOP AT fm_data-implementings ASSIGNING &lt;im&gt;
+          WHERE clsname = a0_maindata-clsname.
+    CLEAR _in.
+    _in-hdr = &lt;im&gt;.
+
+    LOOP AT fm_data-impl_details ASSIGNING &lt;rd&gt;
+         WHERE clsname = &lt;im&gt;-clsname
+           AND refclsname = &lt;im&gt;-refclsname.
+*           and version = &lt;im&gt;-version   &quot; needed ?
+      CLEAR _ia.
+*      _ia = &lt;rd&gt;.
+      _ia-hdr = &lt;rd&gt;.
+      CLEAR: _ia-clsname, _ia-refclsname.
+*      APPEND _ia  TO _in-attributes_redefinition.
+
+      IF &lt;rd&gt;-attvalue IS INITIAL             &quot; Component is a method
+* because attribute without new default value are not displayed in impl_details because not implemented (no change made)
+* Attribute in interface can&apos;t have any default value
+* If in the future they could have it will be necessary to test a interface with default value implemented by a class where default value is return to none.
+         AND &lt;rd&gt;-mtdabstrct IS INITIAL.      &quot; not abstract : with source code
+        CLEAR _mk.
+        _mk-clsname = &lt;rd&gt;-clsname.
+        CONCATENATE &lt;rd&gt;-refclsname method_separator &lt;rd&gt;-mtdname INTO _mk-cpdname.
+        READ TABLE _fm_data-includes-methods ASSIGNING &lt;m_&gt;
+             WITH KEY cpdkey = _mk.
+        IF sy-subrc = 0.
+          _ia-source-_ = get_source( &lt;m_&gt;-incname ).
+          IF NOT _ia-source-_ IS INITIAL.
+            CLEAR &lt;m_&gt;. &quot; do it once : DELETE _fm_data-includes-methods. dump
+          ENDIF.
+        ENDIF.
+        IF _ia-source-_ IS INITIAL.
+          _ia-source-_ = &apos;Source code Expected&apos;(sce). &quot; to generate a compilation error on target method in order to user to investigate the reson
+        ENDIF.
+      ENDIF.
+
+      INSERT _ia  INTO TABLE _in-components.
+    ENDLOOP.
+
+    CLEAR _in-clsname.
+    INSERT _in INTO TABLE interfaces.
+  ENDLOOP.
+
+* Interface declared in an other interface should be removed, because when adding interface the included interface will be added also
+* This prevent import failure
+  LOOP AT fm_data-explore_implementings ASSIGNING &lt;ei&gt;
+       WHERE NOT comprisings IS INITIAL.
+    LOOP AT &lt;ei&gt;-comprisings ASSIGNING &lt;ic&gt;.
+      DELETE interfaces WHERE refclsname = &lt;ic&gt;-refclsname.
+    ENDLOOP.
+  ENDLOOP.
+
+*Methodes Source
+* ISSUE 4
+*  LOOP AT _fm_data-includes-methods ASSIGNING &lt;m_&gt;.
+*    _source = get_source( &lt;m_&gt;-incname ).
+*    CHECK NOT _source IS INITIAL.
+*    _mk = &lt;m_&gt;-cpdkey.
+*    CHECK _mk-clsname = a0_maindata-clsname.
+*    READ TABLE methods ASSIGNING &lt;me&gt;
+*         WITH TABLE KEY cmpname = _mk-cpdname.
+*    IF sy-subrc = 0.
+*      &lt;me&gt;-source-_ = _source.
+*    ELSE.
+*      _me-cmpname = _mk-cpdname.
+*      _me-source-_ = _source.
+*      INSERT _me INTO TABLE methods.
+*    ENDIF.
+*  ENDLOOP.
+  LOOP AT methods ASSIGNING &lt;me&gt;.
+    _mk-clsname = a0_maindata-clsname.
+    _mk-cpdname = &lt;me&gt;-cmpname.
+    READ TABLE _fm_data-includes-methods ASSIGNING &lt;m_&gt;
+         WITH KEY cpdkey = _mk.
+    CHECK sy-subrc = 0.
+    _source = get_source( &lt;m_&gt;-incname ).
+    CHECK NOT _source IS INITIAL.
+    &lt;me&gt;-source-_ = _source.
+  ENDLOOP.
+* ISSUE 4
+
+*FRIENDSHIPS  TYPE  SEOF_FRIENDSHIPS_R
+  LOOP AT fm_data-friendships ASSIGNING &lt;fr&gt;
+    WHERE clsname = a0_maindata-clsname.
+    CLEAR _fr.
+    _fr = &lt;fr&gt;.
+    CLEAR _fr-clsname.
+    INSERT _fr INTO TABLE friends.
+  ENDLOOP.
+
+*REDEFINITIONS  TYPE  SEOR_REDEFINITIONS_R
+*IMPL_DETAILS TYPE  SEOR_REDEFINITIONS_R
+  LOOP AT fm_data-redefinitions ASSIGNING &lt;re&gt;
+       WHERE clsname = a0_maindata-clsname.
+    CLEAR: _re.
+    _re-hdr = &lt;re&gt;.
+
+    _mk-clsname = &lt;re&gt;-clsname.
+    _mk-cpdname = &lt;re&gt;-mtdname.
+    READ TABLE fm_data-includes-methods ASSIGNING &lt;m_&gt;
+         WITH KEY cpdkey = _mk.
+    IF sy-subrc = 0.
+      _re-source-_ = get_source( &lt;m_&gt;-incname ).
+    ENDIF.
+
+    CLEAR _re-clsname.
+    INSERT _re INTO TABLE redefinitions.
+  ENDLOOP.
+</SOURCE>
+   </ITEM>
+   <ITEM REFCLSNAME="ZAPLINK_OBJECT_DATA" VERSION="1" MTDNAME="TO_DATA">
+    <SOURCE>
+  DATA _t   LIKE LINE OF a0_maindata-texts.
+  DATA _in  LIKE LINE OF fm_data-implementings.
+  DATA _fr  LIKE LINE OF fm_data-friendships.
+  DATA _id  LIKE LINE OF fm_data-impl_details.
+  DATA _ms  LIKE LINE OF fm_data-method_sources.
+  DATA _at  LIKE LINE OF fm_data-attributes.
+  DATA _cx  LIKE LINE OF fm_data-exceptions_texts.
+  FIELD-SYMBOLS:
+    &lt;cx&gt;  LIKE LINE OF exceptions_texts,
+    &lt;re&gt;  LIKE LINE OF redefinitions,
+    &lt;in&gt;  LIKE LINE OF interfaces,
+*    &lt;ia&gt;  LIKE LINE OF &lt;in&gt;-attributes_redefinition,
+    &lt;ia&gt;  LIKE LINE OF &lt;in&gt;-components,
+    &lt;ct&gt;  LIKE LINE OF &lt;cx&gt;-texts,
+    &lt;fr&gt;  LIKE LINE OF friends.
+  DATA _text LIKE LINE OF _cx-texts.
+
+  obj_name = a0_maindata-clsname.
+  obj_version = a0_maindata-version.
+  obj_langu = a0_maindata-langu.
+
+* Warning recieving (will reset FM_DATA)
+  CALL METHOD super-&gt;to_data
+    RECEIVING
+      fm_data = fm_data.
+
+  fm_data-class = a0_maindata-hdr.
+  READ TABLE a0_maindata-texts INTO _t
+       WITH TABLE KEY langu = a0_maindata-langu.
+  IF sy-subrc = 0.
+    fm_data-class-descript = _t-descript.
+  ENDIF.
+
+* Dynpro : Issue 8
+  fm_data-dynpros = dynpros.
+
+* TEXTPools : Issue 1
+  fm_data-textspool = textspool.
+
+*LOCAL definitions
+  fm_data-locals_def = zaplink_object=&gt;conv_abap_source2raw( local-types-_ ).
+  fm_data-locals_imp = zaplink_object=&gt;conv_abap_source2raw( local-implementations-_ ).
+  fm_data-locals_mac = zaplink_object=&gt;conv_abap_source2raw( local-macros-_ ).
+
+*CLASS_DESC  TYPE tt_SEOCLASSTX,
+  fm_data-class_desc = a0_maindata-texts.
+  _t-clsname = a0_maindata-clsname.
+  MODIFY fm_data-class_desc FROM _t TRANSPORTING clsname WHERE clsname &lt;&gt; _t-clsname.
+
+  fm_data-inheritance = a0_maindata-inheritance.
+  fm_data-inheritance-clsname = a0_maindata-clsname.
+
+*IMPLEMENTINGS  TYPE  SEOR_IMPLEMENTINGS_R
+  LOOP AT interfaces ASSIGNING &lt;in&gt;.
+    CLEAR _in.
+    _in = &lt;in&gt;-hdr.
+    _in-clsname = a0_maindata-clsname.
+    INSERT _in INTO TABLE fm_data-implementings.
+
+*    LOOP AT &lt;in&gt;-attributes_redefinition ASSIGNING &lt;ia&gt;.
+*      _id = &lt;ia&gt;.
+    LOOP AT &lt;in&gt;-components ASSIGNING &lt;ia&gt;.
+      _id = &lt;ia&gt;-hdr.
+      _id-clsname = _in-clsname.
+      _id-refclsname = _in-refclsname .
+      APPEND _id TO fm_data-impl_details.
+      IF &lt;ia&gt;-attvalue IS INITIAL             &quot; Component is a method
+         AND &lt;ia&gt;-mtdabstrct IS INITIAL.      &quot; not abstract : with source code
+        CLEAR: _ms.
+
+        CONCATENATE &lt;in&gt;-refclsname method_separator &lt;ia&gt;-mtdname INTO _ms-cpdname.
+        _ms-redefine = abap_true.
+        _ms-source = zaplink_object=&gt;conv_abap_source2raw( &lt;ia&gt;-source-_ ).
+        APPEND _ms TO fm_data-method_sources.
+      ENDIF.
+    ENDLOOP.
+
+  ENDLOOP.
+
+*FRIENDS
+*FRIENDSHIPS  TYPE  SEOF_FRIENDSHIPS_R
+  LOOP AT friends ASSIGNING &lt;fr&gt;.
+    CLEAR _fr.
+    _fr = &lt;fr&gt;.
+    _fr-clsname = a0_maindata-clsname.
+    INSERT _fr INTO TABLE fm_data-friendships.
+  ENDLOOP.
+
+*REDEFINITIONS  TYPE  SEOR_REDEFINITIONS_R
+*IMPL_DETAILS TYPE  SEOR_REDEFINITIONS_R
+  LOOP AT redefinitions ASSIGNING &lt;re&gt;.
+    CLEAR: _ms.
+    &lt;re&gt;-clsname = a0_maindata-clsname.
+
+    APPEND &lt;re&gt;-hdr TO fm_data-redefinitions.
+
+    _ms-cpdname = &lt;re&gt;-mtdname.
+    _ms-redefine = abap_true.
+    _ms-source = zaplink_object=&gt;conv_abap_source2raw( &lt;re&gt;-source-_ ).
+    APPEND _ms TO fm_data-method_sources.
+  ENDLOOP.
+
+* For Exception classes
+  LOOP AT exceptions_texts ASSIGNING &lt;cx&gt;.
+    CLEAR _at.
+    _at = &lt;cx&gt;-attr.
+    _at-clsname = a0_maindata-clsname.
+    _at-attvalue = sotr2value( &lt;cx&gt;-concept ).
+
+    CALL METHOD td_comp_desc
+      EXPORTING
+        component    = &lt;cx&gt;-cmpname
+        texts        = &lt;cx&gt;-texts
+      CHANGING
+        descriptions = fm_data-component_desc.
+
+    _at-langu = a0_maindata-langu.
+    READ TABLE &lt;cx&gt;-texts ASSIGNING &lt;ct&gt;
+         WITH TABLE KEY langu = _at-langu.
+    IF sy-subrc = 0.
+      _at-descript = &lt;ct&gt;-descript.
+    ENDIF.
+    INSERT _at INTO TABLE fm_data-attributes.
+
+    CLEAR _cx.
+    _cx-hdr = &lt;cx&gt;-cx.
+    _cx-texts = &lt;cx&gt;-longtexts.
+    _text-concept = &lt;cx&gt;-concept.
+    MODIFY _cx-texts FROM _text TRANSPORTING concept WHERE concept &lt;&gt; _text-concept.    &quot; SOTR
+    INSERT _cx INTO TABLE fm_data-exceptions_texts.
+  ENDLOOP.
+</SOURCE>
+   </ITEM>
+  </REDEFINITIONS>
+  <TEXTSPOOL>
+   <ITEM ID="I" KEY="SCE">
+    <TEXTS>
+     <ITEM LANGU="E" ENTRY="Source code Expected" LENGTH="20 "/>
+    </TEXTS>
+   </ITEM>
+  </TEXTSPOOL>
+  <TYPEGROUPS>
+   <ITEM TYPEGROUP="ABAP" VERSION="1" IMPLICIT="X"/>
+   <ITEM TYPEGROUP="SEOF" VERSION="1" EXPLICIT="X"/>
+   <ITEM TYPEGROUP="SEOK" VERSION="1" EXPLICIT="X"/>
+   <ITEM TYPEGROUP="SEOO" VERSION="1" EXPLICIT="X"/>
+   <ITEM TYPEGROUP="SEOR" VERSION="1" EXPLICIT="X"/>
+   <ITEM TYPEGROUP="SEOS" VERSION="1" EXPLICIT="X"/>
+   <ITEM TYPEGROUP="SEOT" VERSION="1" EXPLICIT="X"/>
+  </TYPEGROUPS>
+  <TYPES>
+   <ITEM CMPNAME="TO_MSG_COL" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="1 " TYPTYPE="3" TYPE="ZAPLINK_MESSAGE_COLLECTOR">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Message Collector"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TS_CLASS_DATA" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="8 " TYPTYPE="4" SRCROW1="45 " SRCCOLUMN1="4 " SRCROW2="65 " SRCCOLUMN2="25 " TYPESRC_LENG="876 ">
+    BEGIN OF ts_class_data.
+    INCLUDE TYPE vseoclass AS hdr.
+*      Include type VSEOEXTEND as Inh.  &quot; Duplicate name for some fields
+    TYPES:
+**      CLSNAME     type SEOMETAREL-CLSNAME,
+*      REFCLSNAME  type SEOMETAREL-REFCLSNAME,
+**      VERSION     type SEOMETAREL-VERSION,
+**      STATE       type SEOMETAREL-STATE,
+*      AUTHOR      type SEOMETAREL-AUTHOR,
+*      CREATEDON   type SEOMETAREL-CREATEDON,
+*      CHANGEDBY   type SEOMETAREL-CHANGEDBY,
+*      CHANGEDON   type SEOMETAREL-CHANGEDON,
+*      RELNAME     type SEOMETAREL-RELNAME,
+        inheritance TYPE vseoextend,
+*        typegroups  TYPE tt_typegroups,
+*        interfaces  TYPE tt_interfaces,
+*        friends     TYPE tt_friends,
+        texts       TYPE tt_seoclasstx_s,
+        textpool    TYPE tt_txtp_textpools,
+        sources     TYPE ts_sources,
+      END OF ts_class_data
+
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Maindata of Class"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TS_EXCEPTION_TEXT" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="2 " TYPTYPE="4" SRCROW1="19 " SRCCOLUMN1="4 " SRCROW2="25 " SRCCOLUMN2="29 " TYPESRC_LENG="232 ">BEGIN OF ts_exception_text.
+    INCLUDE TYPE seoo_attribute_r AS attr.
+    INCLUDE TYPE sotr_head AS cx.
+    TYPES:
+        texts     TYPE tt_seocompotx_l,
+        longtexts TYPE tt_sotr_texts,
+      END OF ts_exception_text
+</ITEM>
+   <ITEM CMPNAME="TS_LOCALS" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="4 " TYPTYPE="4" SRCROW1="29 " SRCCOLUMN1="4 " SRCROW2="33 " SRCCOLUMN2="21 " TYPESRC_LENG="189 ">
+    BEGIN OF ts_locals,
+        types           TYPE ts_sourceasstruc,
+        implementations TYPE ts_sourceasstruc,
+        macros          TYPE ts_sourceasstruc,
+      END OF ts_locals
+
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Local data : Type, Implementaiton &amp; Macros"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TS_REDEFINITION" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="5 " TYPTYPE="4" SRCROW1="35 " SRCCOLUMN1="4 " SRCROW2="39 " SRCCOLUMN2="27 " TYPESRC_LENG="191 ">
+    BEGIN OF ts_redefinition.
+    INCLUDE TYPE seoredef AS hdr.  &quot; Méthodes redéfinies par relation d&apos;héritage
+    TYPES:
+        source  TYPE ts_sourceasstruc,
+      END OF ts_redefinition
+
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Method&apos;s redefinition data"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TT_EXCEPTIONS_TEXTS" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="3 " TYPTYPE="4" SRCROW1="27 " SRCCOLUMN1="4 " SRCROW2="27 " SRCCOLUMN2="85 " TYPESRC_LENG="84 ">tt_exceptions_texts TYPE SORTED TABLE OF ts_exception_text WITH UNIQUE KEY cmpname
+</ITEM>
+   <ITEM CMPNAME="TT_FRIENDS" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="7 " TYPTYPE="4" SRCROW1="43 " SRCCOLUMN1="4 " SRCROW2="43 " SRCCOLUMN2="86 " TYPESRC_LENG="85 ">
+    tt_friends    TYPE SORTED TABLE OF seofriends WITH UNIQUE KEY refclsname friendtype
+
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Class Friends list"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TT_REDEFINITIONS" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="6 " TYPTYPE="4" SRCROW1="41 " SRCCOLUMN1="4 " SRCROW2="41 " SRCCOLUMN2="80 " TYPESRC_LENG="79 ">
+    tt_redefinitions TYPE SORTED TABLE OF ts_redefinition WITH UNIQUE KEY mtdname
+
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Class&apos;s Methods redefinitions"/>
+    </TEXTS>
+   </ITEM>
+  </TYPES>
+ </RAW>
+</ZL_OBJECT>

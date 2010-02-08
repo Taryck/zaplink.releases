@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ZL_OBJECT CHECKSUM="49A44B4BBEF41D0439C5D2E1986171C0" CONNECTOR="AAAD0A4B07A5A05AE1000000AC120173" NAME="ZAPLINK_FRM_EXT" TYPE="PROG" VERSION="1.0">
+ <DIRECTORY DEVCLASS="ZAPLINK-FRAMEWORK-CORE-EXT" MASTERLANG="E"/>
+ <RAW>
+  <A0_MAINDATA VARCL="X" SUBC="I" APPL="S" VERN="000011" LEVL="700" RMAND="220" RLOAD="E" UCCHECK="X"/>
+  <SOURCE>
+*&amp;---------------------------------------------------------------------*
+*&amp;  Include           ZAPLINK_FRM_EXT
+*&amp;---------------------------------------------------------------------*
+*/---------------------get_current_screen_value-----------------------\
+FORM get_current_screen_value  USING    l_screen_field
+                                        l_screen_number
+                               CHANGING l_screen_value.
+
+  DATA it_dynpfields TYPE STANDARD TABLE OF dynpread.
+  DATA wa_dynpfields TYPE dynpread.
+
+
+  wa_dynpfields-fieldname = l_screen_field.
+  APPEND wa_dynpfields TO it_dynpfields.
+
+
+  CALL FUNCTION &apos;DYNP_VALUES_READ&apos;
+    EXPORTING
+      dyname                         = sy-cprog
+      dynumb                         = l_screen_number
+      translate_to_upper             = &apos;X&apos;
+*     REQUEST                        = &apos; &apos;
+*     PERFORM_CONVERSION_EXITS       = &apos; &apos;
+*     PERFORM_INPUT_CONVERSION       = &apos; &apos;
+*     DETERMINE_LOOP_INDEX           = &apos; &apos;
+    TABLES
+      dynpfields                     = it_dynpfields
+    EXCEPTIONS
+      invalid_abapworkarea           = 1
+      invalid_dynprofield            = 2
+      invalid_dynproname             = 3
+      invalid_dynpronummer           = 4
+      invalid_request                = 5
+      no_fielddescription            = 6
+      invalid_parameter              = 7
+      undefind_error                 = 8
+      double_conversion              = 9
+      stepl_not_found                = 10
+      OTHERS                         = 11
+            .
+  IF sy-subrc &lt;&gt; 0.
+*  MESSAGE ID SY-MSGID TYPE SY-MSGTY NUMBER SY-MSGNO
+*  WITH SY-MSGV1 SY-MSGV2 SY-MSGV3 SY-MSGV4.
+  ELSE.
+    READ TABLE it_dynpfields INTO wa_dynpfields
+      WITH KEY fieldname = l_screen_field.
+    IF sy-subrc = 0.
+      l_screen_value = wa_dynpfields-fieldvalue.
+    ENDIF.
+  ENDIF.
+
+
+ENDFORM.                    &quot; get_current_screen_value</SOURCE>
+  <TEXTSPOOL>
+   <ITEM ID="R">
+    <TEXTS>
+     <ITEM LANGU="E" ENTRY="Include ZAPLINK_FRM" LENGTH="19 "/>
+    </TEXTS>
+   </ITEM>
+  </TEXTSPOOL>
+ </RAW>
+</ZL_OBJECT>

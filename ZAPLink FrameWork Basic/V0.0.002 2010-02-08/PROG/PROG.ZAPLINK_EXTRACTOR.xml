@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ZL_OBJECT CHECKSUM="DCE2D7C2745982FD15DA53046D46E608" CONNECTOR="AAAD0A4B07A5A05AE1000000AC120173" NAME="ZAPLINK_EXTRACTOR" TYPE="PROG" VERSION="1.0">
+ <DIRECTORY DEVCLASS="ZAPLINK-FRAMEWORK-DEVTOOLS" MASTERLANG="E"/>
+ <RAW>
+  <A0_MAINDATA VARCL="X" SUBC="1" VERN="000008" RSTAT="K" RMAND="001" RLOAD="E" FIXPT="X" UCCHECK="X"/>
+  <SOURCE>
+*&amp;---------------------------------------------------------------------*
+*&amp; Report  ZAPLINK_EXTRACTOR
+*&amp;---------------------------------------------------------------------*
+
+REPORT  zaplink_extractor.
+
+TABLES: tdevc.
+
+PARAMETERS:
+  p_path TYPE zaplink_extractor=&gt;td_directoryname OBLIGATORY.
+SELECT-OPTIONS:
+  s_pack FOR tdevc-devclass.
+SELECTION-SCREEN BEGIN OF BLOCK mode WITH FRAME TITLE text-mod.
+PARAMETERS em_type TYPE c RADIOBUTTON GROUP r3 DEFAULT &apos;X&apos;.
+PARAMETERS em_pack TYPE c RADIOBUTTON GROUP r3.
+PARAMETERS em_cnx  TYPE c RADIOBUTTON GROUP r3.
+SELECTION-SCREEN END OF BLOCK mode.
+
+INITIALIZATION.
+  DATA t_pack LIKE LINE OF s_pack.
+
+  t_pack-sign = &apos;I&apos;.  t_pack-option = &apos;EQ&apos;.
+  t_pack-low = &apos;ZAPLINK&apos;.  APPEND t_pack TO s_pack.
+  t_pack-sign = &apos;E&apos;.  t_pack-option = &apos;EQ&apos;.
+  t_pack-low = &apos;ZAPLINK-FRAMEWORK-DEVTOOLS&apos;.  APPEND t_pack TO s_pack.
+  t_pack-sign = &apos;E&apos;.  t_pack-option = &apos;EQ&apos;.
+  t_pack-low = &apos;ZAPLINK-TUTORIALS&apos;.  APPEND t_pack TO s_pack.
+  t_pack-sign = &apos;E&apos;.  t_pack-option = &apos;EQ&apos;.
+  t_pack-low = &apos;ZAPLINK-INSTALLER&apos;.  APPEND t_pack TO s_pack.
+
+AT SELECTION-SCREEN OUTPUT.
+  DATA active TYPE i.
+  IF em_cnx IS INITIAL.
+    active = 1.
+  ELSE.
+    active = 0.
+  ENDIF.
+  LOOP AT SCREEN.
+    CHECK screen-name =&apos;S_PACK&apos;.
+    screen-active = active.
+    MODIFY SCREEN.
+  ENDLOOP.
+
+START-OF-SELECTION.
+  DATA o_extract TYPE REF TO zaplink_extractor.
+  DATA r_pack TYPE zaplink_extractor=&gt;tr_packages.
+
+  r_pack = s_pack[].
+  CREATE OBJECT o_extract.
+  IF NOT em_type IS INITIAL.
+    CALL METHOD o_extract-&gt;extract_by_type
+      EXPORTING
+        target_dir = p_path
+        package    = r_pack.
+  ELSEIF NOT em_pack IS INITIAL.
+    CALL METHOD o_extract-&gt;extract_by_package
+      EXPORTING
+        target_dir = p_path
+        package    = r_pack.
+  ELSEIF NOT em_cnx IS INITIAL.
+    CALL METHOD o_extract-&gt;extract_connectors
+      EXPORTING
+        target_dir = p_path
+        package    = r_pack.
+  ENDIF.
+
+END-OF-SELECTION.</SOURCE>
+  <TEXTSPOOL>
+   <ITEM ID="I" KEY="MOD">
+    <TEXTS>
+     <ITEM LANGU="E" ENTRY="Extraction mode :" LENGTH="17 "/>
+    </TEXTS>
+   </ITEM>
+   <ITEM ID="R">
+    <TEXTS>
+     <ITEM LANGU="E" ENTRY="ZAPLink : Extract all package to files" LENGTH="38 "/>
+    </TEXTS>
+   </ITEM>
+   <ITEM ID="S" KEY="EM_CNX">
+    <TEXTS>
+     <ITEM LANGU="E" ENTRY="        Connectors" LENGTH="18 "/>
+    </TEXTS>
+   </ITEM>
+   <ITEM ID="S" KEY="EM_PACK">
+    <TEXTS>
+     <ITEM LANGU="E" ENTRY="        Components by package Hier." LENGTH="35 "/>
+    </TEXTS>
+   </ITEM>
+   <ITEM ID="S" KEY="EM_TYPE">
+    <TEXTS>
+     <ITEM LANGU="E" ENTRY="        Components by type Hier." LENGTH="32 "/>
+    </TEXTS>
+   </ITEM>
+   <ITEM ID="S" KEY="P_PATH">
+    <TEXTS>
+     <ITEM LANGU="E" ENTRY="        Local store directory" LENGTH="29 "/>
+    </TEXTS>
+   </ITEM>
+   <ITEM ID="S" KEY="S_PACK">
+    <TEXTS>
+     <ITEM LANGU="E" ENTRY="D       ." LENGTH="15 "/>
+    </TEXTS>
+   </ITEM>
+  </TEXTSPOOL>
+ </RAW>
+</ZL_OBJECT>

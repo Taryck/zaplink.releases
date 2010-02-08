@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ZL_OBJECT CHECKSUM="7C58D1415CCD2098E5157EDF1F0321E5" CONNECTOR="39AC0A4B07A5A05AE1000000AC120173" NAME="ZAPLINK_DICTIONARY" TYPE="CLAS" VERSION="1.0">
+ <DIRECTORY DEVCLASS="ZAPLINK-CONNECTORS-MAIN" MASTERLANG="E"/>
+ <RAW>
+  <A0_MAINDATA VERSION="1" LANGU="E" UUID="A576624B87531F63E1000000AC120173" EXPOSURE="2" STATE="1" CLSCCINCL="X" FIXPT="X" UNICODE="X">
+   <INHERITANCE REFCLSNAME="ZAPLINK_CONNECTOR_" VERSION="1" STATE="1"/>
+   <TEXTS>
+    <ITEM LANGU="E" DESCRIPT="Data for Class"/>
+   </TEXTS>
+  </A0_MAINDATA>
+  <ATTRIBUTS>
+   <ITEM CMPNAME="BALLOG_SUBOBJECT" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="4 " ATTDECLTYP="2" ATTVALUE="&apos;CNX_DICTIONARY&apos;" TYPTYPE="1" TYPE="BALSUBOBJ">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Application Log: Subobject"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="SUPPORTEDTYPES" VERSION="1" STATE="1" EDITORDER="3 " ATTDECLTYP="2" TYPTYPE="4" SRCROW1="8 " SRCCOLUMN1="4 " SRCROW2="10 " SRCCOLUMN2="24 " TYPESRC_LENG="113 " TYPESRC="begin of SUPPORTEDTYPES,
+      TYPEGROUP type TD_COMPTYPE value &apos;TYPE&apos;, &quot;#EC NOTEXT
+    end of SUPPORTEDTYPES
+">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Connector supported types"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="_UUID" VERSION="1" STATE="1" EDITORDER="1 " ATTDECLTYP="2" ATTVALUE="&apos;5079624B82531D63E1000000AC120173&apos;" TYPTYPE="1" TYPE="TD_CONNUUID">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="UUID for connector Message class"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="_VER" VERSION="1" STATE="1" EDITORDER="2 " ATTDECLTYP="2" ATTVALUE="&apos;1.0&apos;" TYPTYPE="1" TYPE="TD_CONNVER">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Connector Version"/>
+    </TEXTS>
+   </ITEM>
+  </ATTRIBUTS>
+  <DEFERRED>
+   <CLASSES>
+    <ITEM TYPEGROUP="ZAPLINK_DOCUMENTATION" VERSION="1" TPUTYPE="1" IMPLICIT="X"/>
+   </CLASSES>
+  </DEFERRED>
+  <LOCAL>
+   <TYPES>
+*&quot;* USE THIS SOURCE FILE FOR ANY TYPE DECLARATIONS (CLASS
+*&quot;* definitions, interfaces or data types) you need for method
+*&quot;* IMPLEMENTATION OR PRIVATE METHOD&apos;S SIGNATURE</TYPES>
+   <IMPLEMENTATIONS>
+*&quot;* LOCAL CLASS IMPLEMENTATION FOR PUBLIC CLASS
+*&quot;* use this source file for the implementation part of
+*&quot;* LOCAL HELPER CLASSES</IMPLEMENTATIONS>
+   <MACROS>
+*&quot;* USE THIS SOURCE FILE FOR ANY MACRO DEFINITIONS YOU NEED
+*&quot;* in the implementation part of the class
+
+INCLUDE ZAPLINK_MACROS.</MACROS>
+  </LOCAL>
+  <METHODS>
+   <ITEM CMPNAME="CLASS_CONSTRUCTOR" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="2 " MTDTYPE="2" MTDDECLTYP="1">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="CLASS_CONSTRUCTOR"/>
+    </TEXTS>
+    <SOURCE>
+*table TDCLT
+*DOKCLASS DOKTITEL
+*  DATA _id LIKE LINE OF r_doc_id.
+*
+*  _id-sign = &apos;I&apos;. _id-option = &apos;EQ&apos;.
+*  _id-low = C_MSG_ID. APPEND _id TO r_doc_id.</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="CONSTRUCTOR" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="1 " MTDTYPE="2">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="CONSTRUCTOR"/>
+    </TEXTS>
+    <SOURCE>
+  DATA type LIKE LINE OF supported_types.
+
+  CALL METHOD super-&gt;constructor.
+  mac_create_log application_log ballog_subobject space.
+  type-type = supportedtypes-typegroup. INSERT type INTO TABLE supported_types.
+
+  uuid = _uuid.
+  version = _ver.</SOURCE>
+   </ITEM>
+  </METHODS>
+  <REDEFINITIONS>
+   <ITEM REFCLSNAME="ZAPLINK_CONNECTOR_" VERSION="1" MTDNAME="ZAPLINK_CNX_EXT_CLEANER~ANONYMIZE">
+    <SOURCE>
+*  DATA o_type TYPE to_data.
+*  DATA s_msg LIKE LINE OF o_type-&gt;messages.
+*
+*  TRY.
+*      super-&gt;zaplink_cnx_ext_cleaner~anonymize( object ).
+*    CATCH zaplink_cx_connector INTO o_mycx.
+*      RAISE EXCEPTION o_mycx.
+*  ENDTRY.
+*
+*  o_type ?= object-&gt;raw.
+*  CLEAR:
+**    o_type-&gt;A0_MAINDATA-RESPUSER,
+*    o_type-&gt;a0_maindata-lastuser,
+*    o_type-&gt;a0_maindata-ldate,
+*    o_type-&gt;a0_maindata-ltime.
+*
+*  MODIFY o_type-&gt;messages FROM s_msg TRANSPORTING name datum
+*         WHERE msgnr IS INITIAL OR
+*               msgnr IS NOT INITIAL.
+</SOURCE>
+   </ITEM>
+   <ITEM REFCLSNAME="ZAPLINK_CONNECTOR_" VERSION="1" MTDNAME="ZAPLINK_CNX_EXT_CLEANER~UNANONYMIZE">
+    <SOURCE>
+*  DATA o_type TYPE to_data.
+*  DATA s_msg LIKE LINE OF o_type-&gt;messages.
+*
+*  TRY.
+*      super-&gt;zaplink_cnx_ext_cleaner~unanonymize( object ).
+*    CATCH zaplink_cx_connector INTO o_mycx.
+*      RAISE EXCEPTION o_mycx.
+*  ENDTRY.
+*
+*  o_type ?= object-&gt;raw.
+*  if o_type-&gt;A0_MAINDATA-RESPUSER is INITIAL. o_type-&gt;A0_MAINDATA-RESPUSER = sy-uname. endif.
+*  s_msg-name = o_type-&gt;A0_MAINDATA-RESPUSER.
+*  MODIFY o_type-&gt;messages FROM s_msg TRANSPORTING name
+*         WHERE name IS INITIAL.
+</SOURCE>
+   </ITEM>
+   <ITEM REFCLSNAME="ZAPLINK_CONNECTOR_" VERSION="1" MTDNAME="ZAPLINK_CONNECTOR~CREATE_NEW_RAW">
+    <SOURCE>
+  DATA o_typegroup TYPE to_typegroup.
+
+  CREATE OBJECT object.
+  CASE type.
+    WHEN supportedtypes-typegroup.
+      CREATE OBJECT o_typegroup.
+      object-&gt;raw = o_typegroup.
+    WHEN OTHERS.
+      CLEAR object.
+* Type &apos;&amp;TYPE&amp;&apos; is not supported by this connector &apos;&amp;CONNCLASS&amp;&apos;
+      RAISE EXCEPTION TYPE zaplink_cx_connector
+        EXPORTING
+          textid = zaplink_cx_connector=&gt;type_not_supported
+          type   = type
+          connclass = &apos;ZAPLINK_DICTIONARY&apos;.
+  ENDCASE.
+</SOURCE>
+   </ITEM>
+   <ITEM REFCLSNAME="ZAPLINK_CONNECTOR_" VERSION="1" MTDNAME="ZAPLINK_CONNECTOR~DELETE_FROM_SAP">
+    <SOURCE>
+  DATA _name TYPE t100a-arbgb.
+  data type  type td_comptype.
+
+  TRY.
+
+      type = component-&gt;get_type( ).
+      CASE type.
+        WHEN supportedtypes-typegroup.
+          _name = component-&gt;get_name( ).
+*          CALL FUNCTION &apos;RS_DELETE_MESSAGE_ID&apos;
+*            EXPORTING
+*              nachrichtenklasse = _name
+*            EXCEPTIONS
+*              not_executed      = 1
+*              not_found         = 2
+*              no_permission     = 3
+*              OTHERS            = 4.
+          IF sy-subrc &lt;&gt; 0. &quot; SAP NameSpace
+            CASE sy-subrc.
+              WHEN 2.
+                RAISE EXCEPTION TYPE zaplink_cx_connector
+                  EXPORTING textid = zaplink_cx_connector=&gt;not_found.
+              WHEN OTHERS.
+                RAISE EXCEPTION TYPE zaplink_cx_connector
+                  EXPORTING textid = zaplink_cx_connector=&gt;system_error.
+            ENDCASE.
+          ENDIF.
+        WHEN OTHERS.
+* Type &apos;&amp;TYPE&amp;&apos; is not supported by this connector &apos;&amp;CONNCLASS&amp;&apos;
+          RAISE EXCEPTION TYPE zaplink_cx_connector
+            EXPORTING
+              textid = zaplink_cx_connector=&gt;type_not_supported
+              type   = type
+              connclass = &apos;ZAPLINK_MESSAGE&apos;.
+      ENDCASE.
+
+    CATCH zaplink_cx_connector INTO o_mycx.
+      RAISE EXCEPTION o_mycx.
+    CATCH zaplink_cx INTO o_cx.
+      mac_cascade_raise o_mycx o_cx.
+  ENDTRY.
+  result = abap_true.</SOURCE>
+   </ITEM>
+   <ITEM REFCLSNAME="ZAPLINK_CONNECTOR_" VERSION="1" MTDNAME="ZAPLINK_CONNECTOR~DO_EXISTS">
+    <SOURCE>
+  DATA _name TYPE t100a-arbgb.
+  DATA type  TYPE td_comptype.
+
+  exists = me-&gt;exists-not_exists.
+
+  TRY.
+      type = component-&gt;get_type( ).
+      CASE type.
+        WHEN supportedtypes-typegroup.
+          _name = component-&gt;get_name( ).
+          SELECT SINGLE arbgb INTO _name
+            FROM t100a
+            WHERE arbgb = _name.
+          IF sy-subrc = 0.
+            exists = me-&gt;exists-exists.
+          ENDIF.
+        WHEN OTHERS.
+* Type &apos;&amp;TYPE&amp;&apos; is not supported by this connector &apos;&amp;CONNCLASS&amp;&apos;
+          RAISE EXCEPTION TYPE zaplink_cx_connector
+            EXPORTING
+              textid = zaplink_cx_connector=&gt;type_not_supported
+              type   = type
+              connclass = &apos;ZAPLINK_MESSAGE&apos;.
+      ENDCASE.
+
+    CATCH zaplink_cx_connector INTO o_mycx.
+      RAISE EXCEPTION o_mycx.
+    CATCH zaplink_cx INTO o_cx.
+      mac_cascade_raise o_mycx o_cx.
+  ENDTRY.
+</SOURCE>
+   </ITEM>
+   <ITEM REFCLSNAME="ZAPLINK_CONNECTOR_" VERSION="1" MTDNAME="ZAPLINK_CONNECTOR~IS_SUPPORTED_VERSION">
+    <SOURCE>
+  result = abap_false.
+  if version = _ver.
+    result = abap_true.
+  endif.</SOURCE>
+   </ITEM>
+   <ITEM REFCLSNAME="ZAPLINK_CONNECTOR_" VERSION="1" MTDNAME="ZAPLINK_CONNECTOR~READ_FROM_SAP">
+    <SOURCE>
+*  DATA _data  TYPE to_data.
+*  DATA _obj   TYPE doku_obj.
+*  DATA t_t100 TYPE SORTED TABLE OF t100 WITH UNIQUE KEY msgnr sprsl.
+*  DATA _name  TYPE arbgb.
+*  DATA t_docs TYPE zaplink_documentation=&gt;tt_docs.
+*  FIELD-SYMBOLS:
+*    &lt;l&gt; LIKE LINE OF t_docs,
+*    &lt;lt&gt; LIKE LINE OF &lt;l&gt;-texts,
+*    &lt;t&gt; LIKE LINE OF t_t100,
+*    &lt;m&gt; LIKE LINE OF _data-&gt;messages,
+*    &lt;mt&gt; LIKE LINE OF &lt;m&gt;-texts.
+*
+*  DATA _text LIKE LINE OF &lt;m&gt;-texts.
+*  DATA _htxt LIKE LINE OF _data-&gt;texts.
+*  DATA _key  TYPE doku_obj.
+
+  TRY.
+
+      CREATE OBJECT object.
+      object-&gt;set_component( component ).
+
+      CASE component-&gt;get_type( ).
+        WHEN supportedtypes-typegroup.
+*          TRY.
+*              o_clas = export_from_sap_class( component ).
+*            CATCH zaplink_cx_connector INTO o_mycx.
+*              IF NOT o_mycx-&gt;messages IS BOUND.
+*                o_mycx-&gt;messages = application_log.
+*                o_mycx-&gt;update( ).
+*              ENDIF.
+*              RAISE EXCEPTION o_mycx.
+*          ENDTRY.
+*          CLEAR o_clas-&gt;a0_maindata-clsname.
+*          object-&gt;raw = o_clas.
+*        WHEN st_interface.
+*          TRY.
+*              o_intf = export_from_sap_interface( component ).
+*            CATCH zaplink_cx_connector INTO o_mycx.
+*              IF NOT o_mycx-&gt;messages IS BOUND.
+*                o_mycx-&gt;messages = application_log.
+*                o_mycx-&gt;update( ).
+*              ENDIF.
+*              RAISE EXCEPTION o_mycx.
+*          ENDTRY.
+*          CLEAR o_intf-&gt;a0_maindata-clsname.
+*          object-&gt;raw = o_intf.
+        WHEN OTHERS.
+          CLEAR object.
+* Type &apos;&amp;TYPE&amp;&apos; is not supported by this connector &apos;&amp;CONNCLASS&amp;&apos;
+          RAISE EXCEPTION TYPE zaplink_cx_connector
+            EXPORTING
+              textid = zaplink_cx_connector=&gt;type_not_supported
+              type   = object-&gt;type
+              connclass = &apos;ZAPLINK_MESSAGE&apos;.
+      ENDCASE.
+
+    CATCH zaplink_cx_connector INTO o_mycx.
+      RAISE EXCEPTION o_mycx.
+    CATCH zaplink_cx INTO o_cx.
+      mac_cascade_raise o_mycx o_cx.
+  ENDTRY.
+</SOURCE>
+   </ITEM>
+   <ITEM REFCLSNAME="ZAPLINK_CONNECTOR_" VERSION="1" MTDNAME="ZAPLINK_CONNECTOR~WRITE_TO_SAP">
+    <SOURCE>
+*  DATA _data TYPE to_data.
+*  DATA _comp TYPE to_component.
+*  DATA _name TYPE td_compname.
+*  DATA ls_doc LIKE LINE OF t_docs.
+*  FIELD-SYMBOLS:
+*    &lt;m&gt; LIKE LINE OF _data-&gt;messages,
+*    &lt;l&gt; LIKE LINE OF &lt;m&gt;-texts,
+*    &lt;t&gt; LIKE LINE OF _data-&gt;texts.
+
+  TRY.
+
+      CASE object-&gt;type.
+        WHEN supportedtypes-typegroup.
+*      _o_class ?= object-&gt;raw.
+*      _o_class-&gt;a0_maindata-clsname = object-&gt;name.
+*      TRY.
+*          components = import_to_sap_class( _o_class ).
+*        CATCH zaplink_cx_connector INTO o_mycx.
+*          IF NOT o_mycx-&gt;messages IS BOUND.
+*            o_mycx-&gt;messages = application_log.
+*            o_mycx-&gt;update( ).
+*          ENDIF.
+*          RAISE EXCEPTION o_mycx.
+*      ENDTRY.
+*    WHEN st_interface.
+*      _o_interface ?= object-&gt;raw.
+*      _o_interface-&gt;a0_maindata-clsname = object-&gt;name.
+*      TRY.
+*          components = import_to_sap_interface( _o_interface ).
+*        CATCH zaplink_cx_connector INTO o_mycx.
+*          IF NOT o_mycx-&gt;messages IS BOUND.
+*            o_mycx-&gt;messages = application_log.
+*            o_mycx-&gt;update( ).
+*          ENDIF.
+*          RAISE EXCEPTION o_mycx.
+*      ENDTRY.
+        WHEN OTHERS.
+* Type &apos;&amp;TYPE&amp;&apos; is not supported by this connector &apos;&amp;CONNCLASS&amp;&apos;
+          RAISE EXCEPTION TYPE zaplink_cx_connector
+            EXPORTING
+              textid = zaplink_cx_connector=&gt;type_not_supported
+              type   = object-&gt;type
+              connclass = &apos;ZAPLINK_DICTIONARY&apos;.
+      ENDCASE.
+
+    CATCH zaplink_cx_connector INTO o_mycx.
+      RAISE EXCEPTION o_mycx.
+    CATCH zaplink_cx INTO o_cx.
+      mac_cascade_raise o_mycx o_cx.
+  ENDTRY.
+</SOURCE>
+   </ITEM>
+  </REDEFINITIONS>
+  <TYPEGROUPS>
+   <ITEM TYPEGROUP="ABAP" VERSION="1" IMPLICIT="X"/>
+  </TYPEGROUPS>
+  <TYPES>
+   <ITEM CMPNAME="TO_TYPEGROUP" VERSION="1" EXPOSURE="1" STATE="1" EDITORDER="1 " TYPTYPE="3" TYPE="ZAPLINK_TYPE_DATA">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Data for Type group"/>
+    </TEXTS>
+   </ITEM>
+  </TYPES>
+ </RAW>
+</ZL_OBJECT>

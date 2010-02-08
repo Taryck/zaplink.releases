@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ZL_OBJECT CHECKSUM="FB1604DD85A9A52141C66E6E459D6015" CONNECTOR="AAAD0A4B07A5A05AE1000000AC120173" NAME="ZAPLINK" TYPE="PROG" VERSION="1.0">
+ <DIRECTORY DEVCLASS="ZAPLINK-FRAMEWORK-CORE" MASTERLANG="E"/>
+ <RAW>
+  <A0_MAINDATA EDTX="X" VARCL="X" SUBC="1" APPL="S" VERN="000047" RSTAT="S" RMAND="321" RLOAD="E" FIXPT="X" UCCHECK="X"/>
+  <DOCUMENTATION>
+   <ITEM APPLICATION="DOKU" ID="RE" OBJECT="ZAPLINK" LANGU="E" MASTERLANG="X" TYP="E" DOKFORM="S_DOCU_SHOW" DOKSTYLE="S_DOCUS1">
+    <TEXTS>
+     <ITEM TDSPRAS="E" TDFUSER="TBENSIAL" TDFRELES="700" TDFDATE="20091005" TDFTIME="102537" TDLUSER="TBENSIAL" TDLRELES="700" TDLDATE="20091005" TDLTIME="102539" TDLINESIZE="072">U1&amp;PURPOSE&amp;
+ASZAP Link interface program.
+ASAllow you to install component from XML paquet.
+U1&amp;INTEGRATION&amp;
+AS
+U1&amp;PREREQUISITES&amp;
+AS
+U1&amp;FEATURES&amp;
+AS
+U2&amp;SELECTION&amp;
+AS
+U2&amp;STANDARD_VARIANTS&amp;
+AS
+U2&amp;OUTPUT&amp;
+AS
+U1&amp;ACTIVITIES&amp;
+AS
+U1&amp;EXAMPLE&amp;
+AS</ITEM>
+    </TEXTS>
+   </ITEM>
+  </DOCUMENTATION>
+  <SOURCE>
+*    This program is part of ZAPLink framework. https://code.google.com/p/zaplink/
+*    Copyright (C) 2010  Taryck BENSIALI
+*
+*    This program is free software: you can redistribute it and/or modify
+*    it under the terms of the GNU General Public License as published by
+*    the Free Software Foundation, either version 3 of the License, or
+*    (at your option) any later version.
+*
+*    This program is distributed in the hope that it will be useful,
+*    but WITHOUT ANY WARRANTY; without even the implied warranty of
+*    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+*    GNU General Public License for more details.
+*
+*    You should have received a copy of the GNU General Public License
+*    along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.
+REPORT  zaplink.
+
+INCLUDE zaplink_top.
+INCLUDE zaplink_scr.
+
+*/----------------------main------------------------------------------\
+START-OF-SELECTION.
+*   create empty Container
+  IF a_create = &apos;X&apos;.
+    PERFORM create.
+*   add object to Container
+  ELSEIF a_add = &apos;X&apos;.
+    PERFORM add.
+*   import Container
+  ELSEIF a_import = &apos;X&apos;.
+    PERFORM import.
+*   display objects in a Container
+  ELSEIF a_dsp = &apos;X&apos;.
+    PERFORM display.
+*   Un install a Container
+  ELSEIF a_uninst = &apos;X&apos;.
+    PERFORM uninstall.
+  ELSEIF a_add_p = &apos;X&apos;.
+    PERFORM add_package.
+  ELSEIF a_add_tr = &apos;X&apos;.
+    PERFORM add_tr.
+  ENDIF.
+
+END-OF-SELECTION.
+*\--------------------------------------------------------------------/
+  INCLUDE zaplink_frm.</SOURCE>
+  <TEXTSPOOL>
+   <ITEM ID="I" KEY="001">
+    <TEXTS>
+     <ITEM LANGU="E" ENTRY="Object list for Container" LENGTH="25 "/>
+    </TEXTS>
+   </ITEM>
+   <ITEM ID="I" KEY="002">
+    <TEXTS>
+     <ITEM LANGU="E" ENTRY="You have an empty Container" LENGTH="27 "/>
+    </TEXTS>
+   </ITEM>
+   <ITEM ID="I" KEY="003">
+    <TEXTS>
+     <ITEM LANGU="E" ENTRY="Transport Request required" LENGTH="26 "/>
+    </TEXTS>
+   </ITEM>
+   <ITEM ID="I" KEY="BAC">
+    <TEXTS>
+     <ITEM LANGU="D" ENTRY="Actions :" LENGTH="25 "/>
+     <ITEM LANGU="E" ENTRY="Actions :" LENGTH="25 "/>
+    </TEXTS>
+   </ITEM>
+   <ITEM ID="I" KEY="BOP">
+    <TEXTS>
+     <ITEM LANGU="D" ENTRY="Options :" LENGTH="25 "/>
+     <ITEM LANGU="E" ENTRY="Options :" LENGTH="25 "/>
+    </TEXTS>
+   </ITEM>
+   <ITEM ID="I" KEY="DEV">
+    <TEXTS>
+     <ITEM LANGU="D" ENTRY="Package" LENGTH="7 "/>
+     <ITEM LANGU="E" ENTRY="Package" LENGTH="7 "/>
+    </TEXTS>
+   </ITEM>
+   <ITEM ID="I" KEY="DVF">
+    <TEXTS>
+     <ITEM LANGU="D" ENTRY="Fixed package value :" LENGTH="35 "/>
+     <ITEM LANGU="E" ENTRY="Fixed package value :" LENGTH="35 "/>
+    </TEXTS>
+   </ITEM>
+   <ITEM ID="I" KEY="FAI">
+    <TEXTS>
+     <ITEM LANGU="E" ENTRY="FAILED" LENGTH="6 "/>
+    </TEXTS>
+   </ITEM>
+   <ITEM ID="I" KEY="NCO">
+    <TEXTS>
+     <ITEM LANGU="E" ENTRY="no connector" LENGTH="12 "/>
+    </TEXTS>
+   </ITEM>
+   <ITEM ID="I" KEY="NCS">
+    <TEXTS>
+     <ITEM LANGU="E" ENTRY="Container created" LENGTH="25 "/>
+    </TEXTS>
+   </ITEM>
+   <ITEM ID="I" KEY="NRE">
+    <TEXTS>
+     <ITEM LANGU="E" ENTRY="not requested" LENGTH="13 "/>
+    </TEXTS>
+   </ITEM>
+   <ITEM ID="I" KEY="OTH">
+    <TEXTS>
+     <ITEM LANGU="E" ENTRY="Others" LENGTH="35 "/>
+    </TEXTS>
+   </ITEM>
+   <ITEM ID="I" KEY="SUC">
+    <TEXTS>
+     <ITEM LANGU="E" ENTRY="SUCCEED" LENGTH="7 "/>
+    </TEXTS>
+   </ITEM>
+   <ITEM ID="I" KEY="TRF">
+    <TEXTS>
+     <ITEM LANGU="D" ENTRY="Fixed value Transport Request :" LENGTH="35 "/>
+     <ITEM LANGU="E" ENTRY="Fixed value Transport Request :" LENGTH="35 "/>
+    </TEXTS>
+   </ITEM>
+   <ITEM ID="I" KEY="TRO">
+    <TEXTS>
+     <ITEM LANGU="D" ENTRY="Transport Request" LENGTH="132 "/>
+     <ITEM LANGU="E" ENTRY="Transport Request" LENGTH="35 "/>
+    </TEXTS>
+   </ITEM>
+   <ITEM ID="I" KEY="U01">
+    <TEXTS>
+     <ITEM LANGU="E" ENTRY="Uninstall" LENGTH="9 "/>
+    </TEXTS>
+   </ITEM>
+   <ITEM ID="R">
+    <TEXTS>
+     <ITEM LANGU="D" ENTRY="ZAPlink" LENGTH="7 "/>
+     <ITEM LANGU="E" ENTRY="ZAPlink V0.0.002" LENGTH="16 "/>
+     <ITEM LANGU="F" ENTRY="ZAPlink V0.0.001" LENGTH="70 "/>
+    </TEXTS>
+   </ITEM>
+   <ITEM ID="S" KEY="A_ADD">
+    <TEXTS>
+     <ITEM LANGU="D" LENGTH="36 "/>
+     <ITEM LANGU="E" ENTRY="        Add a component to container" LENGTH="36 "/>
+    </TEXTS>
+   </ITEM>
+   <ITEM ID="S" KEY="A_ADD_P">
+    <TEXTS>
+     <ITEM LANGU="D" LENGTH="35 "/>
+     <ITEM LANGU="E" ENTRY="        Add components from Package" LENGTH="35 "/>
+    </TEXTS>
+   </ITEM>
+   <ITEM ID="S" KEY="A_ADD_TR">
+    <TEXTS>
+     <ITEM LANGU="D" LENGTH="37 "/>
+     <ITEM LANGU="E" ENTRY="        Add components from Transport" LENGTH="37 "/>
+    </TEXTS>
+   </ITEM>
+   <ITEM ID="S" KEY="A_CREATE">
+    <TEXTS>
+     <ITEM LANGU="D" LENGTH="28 "/>
+     <ITEM LANGU="E" ENTRY="        Create new container" LENGTH="28 "/>
+    </TEXTS>
+   </ITEM>
+   <ITEM ID="S" KEY="A_DSP">
+    <TEXTS>
+     <ITEM LANGU="D" LENGTH="35 "/>
+     <ITEM LANGU="E" ENTRY="        Display container&apos;s content" LENGTH="35 "/>
+    </TEXTS>
+   </ITEM>
+   <ITEM ID="S" KEY="A_IMPORT">
+    <TEXTS>
+     <ITEM LANGU="D" LENGTH="33 "/>
+     <ITEM LANGU="E" ENTRY="        Import container&apos;s to SAP" LENGTH="33 "/>
+    </TEXTS>
+   </ITEM>
+   <ITEM ID="S" KEY="A_UNINST">
+    <TEXTS>
+     <ITEM LANGU="D" LENGTH="36 "/>
+     <ITEM LANGU="E" ENTRY="        Uninstall container from SAP" LENGTH="36 "/>
+    </TEXTS>
+   </ITEM>
+   <ITEM ID="S" KEY="CO_NAME">
+    <TEXTS>
+     <ITEM LANGU="D" LENGTH="19 "/>
+     <ITEM LANGU="E" ENTRY="        Object Name" LENGTH="19 "/>
+    </TEXTS>
+   </ITEM>
+   <ITEM ID="S" KEY="CO_TYPE">
+    <TEXTS>
+     <ITEM LANGU="D" ENTRY="D       ." LENGTH="17 "/>
+     <ITEM LANGU="E" ENTRY="D       ." LENGTH="19 "/>
+     <ITEM LANGU="F" ENTRY="D       ." LENGTH="19 "/>
+    </TEXTS>
+   </ITEM>
+   <ITEM ID="S" KEY="C_NAME">
+    <TEXTS>
+     <ITEM LANGU="D" LENGTH="22 "/>
+     <ITEM LANGU="E" ENTRY="        Container Name" LENGTH="22 "/>
+    </TEXTS>
+   </ITEM>
+   <ITEM ID="S" KEY="DEVCLASS">
+    <TEXTS>
+     <ITEM LANGU="D" ENTRY="D       ." LENGTH="13 "/>
+     <ITEM LANGU="E" ENTRY="D       ." LENGTH="15 "/>
+     <ITEM LANGU="F" ENTRY="D       ." LENGTH="15 "/>
+    </TEXTS>
+   </ITEM>
+   <ITEM ID="S" KEY="DEVC_F">
+    <TEXTS>
+     <ITEM LANGU="D" LENGTH="21 "/>
+     <ITEM LANGU="E" ENTRY="        Fixed value :" LENGTH="21 "/>
+    </TEXTS>
+   </ITEM>
+   <ITEM ID="S" KEY="DEVC_KE">
+    <TEXTS>
+     <ITEM LANGU="D" LENGTH="21 "/>
+     <ITEM LANGU="E" ENTRY="        Keep existing" LENGTH="21 "/>
+    </TEXTS>
+   </ITEM>
+   <ITEM ID="S" KEY="DEVC_LO">
+    <TEXTS>
+     <ITEM LANGU="D" LENGTH="28 "/>
+     <ITEM LANGU="E" ENTRY="        Local objects ($TMP)" LENGTH="28 "/>
+    </TEXTS>
+   </ITEM>
+   <ITEM ID="S" KEY="DEVC_NO">
+    <TEXTS>
+     <ITEM LANGU="D" LENGTH="20 "/>
+     <ITEM LANGU="E" ENTRY="        No overwrite" LENGTH="20 "/>
+    </TEXTS>
+   </ITEM>
+   <ITEM ID="S" KEY="DEVC_UC">
+    <TEXTS>
+     <ITEM LANGU="D" LENGTH="29 "/>
+     <ITEM LANGU="E" ENTRY="        Use container package" LENGTH="29 "/>
+    </TEXTS>
+   </ITEM>
+   <ITEM ID="S" KEY="F_NOSUB">
+    <TEXTS>
+     <ITEM LANGU="E" ENTRY="        Only specified component" LENGTH="32 "/>
+    </TEXTS>
+   </ITEM>
+   <ITEM ID="S" KEY="F_SUB">
+    <TEXTS>
+     <ITEM LANGU="E" ENTRY="        With sub-components" LENGTH="27 "/>
+    </TEXTS>
+   </ITEM>
+   <ITEM ID="S" KEY="PACKAGE">
+    <TEXTS>
+     <ITEM LANGU="D" ENTRY="D       ." LENGTH="20 "/>
+     <ITEM LANGU="E" ENTRY="        Package Name" LENGTH="20 "/>
+    </TEXTS>
+   </ITEM>
+   <ITEM ID="S" KEY="P_FILE">
+    <TEXTS>
+     <ITEM LANGU="D" LENGTH="17 "/>
+     <ITEM LANGU="E" ENTRY="        File Name" LENGTH="17 "/>
+    </TEXTS>
+   </ITEM>
+   <ITEM ID="S" KEY="P_TR">
+    <TEXTS>
+     <ITEM LANGU="D" ENTRY="D       ." LENGTH="23 "/>
+     <ITEM LANGU="E" ENTRY="D       ." LENGTH="20 "/>
+     <ITEM LANGU="F" ENTRY="D       ." LENGTH="20 "/>
+    </TEXTS>
+   </ITEM>
+   <ITEM ID="S" KEY="TR">
+    <TEXTS>
+     <ITEM LANGU="D" LENGTH="25 "/>
+     <ITEM LANGU="E" ENTRY="        Transport Request" LENGTH="25 "/>
+    </TEXTS>
+   </ITEM>
+   <ITEM ID="S" KEY="TR_FI">
+    <TEXTS>
+     <ITEM LANGU="D" LENGTH="19 "/>
+     <ITEM LANGU="E" ENTRY="        Fixed value" LENGTH="19 "/>
+    </TEXTS>
+   </ITEM>
+   <ITEM ID="S" KEY="TR_IN">
+    <TEXTS>
+     <ITEM LANGU="D" LENGTH="37 "/>
+     <ITEM LANGU="E" ENTRY="        User Input for each component" LENGTH="37 "/>
+    </TEXTS>
+   </ITEM>
+   <ITEM ID="S" KEY="TR_UC">
+    <TEXTS>
+     <ITEM LANGU="D" LENGTH="29 "/>
+     <ITEM LANGU="E" ENTRY="        Use container&apos;s value" LENGTH="29 "/>
+    </TEXTS>
+   </ITEM>
+   <ITEM ID="S" KEY="TR_US">
+    <TEXTS>
+     <ITEM LANGU="D" LENGTH="36 "/>
+     <ITEM LANGU="E" ENTRY="        Same transport for all comp." LENGTH="36 "/>
+    </TEXTS>
+   </ITEM>
+   <ITEM ID="T">
+    <TEXTS>
+     <ITEM LANGU="D" ENTRY="ZAP Link : ABAP Component Import/Export tools" LENGTH="45 "/>
+     <ITEM LANGU="E" ENTRY="ZAP Link : ABAP Component Import/Export tools" LENGTH="45 "/>
+    </TEXTS>
+   </ITEM>
+  </TEXTSPOOL>
+ </RAW>
+</ZL_OBJECT>

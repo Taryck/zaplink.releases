@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ZL_OBJECT CHECKSUM="CC7097C490B1BEB8AAFF3F63DAFA38EA" CONNECTOR="1FAC0A4B07A5A05AE1000000AC120173" NAME="ZAPLINK_OBJECT" TYPE="MSAG" VERSION="1.0">
+ <DIRECTORY DEVCLASS="ZAPLINK-CONNECTORS-MAIN" MASTERLANG="E"/>
+ <RAW>
+  <A0_MAINDATA MASTERLANG="E" RESPUSER="TBENSIAL"/>
+  <MESSAGES>
+   <ITEM MSGNR="000" APPLICATION="DOKU" TYP="E" DOKFORM="S_DOCU_SHOW" DOKSTYLE="S_DOCUS1">
+    <TEXTS>
+     <ITEM LANGU="E" SHORT_TXT="Fatal Error : Method &amp;1 (&amp;2) is implemented but without any definition">
+      <LONG_TXT TDVERSION="00001" TDFUSER="TBENSIAL" TDFRELES="700" TDFDATE="20100122" TDFTIME="110724" TDLUSER="TBENSIAL" TDLRELES="700" TDLDATE="20100122" TDLTIME="111501" TDLINESIZE="072">U1&amp;CAUSE&amp;
+ASWhen analyzing method&apos;s list, it appears that method &amp;V1&amp; of class &amp;V2&amp;
+  has an include (means is implemented) but no definition has been found
+  in method&apos;s list. This is not (as far as we known) a normal situation.
+ASCheck table &apos;METHODS&apos; of module function &apos;SEO_CLASS_TYPEINFO_GET&apos; and
+  compare it to method&apos;s include list. method&apos;s include list is the result
+  of method &apos;GET_ALL_METHOD_INCLUDES&apos; of class &apos;CL_OO_CLASSNAME_SERVICE&apos;.
+U1&amp;SYSTEM_RESPONSE&amp;
+AS
+U1&amp;WHAT_TO_DO&amp;
+ASCheck that class &amp;V2&amp; is OK (compile). If so try to copy it and use this
+  new class for export.
+ASIf none of this solutions works please send this case for support the
+  connector&apos;s developer, here goto ZAPLink home site.
+U1&amp;SYS_ADMIN&amp;
+AS</LONG_TXT>
+     </ITEM>
+    </TEXTS>
+   </ITEM>
+  </MESSAGES>
+  <TEXTS>
+   <ITEM LANGU="E" SHORT_TXT="Message for Class ZAPLINK_OBJECT"/>
+  </TEXTS>
+ </RAW>
+</ZL_OBJECT>

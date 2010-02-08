@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ZL_OBJECT CHECKSUM="51BD7B8D0ECC75CE12203F73277CB9DC" CONNECTOR="AAAD0A4B07A5A05AE1000000AC120173" NAME="ZAPLINK_TOP" TYPE="PROG" VERSION="1.0">
+ <DIRECTORY DEVCLASS="ZAPLINK-FRAMEWORK-CORE" MASTERLANG="E"/>
+ <RAW>
+  <A0_MAINDATA VARCL="X" SUBC="I" APPL="S" VERN="000052" LEVL="700" RMAND="220" RLOAD="E" UCCHECK="X"/>
+  <SOURCE>
+*---------------------------------------------------------------------*
+*  Include           ZAPLINLK_TOP
+*---------------------------------------------------------------------*
+TABLES: sscrfields, e071.
+
+TYPE-POOLS: icon, trwbo.
+
+TYPES t_objlist  TYPE zaplink_gui=&gt;to_list.
+TYPES t_comp     TYPE zaplink_gui=&gt;to_component.
+types t_msg_col  type zaplink_gui=&gt;TO_MSG_COLL.
+TYPES t_exception TYPE REF TO zaplink_cx.
+
+TYPES t_filename TYPE zaplink_gui=&gt;td_filename.
+TYPES td_name TYPE zaplink_gui=&gt;td_contname.
+TYPES t_obj_type TYPE zaplink_gui=&gt;td_comptype.
+TYPES t_obj_name TYPE zaplink_gui=&gt;td_compname.
+types td_devc_sk type ZAPLINK_OPT_DEVCLASS=&gt;td_substitutionkind.
+
+DATA is_selection        TYPE trwbo_selection.
+
+DATA objlist TYPE t_objlist.
+DATA d_filename TYPE t_filename.
+DATA d_name TYPE td_name.
+DATA obj_type TYPE t_obj_type.
+DATA obj_name TYPE t_obj_name.
+DATA o_exception TYPE t_exception.</SOURCE>
+  <TEXTSPOOL>
+   <ITEM ID="R">
+    <TEXTS>
+     <ITEM LANGU="E" ENTRY="Include ZAPLINLK_TOP" LENGTH="20 "/>
+    </TEXTS>
+   </ITEM>
+  </TEXTSPOOL>
+ </RAW>
+</ZL_OBJECT>
