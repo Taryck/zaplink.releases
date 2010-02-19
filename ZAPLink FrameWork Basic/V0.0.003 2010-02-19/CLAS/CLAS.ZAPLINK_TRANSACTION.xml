@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-16"?>
-<ZL_OBJECT CHECKSUM="92EBDBBF97DE7E937E00F2B74D6528FC" CONNECTOR="39AC0A4B07A5A05AE1000000AC120173" NAME="ZAPLINK_TRANSACTION" TYPE="CLAS" VERSION="1.01">
+<ZL_OBJECT CHECKSUM="87DCC2628E48D86BB6D20071394A3740" CONNECTOR="39AC0A4B07A5A05AE1000000AC120173" NAME="ZAPLINK_TRANSACTION" TYPE="CLAS" VERSION="1.01">
  <DIRECTORY DEVCLASS="ZAPLINK-CONNECTORS-MAIN" MASTERLANG="E"/>
  <RAW>
   <A0_MAINDATA VERSION="1" LANGU="E" UUID="4767664B7448937BE1000000AC120173" EXPOSURE="2" STATE="1" CLSCCINCL="X" FIXPT="X" UNICODE="X">
@@ -364,52 +364,53 @@ INCLUDE ZAPLINK_MACROS.</MACROS>
           CREATE OBJECT o_data.
           o_data-&gt;from_data( s_fm_data ).
 
-* Sub component
-          IF f_subcomp = abap_true.
-            IF o_data-&gt;a0_maindata-cinfo O transaction_types-object.
-* Object
-              _name = o_data-&gt;a0_maindata-classname.
-              IF NOT _name IS INITIAL.
-                o_conn = zaplink_connectors=&gt;create_connector( type = t_component-object ).
-                IF o_conn IS BOUND.
-                  CREATE OBJECT o_comp.
-                  o_comp-&gt;set_type( t_component-object ).
-                  o_comp-&gt;set_name( _name ).
-                  o_data-&gt;zl_object = o_conn-&gt;read_from_sap( o_comp ).
-                  IF o_data-&gt;zl_object IS BOUND.
-                    CLEAR o_data-&gt;a0_maindata-classname.
-                  ENDIF.
-                ENDIF.
-              ENDIF.
-            ELSEIF o_data-&gt;a0_maindata-cinfo O transaction_types-program.
-* Program
-              _name = o_data-&gt;a0_maindata-pgmna.
-              IF NOT _name IS INITIAL.
-                o_conn = zaplink_connectors=&gt;create_connector( type = t_component-program ).
-                IF o_conn IS BOUND.
-                  CREATE OBJECT o_comp.
-                  o_comp-&gt;set_type( t_component-program ).
-                  o_comp-&gt;set_name( _name ).
-                  o_data-&gt;zl_object = o_conn-&gt;read_from_sap( o_comp ).
-                  IF o_data-&gt;zl_object IS BOUND.
-                    CLEAR o_data-&gt;a0_maindata-pgmna.
-                  ENDIF.
-                ENDIF.
-              ENDIF.
-            ELSEIF o_data-&gt;a0_maindata-cinfo O transaction_types-transaction.
-* Transaction
-              _name = o_data-&gt;a0_maindata-call_tcode.
-              IF NOT _name IS INITIAL and _name &lt;&gt; d_name.
-                CREATE OBJECT o_comp.
-                o_comp-&gt;set_type( st_transaction ).
-                o_comp-&gt;set_name( _name ).
-                o_data-&gt;zl_object = zaplink_connector~read_from_sap( o_comp ).
-                IF o_data-&gt;zl_object IS BOUND.
-                  CLEAR o_data-&gt;a0_maindata-call_tcode.
-                ENDIF.
-              ENDIF.
-            ENDIF.
-          ENDIF.
+* Issue 40 : Sub object has been disabled
+** Sub component
+*          IF f_subcomp = abap_true.
+*            IF o_data-&gt;a0_maindata-cinfo O transaction_types-object.
+** Object
+*              _name = o_data-&gt;a0_maindata-classname.
+*              IF NOT _name IS INITIAL.
+*                o_conn = zaplink_connectors=&gt;create_connector( type = t_component-object ).
+*                IF o_conn IS BOUND.
+*                  CREATE OBJECT o_comp.
+*                  o_comp-&gt;set_type( t_component-object ).
+*                  o_comp-&gt;set_name( _name ).
+*                  o_data-&gt;zl_object = o_conn-&gt;read_from_sap( o_comp ).
+*                  IF o_data-&gt;zl_object IS BOUND.
+*                    CLEAR o_data-&gt;a0_maindata-classname.
+*                  ENDIF.
+*                ENDIF.
+*              ENDIF.
+*            ELSEIF o_data-&gt;a0_maindata-cinfo O transaction_types-program.
+** Program
+*              _name = o_data-&gt;a0_maindata-pgmna.
+*              IF NOT _name IS INITIAL.
+*                o_conn = zaplink_connectors=&gt;create_connector( type = t_component-program ).
+*                IF o_conn IS BOUND.
+*                  CREATE OBJECT o_comp.
+*                  o_comp-&gt;set_type( t_component-program ).
+*                  o_comp-&gt;set_name( _name ).
+*                  o_data-&gt;zl_object = o_conn-&gt;read_from_sap( o_comp ).
+*                  IF o_data-&gt;zl_object IS BOUND.
+*                    CLEAR o_data-&gt;a0_maindata-pgmna.
+*                  ENDIF.
+*                ENDIF.
+*              ENDIF.
+*            ELSEIF o_data-&gt;a0_maindata-cinfo O transaction_types-transaction.
+** Transaction
+*              _name = o_data-&gt;a0_maindata-call_tcode.
+*              IF NOT _name IS INITIAL and _name &lt;&gt; d_name.
+*                CREATE OBJECT o_comp.
+*                o_comp-&gt;set_type( st_transaction ).
+*                o_comp-&gt;set_name( _name ).
+*                o_data-&gt;zl_object = zaplink_connector~read_from_sap( o_comp ).
+*                IF o_data-&gt;zl_object IS BOUND.
+*                  CLEAR o_data-&gt;a0_maindata-call_tcode.
+*                ENDIF.
+*              ENDIF.
+*            ENDIF.
+*          ENDIF.
 
           object-&gt;set_component( component ).
           CLEAR o_data-&gt;a0_maindata-tcode.
@@ -448,6 +449,8 @@ INCLUDE ZAPLINK_MACROS.</MACROS>
   DATA d_remotedata TYPE string.
   DATA s_tstca LIKE LINE OF s_fm_data-tstca.
   DATA s_tstct LIKE LINE OF s_fm_data-tstct.
+  DATA o_conn  TYPE to_connector.
+  DATA o_list  TYPE to_list.
   FIELD-SYMBOLS:
     &lt;t&gt; LIKE LINE OF s_fm_data-tstct,
     &lt;st&gt; TYPE STANDARD TABLE,
@@ -466,12 +469,35 @@ INCLUDE ZAPLINK_MACROS.</MACROS>
   END-OF-DEFINITION.
 
   TRY.
+      CREATE OBJECT components.
 
       CASE object-&gt;type.
         WHEN st_transaction.
           o_data ?= object-&gt;raw.
 * Main data
           o_data-&gt;a0_maindata-tcode = object-&gt;name.
+
+* Sub object
+          IF o_data-&gt;zl_object IS BOUND.
+            IF o_data-&gt;a0_maindata-cinfo O transaction_types-object.
+* Object
+              o_data-&gt;a0_maindata-classname = o_data-&gt;zl_object-&gt;name.
+              o_conn = zaplink_connectors=&gt;create_connector( type = t_component-object ).
+            ELSEIF o_data-&gt;a0_maindata-cinfo O transaction_types-program.
+* Program
+              o_data-&gt;a0_maindata-pgmna = o_data-&gt;zl_object-&gt;name.
+              o_conn = zaplink_connectors=&gt;create_connector( type = t_component-program ).
+            ELSEIF o_data-&gt;a0_maindata-cinfo O transaction_types-transaction.
+* Transaction
+              o_data-&gt;a0_maindata-call_tcode = o_data-&gt;zl_object-&gt;name.
+              o_conn = me.
+            ENDIF.
+            IF o_conn IS BOUND.
+              o_list = o_conn-&gt;write_to_sap( o_data-&gt;zl_object ).
+              components-&gt;add_list( o_list ).
+            ENDIF.
+          ENDIF.
+
           s_fm_data = o_data-&gt;to_data( ).
 
           PERFORM refresh_global_data IN PROGRAM saplseuk.    &quot; to load program in memory
