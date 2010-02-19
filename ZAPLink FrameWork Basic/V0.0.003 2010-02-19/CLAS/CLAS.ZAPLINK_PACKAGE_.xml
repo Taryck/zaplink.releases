@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ZL_OBJECT CHECKSUM="47DA610F21ED08A82726E6B57AD6B6D0" CONNECTOR="39AC0A4B07A5A05AE1000000AC120173" NAME="ZAPLINK_PACKAGE_" TYPE="CLAS" VERSION="1.01">
+ <DIRECTORY DEVCLASS="ZAPLINK-FRAMEWORK-DEVTOOLS" MASTERLANG="E"/>
+ <RAW>
+  <A0_MAINDATA VERSION="1" LANGU="E" UUID="ED854D4B344C0573E1000000AC120173" EXPOSURE="2" STATE="1" CLSFINAL="X" CLSCCINCL="X" FIXPT="X" UNICODE="X">
+   <INHERITANCE REFCLSNAME="ZAPLINK_PACKAGE" VERSION="1" STATE="1"/>
+   <TEXTS>
+    <ITEM LANGU="E" DESCRIPT="ZAPLink : Package&apos;s friends"/>
+   </TEXTS>
+  </A0_MAINDATA>
+  <FRIENDS>
+   <ITEM REFCLSNAME="ZAPLINK_EXTRACTOR" VERSION="1" STATE="1"/>
+  </FRIENDS>
+  <LOCAL>
+   <TYPES>
+*&quot;* USE THIS SOURCE FILE FOR ANY TYPE DECLARATIONS (CLASS
+*&quot;* definitions, interfaces or data types) you need for method
+*&quot;* implementation or private method&apos;s signature
+</TYPES>
+   <IMPLEMENTATIONS>
+*&quot;* LOCAL CLASS IMPLEMENTATION FOR PUBLIC CLASS
+*&quot;* use this source file for the implementation part of
+*&quot;* local helper classes
+</IMPLEMENTATIONS>
+   <MACROS>
+*&quot;* USE THIS SOURCE FILE FOR ANY MACRO DEFINITIONS YOU NEED
+*&quot;* in the implementation part of the class
+</MACROS>
+  </LOCAL>
+  <METHODS>
+   <ITEM CMPNAME="CONSTRUCTOR" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="1 " MTDTYPE="2">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="CONSTRUCTOR"/>
+    </TEXTS>
+    <SOURCE>
+  super-&gt;constructor( ).
+  clear: supported_types, uuid, version.</SOURCE>
+   </ITEM>
+  </METHODS>
+ </RAW>
+</ZL_OBJECT>

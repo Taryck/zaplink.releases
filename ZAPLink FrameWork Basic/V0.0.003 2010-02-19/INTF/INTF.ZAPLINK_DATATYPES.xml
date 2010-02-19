@@ -1,0 +1,538 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ZL_OBJECT CHECKSUM="D5619C36690360151C94D1E2B165E2A3" CONNECTOR="39AC0A4B07A5A05AE1000000AC120173" NAME="ZAPLINK_DATATYPES" TYPE="INTF" VERSION="1.01">
+ <DIRECTORY DEVCLASS="ZAPLINK-FRAMEWORK-CORE" MASTERLANG="E"/>
+ <RAW>
+  <A0_MAINDATA VERSION="1" LANGU="E" UUID="A1F9034B756EB95AE1000000AC120173" EXPOSURE="2" STATE="1" RELEASE="1" UNICODE="X">
+   <TEXTS>
+    <ITEM LANGU="E" DESCRIPT="Zap Link : simple data types (no objects)"/>
+   </TEXTS>
+  </A0_MAINDATA>
+  <ATTRIBUTS>
+   <ITEM CMPNAME="BALLOG_OBJECT" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="4 " ATTDECLTYP="2" ATTVALUE="&apos;ZAPLINK&apos;" TYPTYPE="1" TYPE="BALOBJ_D">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Application Log: Object Name (Application Code)"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="COMP_NODENAME" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="5 " ATTDECLTYP="2" ATTVALUE="&apos;ZL_OBJECT&apos;" TYPTYPE="1" TYPE="STRING">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Name of the node in XML that belongs to component"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="EXISTS" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="1 " ATTDECLTYP="2" TYPTYPE="4" SRCROW1="223 " SRCCOLUMN1="4 " SRCROW2="226 " SRCCOLUMN2="16 " TYPESRC_LENG="138 " TYPESRC="BEGIN OF exists,
+      exists     TYPE td_exists VALUE abap_true,
+      not_exists TYPE td_exists VALUE abap_false,
+    END OF exists
+">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Do exists"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="EXT_SEP" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="6 " ATTDECLTYP="2" ATTVALUE="&apos;.&apos;" TYPTYPE="1" TYPE="C">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Extension Separator"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="FILE_EXT" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="7 " ATTDECLTYP="2" ATTVALUE="&apos;xml&apos;" TYPTYPE="1" TYPE="STRING">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Extracted Files extension"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="LINE_SEPARATOR" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="3 " ATTDECLTYP="2" ATTVALUE="CL_ABAP_CHAR_UTILITIES=&gt;NEWLINE" TYPTYPE="1" TYPE="ABAP_CHAR1">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Line separator Code =&gt; String"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TEXTPOOL_KINDS" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="2 " ATTDECLTYP="2" TYPTYPE="4" SRCROW1="228 " SRCCOLUMN1="4 " SRCROW2="234 " SRCCOLUMN2="24 " TYPESRC_LENG="490 " TYPESRC="BEGIN OF textpool_kinds,
+      prog_title  TYPE td_txtp_kind VALUE &apos;R&apos;, &quot; R - Program title
+      list_title  TYPE td_txtp_kind VALUE &apos;T&apos;, &quot; T - List Title: Titlebar
+      list_header TYPE td_txtp_kind VALUE &apos;H&apos;, &quot; H 001 to 004 List header: Column headings
+      text_symbol TYPE td_txtp_kind VALUE &apos;I&apos;, &quot; I Text symbol identifier Text symbol text
+      parameters  TYPE td_txtp_kind VALUE &apos;S&apos;, &quot; S Name of a parameter or selection criterion Selection text
+    END OF textpool_kinds
+">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Text pool possible kinds"/>
+    </TEXTS>
+   </ITEM>
+  </ATTRIBUTS>
+  <DEFERRED>
+   <CLASSES>
+    <ITEM TYPEGROUP="CL_ABAP_CHAR_UTILITIES" VERSION="1" TPUTYPE="1" IMPLICIT="X"/>
+   </CLASSES>
+  </DEFERRED>
+  <TYPEGROUPS>
+   <ITEM TYPEGROUP="ABAP" VERSION="1" EXPLICIT="X" IMPLICIT="X"/>
+  </TYPEGROUPS>
+  <TYPES>
+   <ITEM CMPNAME="TD_ABAPSOURCE" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="18 " TYPTYPE="1" TYPE="STRING">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="ABAP Source code"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TD_CHECKSUM" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="4 " TYPTYPE="1" TYPE="STRING">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="MD5 Checksum String"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TD_CLASSNAME" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="27 " TYPTYPE="1" TYPE="SEOCLSNAME">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="ABAP Object/Interface name"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TD_COMPEXISTS" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="28 " TYPTYPE="1" TYPE="TD_EXISTS">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Component Exists ?"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TD_COMPNAME" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="33 " TYPTYPE="1" TYPE="STRING">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Object Name"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TD_COMPTEXT" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="9 " TYPTYPE="1" TYPE="KO100-TEXT">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Object Type as long text"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TD_COMPTYPE" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="34 " TYPTYPE="1" TYPE="TADIR-OBJECT">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Object Type"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TD_CONNCLASS" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="29 " TYPTYPE="1" TYPE="TD_CLASSNAME">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Connector class name"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TD_CONNEXISTS" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="30 " TYPTYPE="1" TYPE="TD_EXISTS">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Connector Exists ?"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TD_CONNUUID" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="7 " TYPTYPE="1" TYPE="GUID_16">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="GUID in &apos;RAW&apos; format for connector"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TD_CONNVER" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="25 " TYPTYPE="1" TYPE="STRING">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Connector Version"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TD_CONTNAME" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="10 " TYPTYPE="1" TYPE="STRING">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Container Name"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TD_CONTVER" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="11 " TYPTYPE="1" TYPE="STRING">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Container Version"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TD_DEVCLASS" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="31 " TYPTYPE="1" TYPE="TADIR-DEVCLASS">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Package"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TD_DOC_ID" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="55 " TYPTYPE="1" TYPE="DOKU_ID">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Document class"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TD_EXISTS" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="26 " TYPTYPE="1" TYPE="ABAP_BOOL">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Exists Flag"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TD_FILENAME" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="12 " TYPTYPE="1" TYPE="STRING">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Filename"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TD_FILETYPE" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="13 " TYPTYPE="1" TYPE="CHAR1">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Filetype : Local or Server"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TD_LANG" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="44 " TYPTYPE="1" TYPE="SPRAS">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Language Key"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TD_LIGHT" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="23 " TYPTYPE="1" TYPE="ICON_L4">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Icon with output length 4"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TD_OBJ_TYPE" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="32 " TYPTYPE="1" TYPE="ABAP_ABSTYPENAME">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Object type string"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TD_ORDERKIND" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="3 " TYPTYPE="1" TYPE="CHAR1">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Kind of order (Sort) : Bottom-up Top-down or none"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TD_PROGNAME" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="20 " TYPTYPE="1" TYPE="PROGRAMM">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="ABAP Program Name"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TD_SEL_ACTION" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="24 " TYPTYPE="1" TYPE="CHAR1">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Selection Action : Export, Import, Uninstall"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TD_SUBSTITUTIONKIND" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="5 " TYPTYPE="1" TYPE="CHAR1">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Devclass substitution Kind"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TD_TRANSPORT_REQUEST" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="14 " TYPTYPE="1" TYPE="E070-TRKORR">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Request/Task"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TD_TXTP_ID" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="48 " TYPTYPE="1" TYPE="TEXTPOOLKY">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Text element key (number/selection name)"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TD_TXTP_KIND" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="47 " TYPTYPE="1" TYPE="TEXTPOOLID">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="ABAP/4 text pool ID (selection text/numbered text)"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TD_TXTP_LEN" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="46 " TYPTYPE="1" TYPE="TEXTPOOLLN">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Reserved length for text (with language reserve)"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TD_TXTP_TEXT" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="45 " TYPTYPE="1" TYPE="TEXTPOOLTX">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Language-dependent text in ABAP/4 text pool"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TD_TYPEORDER" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="2 " TYPTYPE="1" TYPE="I">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Order/Rank of component type"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TD_TYPE_AS_TEXT" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="8 " TYPTYPE="1" TYPE="KO100-TEXT">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Object type as Text"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TD_WITH_SUBCOMP" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="1 " TYPTYPE="1" TYPE="ABAP_BOOL">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="With Sub component"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TO_XML" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="22 " TYPTYPE="3" TYPE="IF_IXML_DOCUMENT">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="XML Object (Object)"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TR_DLVUNIT" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="17 " TYPTYPE="4" SRCROW1="50 " SRCCOLUMN1="4 " SRCROW2="50 " SRCCOLUMN2="41 " TYPESRC_LENG="40 ">
+    tr_dlvunit TYPE RANGE OF tdevc-dlvunit
+
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Range of Software Component"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TR_DOCID" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="63 " TYPTYPE="4" SRCROW1="178 " SRCCOLUMN1="4 " SRCROW2="178 " SRCCOLUMN2="35 " TYPESRC_LENG="34 ">
+    tr_docid TYPE RANGE OF td_doc_id
+
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Range of ID"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TR_PACKAGES" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="16 " TYPTYPE="4" SRCROW1="48 " SRCCOLUMN1="4 " SRCROW2="48 " SRCCOLUMN2="43 " TYPESRC_LENG="42 ">
+    tr_packages TYPE RANGE OF tadir-devclass
+
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Range of package"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TR_TR" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="15 " TYPTYPE="4" SRCROW1="46 " SRCCOLUMN1="4 " SRCROW2="46 " SRCCOLUMN2="43 " TYPESRC_LENG="42 ">
+    tr_tr TYPE RANGE OF td_transport_request
+
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Range of Transport Requests"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TS_BASE_ATTRIBUTS" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="37 " TYPTYPE="4" SRCROW1="79 " SRCCOLUMN1="4 " SRCROW2="84 " SRCCOLUMN2="29 " TYPESRC_LENG="205 ">
+    BEGIN OF ts_base_attributs,
+        name     TYPE td_compname,
+        class    TYPE td_connclass,
+        devclass TYPE td_devclass,
+        version  TYPE td_connver,
+      END OF ts_base_attributs
+
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Connector base attributs (you could add yours)"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TS_COMPKEY" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="35 " TYPTYPE="4" SRCROW1="72 " SRCCOLUMN1="4 " SRCROW2="75 " SRCCOLUMN2="20 " TYPESRC_LENG="105 ">
+    BEGIN OF ts_compkey,
+      type TYPE td_comptype,
+      name TYPE td_compname,
+    END OF ts_compkey
+
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Component Key (unique)"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TS_COMPONENT" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="64 " TYPTYPE="4" SRCROW1="180 " SRCCOLUMN1="4 " SRCROW2="183 " SRCCOLUMN2="26 " TYPESRC_LENG="121 ">
+    BEGIN OF ts_component,
+          type TYPE td_comptype,
+          name TYPE td_compname,
+        END OF ts_component
+
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Component Key as structure"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TS_CONNDATA" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="53 " TYPTYPE="4" SRCROW1="130 " SRCCOLUMN1="4 " SRCROW2="134 " SRCCOLUMN2="21 " TYPESRC_LENG="248 ">
+    BEGIN OF ts_conndata,
+      zsl_name      TYPE td_compname,         &quot; component name
+      zsl_connector TYPE td_connclass,        &quot; Connector class name
+      zsl_version   TYPE td_connver,          &quot; Connector version
+    END OF ts_conndata
+
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Connector informations"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TS_CONN_CLASS" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="38 " TYPTYPE="4" SRCROW1="86 " SRCCOLUMN1="4 " SRCROW2="90 " SRCCOLUMN2="25 " TYPESRC_LENG="159 ">
+    BEGIN OF ts_conn_class,
+      uuid      TYPE td_connuuid,
+      classname TYPE td_connclass,
+      devclass  TYPE td_devclass,
+      END OF ts_conn_class
+
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Connector info"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TS_CONN_DEF" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="40 " TYPTYPE="4" SRCROW1="94 " SRCCOLUMN1="4 " SRCROW2="99 " SRCCOLUMN2="25 " TYPESRC_LENG="228 ">
+    BEGIN OF ts_conn_def,
+          object        TYPE ko100-object,
+          text          TYPE ko100-text,
+          default_class TYPE td_connclass,
+          classes       TYPE tt_conn_classes,
+        END OF ts_conn_def
+
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Type&apos;s connectors"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TS_CONTDATA" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="54 " TYPTYPE="4" SRCROW1="136 " SRCCOLUMN1="4 " SRCROW2="138 " SRCCOLUMN2="25 " TYPESRC_LENG="85 ">
+    BEGIN OF ts_contdata,
+          name TYPE td_contname,
+        END OF ts_contdata
+
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Container base informations"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TS_DIRECTORY" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="6 " TYPTYPE="4" SRCROW1="13 " SRCCOLUMN1="4 " SRCROW2="36 " SRCCOLUMN2="22 " TYPESRC_LENG="797 ">
+    BEGIN OF ts_directory,
+* TADIR
+*      PGMID Type TADIR-PGMID,
+*      OBJECT Type TADIR-OBJECT,
+*      OBJ_NAME Type TADIR-OBJ_NAME,
+      korrnum TYPE tadir-korrnum,
+      srcsystem TYPE tadir-srcsystem,
+      author TYPE tadir-author,
+      srcdep TYPE tadir-srcdep,
+      devclass TYPE tadir-devclass,
+      genflag TYPE tadir-genflag,
+      edtflag TYPE tadir-edtflag,
+*      CPROJECT Type TADIR-CPROJECT,
+      masterlang TYPE tadir-masterlang,
+*      VERSID Type TADIR-VERSID,
+      paknocheck TYPE tadir-paknocheck,
+      objstablty TYPE tadir-objstablty,
+      component TYPE tadir-component,
+      crelease TYPE tadir-crelease,
+*      delflag TYPE tadir-delflag,
+      translttxt TYPE tadir-translttxt,
+* E071
+      trkorr TYPE e070-trkorr,
+    END OF ts_directory
+
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="TADIR informations to reproduce directory entries"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TS_DOC" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="61 " TYPTYPE="4" SRCROW1="170 " SRCCOLUMN1="4 " SRCROW2="174 " SRCCOLUMN2="16 " TYPESRC_LENG="147 ">BEGIN OF ts_doc.
+  INCLUDE TYPE ts_head AS head.
+  TYPES:
+      texts TYPE SORTED TABLE OF ts_lang WITH UNIQUE KEY tdspras,
+    END OF ts_doc
+</ITEM>
+   <ITEM CMPNAME="TS_DYNPRO" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="72 " TYPTYPE="4" SRCROW1="209 " SRCCOLUMN1="4 " SRCROW2="218 " SRCCOLUMN2="19 " TYPESRC_LENG="308 ">
+    BEGIN OF ts_dynpro.
+*  INCLUDE TYPE d020s AS hdr.
+  INCLUDE TYPE rpy_dyhead AS hdr.
+  TYPES:
+      texts      TYPE tt_dyntexts,
+      flow_logic TYPE ts_sourceasstruc,
+      matchcodes TYPE tt_matchcodes,
+      containers TYPE tt_dynp_containers,
+*      fields TYPE tt_fields,
+    END OF ts_dynpro
+
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="DYNPro data"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TS_DYNP_CONT" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="67 " TYPTYPE="4" SRCROW1="194 " SRCCOLUMN1="4 " SRCROW2="199 " SRCCOLUMN2="22 " TYPESRC_LENG="175 ">BEGIN OF ts_dynp_cont.
+*  INCLUDE TYPE d021s AS hdr.
+  INCLUDE TYPE rpy_dycatt AS hdr.       &quot; dycatt_tab
+  TYPES:
+      fields  TYPE tt_fields,
+    END OF ts_dynp_cont
+</ITEM>
+   <ITEM CMPNAME="TS_FIELD" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="65 " TYPTYPE="4" SRCROW1="185 " SRCCOLUMN1="4 " SRCROW2="190 " SRCCOLUMN2="18 " TYPESRC_LENG="162 ">BEGIN OF ts_field.
+*  INCLUDE TYPE d021s AS hdr.
+  INCLUDE TYPE rpy_dyfatc AS hdr.     &quot; dyfatc_tab
+  TYPES:
+      texts TYPE tt_texts,
+    END OF ts_field
+</ITEM>
+   <ITEM CMPNAME="TS_HEAD" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="57 " TYPTYPE="4" SRCROW1="143 " SRCCOLUMN1="4 " SRCROW2="153 " SRCCOLUMN2="19 " TYPESRC_LENG="394 ">BEGIN OF ts_head,   &quot; from DOKHL
+        application TYPE tdobject,
+        id          TYPE doku_id,
+        object      TYPE doku_obj,
+        langu       TYPE doku_langu,
+        masterlang  TYPE dokil-masterlang,
+        typ	        TYPE doku_typ,
+        dokform	    TYPE tdformnew,
+        dokstyle    TYPE tdstyle,
+        selfdef     TYPE dokil-selfdef,
+      END OF ts_head
+</ITEM>
+   <ITEM CMPNAME="TS_LANG" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="58 " TYPTYPE="4" SRCROW1="155 " SRCCOLUMN1="4 " SRCROW2="160 " SRCCOLUMN2="17 " TYPESRC_LENG="184 ">BEGIN OF ts_lang.   &quot; from DOKHL
+  INCLUDE TYPE thead AS head.
+  TYPES:
+      state       TYPE dokhl-dokstate,
+      _           TYPE string,      &quot; Long Text
+    END OF ts_lang
+</ITEM>
+   <ITEM CMPNAME="TS_SOURCEASSTRUC" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="19 " TYPTYPE="4" SRCROW1="53 " SRCCOLUMN1="4 " SRCROW2="55 " SRCCOLUMN2="26 " TYPESRC_LENG="86 ">BEGIN OF ts_sourceasstruc,
+      _ TYPE td_abapsource,
+    END OF ts_sourceasstruc
+</ITEM>
+   <ITEM CMPNAME="TS_TEXT" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="59 " TYPTYPE="4" SRCROW1="162 " SRCCOLUMN1="4 " SRCROW2="166 " SRCCOLUMN2="17 " TYPESRC_LENG="132 ">BEGIN OF ts_text,
+      langu      TYPE spras,
+      short_txt	 TYPE string,
+      long_txt   TYPE ts_lang,
+    END OF ts_text
+</ITEM>
+   <ITEM CMPNAME="TS_TXTP_TEXT" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="49 " TYPTYPE="4" SRCROW1="114 " SRCCOLUMN1="4 " SRCROW2="118 " SRCCOLUMN2="24 " TYPESRC_LENG="153 ">BEGIN OF ts_txtp_text,
+        langu   TYPE td_lang,
+        entry	  TYPE td_txtp_text,
+        length  TYPE td_txtp_len,
+      END OF ts_txtp_text
+</ITEM>
+   <ITEM CMPNAME="TS_TXTP_TEXTPOOL" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="51 " TYPTYPE="4" SRCROW1="122 " SRCCOLUMN1="4 " SRCROW2="126 " SRCCOLUMN2="28 " TYPESRC_LENG="163 ">BEGIN OF ts_txtp_textpool,
+        id    TYPE  td_txtp_kind,
+        key	  TYPE  td_txtp_id,
+        texts TYPE  tt_txtp_texts,
+      END OF ts_txtp_textpool
+</ITEM>
+   <ITEM CMPNAME="TS_TYPE" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="42 " TYPTYPE="4" SRCROW1="103 " SRCCOLUMN1="4 " SRCROW2="105 " SRCCOLUMN2="17 " TYPESRC_LENG="69 ">
+    BEGIN OF ts_type,
+      type TYPE td_comptype,
+    END OF ts_type
+
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Type definition"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TT_ABAPRAWSOURCE" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="21 " TYPTYPE="1" TYPE="RSWSOURCET">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="ABAP Source table"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TT_COMPKEYS" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="36 " TYPTYPE="4" SRCROW1="77 " SRCCOLUMN1="4 " SRCROW2="77 " SRCCOLUMN2="65 " TYPESRC_LENG="64 ">
+    tt_compkeys TYPE STANDARD TABLE OF ts_compkey WITH DEFAULT KEY
+
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="List of component keys"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TT_CONN_CLASSES" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="39 " TYPTYPE="4" SRCROW1="92 " SRCCOLUMN1="4 " SRCROW2="92 " SRCCOLUMN2="74 " TYPESRC_LENG="73 ">
+    tt_conn_classes TYPE SORTED TABLE OF ts_conn_class WITH UNIQUE KEY uuid
+
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="List of connector"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TT_DOCS" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="62 " TYPTYPE="4" SRCROW1="176 " SRCCOLUMN1="4 " SRCROW2="176 " SRCCOLUMN2="57 " TYPESRC_LENG="56 ">
+    tt_docs TYPE STANDARD TABLE OF ts_doc WITH DEFAULT KEY
+
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Documentations"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TT_DYNPROS" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="73 " TYPTYPE="4" SRCROW1="220 " SRCCOLUMN1="4 " SRCROW2="220 " SRCCOLUMN2="67 " TYPESRC_LENG="66 ">
+    tt_dynpros TYPE SORTED TABLE OF ts_dynpro WITH UNIQUE KEY screen
+
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="DYNPros data"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TT_DYNP_CONTAINERS" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="68 " TYPTYPE="4" SRCROW1="201 " SRCCOLUMN1="4 " SRCROW2="201 " SRCCOLUMN2="80 " TYPESRC_LENG="79 ">tt_dynp_containers TYPE SORTED TABLE OF ts_dynp_cont WITH NON-UNIQUE KEY name
+</ITEM>
+   <ITEM CMPNAME="TT_DYNTEXTS" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="71 " TYPTYPE="4" SRCROW1="207 " SRCCOLUMN1="4 " SRCROW2="207 " SRCCOLUMN2="62 " TYPESRC_LENG="61 ">tt_dyntexts TYPE SORTED TABLE OF d020t WITH UNIQUE KEY lang
+</ITEM>
+   <ITEM CMPNAME="TT_FIELDS" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="66 " TYPTYPE="4" SRCROW1="192 " SRCCOLUMN1="4 " SRCROW2="192 " SRCCOLUMN2="67 " TYPESRC_LENG="66 ">
+    tt_fields TYPE SORTED TABLE OF ts_field WITH NON-UNIQUE KEY name
+
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="DYNPro field list"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TT_FLOW_LOGIC" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="69 " TYPTYPE="4" SRCROW1="203 " SRCCOLUMN1="4 " SRCROW2="203 " SRCCOLUMN2="67 " TYPESRC_LENG="66 ">
+    tt_flow_logic TYPE STANDARD TABLE OF rpy_dyflow WITH DEFAULT KEY
+
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="DYNPro flow logic"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TT_MATCHCODES" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="70 " TYPTYPE="4" SRCROW1="205 " SRCCOLUMN1="4 " SRCROW2="205 " SRCCOLUMN2="67 " TYPESRC_LENG="66 ">
+    tt_matchcodes TYPE STANDARD TABLE OF rpy_dypara WITH DEFAULT KEY
+
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="DYNPro Match codes"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TT_RAWTEXT" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="56 " TYPTYPE="4" SRCROW1="141 " SRCCOLUMN1="4 " SRCROW2="141 " SRCCOLUMN2="59 " TYPESRC_LENG="58 ">tt_rawtext TYPE STANDARD TABLE OF tline WITH DEFAULT KEY
+</ITEM>
+   <ITEM CMPNAME="TT_TEXTS" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="60 " TYPTYPE="4" SRCROW1="168 " SRCCOLUMN1="4 " SRCROW2="168 " SRCCOLUMN2="62 " TYPESRC_LENG="61 ">tt_texts TYPE SORTED TABLE OF ts_text WITH UNIQUE KEY langu
+</ITEM>
+   <ITEM CMPNAME="TT_TXTP_TEXTPOOLS" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="52 " TYPTYPE="4" SRCROW1="128 " SRCCOLUMN1="4 " SRCROW2="128 " SRCCOLUMN2="81 " TYPESRC_LENG="80 ">tt_txtp_textpools TYPE SORTED TABLE OF ts_txtp_textpool WITH UNIQUE KEY id KEY
+</ITEM>
+   <ITEM CMPNAME="TT_TXTP_TEXTS" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="50 " TYPTYPE="4" SRCROW1="120 " SRCCOLUMN1="4 " SRCROW2="120 " SRCCOLUMN2="72 " TYPESRC_LENG="71 ">tt_txtp_texts TYPE SORTED TABLE OF ts_txtp_text WITH UNIQUE KEY langu
+</ITEM>
+   <ITEM CMPNAME="TT_TYPELIST" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="41 " TYPTYPE="4" SRCROW1="101 " SRCCOLUMN1="4 " SRCROW2="101 " SRCCOLUMN2="70 " TYPESRC_LENG="69 ">
+    tt_typelist TYPE SORTED TABLE OF ts_conn_def WITH UNIQUE KEY object
+
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="List of all connectors / component type"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TT_TYPES" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="43 " TYPTYPE="4" SRCROW1="107 " SRCCOLUMN1="4 " SRCROW2="107 " SRCCOLUMN2="61 " TYPESRC_LENG="60 ">
+    tt_types TYPE SORTED TABLE OF ts_type WITH UNIQUE KEY type
+
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="List of supported types"/>
+    </TEXTS>
+   </ITEM>
+  </TYPES>
+ </RAW>
+</ZL_OBJECT>

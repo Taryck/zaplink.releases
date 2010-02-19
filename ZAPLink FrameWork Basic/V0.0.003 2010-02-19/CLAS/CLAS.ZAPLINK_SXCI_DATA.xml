@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ZL_OBJECT CHECKSUM="66AD21C86E43882F9D439079E6BDE2E9" CONNECTOR="39AC0A4B07A5A05AE1000000AC120173" NAME="ZAPLINK_SXCI_DATA" TYPE="CLAS" VERSION="1.01">
+ <DIRECTORY DEVCLASS="ZAPLINK-CONNECTORS-MAIN" MASTERLANG="E"/>
+ <RAW>
+  <A0_MAINDATA VERSION="1" LANGU="E" UUID="7FF9034B756EB95AE1000000AC120173" EXPOSURE="2" STATE="1" CLSCCINCL="X" FIXPT="X" UNICODE="X">
+   <INHERITANCE REFCLSNAME="ZAPLINK_BADI_DATA" VERSION="1" STATE="1"/>
+   <TEXTS>
+    <ITEM LANGU="E" DESCRIPT="BADI Implementation data"/>
+   </TEXTS>
+  </A0_MAINDATA>
+  <ATTRIBUTS>
+   <ITEM CMPNAME="A0_MAINDATA" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="1 " TYPTYPE="1" TYPE="TS_MAINDATA">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="BADI Def Main data"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="FILTER" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="2 " TYPTYPE="1" TYPE="TS_FILTER">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Filter informations"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="IMPLEMENTATION" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="3 " TYPTYPE="1" TYPE="TO_RAW">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="implementation Object"/>
+    </TEXTS>
+   </ITEM>
+  </ATTRIBUTS>
+  <FRIENDS>
+   <ITEM REFCLSNAME="ZAPLINK_BADI" VERSION="1" STATE="1"/>
+   <ITEM REFCLSNAME="ZAPLINK_EASYXML" VERSION="1" STATE="1"/>
+  </FRIENDS>
+  <LOCAL>
+   <TYPES>
+*&quot;* USE THIS SOURCE FILE FOR ANY TYPE DECLARATIONS (CLASS
+*&quot;* definitions, interfaces or data types) you need for method
+*&quot;* IMPLEMENTATION OR PRIVATE METHOD&apos;S SIGNATURE</TYPES>
+   <IMPLEMENTATIONS>
+*&quot;* LOCAL CLASS IMPLEMENTATION FOR PUBLIC CLASS
+*&quot;* use this source file for the implementation part of
+*&quot;* LOCAL HELPER CLASSES</IMPLEMENTATIONS>
+   <MACROS>
+*&quot;* USE THIS SOURCE FILE FOR ANY MACRO DEFINITIONS YOU NEED
+*&quot;* IN THE IMPLEMENTATION PART OF THE CLASS</MACROS>
+  </LOCAL>
+  <REDEFINITIONS>
+   <ITEM REFCLSNAME="ZAPLINK_BADI_DATA" VERSION="1" MTDNAME="FROM_DATA">
+    <SOURCE>
+def_name = fm_data-implementation-exit_name.
+
+  CALL METHOD super-&gt;from_data
+    EXPORTING
+      fm_data = fm_data.
+
+  a0_maindata-main = fm_data-implementation.
+  a0_maindata-mast_langu = fm_data-mast_langu.
+  filter-enhanceable = fm_data-impl_w_filter.
+  filter-datatype = fm_data-filter_datatype.
+  filter-values = fm_data-filter_values.</SOURCE>
+   </ITEM>
+   <ITEM REFCLSNAME="ZAPLINK_BADI_DATA" VERSION="1" MTDNAME="TO_DATA">
+    <SOURCE>
+def_name = a0_maindata-exit_name.
+
+* Warning recieving (will reset FM_DATA)
+  CALL METHOD super-&gt;to_data
+    RECEIVING
+      fm_data = fm_data.
+
+  fm_data-implementation = a0_maindata-main.
+  fm_data-mast_langu = a0_maindata-mast_langu.
+*  READ TABLE a0_maindata-texts INTO _t
+*       WITH TABLE KEY langu = a0_maindata-langu.
+*  IF sy-subrc = 0.
+*    fm_data-implementation-descript = _t-descript.
+*  ENDIF.
+
+*CLASS_DESC  TYPE tt_SEOCLASSTX,
+*  fm_data-class_desc = a0_maindata-texts.
+*  _t-clsname = a0_maindata-clsname.
+*  MODIFY fm_data-class_desc FROM _t TRANSPORTING clsname WHERE clsname &lt;&gt; _t-clsname.
+
+  fm_data-impl_w_filter = filter-enhanceable.
+  fm_data-filter_datatype = filter-datatype.
+  fm_data-filter_values = filter-values.</SOURCE>
+   </ITEM>
+  </REDEFINITIONS>
+  <TYPEGROUPS>
+   <ITEM TYPEGROUP="SEEX" VERSION="1" EXPLICIT="X"/>
+  </TYPEGROUPS>
+  <TYPES>
+   <ITEM CMPNAME="TS_FILTER" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="2 " TYPTYPE="4" SRCROW1="21 " SRCCOLUMN1="4 " SRCROW2="27 " SRCCOLUMN2="19 " TYPESRC_LENG="262 ">
+    BEGIN OF ts_filter,
+      enhanceable TYPE rsexscrn-flt_ext,
+      datatype TYPE	rsexscrn-flt_type,
+*      Object   TYPE REF TO CL_BADI_FLT_VALUES_ALV,
+*  data FILTER_VALUES type SEEX_FILTER_TABLE .
+      values TYPE seex_filter_table,
+    END OF ts_filter
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Filter informations"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TS_MAINDATA" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="1 " TYPTYPE="4" SRCROW1="15 " SRCCOLUMN1="4 " SRCROW2="19 " SRCCOLUMN2="21 " TYPESRC_LENG="125 ">
+    BEGIN OF ts_maindata.
+  INCLUDE TYPE impl_data AS main.
+  TYPES:
+      mast_langu  TYPE  sy-langu,
+    END OF ts_maindata
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="BADI Def Main data"/>
+    </TEXTS>
+   </ITEM>
+  </TYPES>
+ </RAW>
+</ZL_OBJECT>

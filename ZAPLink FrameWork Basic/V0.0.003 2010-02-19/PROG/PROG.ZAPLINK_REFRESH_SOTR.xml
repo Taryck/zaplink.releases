@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ZL_OBJECT CHECKSUM="E1C24E9B1671DF6EA70DE4554BE60E16" CONNECTOR="AAAD0A4B07A5A05AE1000000AC120173" NAME="ZAPLINK_REFRESH_SOTR" TYPE="PROG" VERSION="1.0">
+ <DIRECTORY DEVCLASS="ZAPLINK-FRAMEWORK-DEVTOOLS" MASTERLANG="E"/>
+ <RAW>
+  <A0_MAINDATA EDTX="X" VARCL="X" SUBC="1" VERN="000005" RSTAT="K" RMAND="200" RLOAD="E" FIXPT="X" UCCHECK="X"/>
+  <SOURCE>
+*&amp;---------------------------------------------------------------------*
+*&amp; Report  ZAPLINK_REFRESH_SOTR
+*&amp;
+*&amp;---------------------------------------------------------------------*
+*&amp;
+*&amp;
+*&amp;---------------------------------------------------------------------*
+
+REPORT  zaplink_refresh_sotr.
+
+TABLES: sotr_head, sotr_use.
+TYPE-POOLS: abap.
+
+SELECT-OPTIONS:
+  s_objn FOR sotr_use-obj_name,
+  s_devc FOR sotr_head-paket.
+PARAMETERS
+  f_test TYPE abap_bool AS CHECKBOX DEFAULT abap_true.
+
+INITIALIZATION.
+  DATA _objn LIKE LINE OF s_objn[].
+  DATA _devc LIKE LINE OF s_devc[].
+
+  _objn-sign = &apos;I&apos;. _objn-option = &apos;CP&apos;.
+  _objn-low = &apos;Z*&apos;. APPEND _objn TO s_objn.
+
+  _devc-sign = &apos;I&apos;. _devc-option = &apos;CP&apos;.
+  _devc-low = &apos;Z*&apos;. APPEND _devc TO s_devc.
+  _devc-sign = &apos;I&apos;. _devc-option = &apos;EQ&apos;.
+  _devc-low = &apos;$TMP&apos;. APPEND _devc TO s_devc.
+
+START-OF-SELECTION.
+  TYPES:
+    BEGIN OF ts_extract.
+  INCLUDE TYPE sotr_use AS s_use.
+  TYPES:
+      concept_ TYPE sotr_head-concept,
+      clsname TYPE seoclass-clsname,
+    END OF ts_extract.
+  TYPES tt_extract TYPE STANDARD TABLE OF ts_extract WITH DEFAULT KEY.
+
+  DATA t_extract TYPE tt_extract.
+  FIELD-SYMBOLS:
+    &lt;e&gt; LIKE LINE OF t_extract.
+  DATA t_del TYPE sotr_use_tt.
+  DATA msg TYPE string.
+
+  SELECT u~pgmid u~object u~obj_name u~concept u~lfd_num
+         h~concept
+         u~obj_name
+     INTO TABLE t_extract
+     FROM sotr_use AS u
+      LEFT JOIN sotr_head AS h ON h~concept = u~concept
+     WHERE u~pgmid = &apos;LIMU&apos;
+       AND u~object = &apos;CPUB&apos;
+       AND u~obj_name IN s_objn.
+
+* Add to delete SOTR without header
+  LOOP AT t_extract ASSIGNING &lt;e&gt;
+       WHERE concept_ IS INITIAL.
+    WRITE:/ &lt;e&gt;-obj_name,&lt;e&gt;-concept.
+    APPEND &lt;e&gt;-s_use TO t_del.
+  ENDLOOP.
+
+  WRITE:/ sy-uline.
+
+  SELECT u~pgmid u~object u~obj_name u~concept u~lfd_num
+         h~concept
+         c~clsname
+     INTO TABLE t_extract
+     FROM sotr_use AS u
+      INNER JOIN  sotr_head AS h ON h~concept = u~concept
+      LEFT JOIN seoclass AS c ON c~clsname = u~obj_name
+     WHERE u~pgmid = &apos;LIMU&apos;
+       AND u~object = &apos;CPUB&apos;
+       AND u~obj_name IN s_objn
+       AND h~paket IN s_devc.
+
+* Add to delete SOTR without class
+  DELETE t_extract WHERE NOT clsname IS INITIAL.
+  LOOP AT t_extract ASSIGNING &lt;e&gt;.
+    WRITE:/ &lt;e&gt;-obj_name,&lt;e&gt;-concept.
+    APPEND &lt;e&gt;-s_use TO t_del.
+  ENDLOOP.
+
+  IF f_test IS INITIAL.
+    CALL FUNCTION &apos;SOTR_USAGE_DELETE&apos;
+      EXPORTING
+        sotr_usage = t_del.
+
+    LOOP AT t_extract ASSIGNING &lt;e&gt;.
+      CALL FUNCTION &apos;SOTR_DELETE_CONCEPT&apos;
+        EXPORTING
+          concept                     = &lt;e&gt;-concept
+*       IN_UPDATE_TASK              =
+*       FLAG_CHECK_USAGE            =
+*       FLAG_CHECK_AUTHORITY        =
+*       FLAG_CHECK_MASTER           =
+*       LANGU                       = SY-LANGU
+*       FLAG_CORRECTION_ENTRY       =
+*     IMPORTING
+*       FLAG_CANCELLED              =
+        EXCEPTIONS
+          no_authorization            = 1
+          no_entry_found              = 2
+          concept_used                = 3
+          no_master_language          = 4
+          no_source_system            = 5
+          no_tadir_entry              = 6
+          error_in_correction         = 7
+          user_cancelled              = 8
+          text_not_found              = 9
+          invalid_package             = 10
+          text_not_changeable         = 11
+          text_enqueued               = 12
+          no_correction               = 13
+          parameter_error             = 14
+          OTHERS                      = 15
+                .
+      IF sy-subrc &lt;&gt; 0.
+        MESSAGE ID sy-msgid TYPE sy-msgty NUMBER sy-msgno WITH sy-msgv1 sy-msgv2 sy-msgv3 sy-msgv4 INTO msg.
+        WRITE:/ &lt;e&gt;-concept, &lt;e&gt;-obj_name, sy-subrc, msg.
+      ENDIF.
+
+    ENDLOOP.
+  ENDIF.</SOURCE>
+  <TEXTSPOOL>
+   <ITEM ID="R">
+    <TEXTS>
+     <ITEM LANGU="E" ENTRY="Refresh SOTR_USE" LENGTH="16 "/>
+    </TEXTS>
+   </ITEM>
+   <ITEM ID="S" KEY="F_TEST">
+    <TEXTS>
+     <ITEM LANGU="E" ENTRY="        Test mode (no update)" LENGTH="29 "/>
+    </TEXTS>
+   </ITEM>
+   <ITEM ID="S" KEY="S_DEVC">
+    <TEXTS>
+     <ITEM LANGU="E" ENTRY="D       ." LENGTH="15 "/>
+    </TEXTS>
+   </ITEM>
+   <ITEM ID="S" KEY="S_OBJN">
+    <TEXTS>
+     <ITEM LANGU="E" ENTRY="D       ." LENGTH="17 "/>
+    </TEXTS>
+   </ITEM>
+  </TEXTSPOOL>
+ </RAW>
+</ZL_OBJECT>

@@ -1,0 +1,2833 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ZL_OBJECT CHECKSUM="DD1FAB878DA8B8115C6FC4538B4916A9" CONNECTOR="39AC0A4B07A5A05AE1000000AC120173" NAME="ZAPLINK_PACKAGE" TYPE="CLAS" VERSION="1.01">
+ <DIRECTORY DEVCLASS="ZAPLINK-CONNECTORS-MAIN" MASTERLANG="E"/>
+ <RAW>
+  <A0_MAINDATA VERSION="1" LANGU="E" UUID="AB2B044B702B371EE1000000AC120173" EXPOSURE="2" STATE="1" CLSCCINCL="X" FIXPT="X" UNICODE="X" MSG_ID="ZAPLINK_PACKAGE">
+   <INHERITANCE REFCLSNAME="ZAPLINK_CONNECTOR_" VERSION="1" STATE="1"/>
+   <TEXTS>
+    <ITEM LANGU="E" DESCRIPT="ZAPLink Package &amp; Interface package connector"/>
+    <ITEM LANGU="F" DESCRIPT="ZAPLink : Connecteur pour Classe &amp; Interface"/>
+   </TEXTS>
+  </A0_MAINDATA>
+  <ATTRIBUTS>
+   <ITEM CMPNAME="BALLOG_SUBOBJECT" VERSION="1" STATE="1" EDITORDER="8 " ATTDECLTYP="2" ATTVALUE="&apos;CNX_PACKAGE&apos;" TYPTYPE="1" TYPE="BALSUBOBJ">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Application Log: Subobject"/>
+     <ITEM LANGU="F" DESCRIPT="Application Log: Subobject"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="CAT_ELE" VERSION="1" STATE="1" EDITORDER="3 " ATTDECLTYP="1" TYPTYPE="1" TYPE="SLIS_T_FIELDCAT_ALV">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Field Catalog"/>
+     <ITEM LANGU="F" DESCRIPT="Field Catalog"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="CAT_LAYOUT" VERSION="1" STATE="1" EDITORDER="4 " ATTDECLTYP="1" TYPTYPE="1" TYPE="SLIS_LAYOUT_ALV">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="ALV Layout"/>
+     <ITEM LANGU="F" DESCRIPT="ALV Layout"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="ST_INTERFACE" VERSION="1" STATE="1" EDITORDER="2 " ATTDECLTYP="2" ATTVALUE="&apos;PINF&apos;" TYPTYPE="1" TYPE="TD_COMPTYPE">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Transport category : Object Interface"/>
+     <ITEM LANGU="F" DESCRIPT="Transport category : Object Interface"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="ST_PACKAGE" VERSION="1" STATE="1" EDITORDER="1 " ATTDECLTYP="2" ATTVALUE="&apos;DEVC&apos;" TYPTYPE="1" TYPE="TD_COMPTYPE">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Transport category : ABAP Object"/>
+     <ITEM LANGU="F" DESCRIPT="Transport category : ABAP Object"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TRANSPORT_REQUEST" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="5 " TYPTYPE="1" TYPE="E070-TRKORR">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Request/Task for packages and interfaces"/>
+     <ITEM LANGU="F" DESCRIPT="Request/Task for packages and interfaces"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="_UUID" VERSION="1" STATE="1" EDITORDER="6 " ATTDECLTYP="2" ATTVALUE="&apos;29AD0A4B07A5A05AE1000000AC120173&apos;" TYPTYPE="1" TYPE="TD_CONNUUID">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="UUID for connector Package"/>
+     <ITEM LANGU="F" DESCRIPT="UUID for connector Package"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="_VER" VERSION="1" STATE="1" EDITORDER="7 " ATTDECLTYP="2" ATTVALUE="&apos;1.0&apos;" TYPTYPE="1" TYPE="TD_CONNVER">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Connector Version"/>
+     <ITEM LANGU="F" DESCRIPT="Connector Version"/>
+    </TEXTS>
+   </ITEM>
+  </ATTRIBUTS>
+  <LOCAL>
+   <TYPES>
+*&quot;* USE THIS SOURCE FILE FOR ANY TYPE DECLARATIONS (CLASS
+*&quot;* definitions, interfaces or data types) you need for method
+*&quot;* IMPLEMENTATION OR PRIVATE METHOD&apos;S SIGNATURE</TYPES>
+   <IMPLEMENTATIONS>
+*&quot;* LOCAL CLASS IMPLEMENTATION FOR PUBLIC CLASS
+*&quot;* use this source file for the implementation part of
+*&quot;* LOCAL HELPER CLASSES</IMPLEMENTATIONS>
+   <MACROS>
+*&quot;* USE THIS SOURCE FILE FOR ANY MACRO DEFINITIONS YOU NEED
+*&quot;* IN THE IMPLEMENTATION PART OF THE CLASS
+
+INCLUDE ZAPLINK_MACROS.</MACROS>
+  </LOCAL>
+  <METHODS>
+   <ITEM CMPNAME="ADD_ELEMENTS_LIST" VERSION="1" STATE="1" EDITORDER="1 " MTDNEWEXC="X">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Create new elements in interface"/>
+     <ITEM LANGU="F" DESCRIPT="Create new elements in interface"/>
+    </TEXTS>
+    <PARAMETERS>
+     <ITEM SCONAME="ADD_REMAIN" VERSION="1" CMPTYPE="1" EDITORDER="3 " PARPASSTYP="1" TYPTYPE="1" TYPE="FLAG" PARVALUE="&apos;X&apos;" PAROPTIONL="X">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="Add remaining elements that can&apos;t be added to recycle"/>
+       <ITEM LANGU="F" DESCRIPT="Add remaining elements that can&apos;t be added to recycle"/>
+      </TEXTS>
+     </ITEM>
+     <ITEM SCONAME="ASK_USER" VERSION="1" CMPTYPE="1" EDITORDER="2 " PARPASSTYP="1" TYPTYPE="1" TYPE="FLAG" PAROPTIONL="X">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="ask_user when error ?"/>
+       <ITEM LANGU="F" DESCRIPT="ask_user when error ?"/>
+      </TEXTS>
+     </ITEM>
+     <ITEM SCONAME="INTERFACE" VERSION="1" CMPTYPE="1" EDITORDER="1 " PARPASSTYP="1" TYPTYPE="1" TYPE="TO_INTERFACE">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="Interface for Package Interfaces"/>
+       <ITEM LANGU="F" DESCRIPT="Interface for Package Interfaces"/>
+      </TEXTS>
+     </ITEM>
+    </PARAMETERS>
+    <EXCEPTIONS>
+     <ITEM SCONAME="ZAPLINK_CX_CONNECTOR" VERSION="1" LANGU="E" EDITORDER="1 ">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="ZAPlink ROOT Exception for Connectors"/>
+       <ITEM LANGU="F" DESCRIPT="ZAPlink ROOT Exception for Connectors"/>
+      </TEXTS>
+     </ITEM>
+    </EXCEPTIONS>
+    <SOURCE>
+  DATA _err       TYPE scomeldata.
+  DATA _err_lst   TYPE scomeldata.
+  DATA alv_data   TYPE tt_ele.
+  DATA a_data     LIKE LINE OF alv_data.
+  DATA exception  TYPE REF TO zaplink_cx_connector.
+  DATA title      TYPE lvc_title.
+  DATA errormsg   TYPE string.
+*  DATA _itf_e     LIKE LINE OF itf_elements.
+  FIELD-SYMBOLS &lt;e&gt; LIKE LINE OF _err.
+  FIELD-SYMBOLS &lt;l&gt; LIKE LINE OF interface-&gt;elements.
+
+  CALL METHOD interface-&gt;if-&gt;add_elements
+    EXPORTING
+      i_elements_data        = interface-&gt;elements
+    IMPORTING
+*        e_new_elements         =
+*        e_existing_elem_data   =
+      e_mismatched_elem_data = _err &quot; Should be empty if all OK
+    EXCEPTIONS
+      object_invalid         = 1
+      intern_err             = 2
+      OTHERS                 = 3
+          .
+  IF sy-subrc &lt;&gt; 0 OR NOT _err IS INITIAL.
+    IF _err IS INITIAL.
+      errormsg = &apos;Package interface elements creation failed !&apos;(e91).
+*    ELSEIF NOT add_remain IS INITIAL.
+*      _itf_e-interface = interface-&gt;if.
+*      _itf_e-elements = _err.
+*      APPEND _itf_e TO itf_elements.
+*      EXIT.
+    ELSEIF sy-batch = &apos;X&apos; OR ask_user IS INITIAL.
+      errormsg = build_error_msg( _err ).
+
+      CONCATENATE &apos;Package interface elements failed to add : &apos;(e92) errormsg INTO errormsg.
+    ELSE. &quot; ask user
+      LOOP AT _err ASSIGNING &lt;e&gt;.
+        READ TABLE interface-&gt;elements ASSIGNING &lt;l&gt;
+             WITH KEY intf_name = &lt;e&gt;-intf_name
+                      elem_type = &lt;e&gt;-elem_type
+                       elem_key = &lt;e&gt;-elem_key.
+        IF sy-subrc &lt;&gt; 0.
+          RAISE EXCEPTION TYPE zaplink_cx_connector
+            EXPORTING
+              textid = zaplink_cx_connector=&gt;system_error.
+        ENDIF.
+        &lt;e&gt; = &lt;l&gt;. &quot; back to original value
+      ENDLOOP.
+      alv_data = elements2alv( _err ).
+      a_data-elem_pack = interface-&gt;if-&gt;publisher_package_name.
+      MODIFY alv_data FROM a_data TRANSPORTING elem_pack WHERE elem_pack IS INITIAL.   &quot;update package
+      title = &apos;Incosistant TADIR entries please select elements that will change package. All unselected entries won&apos;&apos;t be in this interface&apos;(alv).
+      CALL FUNCTION &apos;REUSE_ALV_GRID_DISPLAY&apos;
+        EXPORTING
+*           I_INTERFACE_CHECK                 = &apos; &apos;
+*           I_BYPASSING_BUFFER                = &apos; &apos;
+*           I_BUFFER_ACTIVE                   = &apos; &apos;
+*           I_CALLBACK_PROGRAM                = &apos; &apos;
+*           I_CALLBACK_PF_STATUS_SET          = &apos; &apos;
+*           I_CALLBACK_USER_COMMAND           = &apos; &apos;
+*           I_CALLBACK_TOP_OF_PAGE            = &apos; &apos;
+*           I_CALLBACK_HTML_TOP_OF_PAGE       = &apos; &apos;
+*           I_CALLBACK_HTML_END_OF_LIST       = &apos; &apos;
+*           I_STRUCTURE_NAME                  =
+*           I_BACKGROUND_ID                   = &apos; &apos;
+          i_grid_title                      = title
+*           I_GRID_SETTINGS                   =
+          is_layout                         = cat_layout
+          it_fieldcat                       = cat_ele
+*           IT_EXCLUDING                      =
+*           IT_SPECIAL_GROUPS                 =
+*           IT_SORT                           =
+*           IT_FILTER                         =
+*           IS_SEL_HIDE                       =
+*           I_DEFAULT                         = &apos;X&apos;
+*           I_SAVE                            = &apos; &apos;
+*           IS_VARIANT                        =
+*           IT_EVENTS                         =
+*           IT_EVENT_EXIT                     =
+*           IS_PRINT                          =
+*           IS_REPREP_ID                      =
+*           I_SCREEN_START_COLUMN             = 0
+*           I_SCREEN_START_LINE               = 0
+*           I_SCREEN_END_COLUMN               = 0
+*           I_SCREEN_END_LINE                 = 0
+*           I_HTML_HEIGHT_TOP                 = 0
+*           I_HTML_HEIGHT_END                 = 0
+*           IT_ALV_GRAPHICS                   =
+*           IT_HYPERLINK                      =
+*           IT_ADD_FIELDCAT                   =
+*           IT_EXCEPT_QINFO                   =
+*           IR_SALV_FULLSCREEN_ADAPTER        =
+*         IMPORTING
+*           E_EXIT_CAUSED_BY_CALLER           =
+*           ES_EXIT_CAUSED_BY_USER            =
+        TABLES
+          t_outtab                          = alv_data
+        EXCEPTIONS
+         program_error                     = 1
+         OTHERS                            = 2.
+      IF sy-subrc &lt;&gt; 0.
+        errormsg = build_error_msg( _err ).
+
+        CONCATENATE &apos;Package interface elements failed to add : &apos;(e92) errormsg INTO errormsg.
+      ELSE.
+        change_tadir( CHANGING alv_data = alv_data ).
+        LOOP AT _err ASSIGNING &lt;e&gt;.
+          CLEAR a_data.
+          READ TABLE alv_data INTO a_data WITH KEY elem_type = &lt;e&gt;-elem_type
+                                                    elem_key = &lt;e&gt;-elem_key.
+          IF sy-subrc &lt;&gt; 0 OR a_data-select IS INITIAL.
+            APPEND &lt;e&gt; TO _err_lst.
+            DELETE _err.
+          ENDIF.
+        ENDLOOP.
+
+        TRY.
+            interface-&gt;elements = _err.
+            CALL METHOD add_elements_list
+              EXPORTING
+                interface	= interface
+*                list      = _err
+*                ask_user =
+*                add_remain = add_remain
+                .
+          CATCH zaplink_cx_connector INTO exception.
+            RAISE EXCEPTION exception.
+        ENDTRY.
+        IF _err_lst IS INITIAL.
+          EXIT. &quot; if every thing is OK
+        ELSE.
+          errormsg = build_error_msg( _err_lst ).
+
+          CONCATENATE &apos;Package interface elements failed to add : &apos;(e92) errormsg INTO errormsg.
+        ENDIF.
+      ENDIF.
+    ENDIF.
+
+    RAISE EXCEPTION TYPE ZAPLINK_CX_CONNECTOR
+      EXPORTING
+        textid = zaplink_cx_connector=&gt;system_error
+           msg = errormsg.
+  ENDIF.
+
+  CALL METHOD interface-&gt;if-&gt;save_elements
+    EXPORTING
+      i_transport_request   = transport_request
+    IMPORTING
+      e_transport_request   = transport_request
+    EXCEPTIONS
+      object_not_changeable = 1
+      object_invalid        = 2
+      cancelled_in_corr     = 3
+      permission_failure    = 4
+      unexpected_error      = 5
+      intern_err            = 6
+      OTHERS                = 7.
+  IF sy-subrc &lt;&gt; 0.
+*    o_mycx ?= ZAPLINK_CX=&gt;CREATE_FROM_METH_CX( ....)
+    RAISE EXCEPTION TYPE zaplink_cx_connector
+      EXPORTING
+        textid = zaplink_cx_connector=&gt;system_error
+           msg = &apos;Package interface save failed !&apos;.
+  ENDIF.</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="ANONYMIZE_INTERFACE" VERSION="1" EXPOSURE="1" STATE="1" EDITORDER="2 " MTDNEWEXC="X">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Interface : Anonymized component data"/>
+     <ITEM LANGU="F" DESCRIPT="Interface : Anonymized component data"/>
+    </TEXTS>
+    <PARAMETERS>
+     <ITEM SCONAME="OBJECT" VERSION="1" CMPTYPE="1" EDITORDER="1 " PARPASSTYP="1" TYPTYPE="1" TYPE="TO_INTERFACE">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="Interface Object"/>
+       <ITEM LANGU="F" DESCRIPT="Interface Object"/>
+      </TEXTS>
+     </ITEM>
+    </PARAMETERS>
+    <EXCEPTIONS>
+     <ITEM SCONAME="ZAPLINK_CX_CONNECTOR" VERSION="1" LANGU="E" EDITORDER="1 ">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="ZAPlink ROOT Exception for Connectors"/>
+       <ITEM LANGU="F" DESCRIPT="ZAPlink ROOT Exception for Connectors"/>
+      </TEXTS>
+     </ITEM>
+    </EXCEPTIONS>
+    <SOURCE>
+
+  CLEAR:
+    object-&gt;a0_maindata-created_by,
+    object-&gt;a0_maindata-created_on,
+    object-&gt;a0_maindata-changed_by,
+    object-&gt;a0_maindata-changed_on.
+</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="ANONYMIZE_PACKAGE" VERSION="1" EXPOSURE="1" STATE="1" EDITORDER="3 " MTDNEWEXC="X">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Package : Anonymized component data"/>
+     <ITEM LANGU="F" DESCRIPT="Package : Anonymized component data"/>
+    </TEXTS>
+    <PARAMETERS>
+     <ITEM SCONAME="OBJECT" VERSION="1" CMPTYPE="1" EDITORDER="1 " PARPASSTYP="1" TYPTYPE="1" TYPE="TO_PACKAGE">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="Package Object"/>
+       <ITEM LANGU="F" DESCRIPT="Package Object"/>
+      </TEXTS>
+     </ITEM>
+    </PARAMETERS>
+    <EXCEPTIONS>
+     <ITEM SCONAME="ZAPLINK_CX_CONNECTOR" VERSION="1" LANGU="E" EDITORDER="1 ">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="ZAPlink ROOT Exception for Connectors"/>
+       <ITEM LANGU="F" DESCRIPT="ZAPlink ROOT Exception for Connectors"/>
+      </TEXTS>
+     </ITEM>
+    </EXCEPTIONS>
+    <SOURCE>
+  DATA o_raw_i     LIKE LINE OF object-&gt;interfaces.
+  DATA o_interface TYPE to_interface.
+  DATA o_raw_p     LIKE LINE OF object-&gt;packages.
+  DATA o_package   TYPE to_package.
+
+  CLEAR:
+    object-&gt;a0_maindata-created_by,
+    object-&gt;a0_maindata-created_on,
+    object-&gt;a0_maindata-changed_by,
+    object-&gt;a0_maindata-changed_on.
+
+  LOOP AT object-&gt;interfaces INTO o_raw_i.
+    o_interface ?= o_raw_i-zl_object-&gt;raw.
+    anonymize_interface( o_interface ).
+  ENDLOOP.
+
+  LOOP AT object-&gt;packages INTO o_raw_p.
+    o_package ?= o_raw_p-zl_object-&gt;raw.
+    anonymize_package( o_package ).
+  ENDLOOP.
+</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="BUILD_ERROR_MSG" VERSION="1" STATE="1" EDITORDER="4 " MTDDECLTYP="1">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Convert elements list to ALV table"/>
+     <ITEM LANGU="F" DESCRIPT="Convert elements list to ALV table"/>
+    </TEXTS>
+    <PARAMETERS>
+     <ITEM SCONAME="ELEMENTS" VERSION="1" CMPTYPE="1" EDITORDER="1 " PARPASSTYP="1" TYPTYPE="1" TYPE="SCOMELDATA">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="Table Type for Package Interface Element Data"/>
+       <ITEM LANGU="F" DESCRIPT="Table Type for Package Interface Element Data"/>
+      </TEXTS>
+     </ITEM>
+     <ITEM SCONAME="ERRORMSG" VERSION="1" CMPTYPE="1" EDITORDER="2 " PARDECLTYP="3" TYPTYPE="1" TYPE="STRING"/>
+    </PARAMETERS>
+    <SOURCE>
+  DATA obj_key    TYPE string.
+  FIELD-SYMBOLS:
+    &lt;e&gt; LIKE LINE OF elements.
+
+  LOOP AT elements ASSIGNING &lt;e&gt;.
+    CONCATENATE &lt;e&gt;-elem_key &apos;(&apos; &lt;e&gt;-elem_type &apos;)&apos; INTO obj_key.
+    IF errormsg IS INITIAL.
+      errormsg = obj_key.
+    ELSE.
+      CONCATENATE errormsg &apos;, &apos; obj_key INTO errormsg.
+    ENDIF.
+  ENDLOOP.</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="CHANGE_TADIR" VERSION="1" STATE="1" EDITORDER="5 ">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Change TADIR entries"/>
+     <ITEM LANGU="F" DESCRIPT="Change TADIR entries"/>
+    </TEXTS>
+    <PARAMETERS>
+     <ITEM SCONAME="ALV_DATA" VERSION="1" CMPTYPE="1" EDITORDER="1 " PARDECLTYP="2" PARPASSTYP="1" TYPTYPE="1" TYPE="TT_ELE"/>
+    </PARAMETERS>
+    <SOURCE>
+  DATA :
+    object TYPE tadir-object,
+    obj_name TYPE tadir-obj_name,
+    korrnum TYPE tadir-korrnum.
+  FIELD-SYMBOLS:
+    &lt;e&gt; LIKE LINE OF alv_data.
+
+  korrnum = transport_request.
+  LOOP AT alv_data ASSIGNING &lt;e&gt;
+          WHERE NOT select IS INITIAL.
+    object = &lt;e&gt;-elem_type.
+    obj_name = &lt;e&gt;-elem_key.
+    CALL FUNCTION &apos;TRINT_TADIR_INTERFACE&apos;
+      EXPORTING
+*       WI_DELETE_TADIR_ENTRY                = &apos; &apos;
+*       WI_REMOVE_REPAIR_FLAG                = &apos; &apos;
+*       WI_SET_REPAIR_FLAG                   = &apos; &apos;
+        wi_test_modus                        = &apos; &apos;
+        wi_tadir_pgmid                       = &apos;R3TR&apos;
+        wi_tadir_object                      = object
+        wi_tadir_obj_name                    = obj_name
+        wi_tadir_korrnum                     = korrnum
+*       WI_TADIR_SRCSYSTEM                   = &apos; &apos;
+*       WI_TADIR_AUTHOR                      = &apos; &apos;
+        wi_tadir_devclass                    = &lt;e&gt;-elem_pack
+*       WI_TADIR_MASTERLANG                  = &apos; &apos;
+*       WI_TADIR_CPROJECT                    = &apos; &apos;
+*       WI_TADIR_VERSID                      = &apos; &apos;
+*       WI_REMOVE_GENFLAG                    = &apos; &apos;
+*       WI_SET_GENFLAG                       = &apos; &apos;
+*       WI_READ_ONLY                         = &apos; &apos;
+*       IV_SET_EDTFLAG                       = &apos; &apos;
+*       IV_WBO_INTERNAL                      = &apos; &apos;
+*       IV_INSERT_MODE                       = &apos; &apos;
+*       IV_TRANSL_TECH_TEXT                  = &apos; &apos;
+*       IV_DELFLAG                           = &apos; &apos;
+*       IV_NO_PAK_CHECK                      = &apos; &apos;
+*       IV_OBJ_STABILITY                     = &apos; &apos;
+*       IV_TRANSL_TECH_TEXT_SUPP             = &apos; &apos;
+*       IV_DELFLAG_SUPP                      = &apos;&apos;
+*       IV_NO_PAK_CHECK_SUPP                 = &apos; &apos;
+*       IV_OBJ_STABILITY_SUPP                = &apos; &apos;
+*     IMPORTING
+*       NEW_GTADIR_ENTRY                     =
+*       NEW_TADIR_ENTRY                      =
+     EXCEPTIONS
+        tadir_entry_not_existing             = 1
+        tadir_entry_ill_type                 = 2
+        no_systemname                        = 3
+        no_systemtype                        = 4
+        original_system_conflict             = 5
+        object_reserved_for_devclass         = 6
+        object_exists_global                 = 7
+        object_exists_local                  = 8
+        object_is_distributed                = 9
+        obj_specification_not_unique         = 10
+        no_authorization_to_delete           = 11
+        devclass_not_existing                = 12
+        simultanious_set_remove_repair       = 13
+        order_missing                        = 14
+        no_modification_of_head_syst         = 15
+        pgmid_object_not_allowed             = 16
+        masterlanguage_not_specified         = 17
+        devclass_not_specified               = 18
+        specify_owner_unique                 = 19
+        loc_priv_objs_no_repair              = 20
+        gtadir_not_reached                   = 21
+        object_locked_for_order              = 22
+        change_of_class_not_allowed          = 23
+        no_change_from_sap_to_tmp            = 24
+        OTHERS                               = 25
+              .
+    IF sy-subrc &lt;&gt; 0.
+      CLEAR &lt;e&gt;-select.
+    ENDIF.
+  ENDLOOP.</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="CLASS_CONSTRUCTOR" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="6 " MTDTYPE="2" MTDDECLTYP="1">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="CLASS_CONSTRUCTOR"/>
+     <ITEM LANGU="F" DESCRIPT="CLASS_CONSTRUCTOR"/>
+    </TEXTS>
+    <SOURCE>
+* ALV Catalog
+  DATA ls_fieldcat  LIKE LINE OF  cat_ele.
+*** Display list to select the objects for downloading
+  ls_fieldcat-fieldname = &apos;ELEM_TYPE&apos;.
+  ls_fieldcat-seltext_l = &apos;Object Type&apos;(c01).
+  APPEND ls_fieldcat TO cat_ele.
+
+  ls_fieldcat-fieldname = &apos;ELEM_KEY&apos;.
+  ls_fieldcat-seltext_l = &apos;Object Name&apos;(c02).
+  APPEND ls_fieldcat TO cat_ele.
+
+  ls_fieldcat-fieldname = &apos;TD_PACK&apos;.
+  ls_fieldcat-seltext_l = &apos;TADIR Package&apos;(c03).
+  APPEND ls_fieldcat TO cat_ele.
+
+  ls_fieldcat-fieldname = &apos;ELEM_PACK&apos;.
+  ls_fieldcat-seltext_s = &apos;New package&apos;(c04).
+  ls_fieldcat-seltext_l = &apos;New package when validated&apos;(l04).
+  APPEND ls_fieldcat TO cat_ele.
+
+  cat_layout-box_fieldname     = &apos;SELECT&apos;.
+*    cat_layout-lights_fieldname  = &apos;TD_PACK&apos;.
+  cat_layout-colwidth_optimize = &apos;X&apos;.
+*  ls_layout-f2code            = &apos;MYPICK&apos; .</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="CONSTRUCTOR" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="7 " MTDTYPE="2">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="CONSTRUCTOR"/>
+     <ITEM LANGU="F" DESCRIPT="CONSTRUCTOR"/>
+    </TEXTS>
+    <SOURCE>
+  DATA type LIKE LINE OF supported_types.
+
+  call method super-&gt;constructor.
+  mac_create_log application_log ballog_subobject space.      &quot; create my application before parent do the same
+  application_log-&gt;msgid = &apos;ZAPLINK_PACKAGE&apos;.
+  type-type = st_package. INSERT type INTO TABLE supported_types.
+  type-type = st_interface. INSERT type INTO TABLE supported_types.
+
+  uuid = _uuid.
+  version = _ver.</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="CONV_INTERFACE" VERSION="1" STATE="1" EDITORDER="8 " MTDNEWEXC="X">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Get interfaces info"/>
+     <ITEM LANGU="F" DESCRIPT="Get interfaces info"/>
+    </TEXTS>
+    <PARAMETERS>
+     <ITEM SCONAME="INTERFACE" VERSION="1" CMPTYPE="1" EDITORDER="1 " PARPASSTYP="1" TYPTYPE="3" TYPE="IF_PACKAGE_INTERFACE">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="Interface for Packages"/>
+       <ITEM LANGU="F" DESCRIPT="Interface for Packages"/>
+      </TEXTS>
+     </ITEM>
+     <ITEM SCONAME="O_DATA" VERSION="1" CMPTYPE="1" EDITORDER="3 " PARDECLTYP="3" TYPTYPE="1" TYPE="TO_INTERFACE">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="Package Interface data"/>
+       <ITEM LANGU="F" DESCRIPT="Package Interface data"/>
+      </TEXTS>
+     </ITEM>
+     <ITEM SCONAME="SUBCOMPONENTS" VERSION="1" CMPTYPE="1" EDITORDER="2 " PARPASSTYP="1" TYPTYPE="1" TYPE="TO_LIST"/>
+    </PARAMETERS>
+    <EXCEPTIONS>
+     <ITEM SCONAME="ZAPLINK_CX_CONNECTOR" VERSION="1" LANGU="E" EDITORDER="1 ">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="ZAPlink ROOT Exception for Connectors"/>
+       <ITEM LANGU="F" DESCRIPT="ZAPlink Framework : Root exception class"/>
+      </TEXTS>
+     </ITEM>
+    </EXCEPTIONS>
+    <SOURCE>
+  DATA elements   TYPE tpak_package_interf_elem_list.
+  DATA elem       LIKE LINE OF o_data-&gt;elements.
+  DATA _component  TYPE to_component.
+  FIELD-SYMBOLS:
+    &lt;e&gt; LIKE LINE OF elements.
+
+  TRY.
+
+      CREATE OBJECT o_data.
+      CALL METHOD interface-&gt;get_all_attributes
+        IMPORTING
+          e_package_interface_data = o_data-&gt;a0_maindata
+        EXCEPTIONS
+          object_invalid           = 1
+          OTHERS                   = 2.
+      IF sy-subrc &lt;&gt; 0.
+        RAISE EXCEPTION TYPE zaplink_cx_connector
+          EXPORTING
+            textid = zaplink_cx_connector=&gt;system_error
+            msg = &apos;error in interface-&gt;get_all_attributes&apos;.
+      ENDIF.
+
+      CREATE OBJECT _component.
+      _component-&gt;set_type( st_interface ).
+      _component-&gt;set_name( o_data-&gt;a0_maindata-intf_name ).
+      subcomponents-&gt;add( _component ).
+
+* Elements
+      CALL METHOD interface-&gt;get_elements
+        EXPORTING
+          i_with_deleted_elements = &apos;X&apos;
+        IMPORTING
+          e_elements              = elements
+        EXCEPTIONS
+          object_invalid          = 1
+          intern_err              = 2
+          OTHERS                  = 3.
+      IF sy-subrc &lt;&gt; 0.
+        RAISE EXCEPTION TYPE zaplink_cx_connector
+          EXPORTING
+            textid = zaplink_cx_connector=&gt;system_error
+            msg = &apos;interface-&gt;get_elements&apos;.
+      ELSEIF NOT elements IS INITIAL.
+        LOOP AT elements ASSIGNING &lt;e&gt;.
+          CALL METHOD &lt;e&gt;-&gt;get_all_attributes
+            IMPORTING
+              e_element_data = elem
+            EXCEPTIONS
+              object_invalid = 1
+              OTHERS         = 2.
+          IF sy-subrc &lt;&gt; 0.
+            RAISE EXCEPTION TYPE zaplink_cx_connector
+              EXPORTING
+                textid = zaplink_cx_connector=&gt;system_error
+                msg = &apos;error in interface-&gt;get_all_attributes&apos;.
+          ENDIF.
+          APPEND elem TO o_data-&gt;elements.
+        ENDLOOP.
+      ENDIF.
+
+* ACLS
+      IF NOT o_data-&gt;a0_maindata-acl_flag IS INITIAL.
+        CALL METHOD interface-&gt;get_access_control_list
+          IMPORTING
+            e_user_list    = o_data-&gt;acls
+          EXCEPTIONS
+            object_invalid = 1
+            no_acl         = 0
+            intern_err     = 3
+            OTHERS         = 4.
+        IF sy-subrc &lt;&gt; 0.
+          RAISE EXCEPTION TYPE zaplink_cx_connector
+            EXPORTING
+              textid = zaplink_cx_connector=&gt;system_error
+              msg = &apos;interface-&gt;get_access_control_list&apos;.
+        ENDIF.
+      ENDIF.
+
+    CATCH zaplink_cx_connector INTO o_mycx.
+      RAISE EXCEPTION o_mycx.
+    CATCH zaplink_cx INTO o_cx.
+      mac_cascade_raise o_mycx o_cx.
+  ENDTRY.
+</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="CONV_INTERFACE_RAW" VERSION="1" STATE="1" EDITORDER="9 " MTDNEWEXC="X">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Get interfaces info as RAW"/>
+     <ITEM LANGU="F" DESCRIPT="Get interfaces info as RAW"/>
+    </TEXTS>
+    <PARAMETERS>
+     <ITEM SCONAME="INTERFACE" VERSION="1" CMPTYPE="1" EDITORDER="1 " PARPASSTYP="1" TYPTYPE="3" TYPE="IF_PACKAGE_INTERFACE">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="Interface for Packages"/>
+       <ITEM LANGU="F" DESCRIPT="Interface for Packages"/>
+      </TEXTS>
+     </ITEM>
+     <ITEM SCONAME="O_DATA" VERSION="1" CMPTYPE="1" EDITORDER="3 " PARDECLTYP="3" TYPTYPE="1" TYPE="TO_INTERFACE_RAW">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="Package Interface data"/>
+       <ITEM LANGU="F" DESCRIPT="Package Interface data"/>
+      </TEXTS>
+     </ITEM>
+     <ITEM SCONAME="SUBCOMPONENTS" VERSION="1" CMPTYPE="1" EDITORDER="2 " PARPASSTYP="1" TYPTYPE="1" TYPE="TO_LIST"/>
+    </PARAMETERS>
+    <EXCEPTIONS>
+     <ITEM SCONAME="ZAPLINK_CX_CONNECTOR" VERSION="1" LANGU="E" EDITORDER="1 ">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="ZAPlink ROOT Exception for Connectors"/>
+       <ITEM LANGU="F" DESCRIPT="ZAPlink Framework : Root exception class"/>
+      </TEXTS>
+     </ITEM>
+    </EXCEPTIONS>
+    <SOURCE>
+  DATA o_comp     TYPE to_component.
+  DATA _data      TYPE to_interface.
+  DATA _cx        TYPE REF TO zaplink_cx.
+
+  TRY.
+      _data = conv_interface( interface = interface
+                          subcomponents = subcomponents ).
+      CREATE OBJECT o_comp.
+      o_comp-&gt;set_type( st_interface ).
+      o_comp-&gt;set_name( _data-&gt;a0_maindata-intf_name ).
+      CREATE OBJECT o_data
+        EXPORTING
+          o_comp = o_comp.
+      o_data-&gt;raw = _data.
+    CATCH zaplink_cx INTO _cx.
+      create OBJECT o_mycx EXPORTING
+             textid = zaplink_cx=&gt;system_error
+            prev_cx = _cx.
+      o_mycx-&gt;update( ).
+      raise EXCEPTION o_mycx.
+  ENDTRY.</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="CONV_PACKAGE" VERSION="1" STATE="1" EDITORDER="10 " MTDNEWEXC="X">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Get package info"/>
+     <ITEM LANGU="F" DESCRIPT="Get package info"/>
+    </TEXTS>
+    <PARAMETERS>
+     <ITEM SCONAME="O_DATA" VERSION="1" CMPTYPE="1" EDITORDER="4 " PARDECLTYP="3" TYPTYPE="1" TYPE="TO_PACKAGE">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="Package data"/>
+       <ITEM LANGU="F" DESCRIPT="Package data"/>
+      </TEXTS>
+     </ITEM>
+     <ITEM SCONAME="PACKAGE" VERSION="1" CMPTYPE="1" EDITORDER="1 " PARPASSTYP="1" TYPTYPE="3" TYPE="IF_PACKAGE">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="Interface for Packages"/>
+       <ITEM LANGU="F" DESCRIPT="Interface for Packages"/>
+      </TEXTS>
+     </ITEM>
+     <ITEM SCONAME="SUBCOMPONENTS" VERSION="1" CMPTYPE="1" EDITORDER="2 " PARPASSTYP="1" TYPTYPE="1" TYPE="TO_LIST"/>
+     <ITEM SCONAME="WITH_SUBCOMP" VERSION="1" CMPTYPE="1" EDITORDER="3 " PARPASSTYP="1" TYPTYPE="1" TYPE="TD_WITH_SUBCOMP" PARVALUE="ABAP_TRUE">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="With Sub components"/>
+      </TEXTS>
+     </ITEM>
+    </PARAMETERS>
+    <EXCEPTIONS>
+     <ITEM SCONAME="ZAPLINK_CX_CONNECTOR" VERSION="1" LANGU="E" EDITORDER="1 ">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="ZAPlink ROOT Exception for Connectors"/>
+       <ITEM LANGU="F" DESCRIPT="ZAPlink ROOT Exception for Connectors"/>
+      </TEXTS>
+     </ITEM>
+    </EXCEPTIONS>
+    <SOURCE>
+  DATA perm_data   LIKE LINE OF o_data-&gt;acls.
+  DATA permissions TYPE tpak_permission_to_use_list.
+  DATA interfaces  TYPE tpak_package_interface_list.
+  DATA intf        LIKE LINE OF o_data-&gt;interfaces.
+  DATA packages    TYPE scompaklis.
+  DATA pack        LIKE LINE OF o_data-&gt;packages.
+  DATA _component  TYPE to_component.
+  FIELD-SYMBOLS:
+    &lt;pack&gt; LIKE LINE OF packages,
+    &lt;itf&gt; LIKE LINE OF interfaces,
+    &lt;p&gt; LIKE LINE OF permissions.
+
+  TRY.
+
+      CLEAR o_mycx.
+      CREATE OBJECT o_data.
+      CALL METHOD package-&gt;get_all_attributes
+        IMPORTING
+          e_package_data  = o_data-&gt;a0_maindata
+        EXCEPTIONS
+          object_invalid  = 1
+          package_deleted = 2
+          intern_err      = 3
+          OTHERS          = 4.
+      IF sy-subrc &lt;&gt; 0.
+        RAISE EXCEPTION TYPE zaplink_cx_connector
+          EXPORTING
+            textid = zaplink_cx_connector=&gt;system_error
+            msg = &apos;error in package-&gt;get_all_attributes&apos;.
+      ENDIF.
+
+      CREATE OBJECT _component.
+      _component-&gt;set_type( st_package ).
+      _component-&gt;set_name( o_data-&gt;a0_maindata-devclass ).
+      subcomponents-&gt;add( _component ).
+
+* ACLs
+      CALL METHOD package-&gt;get_permissions_to_use
+        IMPORTING
+          e_permissions    = permissions
+        EXCEPTIONS
+          object_invalid   = 1
+          unexpected_error = 2
+          OTHERS           = 3.
+      IF sy-subrc &lt;&gt; 0.
+        RAISE EXCEPTION TYPE zaplink_cx_connector
+          EXPORTING
+            textid = zaplink_cx_connector=&gt;system_error
+            msg = &apos;package-&gt;get_permissions_to_use&apos;.
+      ELSEIF NOT permissions IS INITIAL.
+        LOOP AT permissions ASSIGNING &lt;p&gt;.
+          CHECK &lt;p&gt;-&gt;deleted_in_memory IS INITIAL.
+          perm_data-intf_name = &lt;p&gt;-&gt;package_interface_name.
+          perm_data-err_sever = &lt;p&gt;-&gt;error_severity.
+          APPEND perm_data TO o_data-&gt;acls.
+        ENDLOOP.
+      ENDIF.
+
+      IF with_subcomp = abap_true.
+* Interfaces
+        CALL METHOD package-&gt;get_interfaces
+          IMPORTING
+            e_package_interfaces = interfaces
+          EXCEPTIONS
+            object_invalid       = 1
+            unexpected_error     = 2
+            intern_err           = 3
+            OTHERS               = 4.
+        IF sy-subrc &lt;&gt; 0.
+          RAISE EXCEPTION TYPE zaplink_cx_connector
+            EXPORTING
+              textid = zaplink_cx_connector=&gt;system_error.
+        ELSEIF NOT interfaces IS INITIAL.
+          LOOP AT interfaces ASSIGNING &lt;itf&gt;.
+            TRY.
+                intf-zl_object = conv_interface_raw( interface = &lt;itf&gt;
+                                                 subcomponents = subcomponents ).
+              CATCH zaplink_cx_connector INTO o_mycx.
+                application_log-&gt;add_exception( o_mycx ).
+            ENDTRY.
+            APPEND intf TO o_data-&gt;interfaces.
+          ENDLOOP.
+        ENDIF.
+
+* Packages
+        CALL METHOD package-&gt;get_sub_packages
+          IMPORTING
+            e_sub_packages   = packages
+          EXCEPTIONS
+            object_invalid   = 1
+            leaf_package     = 0   &quot; 053(PAK) : Package &amp;1 does not contain any sub-packages
+            unexpected_error = 3
+            OTHERS           = 4.
+        IF sy-subrc &lt;&gt; 0.
+          RAISE EXCEPTION TYPE zaplink_cx_connector
+            EXPORTING
+              textid = zaplink_cx_connector=&gt;system_error.
+        ELSEIF NOT packages IS INITIAL.
+          LOOP AT packages ASSIGNING &lt;pack&gt;.
+            TRY.
+                pack-zl_object = conv_package_raw( package = &lt;pack&gt;
+                                             subcomponents = subcomponents ).
+              CATCH zaplink_cx_connector INTO o_mycx.
+                application_log-&gt;add_exception( o_mycx ).
+            ENDTRY.
+            APPEND pack TO o_data-&gt;packages.
+          ENDLOOP.
+        ENDIF.
+
+      ENDIF.
+
+    CATCH zaplink_cx_connector INTO o_mycx.
+      RAISE EXCEPTION o_mycx.
+    CATCH zaplink_cx INTO o_cx.
+      mac_cascade_raise o_mycx o_cx.
+  ENDTRY.
+
+  IF o_mycx IS BOUND.
+    RAISE EXCEPTION o_mycx.
+  ENDIF.
+</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="CONV_PACKAGE_RAW" VERSION="1" EXPOSURE="1" STATE="1" EDITORDER="11 " MTDNEWEXC="X">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Get package info as RAW"/>
+     <ITEM LANGU="F" DESCRIPT="Get package info as RAW"/>
+    </TEXTS>
+    <PARAMETERS>
+     <ITEM SCONAME="O_DATA" VERSION="1" CMPTYPE="1" EDITORDER="3 " PARDECLTYP="3" TYPTYPE="1" TYPE="TO_PACKAGE_RAW">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="Package Interface data"/>
+       <ITEM LANGU="F" DESCRIPT="Package Interface data"/>
+      </TEXTS>
+     </ITEM>
+     <ITEM SCONAME="PACKAGE" VERSION="1" CMPTYPE="1" EDITORDER="1 " PARPASSTYP="1" TYPTYPE="3" TYPE="IF_PACKAGE">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="Interface for Packages"/>
+       <ITEM LANGU="F" DESCRIPT="Interface for Packages"/>
+      </TEXTS>
+     </ITEM>
+     <ITEM SCONAME="SUBCOMPONENTS" VERSION="1" CMPTYPE="1" EDITORDER="2 " PARPASSTYP="1" TYPTYPE="1" TYPE="TO_LIST"/>
+    </PARAMETERS>
+    <EXCEPTIONS>
+     <ITEM SCONAME="ZAPLINK_CX_CONNECTOR" VERSION="1" LANGU="E" EDITORDER="1 ">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="ZAPlink ROOT Exception for Connectors"/>
+       <ITEM LANGU="F" DESCRIPT="ZAPlink Framework : Root exception class"/>
+      </TEXTS>
+     </ITEM>
+    </EXCEPTIONS>
+    <SOURCE>
+  DATA o_comp     TYPE to_component.
+  DATA _data      TYPE to_package.
+  DATA _cx        TYPE REF TO zaplink_cx.
+
+  TRY.
+      _data = conv_package( package = package
+                      subcomponents = subcomponents ).
+      CREATE OBJECT o_comp.
+      o_comp-&gt;set_type( st_package ).
+      o_comp-&gt;set_name( _data-&gt;a0_maindata-devclass ).
+      CREATE OBJECT o_data
+        EXPORTING
+          o_comp = o_comp.
+      o_data-&gt;raw = _data.
+    CATCH zaplink_cx INTO _cx.
+      CREATE OBJECT o_mycx
+        EXPORTING
+          textid  = zaplink_cx=&gt;system_error
+          prev_cx = _cx.
+      o_mycx-&gt;update( ).
+      RAISE EXCEPTION o_mycx.
+  ENDTRY.</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="CREATE_INTERFACE" VERSION="1" STATE="1" EDITORDER="12 " MTDNEWEXC="X">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Create new interface"/>
+     <ITEM LANGU="F" DESCRIPT="Create new interface"/>
+    </TEXTS>
+    <PARAMETERS>
+     <ITEM SCONAME="COMPONENTS" VERSION="1" CMPTYPE="1" EDITORDER="3 " PARPASSTYP="1" TYPTYPE="1" TYPE="TO_LIST"/>
+     <ITEM SCONAME="INTERFACE" VERSION="1" CMPTYPE="1" EDITORDER="2 " PARPASSTYP="1" TYPTYPE="1" TYPE="TO_INTERFACE">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="DEVC Datas"/>
+       <ITEM LANGU="F" DESCRIPT="DEVC Datas"/>
+      </TEXTS>
+     </ITEM>
+     <ITEM SCONAME="OVERWRITE" VERSION="1" CMPTYPE="1" EDITORDER="1 " PARPASSTYP="1" TYPTYPE="1" TYPE="FLAG">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="General Flag"/>
+       <ITEM LANGU="F" DESCRIPT="General Flag"/>
+      </TEXTS>
+     </ITEM>
+    </PARAMETERS>
+    <EXCEPTIONS>
+     <ITEM SCONAME="ZAPLINK_CX_CONNECTOR" VERSION="1" LANGU="E" EDITORDER="1 ">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="ZAPlink ROOT Exception for Connectors"/>
+       <ITEM LANGU="F" DESCRIPT="ZAPlink ROOT Exception for Connectors"/>
+      </TEXTS>
+     </ITEM>
+    </EXCEPTIONS>
+    <SOURCE>
+  DATA _component      TYPE to_component.
+  DATA name       TYPE td_interface.
+  DATA transport_request  TYPE  e070-trkorr.
+
+  name = interface-&gt;a0_maindata-intf_name.
+* Processing Interface &amp;1
+  SET EXTENDED CHECK OFF.
+  IF 1 = 2. MESSAGE e013 WITH name. ENDIF.
+  SET EXTENDED CHECK ON.
+  application_log-&gt;add_info( id_msgno = 013
+                             id_msgv1 = name ).
+
+* Done in method S_LOCK_DB de CL_PACKAGE_INTERFACE
+*  CALL FUNCTION &apos;RS_ACCESS_PERMISSION&apos;
+*  CALL FUNCTION &apos;RS_CORR_INSERT&apos;
+
+  TRY.
+      CALL METHOD update_interface
+        EXPORTING
+          data      = interface-&gt;a0_maindata
+        CHANGING
+          interface = interface-&gt;if.
+    CATCH zaplink_cx_connector INTO o_mycx.
+      RAISE EXCEPTION o_mycx.
+  ENDTRY.
+
+  IF NOT interface-&gt;if IS BOUND.
+    RAISE EXCEPTION TYPE zaplink_cx_connector
+      EXPORTING
+        textid = zaplink_cx_connector=&gt;system_error
+           msg = &apos;Failed to create package interface&apos;.
+  ENDIF.
+
+  CALL METHOD interface-&gt;if-&gt;save
+    EXPORTING
+      i_transport_request   = transport_request
+    IMPORTING
+      e_transport_request   = transport_request
+    EXCEPTIONS
+      object_invalid        = 1
+      object_not_changeable = 2
+      cancelled_in_corr     = 3
+      permission_failure    = 4
+      unexpected_error      = 5
+      intern_err            = 6
+      OTHERS                = 7.
+  IF sy-subrc &lt;&gt; 0.
+    RAISE EXCEPTION TYPE zaplink_cx_connector
+      EXPORTING
+        textid = zaplink_cx_connector=&gt;system_error
+        msg = &apos;Package interface save failed !&apos;.
+  ELSE.
+    TRY.
+        CREATE OBJECT _component.
+        _component-&gt;set_type( st_interface ).
+        _component-&gt;set_name( name ).
+        components-&gt;add( _component ).
+      CATCH zaplink_cx INTO o_cx.
+        mac_cascade_raise o_mycx o_cx.
+    ENDTRY.
+  ENDIF.</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="CREATE_PACKAGE" VERSION="1" STATE="1" EDITORDER="13 " MTDNEWEXC="X">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Create new Package"/>
+     <ITEM LANGU="F" DESCRIPT="Create new Package"/>
+    </TEXTS>
+    <PARAMETERS>
+     <ITEM SCONAME="COMPONENTS" VERSION="1" CMPTYPE="1" EDITORDER="3 " PARPASSTYP="1" TYPTYPE="1" TYPE="TO_LIST"/>
+     <ITEM SCONAME="OVERWRITE" VERSION="1" CMPTYPE="1" EDITORDER="1 " PARPASSTYP="1" TYPTYPE="1" TYPE="FLAG">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="General Flag"/>
+       <ITEM LANGU="F" DESCRIPT="General Flag"/>
+      </TEXTS>
+     </ITEM>
+     <ITEM SCONAME="PACKAGE" VERSION="1" CMPTYPE="1" EDITORDER="2 " PARPASSTYP="1" TYPTYPE="1" TYPE="TO_PACKAGE">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="DEVC Datas"/>
+       <ITEM LANGU="F" DESCRIPT="DEVC Datas"/>
+      </TEXTS>
+     </ITEM>
+    </PARAMETERS>
+    <EXCEPTIONS>
+     <ITEM SCONAME="ZAPLINK_CX_CONNECTOR" VERSION="1" LANGU="E" EDITORDER="1 ">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="ZAPlink ROOT Exception for Connectors"/>
+       <ITEM LANGU="F" DESCRIPT="ZAPlink ROOT Exception for Connectors"/>
+      </TEXTS>
+     </ITEM>
+    </EXCEPTIONS>
+    <SOURCE>
+  DATA name               TYPE td_package.
+  DATA transport_request  TYPE  e070-trkorr.
+  DATA _component         TYPE to_component.
+  DATA o_intf             TYPE to_interface.
+  DATA o_package          TYPE to_package.
+  FIELD-SYMBOLS:
+    &lt;p&gt; LIKE LINE OF package-&gt;packages,
+    &lt;i&gt; LIKE LINE OF package-&gt;interfaces.
+
+  name = package-&gt;a0_maindata-devclass.
+* Processing Package &amp;1
+  SET EXTENDED CHECK OFF.
+  IF 1 = 2. MESSAGE e003 WITH space. ENDIF.
+  SET EXTENDED CHECK ON.
+  application_log-&gt;add_info( id_msgno = 003
+                             id_msgv1 = name ).
+
+* Done in method S_LOCK_DB de CL_PACKAGE
+*  CALL FUNCTION &apos;RS_ACCESS_PERMISSION&apos;
+*  CALL FUNCTION &apos;RS_CORR_INSERT&apos;
+
+  TRY.
+      CALL METHOD update_package
+        EXPORTING
+          data    = package-&gt;a0_maindata
+        CHANGING
+          package = package-&gt;if.
+    CATCH zaplink_cx_connector INTO o_mycx.
+      RAISE EXCEPTION o_mycx.
+  ENDTRY.
+
+  IF NOT package-&gt;if IS BOUND.
+    RAISE EXCEPTION TYPE zaplink_cx_connector
+      EXPORTING
+        textid = zaplink_cx_connector=&gt;system_error
+           msg = &apos;Failed to create package&apos;.
+  ENDIF.
+
+  CALL METHOD package-&gt;if-&gt;save
+    EXPORTING
+      i_transport_request   = transport_request
+    IMPORTING
+      e_transport_request   = transport_request
+    EXCEPTIONS
+      object_invalid        = 1
+      object_not_changeable = 2
+      cancelled_in_corr     = 3
+      permission_failure    = 4
+      unexpected_error      = 5
+      intern_err            = 6
+      OTHERS                = 7.
+  IF sy-subrc &lt;&gt; 0.
+    SET EXTENDED CHECK OFF.
+    IF 1 = 2. MESSAGE e009 WITH space. ENDIF.
+    SET EXTENDED CHECK ON.
+* Can&apos;t save package &amp;1
+    application_log-&gt;add_error( id_msgno = 009
+                                id_msgv1 = name ).
+    application_log-&gt;add_symsg( ).
+*    RAISE EXCEPTION TYPE zaplink_cx_connector
+*      EXPORTING
+*        textid = zaplink_cx_connector=&gt;error_message
+*        msg = &apos;Dev Class creation failed !&apos;.
+  ELSE.
+    TRY.
+        CREATE OBJECT _component.
+        _component-&gt;set_type( st_package ).
+        _component-&gt;set_name( name ).
+        components-&gt;add( _component ).
+      CATCH zaplink_cx INTO o_cx.
+        mac_cascade_raise o_mycx o_cx.
+    ENDTRY.
+  ENDIF.
+
+  LOOP AT package-&gt;interfaces ASSIGNING &lt;i&gt;.
+    TRY.
+        o_intf ?= &lt;i&gt;-zl_object-&gt;raw.
+        CALL METHOD create_interface
+          EXPORTING
+            interface  = o_intf
+            overwrite  = overwrite
+            components = components.
+      CATCH zaplink_cx_connector INTO o_mycx.
+        RAISE EXCEPTION o_mycx.
+    ENDTRY.
+  ENDLOOP.
+
+  LOOP AT package-&gt;packages ASSIGNING &lt;p&gt;.
+    TRY.
+        o_package ?= &lt;p&gt;-zl_object-&gt;raw.
+        CALL METHOD create_package
+          EXPORTING
+            package    = o_package
+            overwrite  = overwrite
+            components = components.
+      CATCH zaplink_cx_connector INTO o_mycx.
+        RAISE EXCEPTION o_mycx.
+    ENDTRY.
+  ENDLOOP.</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="ELEMENTS2ALV" VERSION="1" STATE="1" EDITORDER="14 " MTDDECLTYP="1">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Convert elements list to ALV table"/>
+     <ITEM LANGU="F" DESCRIPT="Convert elements list to ALV table"/>
+    </TEXTS>
+    <PARAMETERS>
+     <ITEM SCONAME="ALV_DATA" VERSION="1" CMPTYPE="1" EDITORDER="2 " PARDECLTYP="3" TYPTYPE="1" TYPE="TT_ELE"/>
+     <ITEM SCONAME="ELEMENTS" VERSION="1" CMPTYPE="1" EDITORDER="1 " PARPASSTYP="1" TYPTYPE="1" TYPE="SCOMELDATA">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="Table Type for Package Interface Element Data"/>
+       <ITEM LANGU="F" DESCRIPT="Table Type for Package Interface Element Data"/>
+      </TEXTS>
+     </ITEM>
+    </PARAMETERS>
+    <SOURCE>
+  DATA _wa LIKE LINE OF alv_data.
+  FIELD-SYMBOLS:
+    &lt;e&gt; LIKE LINE OF elements.
+
+  LOOP AT elements ASSIGNING &lt;e&gt;.
+    MOVE-CORRESPONDING &lt;e&gt; TO _wa.
+    SELECT SINGLE devclass
+      INTO _wa-td_pack
+      FROM tadir
+      WHERE pgmid = &apos;R3TR&apos;
+        AND object = _wa-elem_type
+        AND obj_name = _wa-elem_key.
+    IF sy-subrc &lt;&gt; 0.
+      CONTINUE.
+    ENDIF.
+    IF _wa-td_pack = _wa-elem_pack. CONTINUE. ENDIF.
+    IF _wa-td_pack = &apos;$TMP&apos;. _wa-select = abap_true. ENDIF.
+    APPEND _wa TO alv_data.
+  ENDLOOP.</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="EXPORT_FROM_SAP_INTERFACE" VERSION="1" STATE="1" EDITORDER="15 " MTDNEWEXC="X">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Export Interface from SAP System"/>
+     <ITEM LANGU="F" DESCRIPT="Export Package Interface from SAP System"/>
+    </TEXTS>
+    <PARAMETERS>
+     <ITEM SCONAME="COMPONENT" VERSION="1" CMPTYPE="1" EDITORDER="1 " PARPASSTYP="1" TYPTYPE="1" TYPE="TO_COMPONENT">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="Component key"/>
+       <ITEM LANGU="F" DESCRIPT="Component key"/>
+      </TEXTS>
+     </ITEM>
+     <ITEM SCONAME="OBJECT" VERSION="1" CMPTYPE="1" EDITORDER="2 " PARDECLTYP="3" TYPTYPE="1" TYPE="TO_INTERFACE">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="Class data"/>
+       <ITEM LANGU="F" DESCRIPT="Class data"/>
+      </TEXTS>
+     </ITEM>
+    </PARAMETERS>
+    <EXCEPTIONS>
+     <ITEM SCONAME="ZAPLINK_CX_CONNECTOR" VERSION="1" LANGU="E" EDITORDER="1 ">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="ZAPlink ROOT Exception for Connectors"/>
+      </TEXTS>
+     </ITEM>
+    </EXCEPTIONS>
+    <SOURCE>
+  DATA sap_obj   TYPE REF TO if_package_interface.
+  DATA name       TYPE td_interface.
+  DATA o_list     TYPE to_list.
+
+  TRY.
+
+      CHECK component-&gt;get_type( ) = st_interface.
+
+      name = component-&gt;get_name( ).
+      CREATE OBJECT o_list.
+      component-&gt;set_subcomponents( o_list ).
+
+      sap_obj = load_intf( name ).
+
+      object = conv_interface( interface = sap_obj
+                           subcomponents = o_list ).
+
+      o_list-&gt;remove( component ).
+
+    CATCH zaplink_cx_connector INTO o_mycx.
+      RAISE EXCEPTION o_mycx.
+    CATCH zaplink_cx INTO o_cx.
+      mac_cascade_raise o_mycx o_cx.
+  ENDTRY.
+</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="EXPORT_FROM_SAP_PACKAGE" VERSION="1" STATE="1" EDITORDER="16 " MTDNEWEXC="X">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Export Package from SAP System"/>
+     <ITEM LANGU="F" DESCRIPT="Export Package from SAP System"/>
+    </TEXTS>
+    <PARAMETERS>
+     <ITEM SCONAME="COMPONENT" VERSION="1" CMPTYPE="1" EDITORDER="1 " PARPASSTYP="1" TYPTYPE="1" TYPE="TO_COMPONENT">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="Component key"/>
+       <ITEM LANGU="F" DESCRIPT="Component key"/>
+      </TEXTS>
+     </ITEM>
+     <ITEM SCONAME="OBJECT" VERSION="1" CMPTYPE="1" EDITORDER="2 " PARDECLTYP="3" TYPTYPE="1" TYPE="TO_PACKAGE">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="Package data"/>
+       <ITEM LANGU="F" DESCRIPT="Package data"/>
+      </TEXTS>
+     </ITEM>
+    </PARAMETERS>
+    <EXCEPTIONS>
+     <ITEM SCONAME="ZAPLINK_CX_CONNECTOR" VERSION="1" LANGU="E" EDITORDER="1 ">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="ZAPlink ROOT Exception for Connectors"/>
+       <ITEM LANGU="F" DESCRIPT="ZAPlink ROOT Exception for Connectors"/>
+      </TEXTS>
+     </ITEM>
+    </EXCEPTIONS>
+    <SOURCE>
+  DATA sap_obj    TYPE REF TO if_package.
+  DATA devclass	  TYPE devclass.
+  DATA o_list     TYPE to_list.
+  DATA f_subcomp  TYPE td_with_subcomp.
+
+  TRY.
+
+      CHECK component-&gt;get_type( ) = st_package.
+      f_subcomp = component-&gt;get_with_subcomp( ).
+
+      devclass = component-&gt;get_name( ).
+
+      CREATE OBJECT o_list.
+      component-&gt;set_subcomponents( o_list ).
+
+      sap_obj = load_devc( devclass ).
+
+      object = conv_package( package = sap_obj
+                        with_subcomp = f_subcomp
+                       subcomponents = o_list ).
+
+      o_list-&gt;remove( component ).
+
+    CATCH zaplink_cx_connector INTO o_mycx.
+      RAISE EXCEPTION o_mycx.
+    CATCH zaplink_cx INTO o_cx.
+      mac_cascade_raise o_mycx o_cx.
+  ENDTRY.
+</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="IMPORT_TO_SAP_INTERFACE" VERSION="1" STATE="1" EDITORDER="17 " MTDNEWEXC="X">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Import Interface into SAP system"/>
+     <ITEM LANGU="F" DESCRIPT="Import Package Interface into SAP system"/>
+    </TEXTS>
+    <PARAMETERS>
+     <ITEM SCONAME="COMPONENTS" VERSION="1" CMPTYPE="1" EDITORDER="2 " PARDECLTYP="3" TYPTYPE="1" TYPE="TO_LIST">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="Components"/>
+       <ITEM LANGU="F" DESCRIPT="Components"/>
+      </TEXTS>
+     </ITEM>
+     <ITEM SCONAME="O_DATA" VERSION="1" CMPTYPE="1" EDITORDER="1 " PARPASSTYP="1" TYPTYPE="1" TYPE="TO_INTERFACE">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="Interface data"/>
+       <ITEM LANGU="F" DESCRIPT="Interface data"/>
+      </TEXTS>
+     </ITEM>
+    </PARAMETERS>
+    <EXCEPTIONS>
+     <ITEM SCONAME="ZAPLINK_CX_CONNECTOR" VERSION="1" LANGU="E" EDITORDER="1 ">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="ZAPlink ROOT Exception for Connectors"/>
+      </TEXTS>
+     </ITEM>
+    </EXCEPTIONS>
+    <SOURCE>
+
+  TRY.
+
+      CREATE OBJECT components.
+* Create bulk package
+      create_interface( overwrite = &apos;X&apos;
+                        interface = o_data
+                       components = components ).
+
+      set_interface_attrib( interface = o_data ).
+
+      application_log-&gt;raise_on_error( ).
+
+    CATCH zaplink_cx_connector INTO o_mycx.
+      RAISE EXCEPTION o_mycx.
+    CATCH zaplink_cx INTO o_cx.
+      mac_cascade_raise o_mycx o_cx.
+  ENDTRY.
+</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="IMPORT_TO_SAP_PACKAGE" VERSION="1" STATE="1" EDITORDER="18 " MTDNEWEXC="X">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Import Package into SAP system"/>
+     <ITEM LANGU="F" DESCRIPT="Import Package into SAP system"/>
+    </TEXTS>
+    <PARAMETERS>
+     <ITEM SCONAME="COMPONENTS" VERSION="1" CMPTYPE="1" EDITORDER="2 " PARDECLTYP="3" TYPTYPE="1" TYPE="TO_LIST">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="Components"/>
+       <ITEM LANGU="F" DESCRIPT="Components"/>
+      </TEXTS>
+     </ITEM>
+     <ITEM SCONAME="O_DATA" VERSION="1" CMPTYPE="1" EDITORDER="1 " PARPASSTYP="1" TYPTYPE="1" TYPE="TO_PACKAGE">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="Package data"/>
+       <ITEM LANGU="F" DESCRIPT="Package data"/>
+      </TEXTS>
+     </ITEM>
+    </PARAMETERS>
+    <EXCEPTIONS>
+     <ITEM SCONAME="ZAPLINK_CX_CONNECTOR" VERSION="1" LANGU="E" EDITORDER="1 ">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="ZAPlink ROOT Exception for Connectors"/>
+      </TEXTS>
+     </ITEM>
+    </EXCEPTIONS>
+    <SOURCE>
+
+  TRY.
+      CREATE OBJECT components.
+* Create bulk package
+      create_package( overwrite = &apos;X&apos;
+                        package = o_data
+                     components = components ).
+
+      set_package_attrib( package = o_data ).
+
+      application_log-&gt;raise_on_error( ).
+
+    CATCH zaplink_cx_connector INTO o_mycx.
+      RAISE EXCEPTION o_mycx.
+    CATCH zaplink_cx INTO o_cx.
+      mac_cascade_raise o_mycx o_cx.
+  ENDTRY.
+</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="LOAD_DEVC" VERSION="1" STATE="1" EDITORDER="19 " MTDNEWEXC="X">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Load IF_Package"/>
+     <ITEM LANGU="F" DESCRIPT="Load IF_Package"/>
+    </TEXTS>
+    <PARAMETERS>
+     <ITEM SCONAME="KEY" VERSION="1" CMPTYPE="1" EDITORDER="1 " PARPASSTYP="1" TYPTYPE="1" TYPE="TD_PACKAGE">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="Package"/>
+       <ITEM LANGU="F" DESCRIPT="Package"/>
+      </TEXTS>
+     </ITEM>
+     <ITEM SCONAME="OBJ" VERSION="1" CMPTYPE="1" EDITORDER="2 " PARDECLTYP="3" TYPTYPE="3" TYPE="IF_PACKAGE">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="Interface for Packages"/>
+       <ITEM LANGU="F" DESCRIPT="Interface for Packages"/>
+      </TEXTS>
+     </ITEM>
+    </PARAMETERS>
+    <EXCEPTIONS>
+     <ITEM SCONAME="ZAPLINK_CX_CONNECTOR" VERSION="1" LANGU="E" EDITORDER="1 ">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="ZAPlink ROOT Exception for Connectors"/>
+       <ITEM LANGU="F" DESCRIPT="ZAPlink ROOT Exception for Connectors"/>
+      </TEXTS>
+     </ITEM>
+    </EXCEPTIONS>
+    <SOURCE>
+  CALL METHOD cl_package=&gt;if_package~load_package
+    EXPORTING
+      i_package_name             = key
+      i_force_reload             = &apos;X&apos;
+    IMPORTING
+      e_package                  = obj
+    EXCEPTIONS
+      object_not_existing        = 1
+      unexpected_error           = 2
+      intern_err                 = 3
+      object_locked_and_modified = 4
+      OTHERS                     = 5.
+  IF sy-subrc &lt;&gt; 0.
+    CLEAR obj.
+    CASE sy-subrc.
+*      WHEN 1.
+** Package &amp;1 Not found
+*        IF 1 = 2. MESSAGE ID &apos;ZAPLINK_PACKAGE&apos; TYPE &apos;E&apos; NUMBER 006. ENDIF.
+*        application_log-&gt;add_warning( id_msgno = 006
+*                     id_msgv1 = key ).
+*        RAISE EXCEPTION TYPE ZAPLINK_CX_CONNECTOR
+*          EXPORTING
+*            textid = ZAPLINK_CX_CONNECTOR=&gt;not_found.
+*      WHEN 4.
+** Package &amp;1 is locked
+*        IF 1 = 2. MESSAGE ID &apos;ZAPLINK_PACKAGE&apos; TYPE &apos;E&apos; NUMBER 007. ENDIF.
+*        application_log-&gt;add_warning( id_msgno = 007
+*                     id_msgv1 = key ).
+*        RAISE EXCEPTION TYPE zaplink_cx_connector
+*          EXPORTING
+*            textid = zaplink_cx_connector=&gt;error_message
+*            msg = &apos;Object Locked&apos;.
+      WHEN OTHERS.
+* Unexpected error on &amp;1-&gt;&amp;2
+        SET EXTENDED CHECK OFF.
+        IF 1 = 2. MESSAGE e008 WITH space. ENDIF.
+        SET EXTENDED CHECK ON.
+        application_log-&gt;add_warning( id_msgno = 008
+                     id_msgv1 = &apos;ZAPLINK_PACKAGE&apos;
+                     id_msgv2 = &apos;LOAD_DEVC&apos; ).
+        RAISE EXCEPTION TYPE zaplink_cx_connector
+          EXPORTING
+            textid = zaplink_cx_connector=&gt;system_error.
+    ENDCASE.
+  ENDIF.</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="LOAD_INTF" VERSION="1" STATE="1" EDITORDER="20 " MTDNEWEXC="X">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Load IF_Package_Interface"/>
+     <ITEM LANGU="F" DESCRIPT="Load IF_Package_Interface"/>
+    </TEXTS>
+    <PARAMETERS>
+     <ITEM SCONAME="KEY" VERSION="1" CMPTYPE="1" EDITORDER="1 " PARPASSTYP="1" TYPTYPE="1" TYPE="TD_INTERFACE">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="Package Interface"/>
+       <ITEM LANGU="F" DESCRIPT="Package Interface"/>
+      </TEXTS>
+     </ITEM>
+     <ITEM SCONAME="OBJ" VERSION="1" CMPTYPE="1" EDITORDER="2 " PARDECLTYP="3" TYPTYPE="3" TYPE="IF_PACKAGE_INTERFACE">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="Interface for Packages"/>
+       <ITEM LANGU="F" DESCRIPT="Interface for Packages"/>
+      </TEXTS>
+     </ITEM>
+    </PARAMETERS>
+    <EXCEPTIONS>
+     <ITEM SCONAME="ZAPLINK_CX_CONNECTOR" VERSION="1" LANGU="E" EDITORDER="1 ">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="ZAPlink ROOT Exception for Connectors"/>
+       <ITEM LANGU="F" DESCRIPT="ZAPlink ROOT Exception for Connectors"/>
+      </TEXTS>
+     </ITEM>
+    </EXCEPTIONS>
+    <SOURCE>
+  CALL METHOD cl_package_interface=&gt;if_package_interface~load_package_interface
+    EXPORTING
+      i_package_interface_name   = key
+      i_force_reload             = &apos;X&apos;
+    IMPORTING
+      e_package_interface        = obj
+    EXCEPTIONS
+      db_read_error              = 1
+      unexpected_error           = 2
+      object_not_existing        = 3
+      shorttext_not_existing     = 4
+      object_locked_and_modified = 5
+      OTHERS                     = 6.
+  IF sy-subrc &lt;&gt; 0.
+    CLEAR obj.
+    CASE sy-subrc.
+*      WHEN 3.
+*        RAISE EXCEPTION TYPE zaplink_cx_connector
+*          EXPORTING
+*            textid = zaplink_cx_connector=&gt;error_message
+*            msg = &apos;Object Not found&apos;.
+*      WHEN 5.
+*        RAISE EXCEPTION TYPE zaplink_cx_connector
+*          EXPORTING
+*            textid = zaplink_cx_connector=&gt;error_message
+*            msg = &apos;Object Locked&apos;.
+      WHEN OTHERS.
+        RAISE EXCEPTION TYPE zaplink_cx_connector
+          EXPORTING
+            textid = ZAPLINK_CX_CONNECTOR=&gt;system_error.
+    ENDCASE.
+  ENDIF.</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="SET_INTERFACE_ATTRIB" VERSION="1" STATE="1" EDITORDER="21 " MTDNEWEXC="X">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Set interface attributs (ACLS, Elements,...)"/>
+     <ITEM LANGU="F" DESCRIPT="Set interface attributs (ACLS, Elements,...)"/>
+    </TEXTS>
+    <PARAMETERS>
+     <ITEM SCONAME="INTERFACE" VERSION="1" CMPTYPE="1" EDITORDER="1 " PARPASSTYP="1" TYPTYPE="1" TYPE="TO_INTERFACE">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="DEVC Datas"/>
+       <ITEM LANGU="F" DESCRIPT="DEVC Datas"/>
+      </TEXTS>
+     </ITEM>
+    </PARAMETERS>
+    <EXCEPTIONS>
+     <ITEM SCONAME="ZAPLINK_CX_CONNECTOR" VERSION="1" LANGU="E" EDITORDER="1 ">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="ZAPlink ROOT Exception for Connectors"/>
+       <ITEM LANGU="F" DESCRIPT="ZAPlink ROOT Exception for Connectors"/>
+      </TEXTS>
+     </ITEM>
+    </EXCEPTIONS>
+    <SOURCE>
+  DATA name       TYPE scomifnam.
+  DATA csubrc     TYPE string.
+  DATA transport_request  TYPE  e070-trkorr.
+
+  name = interface-&gt;a0_maindata-intf_name.
+* Processing Interface &amp;1 attributs (ACLs, Elements, ...)
+  SET EXTENDED CHECK OFF.
+  IF 1 = 2. MESSAGE i014 WITH space. ENDIF.
+  SET EXTENDED CHECK ON.
+  application_log-&gt;add_info( id_msgno = 014
+                             id_msgv1 = name ).
+
+  IF NOT interface-&gt;if IS BOUND.
+* System Error : Object &apos;&amp;3&apos; is not bound in method &amp;1-&gt;&amp;2
+    SET EXTENDED CHECK OFF.
+    IF 1 = 2. MESSAGE a016 WITH space space space. ENDIF.
+    SET EXTENDED CHECK ON.
+    application_log-&gt;add_abend( id_msgno = 016
+                                id_msgv1 = &apos;ZAPLINK_PACKAGE&apos;
+                                id_msgv2 = &apos;SET_INTERFACE_ATTRIB&apos;
+                                id_msgv3 = &apos;interface-&gt;if&apos;
+*                               id_msgv4 =
+*                           id_detlevel  =
+                            id_probclass = &apos;1&apos; ).
+    EXIT.
+  ENDIF.
+
+  IF NOT interface-&gt;acls IS INITIAL.
+    CALL METHOD interface-&gt;if-&gt;add_access_control_elements
+      EXPORTING
+        i_user_list            = interface-&gt;acls
+      EXCEPTIONS
+        no_acl                 = 1
+        entry_already_existing = 2
+        object_not_changeable  = 3
+        object_invalid         = 4
+        local_package          = 5
+        intern_err             = 6
+        OTHERS                 = 7.
+    IF sy-subrc &lt;&gt; 0.
+      csubrc = sy-subrc.
+      SET EXTENDED CHECK OFF.
+      IF 1 = 2. MESSAGE e017 WITH space space space space. ENDIF.
+      SET EXTENDED CHECK ON.
+      application_log-&gt;add_error( id_msgno = 017
+                                  id_msgv1 = &apos;ZAPLINK_PACKAGE&apos;
+                                  id_msgv2 = &apos;SET_INTERFACE_ATTRIB&apos;
+                                  id_msgv3 = &apos;add_access_control_elements&apos;
+                                  id_msgv4 = csubrc ).
+    ENDIF.
+  ENDIF.
+
+  TRY.
+      CALL METHOD add_elements_list
+        EXPORTING
+          interface	 = interface
+*          list       = interface-&gt;elements
+          ask_user   = abap_true
+          add_remain = abap_true.
+    CATCH zaplink_cx_connector INTO o_mycx.
+      RAISE EXCEPTION o_mycx.
+  ENDTRY.
+
+  CALL METHOD interface-&gt;if-&gt;save
+    EXPORTING
+      i_transport_request   = transport_request
+    IMPORTING
+      e_transport_request   = transport_request
+    EXCEPTIONS
+      object_invalid        = 1
+      object_not_changeable = 2
+      cancelled_in_corr     = 3
+      permission_failure    = 4
+      unexpected_error      = 5
+      intern_err            = 6
+      OTHERS                = 7.
+  IF sy-subrc &lt;&gt; 0.
+    RAISE EXCEPTION TYPE zaplink_cx_connector
+      EXPORTING
+        textid = zaplink_cx_connector=&gt;system_error
+        msg = &apos;Package interface save failed !&apos;.
+  ENDIF.</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="SET_PACKAGE_ATTRIB" VERSION="1" STATE="1" EDITORDER="22 " MTDNEWEXC="X">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Set Package attributs"/>
+     <ITEM LANGU="F" DESCRIPT="Set Package attributs"/>
+    </TEXTS>
+    <PARAMETERS>
+     <ITEM SCONAME="PACKAGE" VERSION="1" CMPTYPE="1" EDITORDER="1 " PARPASSTYP="1" TYPTYPE="1" TYPE="TO_PACKAGE">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="DEVC Datas"/>
+       <ITEM LANGU="F" DESCRIPT="DEVC Datas"/>
+      </TEXTS>
+     </ITEM>
+    </PARAMETERS>
+    <EXCEPTIONS>
+     <ITEM SCONAME="ZAPLINK_CX_CONNECTOR" VERSION="1" LANGU="E" EDITORDER="1 ">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="ZAPlink ROOT Exception for Connectors"/>
+       <ITEM LANGU="F" DESCRIPT="ZAPlink ROOT Exception for Connectors"/>
+      </TEXTS>
+     </ITEM>
+    </EXCEPTIONS>
+    <SOURCE>
+  DATA name       TYPE scomifnam.
+  DATA csubrc     TYPE string.
+  DATA o_intf     TYPE to_interface.
+  DATA o_package  TYPE to_package.
+  FIELD-SYMBOLS:
+    &lt;a&gt; LIKE LINE OF package-&gt;acls,
+    &lt;p&gt; LIKE LINE OF package-&gt;packages,
+    &lt;i&gt; LIKE LINE OF package-&gt;interfaces.
+
+  name = package-&gt;a0_maindata-devclass.
+* Processing Package &amp;1 attributs
+  SET EXTENDED CHECK OFF.
+  IF 1 = 2. MESSAGE e015 WITH space. ENDIF.
+  SET EXTENDED CHECK ON.
+  application_log-&gt;add_info( id_msgno = 015
+                             id_msgv1 = name ).
+
+  IF NOT package-&gt;if IS BOUND.
+* System Error : Object &apos;&amp;3&apos; is not bound in method &amp;1-&gt;&amp;2
+    SET EXTENDED CHECK OFF.
+    IF 1 = 2. MESSAGE e016 WITH space space space. ENDIF.
+    SET EXTENDED CHECK ON.
+    application_log-&gt;add_abend( id_msgno = 016
+                                id_msgv1 = &apos;ZAPLINK_PACKAGE&apos;
+                                id_msgv2 = &apos;SET_PACKAGE_ATTRIB&apos;
+                                id_msgv3 = &apos;package-&gt;if&apos;
+*                                id_msgv4 =
+*                             id_detlevel =
+                                id_probclass = &apos;1&apos; ).
+    EXIT.
+  ENDIF.
+
+  LOOP AT package-&gt;acls ASSIGNING &lt;a&gt;.
+    CALL METHOD package-&gt;if-&gt;add_permission_to_use
+      EXPORTING
+        i_pkg_permission_data   = &lt;a&gt;
+*      IMPORTING
+*        e_pkg_permission        =
+      EXCEPTIONS
+        object_not_changeable   = 1
+        object_access_error     = 2
+        object_already_existing = 3
+        object_invalid          = 4
+        unexpected_error        = 5
+        OTHERS                  = 6
+            .
+    IF sy-subrc &lt;&gt; 0.
+      csubrc = sy-subrc.
+      SET EXTENDED CHECK OFF.
+      IF 1 = 2. MESSAGE e017 WITH space space space space. ENDIF.
+      SET EXTENDED CHECK ON.
+      application_log-&gt;add_error( id_msgno = 017
+                                  id_msgv1 = &apos;ZAPLINK_PACKAGE&apos;
+                                  id_msgv2 = &apos;SET_PACKAGE_ATTRIB&apos;
+                                  id_msgv3 = &apos;add_permission_to_use&apos;
+                                  id_msgv4 = csubrc ).
+    ENDIF.
+  ENDLOOP.
+
+  LOOP AT package-&gt;interfaces ASSIGNING &lt;i&gt;.
+    TRY.
+        o_intf ?= &lt;i&gt;-zl_object-&gt;raw.
+        CALL METHOD set_interface_attrib
+          EXPORTING
+            interface = o_intf.
+      CATCH zaplink_cx_connector INTO o_mycx.
+        RAISE EXCEPTION o_mycx.
+    ENDTRY.
+  ENDLOOP.
+
+  LOOP AT package-&gt;packages ASSIGNING &lt;p&gt;.
+    TRY.
+        o_package ?= &lt;p&gt;-zl_object-&gt;raw.
+        CALL METHOD set_package_attrib
+          EXPORTING
+            package = o_package.
+      CATCH zaplink_cx_connector INTO o_mycx.
+        RAISE EXCEPTION o_mycx.
+    ENDTRY.
+  ENDLOOP.</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="UNANONYMIZE_INTERFACE" VERSION="1" EXPOSURE="1" STATE="1" EDITORDER="23 " MTDNEWEXC="X">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Interface : unanonymized component data"/>
+     <ITEM LANGU="F" DESCRIPT="Interface : unanonymized component data"/>
+    </TEXTS>
+    <PARAMETERS>
+     <ITEM SCONAME="OBJECT" VERSION="1" CMPTYPE="1" EDITORDER="1 " PARPASSTYP="1" TYPTYPE="1" TYPE="TO_INTERFACE">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="Interface Object"/>
+       <ITEM LANGU="F" DESCRIPT="Interface Object"/>
+      </TEXTS>
+     </ITEM>
+    </PARAMETERS>
+    <EXCEPTIONS>
+     <ITEM SCONAME="ZAPLINK_CX_CONNECTOR" VERSION="1" LANGU="E" EDITORDER="1 ">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="ZAPlink ROOT Exception for Connectors"/>
+       <ITEM LANGU="F" DESCRIPT="ZAPlink ROOT Exception for Connectors"/>
+      </TEXTS>
+     </ITEM>
+    </EXCEPTIONS>
+    <SOURCE>
+
+  If object-&gt;a0_maindata-created_by is INITIAL. object-&gt;a0_maindata-created_by = sy-uname. endif.
+  If object-&gt;a0_maindata-created_on is INITIAL. object-&gt;a0_maindata-created_on = sy-datum. endif.
+*    object-&gt;a0_maindata-changed_by,
+*    object-&gt;a0_maindata-changed_on.
+</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="UNANONYMIZE_PACKAGE" VERSION="1" EXPOSURE="1" STATE="1" EDITORDER="24 " MTDNEWEXC="X">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Package : unanonymized component data"/>
+     <ITEM LANGU="F" DESCRIPT="Package : unanonymized component data"/>
+    </TEXTS>
+    <PARAMETERS>
+     <ITEM SCONAME="OBJECT" VERSION="1" CMPTYPE="1" EDITORDER="1 " PARPASSTYP="1" TYPTYPE="1" TYPE="TO_PACKAGE">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="Package Object"/>
+       <ITEM LANGU="F" DESCRIPT="Package Object"/>
+      </TEXTS>
+     </ITEM>
+    </PARAMETERS>
+    <EXCEPTIONS>
+     <ITEM SCONAME="ZAPLINK_CX_CONNECTOR" VERSION="1" LANGU="E" EDITORDER="1 ">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="ZAPlink ROOT Exception for Connectors"/>
+       <ITEM LANGU="F" DESCRIPT="ZAPlink ROOT Exception for Connectors"/>
+      </TEXTS>
+     </ITEM>
+    </EXCEPTIONS>
+    <SOURCE>
+  DATA o_raw_i     LIKE LINE OF object-&gt;interfaces.
+  DATA o_interface TYPE to_interface.
+  DATA o_raw_p     LIKE LINE OF object-&gt;packages.
+  DATA o_package   TYPE to_package.
+
+  If object-&gt;a0_maindata-created_by is INITIAL. object-&gt;a0_maindata-created_by = sy-uname. endif.
+  If object-&gt;a0_maindata-created_on is INITIAL. object-&gt;a0_maindata-created_on = sy-datum. endif.
+*    object-&gt;a0_maindata-changed_by,
+*    object-&gt;a0_maindata-changed_on.
+
+  LOOP AT object-&gt;interfaces INTO o_raw_i.
+    o_interface ?= o_raw_i-zl_object-&gt;raw.
+    unanonymize_interface( o_interface ).
+  ENDLOOP.
+
+  LOOP AT object-&gt;packages INTO o_raw_p.
+    o_package ?= o_raw_p-zl_object-&gt;raw.
+    unanonymize_package( o_package ).
+  ENDLOOP.
+</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="UPDATE_INTERFACE" VERSION="1" STATE="1" EDITORDER="25 " MTDDECLTYP="1" MTDNEWEXC="X">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Create new interface or update it"/>
+     <ITEM LANGU="F" DESCRIPT="Create new interface or update it"/>
+    </TEXTS>
+    <PARAMETERS>
+     <ITEM SCONAME="DATA" VERSION="1" CMPTYPE="1" EDITORDER="1 " PARPASSTYP="1" TYPTYPE="1" TYPE="SCOMPIDTLN">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="Line Type for Table with Package Interface Data"/>
+       <ITEM LANGU="F" DESCRIPT="Line Type for Table with Package Interface Data"/>
+      </TEXTS>
+     </ITEM>
+     <ITEM SCONAME="INTERFACE" VERSION="1" CMPTYPE="1" EDITORDER="2 " PARDECLTYP="2" PARPASSTYP="1" TYPTYPE="3" TYPE="IF_PACKAGE_INTERFACE">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="Interface for Package Interfaces"/>
+       <ITEM LANGU="F" DESCRIPT="Interface for Package Interfaces"/>
+      </TEXTS>
+     </ITEM>
+    </PARAMETERS>
+    <EXCEPTIONS>
+     <ITEM SCONAME="ZAPLINK_CX_CONNECTOR" VERSION="1" LANGU="E" EDITORDER="1 ">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="ZAPlink ROOT Exception for Connectors"/>
+       <ITEM LANGU="F" DESCRIPT="ZAPlink ROOT Exception for Connectors"/>
+      </TEXTS>
+     </ITEM>
+    </EXCEPTIONS>
+    <SOURCE>
+DATA _data      TYPE scompidtln.
+  DATA _data_f    TYPE scompisign.
+
+* Done in method S_LOCK_DB de CL_PACKAGE
+*  CALL FUNCTION &apos;RS_ACCESS_PERMISSION&apos;
+*  CALL FUNCTION &apos;RS_CORR_INSERT&apos;
+
+  _data = data.
+  IF interface IS BOUND.
+    _data_f = sy-uline.
+    CALL METHOD interface-&gt;set_changeable
+      EXPORTING
+        i_changeable                = &apos;X&apos;
+      EXCEPTIONS
+        object_locked_by_other_user = 1
+        permission_failure          = 2
+        object_already_changeable   = 0
+        object_already_unlocked     = 0
+        object_just_created         = 5
+        object_deleted              = 6
+        object_modified             = 7
+        object_not_existing         = 8
+        object_invalid              = 9
+        unexpected_error            = 10
+        OTHERS                      = 11.
+    IF sy-subrc &lt;&gt; 0.
+      CASE sy-subrc.
+*      WHEN 1.
+*        RAISE EXCEPTION TYPE zaplink_cx_connector
+*          EXPORTING
+*            textid = zaplink_cx_connector=&gt;Lock_error.
+*        WHEN 2.
+*          RAISE EXCEPTION TYPE zaplink_cx_connector
+*            EXPORTING
+*              textid = zaplink_cx_connector=&gt;not_authorized.
+        WHEN OTHERS.
+          RAISE EXCEPTION TYPE zaplink_cx_connector
+            EXPORTING
+              textid = zaplink_cx_connector=&gt;system_error.
+      ENDCASE.
+    ENDIF.
+    CALL METHOD interface-&gt;set_all_attributes
+      EXPORTING
+        i_package_interface_data = _data
+        i_data_sign              = _data_f
+      EXCEPTIONS
+        object_deleted           = 1
+        object_not_changeable    = 2
+        interface_not_empty      = 3
+        acl_not_empty            = 4
+        author_not_existing      = 5
+        object_type_mismatch     = 6
+        object_invalid           = 7
+        OTHERS                   = 8.
+  ELSE.
+    CALL METHOD cl_package_interface=&gt;if_package_interface~create_new_package_interface
+      EXPORTING
+*        i_reuse_deleted_object  = &apos;X&apos;
+        i_pkg_interface_name    = _data-intf_name
+        i_publisher_pkg_name    = _data-pack_name
+        i_pkg_interface_data    = _data
+      IMPORTING
+        e_package_interface     = interface
+      EXCEPTIONS
+        object_already_existing = 101
+        object_just_created     = 102
+        interface_name_invalid  = 103
+        unexpected_error        = 104
+        no_changes_allowed      = 2
+        OTHERS                  = 8
+            .
+  ENDIF.
+
+  IF sy-subrc &lt;&gt; 0.
+    CASE sy-subrc.
+*      WHEN 2.
+*        RAISE EXCEPTION TYPE zaplink_cx_connector
+*          EXPORTING
+*            textid = zaplink_cx_connector=&gt;not_authorized.
+*      WHEN 103.
+*        RAISE EXCEPTION TYPE zaplink_cx_connector
+*          EXPORTING
+*            textid = zaplink_cx_connector=&gt;error_message
+*            msg = &apos;Problem with package interface name&apos;.
+      WHEN OTHERS.
+        RAISE EXCEPTION TYPE zaplink_cx_connector
+          EXPORTING
+            textid = zaplink_cx_connector=&gt;system_error.
+    ENDCASE.
+  ENDIF.</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="UPDATE_PACKAGE" VERSION="1" STATE="1" EDITORDER="26 " MTDNEWEXC="X">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Create new package or update it"/>
+     <ITEM LANGU="F" DESCRIPT="Create new package or update it"/>
+    </TEXTS>
+    <PARAMETERS>
+     <ITEM SCONAME="DATA" VERSION="1" CMPTYPE="1" EDITORDER="1 " PARPASSTYP="1" TYPTYPE="1" TYPE="SCOMPKDTLN">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="Line Type for Table with Package Data"/>
+       <ITEM LANGU="F" DESCRIPT="Line Type for Table with Package Data"/>
+      </TEXTS>
+     </ITEM>
+     <ITEM SCONAME="PACKAGE" VERSION="1" CMPTYPE="1" EDITORDER="2 " PARDECLTYP="2" PARPASSTYP="1" TYPTYPE="3" TYPE="IF_PACKAGE">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="Interface for Packages"/>
+       <ITEM LANGU="F" DESCRIPT="Interface for Packages"/>
+      </TEXTS>
+     </ITEM>
+    </PARAMETERS>
+    <EXCEPTIONS>
+     <ITEM SCONAME="ZAPLINK_CX_CONNECTOR" VERSION="1" LANGU="E" EDITORDER="1 ">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="ZAPlink ROOT Exception for Connectors"/>
+       <ITEM LANGU="F" DESCRIPT="ZAPlink ROOT Exception for Connectors"/>
+      </TEXTS>
+     </ITEM>
+    </EXCEPTIONS>
+    <SOURCE>
+  DATA _data      TYPE scompkdtln.
+  DATA _data_f    TYPE scompksign.
+
+* Done in method S_LOCK_DB de CL_PACKAGE
+*  CALL FUNCTION &apos;RS_ACCESS_PERMISSION&apos;
+*  CALL FUNCTION &apos;RS_CORR_INSERT&apos;
+
+  _data = data.
+  IF package IS BOUND.
+    _data_f = sy-uline.
+    CALL METHOD package-&gt;set_changeable
+      EXPORTING
+        i_changeable                = &apos;X&apos;
+      EXCEPTIONS
+        object_locked_by_other_user = 1
+        permission_failure          = 2
+        object_already_changeable   = 0
+        object_already_unlocked     = 0
+        object_just_created         = 5
+        object_deleted              = 6
+        object_modified             = 7
+        object_not_existing         = 8
+        object_invalid              = 9
+        unexpected_error            = 10
+        OTHERS                      = 11.
+    IF sy-subrc &lt;&gt; 0.
+      CASE sy-subrc.
+*      WHEN 1.
+*        RAISE EXCEPTION TYPE zaplink_cx_connector
+*          EXPORTING
+*            textid = zaplink_cx_connector=&gt;Lock_error.
+*        WHEN 2.
+*          RAISE EXCEPTION TYPE zaplink_cx_connector
+*            EXPORTING
+*              textid = zaplink_cx_connector=&gt;not_authorized.
+        WHEN OTHERS.
+          RAISE EXCEPTION TYPE zaplink_cx_connector
+            EXPORTING
+              textid = zaplink_cx_connector=&gt;system_error.
+      ENDCASE.
+    ENDIF.
+
+    CALL METHOD package-&gt;set_all_attributes
+      EXPORTING
+        i_package_data             = _data
+        i_data_sign                = _data_f
+      EXCEPTIONS
+        object_not_changeable      = 101
+        object_deleted             = 102
+        object_invalid             = 103
+        short_text_missing         = 8
+        author_not_existing        = 11
+        local_package              = 6
+        software_component_invalid = 9
+        layer_invalid              = 10
+        korrflag_invalid           = 109
+        component_not_existing     = 12
+        component_missing          = 13
+        authorize_failure          = 3
+        prefix_in_use              = 4
+        unexpected_error           = 15
+        intern_err                 = 16
+        OTHERS                     = 17.
+  ELSE.
+    CALL METHOD cl_package=&gt;if_package~create_new_package
+*    EXPORTING
+*      i_reuse_deleted_object     = &apos;X&apos;
+      IMPORTING
+        e_package                  = package
+      CHANGING
+        c_package_data             = _data
+      EXCEPTIONS
+        object_already_existing    = 1
+        object_just_created        = 2
+        not_authorized             = 3
+        wrong_name_prefix          = 4
+        undefined_name             = 5
+        reserved_local_name        = 6
+        invalid_package_name       = 7
+        short_text_missing         = 8
+        software_component_invalid = 9
+        layer_invalid              = 10
+        author_not_existing        = 11
+        component_not_existing     = 12
+        component_missing          = 13
+        prefix_in_use              = 14
+        unexpected_error           = 15
+        intern_err                 = 16
+        OTHERS                     = 17
+            .
+  ENDIF.
+
+  IF sy-subrc = 11 AND _data-as4user &lt;&gt; sy-uname.           &quot;#EC *
+    _data-as4user = sy-uname.
+    TRY.
+        CALL METHOD update_package
+          EXPORTING
+            data    = _data
+          CHANGING
+            package = package.
+      CATCH zaplink_cx_connector INTO o_mycx.
+        RAISE EXCEPTION o_mycx.
+    ENDTRY.
+  ELSEIF sy-subrc &lt;&gt; 0.
+    CASE sy-subrc.
+*      WHEN 3.
+*        RAISE EXCEPTION TYPE zaplink_cx_connector
+*          EXPORTING
+*            textid = zaplink_cx_connector=&gt;not_authorized.
+*      WHEN 4 OR 5 OR 6 OR 7.
+*        RAISE EXCEPTION TYPE zaplink_cx_connector
+*          EXPORTING
+*            textid = zaplink_cx_connector=&gt;error_message
+*            msg = &apos;Problem with Dev Class name&apos;.
+*      WHEN 8.
+*        RAISE EXCEPTION TYPE zaplink_cx_connector
+*          EXPORTING
+*            textid = zaplink_cx_connector=&gt;error_message
+*            msg = &apos;Problem with Short Text&apos;.
+*      WHEN 9.
+*        RAISE EXCEPTION TYPE zaplink_cx_connector
+*          EXPORTING
+*            textid = zaplink_cx_connector=&gt;error_message
+*            msg = &apos;Problem with SoftwareComponent&apos;.
+*      WHEN 10.
+*        RAISE EXCEPTION TYPE zaplink_cx_connector
+*          EXPORTING
+*            textid = zaplink_cx_connector=&gt;error_message
+*            msg = &apos;Problem with Layer&apos;.
+*      WHEN 12 OR 13.
+*        RAISE EXCEPTION TYPE zaplink_cx_connector
+*          EXPORTING
+*            textid = zaplink_cx_connector=&gt;error_message
+*            msg = &apos;Problem with Component&apos;.
+      WHEN OTHERS.
+        RAISE EXCEPTION TYPE zaplink_cx_connector
+          EXPORTING
+            textid = zaplink_cx_connector=&gt;system_error.
+    ENDCASE.
+  ENDIF.</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="_DELETE_DEVC" VERSION="1" STATE="1" EDITORDER="27 " MTDNEWEXC="X">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Delete package object"/>
+     <ITEM LANGU="F" DESCRIPT="Delete package object"/>
+    </TEXTS>
+    <PARAMETERS>
+     <ITEM SCONAME="PACKAGE" VERSION="1" CMPTYPE="1" EDITORDER="1 " PARPASSTYP="1" TYPTYPE="3" TYPE="IF_PACKAGE">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="Interface for Packages"/>
+       <ITEM LANGU="F" DESCRIPT="Interface for Packages"/>
+      </TEXTS>
+     </ITEM>
+    </PARAMETERS>
+    <EXCEPTIONS>
+     <ITEM SCONAME="ZAPLINK_CX_CONNECTOR" VERSION="1" LANGU="E" EDITORDER="1 ">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="ZAPlink ROOT Exception for Connectors"/>
+       <ITEM LANGU="F" DESCRIPT="ZAPlink ROOT Exception for Connectors"/>
+      </TEXTS>
+     </ITEM>
+    </EXCEPTIONS>
+    <SOURCE>
+  DATA interfaces  TYPE tpak_package_interface_list.
+  DATA packages    TYPE scompaklis.
+  DATA cx_name     TYPE string.
+  FIELD-SYMBOLS:
+    &lt;pack&gt; LIKE LINE OF packages,
+    &lt;itf&gt; LIKE LINE OF interfaces.
+
+  CALL METHOD package-&gt;set_changeable
+    EXPORTING
+      i_changeable                = &apos;X&apos;
+    EXCEPTIONS
+      object_locked_by_other_user = 1
+      permission_failure          = 2
+      object_already_changeable   = 0
+      object_already_unlocked     = 0
+      object_just_created         = 5
+      object_deleted              = 6
+      object_modified             = 7
+      object_not_existing         = 8
+      object_invalid              = 9
+      unexpected_error            = 10
+      OTHERS                      = 11.
+  IF sy-subrc &lt;&gt; 0.
+    CASE sy-subrc.
+*      WHEN 1.
+*        RAISE EXCEPTION TYPE zaplink_cx_connector
+*          EXPORTING
+*            textid = zaplink_cx_connector=&gt;Lock_error.
+*      WHEN 2.
+*        RAISE EXCEPTION TYPE zaplink_cx_connector
+*          EXPORTING
+*            textid = zaplink_cx_connector=&gt;not_authorized.
+      WHEN OTHERS.
+        RAISE EXCEPTION TYPE zaplink_cx_connector
+          EXPORTING
+            textid = zaplink_cx_connector=&gt;system_error.
+    ENDCASE.
+  ENDIF.
+
+* Interfaces
+  CALL METHOD package-&gt;get_interfaces
+    IMPORTING
+      e_package_interfaces = interfaces
+    EXCEPTIONS
+      object_invalid       = 1
+      unexpected_error     = 2
+      intern_err           = 3
+      OTHERS               = 4.
+  IF sy-subrc &lt;&gt; 0.
+    RAISE EXCEPTION TYPE zaplink_cx_connector
+      EXPORTING
+        textid = zaplink_cx_connector=&gt;system_error.
+  ELSEIF NOT interfaces IS INITIAL.
+    LOOP AT interfaces ASSIGNING &lt;itf&gt;.
+      TRY.
+          _delete_intf( &lt;itf&gt; ).
+        CATCH zaplink_cx_connector INTO o_mycx.
+          RAISE EXCEPTION o_mycx.
+*          application_log-&gt;add_exception( o_mycx ).
+      ENDTRY.
+    ENDLOOP.
+  ENDIF.
+
+* Packages
+  CALL METHOD package-&gt;get_sub_packages
+    IMPORTING
+      e_sub_packages   = packages
+    EXCEPTIONS
+      object_invalid   = 1
+      leaf_package     = 0   &quot; has no sub packages
+      unexpected_error = 3
+      OTHERS           = 4.
+  IF sy-subrc &lt;&gt; 0.
+    RAISE EXCEPTION TYPE zaplink_cx_connector
+      EXPORTING
+        textid = zaplink_cx_connector=&gt;system_error.
+  ELSEIF NOT packages IS INITIAL.
+    LOOP AT packages ASSIGNING &lt;pack&gt;.
+      TRY.
+          _delete_devc( &lt;pack&gt; ).
+        CATCH zaplink_cx_connector INTO o_mycx.
+          RAISE EXCEPTION o_mycx.
+*          application_log-&gt;add_exception( o_mycx ).
+      ENDTRY.
+    ENDLOOP.
+  ENDIF.
+
+  _delete_elements( package ). &quot; try to delete TADIR entries that prevent package deletion
+
+  CALL METHOD package-&gt;delete
+    EXCEPTIONS
+      object_not_empty      = 1
+      object_not_changeable = 2
+      object_invalid        = 3
+      intern_err            = 4
+      OTHERS                = 5.
+  IF sy-subrc &lt;&gt; 0.
+    CALL METHOD application_log-&gt;add_symsg( ).
+* Application_log is allready accessible. doing this will duplicate messages
+*    o_cx_cnx ?= zaplink_cx_connector=&gt;new_with_ballog( cx_name = &apos;ZAPLINK_CX_CONNECTOR&apos;
+*                                             message_collector = application_log
+*                                                        textid = zaplink_cx_connector=&gt;system_error ).
+*    RAISE EXCEPTION o_cx_cnx.
+    MESSAGE ID sy-msgid TYPE sy-msgty NUMBER sy-msgno WITH sy-msgv1 sy-msgv2 sy-msgv3 sy-msgv4
+            INTO cx_name.
+    RAISE EXCEPTION TYPE zaplink_cx_connector
+      EXPORTING
+        cx_name = cx_name
+        textid  = zaplink_cx_connector=&gt;system_error.
+  ENDIF.
+
+  CALL METHOD package-&gt;save
+    EXPORTING
+      i_transport_request   = space
+*   IMPORTING
+*     e_transport_request   =
+    EXCEPTIONS
+      object_invalid        = 1
+      object_not_changeable = 2
+      cancelled_in_corr     = 3
+      permission_failure    = 4
+      unexpected_error      = 5
+      intern_err            = 6
+      OTHERS                = 7.
+  IF sy-subrc &lt;&gt; 0.
+    RAISE EXCEPTION TYPE zaplink_cx_connector
+      EXPORTING
+        textid = zaplink_cx_connector=&gt;system_error.
+  ENDIF.</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="_DELETE_ELEMENTS" VERSION="1" STATE="1" EDITORDER="28 " MTDNEWEXC="X">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Delete package&apos;s elements (component that use this DEVC)"/>
+     <ITEM LANGU="F" DESCRIPT="Delete package&apos;s elements (component that use this DEVC)"/>
+    </TEXTS>
+    <PARAMETERS>
+     <ITEM SCONAME="PACKAGE" VERSION="1" CMPTYPE="1" EDITORDER="1 " PARPASSTYP="1" TYPTYPE="3" TYPE="IF_PACKAGE">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="Interface for Packages"/>
+       <ITEM LANGU="F" DESCRIPT="Interface for Packages"/>
+      </TEXTS>
+     </ITEM>
+    </PARAMETERS>
+    <EXCEPTIONS>
+     <ITEM SCONAME="ZAPLINK_CX_CONNECTOR" VERSION="1" LANGU="E" EDITORDER="1 ">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="ZAPlink ROOT Exception for Connectors"/>
+       <ITEM LANGU="F" DESCRIPT="ZAPlink ROOT Exception for Connectors"/>
+      </TEXTS>
+     </ITEM>
+    </EXCEPTIONS>
+    <SOURCE>
+  DATA t_elements TYPE pakdevelemtab.
+  DATA f_errors   TYPE abap_bool.
+  DATA d_name     TYPE tadir-obj_name.
+  DATA s_tadir    TYPE tadir.
+  DATA f_exists   TYPE saus_dpara-tadirexist.
+  FIELD-SYMBOLS:
+    &lt;e&gt; LIKE LINE OF t_elements.
+
+  f_errors = abap_false.
+  CALL METHOD package-&gt;get_elements
+*    EXPORTING
+*      i_check_existence = TPAK_C_FALSE
+     IMPORTING
+       e_elements        = t_elements.
+  LOOP AT t_elements ASSIGNING &lt;e&gt;.
+    IF &lt;e&gt;-&gt;dev_elem_type = st_package.   &quot; do not try to remove DEVC
+      DELETE t_elements.
+      CONTINUE.
+    ENDIF.
+    d_name = &lt;e&gt;-&gt;dev_elem_key.
+    CALL FUNCTION &apos;TRINT_TADIR_DELETE&apos;
+      EXPORTING
+        object                   = &lt;e&gt;-&gt;dev_elem_type
+        obj_name                 = d_name
+        pgmid                    = &lt;e&gt;-&gt;dev_elem_pgmid
+        iv_test_mode             = abap_true
+      EXCEPTIONS
+        tadir_entry_not_existing = 1
+        object_exists            = 2
+        object_locked            = 3
+        object_distributed       = 4
+        OTHERS                   = 5.
+    IF sy-subrc &lt;&gt; 0.
+      CASE sy-subrc.
+        WHEN 2 OR 3.
+          CALL METHOD application_log-&gt;add_symsg( ).
+* Because message is not engouth =&gt;
+* Object TADIR entry : &amp;1 &amp;2 &amp;3
+          SET EXTENDED CHECK OFF.
+          IF 1 = 2. MESSAGE i020(zaplink_package) WITH &lt;e&gt;-&gt;dev_elem_pgmid &lt;e&gt;-&gt;dev_elem_type d_name. ENDIF.
+          SET EXTENDED CHECK ON.
+          CALL METHOD application_log-&gt;add
+             EXPORTING
+*            is_message   =
+               id_msgty     = &apos;I&apos;
+               id_msgid     = &apos;ZAPLINK_PACKAGE&apos;
+               id_msgno     = &apos;020&apos;
+               id_msgv1     = &lt;e&gt;-&gt;dev_elem_pgmid
+               id_msgv2     = &lt;e&gt;-&gt;dev_elem_type
+               id_msgv3     = d_name
+*            id_msgv4     =
+              .
+        WHEN OTHERS.
+          CALL METHOD application_log-&gt;add_symsg( ).
+      ENDCASE.
+      f_errors = abap_true.
+    ENDIF.
+  ENDLOOP.
+  IF f_errors = abap_false.
+    LOOP AT t_elements ASSIGNING &lt;e&gt;.
+      d_name = &lt;e&gt;-&gt;dev_elem_key.
+      CALL FUNCTION &apos;TRINT_TADIR_QUERY&apos;
+        EXPORTING
+          iv_pgmid           = &lt;e&gt;-&gt;dev_elem_pgmid
+          iv_object          = &lt;e&gt;-&gt;dev_elem_type
+          iv_obj_name        = d_name
+        IMPORTING
+*          EV_OBJECT          = s_TADIR-OBJECT
+          ev_srcsystem       = s_tadir-srcsystem
+*          EV_DEVCLASS        = s_TADIR-DEVCLASS
+          ev_author          = s_tadir-author
+          ev_genflag         = s_tadir-genflag
+          ev_exist           = f_exists.
+
+      CALL FUNCTION &apos;TRINT_TADIR_DELETE&apos;
+        EXPORTING
+          object                   = &lt;e&gt;-&gt;dev_elem_type
+          obj_name                 = d_name
+          pgmid                    = &lt;e&gt;-&gt;dev_elem_pgmid
+          iv_test_mode             = abap_false
+        EXCEPTIONS
+          tadir_entry_not_existing = 1
+          object_exists            = 2
+          object_locked            = 3
+          object_distributed       = 4
+          OTHERS                   = 5.
+      IF sy-subrc &lt;&gt; 0.
+        ROLLBACK WORK.
+        CALL METHOD application_log-&gt;add_symsg( ).
+        EXIT.
+      ELSEIF NOT f_exists IS INITIAL.
+* Delete TADIR entry of &amp;1 &amp;2 &amp;3 (not existing)
+        SET EXTENDED CHECK OFF.
+        IF 1 = 2. MESSAGE w018(zaplink_package) WITH &lt;e&gt;-&gt;dev_elem_pgmid &lt;e&gt;-&gt;dev_elem_type d_name. ENDIF.
+        SET EXTENDED CHECK ON.
+        CALL METHOD application_log-&gt;add
+           EXPORTING
+*            is_message   =
+             id_msgty     = &apos;W&apos;
+             id_msgid     = &apos;ZAPLINK_PACKAGE&apos;
+             id_msgno     = &apos;018&apos;
+             id_msgv1     = &lt;e&gt;-&gt;dev_elem_pgmid
+             id_msgv2     = &lt;e&gt;-&gt;dev_elem_type
+             id_msgv3     = d_name
+*            id_msgv4     =
+            .
+* TADIR entry : Source System (&amp;1) Author (&amp;2) GenFlag (&amp;3)
+        SET EXTENDED CHECK OFF.
+        IF 1 = 2. MESSAGE i019(zaplink_package) WITH &lt;e&gt;-&gt;dev_elem_pgmid &lt;e&gt;-&gt;dev_elem_type d_name. ENDIF.
+        SET EXTENDED CHECK ON.
+        CALL METHOD application_log-&gt;add
+           EXPORTING
+*            is_message   =
+             id_msgty     = &apos;I&apos;
+             id_msgid     = &apos;ZAPLINK_PACKAGE&apos;
+             id_msgno     = &apos;019&apos;
+             id_msgv1     = s_tadir-srcsystem
+             id_msgv2     = s_tadir-author
+             id_msgv3     = s_tadir-genflag
+*            id_msgv4     =
+            .
+      ENDIF.
+    ENDLOOP.
+  ENDIF.</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="_DELETE_INTF" VERSION="1" STATE="1" EDITORDER="29 " MTDNEWEXC="X">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Delete Interface object"/>
+     <ITEM LANGU="F" DESCRIPT="Delete Interface object"/>
+    </TEXTS>
+    <PARAMETERS>
+     <ITEM SCONAME="INTERFACE" VERSION="1" CMPTYPE="1" EDITORDER="1 " PARPASSTYP="1" TYPTYPE="3" TYPE="IF_PACKAGE_INTERFACE">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="Interface for Package Interfaces"/>
+       <ITEM LANGU="F" DESCRIPT="Interface for Package Interfaces"/>
+      </TEXTS>
+     </ITEM>
+    </PARAMETERS>
+    <EXCEPTIONS>
+     <ITEM SCONAME="ZAPLINK_CX_CONNECTOR" VERSION="1" LANGU="E" EDITORDER="1 ">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="ZAPlink ROOT Exception for Connectors"/>
+       <ITEM LANGU="F" DESCRIPT="ZAPlink ROOT Exception for Connectors"/>
+      </TEXTS>
+     </ITEM>
+    </EXCEPTIONS>
+    <SOURCE>
+
+  CALL METHOD interface-&gt;set_changeable
+    EXPORTING
+      i_changeable                = &apos;X&apos;
+    EXCEPTIONS
+      object_locked_by_other_user = 1
+      permission_failure          = 2
+      object_already_changeable   = 0
+      object_already_unlocked     = 0
+      object_just_created         = 5
+      object_deleted              = 6
+      object_modified             = 7
+      object_not_existing         = 8
+      object_invalid              = 9
+      unexpected_error            = 10
+      OTHERS                      = 11.
+  IF sy-subrc &lt;&gt; 0.
+    CASE sy-subrc.
+*      WHEN 1.
+*        RAISE EXCEPTION TYPE zaplink_cx_connector
+*          EXPORTING
+*            textid = zaplink_cx_connector=&gt;Lock_error.
+*      WHEN 2.
+*        RAISE EXCEPTION TYPE zaplink_cx_connector
+*          EXPORTING
+*            textid = zaplink_cx_connector=&gt;not_authorized.
+      WHEN OTHERS.
+        RAISE EXCEPTION TYPE zaplink_cx_connector
+          EXPORTING
+            textid = zaplink_cx_connector=&gt;system_error.
+    ENDCASE.
+  ENDIF.
+
+  CALL METHOD interface-&gt;delete
+    EXCEPTIONS
+      object_not_empty      = 1
+      object_not_changeable = 2
+      object_invalid        = 3
+      intern_err            = 4
+      OTHERS                = 5.
+  IF sy-subrc &lt;&gt; 0.
+    RAISE EXCEPTION TYPE zaplink_cx_connector
+      EXPORTING
+        textid = zaplink_cx_connector=&gt;system_error.
+  ENDIF.
+
+  CALL METHOD interface-&gt;save
+    EXPORTING
+      i_transport_request   = space
+*   IMPORTING
+*     e_transport_request   =
+    EXCEPTIONS
+      object_invalid        = 1
+      object_not_changeable = 2
+      cancelled_in_corr     = 3
+      permission_failure    = 4
+      unexpected_error      = 5
+      intern_err            = 6
+      OTHERS                = 7
+          .
+  IF sy-subrc &lt;&gt; 0.
+    RAISE EXCEPTION TYPE zaplink_cx_connector
+      EXPORTING
+        textid = zaplink_cx_connector=&gt;system_error.
+  ENDIF.</SOURCE>
+   </ITEM>
+  </METHODS>
+  <REDEFINITIONS>
+   <ITEM REFCLSNAME="ZAPLINK_CONNECTOR_" VERSION="1" MTDNAME="ZAPLINK_CNX_EXT_CLEANER~ANONYMIZE">
+    <SOURCE>
+  DATA o_package   TYPE to_package.
+  DATA o_interface TYPE to_interface.
+
+  TRY.
+      super-&gt;zaplink_cnx_ext_cleaner~anonymize( object ).
+    CATCH zaplink_cx_connector INTO o_mycx.
+      RAISE EXCEPTION o_mycx.
+  ENDTRY.
+
+  CASE object-&gt;type.
+    WHEN st_package.
+      o_package ?= object-&gt;raw.
+      anonymize_package( o_package ).
+    WHEN st_interface.
+      o_interface ?= object-&gt;raw.
+      anonymize_interface( o_interface ).
+    WHEN OTHERS.
+  ENDCASE.
+</SOURCE>
+   </ITEM>
+   <ITEM REFCLSNAME="ZAPLINK_CONNECTOR_" VERSION="1" MTDNAME="ZAPLINK_CNX_EXT_CLEANER~UNANONYMIZE">
+    <SOURCE>
+  DATA o_package   TYPE to_package.
+  DATA o_interface TYPE to_interface.
+
+  TRY.
+      super-&gt;zaplink_cnx_ext_cleaner~unanonymize( object ).
+    CATCH zaplink_cx_connector INTO o_mycx.
+      RAISE EXCEPTION o_mycx.
+  ENDTRY.
+
+  CASE object-&gt;type.
+    WHEN st_package.
+      o_package ?= object-&gt;raw.
+      unanonymize_package( o_package ).
+    WHEN st_interface.
+      o_interface ?= object-&gt;raw.
+      unanonymize_interface( o_interface ).
+    WHEN OTHERS.
+  ENDCASE.
+</SOURCE>
+   </ITEM>
+   <ITEM REFCLSNAME="ZAPLINK_CONNECTOR_" VERSION="1" MTDNAME="ZAPLINK_CONNECTOR~CREATE_NEW_RAW">
+    <SOURCE>
+  DATA o_devc TYPE to_package.
+  DATA o_pinf TYPE to_interface.
+
+  CREATE OBJECT object.
+  CASE type.
+    WHEN st_package.
+      CREATE OBJECT o_devc.
+      object-&gt;raw = o_devc.
+*      create object object type TO_CLASS.
+    WHEN st_interface.
+      CREATE OBJECT o_pinf.
+      object-&gt;raw = o_pinf.
+*      create object object type TO_CLASS.
+    WHEN OTHERS.
+      CLEAR object.
+* Type &apos;&amp;TYPE&amp;&apos; is not supported by this connector &apos;&amp;CONNCLASS&amp;&apos;
+      RAISE EXCEPTION TYPE zaplink_cx_connector
+        EXPORTING
+          textid = ZAPLINK_CX_CONNECTOR=&gt;TYPE_NOT_SUPPORTED
+          type   = type
+          connclass = &apos;ZAPLINK_PACKAGE&apos;.
+  ENDCASE.</SOURCE>
+   </ITEM>
+   <ITEM REFCLSNAME="ZAPLINK_CONNECTOR_" VERSION="1" MTDNAME="ZAPLINK_CONNECTOR~DELETE_FROM_SAP">
+    <SOURCE>
+  DATA key_devc TYPE devclass.
+  DATA key_intf TYPE scomifnam.
+  DATA package  TYPE REF TO if_package.
+  DATA interface  TYPE REF TO if_package_interface.
+  DATA d_type TYPE td_comptype.
+
+  TRY.
+    d_type = component-&gt;get_type( ).
+    CASE d_type.
+      WHEN st_package.
+        key_devc = component-&gt;get_name( ).
+        TRY.
+            package = load_devc( key_devc ).
+            _delete_devc( package ).
+          CATCH zaplink_cx_connector INTO o_mycx.
+            IF NOT o_mycx-&gt;messages IS BOUND.
+              o_mycx-&gt;messages = application_log.
+              o_mycx-&gt;update( ).
+            ENDIF.
+            RAISE EXCEPTION o_mycx.
+        ENDTRY.
+      WHEN st_interface.
+        key_intf = component-&gt;get_name( ).
+        TRY.
+            interface = load_intf( key_intf ).
+            _delete_intf( interface ).
+          CATCH zaplink_cx_connector INTO o_mycx.
+            IF NOT o_mycx-&gt;messages IS BOUND.
+              o_mycx-&gt;messages = application_log.
+              o_mycx-&gt;update( ).
+            ENDIF.
+            RAISE EXCEPTION o_mycx.
+        ENDTRY.
+      WHEN OTHERS.
+        mac_raise_type_not_supported &apos;ZAPLINK_PACKAGE&apos; d_type.
+    ENDCASE.
+
+    mac_def_catch zaplink_cx_connector.
+  ENDTRY.
+  result = abap_true.</SOURCE>
+   </ITEM>
+   <ITEM REFCLSNAME="ZAPLINK_CONNECTOR_" VERSION="1" MTDNAME="ZAPLINK_CONNECTOR~DO_EXISTS">
+    <SOURCE>
+  DATA key   TYPE scomifnam.
+  DATA _devc TYPE REF TO if_package.              &quot;#EC NEEDED for debug
+  DATA _pinf TYPE REF TO if_package_interface.    &quot;#EC NEEDED for debug
+  DATA type  TYPE td_comptype.
+
+  TRY.
+
+      key = component-&gt;get_name( ).
+      type = component-&gt;get_type( ).
+      CASE type.
+        WHEN st_package.
+          CALL METHOD cl_package=&gt;if_package~load_package
+            EXPORTING
+              i_package_name             = key
+              i_force_reload             = &apos;X&apos;
+            IMPORTING
+              e_package                  = _devc
+            EXCEPTIONS
+              object_not_existing        = 1
+*      unexpected_error           = 2  =&gt; DUMP
+*      intern_err                 = 3  =&gt; DUMP
+              object_locked_and_modified = 0
+*      others                     = 5  =&gt; DUMP
+                  .
+          IF sy-subrc = 0.
+            exists = &apos;X&apos;.
+          ENDIF.
+        WHEN st_interface.
+          CALL METHOD cl_package_interface=&gt;if_package_interface~load_package_interface
+            EXPORTING
+              i_package_interface_name   = key
+              i_force_reload             = &apos;X&apos;
+            IMPORTING
+              e_package_interface        = _pinf
+            EXCEPTIONS
+*      db_read_error              = 1 =&gt; DUMP
+*      unexpected_error           = 2 =&gt; DUMP
+              object_not_existing        = 3
+              shorttext_not_existing     = 0
+              object_locked_and_modified = 0
+*      others                     = 6 =&gt; DUMP
+                  .
+          IF sy-subrc = 0.
+            exists = &apos;X&apos;.
+          ENDIF.
+        WHEN OTHERS.
+* Type &apos;&amp;TYPE&amp;&apos; is not supported by this connector &apos;&amp;CONNCLASS&amp;&apos;
+          RAISE EXCEPTION TYPE zaplink_cx_connector
+            EXPORTING
+              textid = zaplink_cx_connector=&gt;type_not_supported
+              type   = type
+              connclass = &apos;ZAPLINK_PACKAGE&apos;.
+      ENDCASE.
+
+    CATCH zaplink_cx_connector INTO o_mycx.
+      RAISE EXCEPTION o_mycx.
+    CATCH zaplink_cx INTO o_cx.
+      mac_cascade_raise o_mycx o_cx.
+  ENDTRY.
+</SOURCE>
+   </ITEM>
+   <ITEM REFCLSNAME="ZAPLINK_CONNECTOR_" VERSION="1" MTDNAME="ZAPLINK_CONNECTOR~IS_SUPPORTED_VERSION">
+    <SOURCE>
+  result = abap_false.
+  if version = _ver.
+    result = abap_true.
+  endif.</SOURCE>
+   </ITEM>
+   <ITEM REFCLSNAME="ZAPLINK_CONNECTOR_" VERSION="1" MTDNAME="ZAPLINK_CONNECTOR~READ_FROM_SAP">
+    <SOURCE>
+  DATA o_package   TYPE to_package.
+  DATA o_interface TYPE to_interface.
+  DATA type  TYPE td_comptype.
+
+  TRY.
+
+      CREATE OBJECT object.
+      object-&gt;set_component( component ).
+
+      type = component-&gt;get_type( ).
+      CASE type.
+        WHEN st_package.
+          TRY.
+              o_package = export_from_sap_package( component ).
+            CATCH zaplink_cx_connector INTO o_mycx.
+              IF NOT o_mycx-&gt;messages IS BOUND.
+                o_mycx-&gt;messages = application_log.
+                o_mycx-&gt;update( ).
+              ENDIF.
+              RAISE EXCEPTION o_mycx.
+          ENDTRY.
+          CLEAR o_package-&gt;a0_maindata-devclass.
+          object-&gt;raw = o_package.
+        WHEN st_interface.
+          TRY.
+              o_interface = export_from_sap_interface( component ).
+            CATCH zaplink_cx_connector INTO o_mycx.
+              IF NOT o_mycx-&gt;messages IS BOUND.
+                o_mycx-&gt;messages = application_log.
+                o_mycx-&gt;update( ).
+              ENDIF.
+              RAISE EXCEPTION o_mycx.
+          ENDTRY.
+          CLEAR o_interface-&gt;a0_maindata-intf_name.
+          object-&gt;raw = o_interface.
+        WHEN OTHERS.
+          CLEAR object.
+* Type &apos;&amp;TYPE&amp;&apos; is not supported by this connector &apos;&amp;CONNCLASS&amp;&apos;
+          RAISE EXCEPTION TYPE zaplink_cx_connector
+            EXPORTING
+              textid = zaplink_cx_connector=&gt;type_not_supported
+              type   = type
+              connclass = &apos;ZAPLINK_PACKAGE&apos;.
+      ENDCASE.
+
+    CATCH zaplink_cx_connector INTO o_mycx.
+      RAISE EXCEPTION o_mycx.
+    CATCH zaplink_cx INTO o_cx.
+      mac_cascade_raise o_mycx o_cx.
+  ENDTRY.
+</SOURCE>
+   </ITEM>
+   <ITEM REFCLSNAME="ZAPLINK_CONNECTOR_" VERSION="1" MTDNAME="ZAPLINK_CONNECTOR~WRITE_TO_SAP">
+    <SOURCE>
+  DATA _o_class       TYPE to_package.
+  DATA _o_interface   TYPE to_interface.
+
+  CASE object-&gt;type.
+    WHEN st_package.
+      _o_class ?= object-&gt;raw.
+      _o_class-&gt;a0_maindata-devclass = object-&gt;name.
+      TRY.
+          components = import_to_sap_package( _o_class ).
+        CATCH zaplink_cx_connector INTO o_mycx.
+          IF NOT o_mycx-&gt;messages IS BOUND.
+            o_mycx-&gt;messages = application_log.
+            o_mycx-&gt;update( ).
+          ENDIF.
+          RAISE EXCEPTION o_mycx.
+      ENDTRY.
+    WHEN st_interface.
+      _o_interface ?= object-&gt;raw.
+      _o_interface-&gt;a0_maindata-intf_name = object-&gt;name.
+      TRY.
+          components = import_to_sap_interface( _o_interface ).
+        CATCH zaplink_cx_connector INTO o_mycx.
+          IF NOT o_mycx-&gt;messages IS BOUND.
+            o_mycx-&gt;messages = application_log.
+            o_mycx-&gt;update( ).
+          ENDIF.
+          RAISE EXCEPTION o_mycx.
+      ENDTRY.
+    WHEN OTHERS.
+* Type &apos;&amp;TYPE&amp;&apos; is not supported by this connector &apos;&amp;CONNCLASS&amp;&apos;
+      RAISE EXCEPTION TYPE zaplink_cx_connector
+        EXPORTING
+          textid = zaplink_cx_connector=&gt;type_not_supported
+          type   = object-&gt;type
+          connclass = &apos;ZAPLINK_MESSAGE&apos;.
+  ENDCASE.</SOURCE>
+   </ITEM>
+  </REDEFINITIONS>
+  <TEXTSPOOL>
+   <ITEM ID="I" KEY="ALV">
+    <TEXTS>
+     <ITEM LANGU="E" ENTRY="Incosistant TADIR entries please select elements that will change package. All unselected entries won&apos;&apos;t be in this interface" LENGTH="125 "/>
+    </TEXTS>
+   </ITEM>
+   <ITEM ID="I" KEY="C01">
+    <TEXTS>
+     <ITEM LANGU="E" ENTRY="Object Type" LENGTH="11 "/>
+    </TEXTS>
+   </ITEM>
+   <ITEM ID="I" KEY="C02">
+    <TEXTS>
+     <ITEM LANGU="E" ENTRY="Object Name" LENGTH="11 "/>
+    </TEXTS>
+   </ITEM>
+   <ITEM ID="I" KEY="C03">
+    <TEXTS>
+     <ITEM LANGU="E" ENTRY="TADIR Package" LENGTH="13 "/>
+    </TEXTS>
+   </ITEM>
+   <ITEM ID="I" KEY="C04">
+    <TEXTS>
+     <ITEM LANGU="E" ENTRY="New package" LENGTH="11 "/>
+    </TEXTS>
+   </ITEM>
+   <ITEM ID="I" KEY="E91">
+    <TEXTS>
+     <ITEM LANGU="E" ENTRY="Package interface elements creation failed !" LENGTH="44 "/>
+    </TEXTS>
+   </ITEM>
+   <ITEM ID="I" KEY="E92">
+    <TEXTS>
+     <ITEM LANGU="E" ENTRY="Package interface elements failed to add :" LENGTH="42 "/>
+    </TEXTS>
+   </ITEM>
+   <ITEM ID="I" KEY="L04">
+    <TEXTS>
+     <ITEM LANGU="E" ENTRY="New package when validated" LENGTH="26 "/>
+    </TEXTS>
+   </ITEM>
+  </TEXTSPOOL>
+  <TYPEGROUPS>
+   <ITEM TYPEGROUP="ABAP" VERSION="1" IMPLICIT="X"/>
+   <ITEM TYPEGROUP="SEOF" VERSION="1" EXPLICIT="X"/>
+   <ITEM TYPEGROUP="SEOK" VERSION="1" EXPLICIT="X"/>
+   <ITEM TYPEGROUP="SEOP" VERSION="1" EXPLICIT="X"/>
+   <ITEM TYPEGROUP="SEOR" VERSION="1" EXPLICIT="X"/>
+   <ITEM TYPEGROUP="SEOS" VERSION="1" EXPLICIT="X"/>
+   <ITEM TYPEGROUP="SEOT" VERSION="1" EXPLICIT="X"/>
+   <ITEM TYPEGROUP="SEOX" VERSION="1" EXPLICIT="X"/>
+   <ITEM TYPEGROUP="SLIS" VERSION="1" IMPLICIT="X"/>
+  </TYPEGROUPS>
+  <TYPES>
+   <ITEM CMPNAME="TD_INTERFACE" VERSION="1" EXPOSURE="1" STATE="1" EDITORDER="4 " TYPTYPE="1" TYPE="SCOMIFNAM">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Package Interface"/>
+     <ITEM LANGU="F" DESCRIPT="Package Interface"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TD_PACKAGE" VERSION="1" EXPOSURE="1" STATE="1" EDITORDER="3 " TYPTYPE="1" TYPE="DEVCLASS">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Package"/>
+     <ITEM LANGU="F" DESCRIPT="Package"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TO_INTERFACE" VERSION="1" EXPOSURE="1" STATE="1" EDITORDER="2 " TYPTYPE="3" TYPE="ZAPLINK_PINF_DATA">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Interface data"/>
+     <ITEM LANGU="F" DESCRIPT="Package Interface data"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TO_INTERFACE_RAW" VERSION="1" EXPOSURE="1" STATE="1" EDITORDER="6 " TYPTYPE="3" TYPE="ZAPLINK_PINF_RAW">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Interface data as RAW"/>
+     <ITEM LANGU="F" DESCRIPT="Interface data as RAW"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TO_PACKAGE" VERSION="1" EXPOSURE="1" STATE="1" EDITORDER="1 " TYPTYPE="3" TYPE="ZAPLINK_DEVC_DATA">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Package data"/>
+     <ITEM LANGU="F" DESCRIPT="Package data"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TO_PACKAGE_RAW" VERSION="1" EXPOSURE="1" STATE="1" EDITORDER="5 " TYPTYPE="3" TYPE="ZAPLINK_DEVC_RAW">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Package data as RAW"/>
+     <ITEM LANGU="F" DESCRIPT="Package data as RAW"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TS_CLAS_ATTR" VERSION="1" STATE="1" EDITORDER="4 " TYPTYPE="4" SRCROW1="21 " SRCCOLUMN1="4 " SRCROW2="24 " SRCCOLUMN2="22 " TYPESRC_LENG="100 ">
+    BEGIN OF ts_clas_attr.
+  INCLUDE TYPE ts_base_attributs AS base.
+  TYPES:
+    END OF ts_clas_attr
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Root attributs for CLAS"/>
+     <ITEM LANGU="F" DESCRIPT="Root attributs for CLAS"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TS_DOC_KEY" VERSION="1" STATE="1" EDITORDER="3 " TYPTYPE="4" SRCROW1="16 " SRCCOLUMN1="4 " SRCROW2="19 " SRCCOLUMN2="18 " TYPESRC_LENG="198 ">
+    BEGIN OF ts_doc_key,                                    &quot; equiv DOKU_OBJ = CHAR 60
+    name       TYPE seoclsname,                             &quot; CHAR 30
+    other(30)  TYPE c,
+  END OF ts_doc_key
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="DOCU key structure"/>
+     <ITEM LANGU="F" DESCRIPT="DOCU key structure"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TS_ELE" VERSION="1" STATE="1" EDITORDER="1 " TYPTYPE="4" SRCROW1="6 " SRCCOLUMN1="4 " SRCROW2="12 " SRCCOLUMN2="14 " TYPESRC_LENG="182 ">BEGIN OF ts_ele,
+    select    TYPE flag,
+    elem_type	TYPE trobjtype,
+    elem_key  TYPE elemgenkey,
+    td_pack  	TYPE devclass,
+    elem_pack	TYPE devclass,
+  END OF ts_ele</ITEM>
+   <ITEM CMPNAME="TT_ELE" VERSION="1" STATE="1" EDITORDER="2 " TYPTYPE="4" SRCROW1="14 " SRCCOLUMN1="4 " SRCROW2="14 " SRCCOLUMN2="67 " TYPESRC_LENG="64 ">tt_ele TYPE STANDARD TABLE OF ts_ele WITH NON-UNIQUE DEFAULT KEY</ITEM>
+  </TYPES>
+ </RAW>
+</ZL_OBJECT>

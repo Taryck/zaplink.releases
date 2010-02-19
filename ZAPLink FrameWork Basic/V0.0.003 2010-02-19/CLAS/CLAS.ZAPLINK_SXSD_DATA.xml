@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ZL_OBJECT CHECKSUM="3322B9DD885292BABE82AB5D16598562" CONNECTOR="39AC0A4B07A5A05AE1000000AC120173" NAME="ZAPLINK_SXSD_DATA" TYPE="CLAS" VERSION="1.01">
+ <DIRECTORY DEVCLASS="ZAPLINK-CONNECTORS-MAIN" MASTERLANG="E"/>
+ <RAW>
+  <A0_MAINDATA VERSION="1" LANGU="E" UUID="87F9034B756EB95AE1000000AC120173" EXPOSURE="2" STATE="1" CLSCCINCL="X" FIXPT="X" UNICODE="X">
+   <INHERITANCE REFCLSNAME="ZAPLINK_BADI_DATA" VERSION="1" STATE="1"/>
+   <TEXTS>
+    <ITEM LANGU="E" DESCRIPT="BADI Definition Datas"/>
+   </TEXTS>
+  </A0_MAINDATA>
+  <ATTRIBUTS>
+   <ITEM CMPNAME="A0_MAINDATA" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="1 " TYPTYPE="1" TYPE="TS_MAINDATA"/>
+   <ITEM CMPNAME="INTERFACE" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="2 " TYPTYPE="1" TYPE="TO_RAW">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Interface data"/>
+    </TEXTS>
+   </ITEM>
+  </ATTRIBUTS>
+  <FRIENDS>
+   <ITEM REFCLSNAME="ZAPLINK_BADI" VERSION="1" STATE="1"/>
+   <ITEM REFCLSNAME="ZAPLINK_EASYXML" VERSION="1" STATE="1"/>
+  </FRIENDS>
+  <LOCAL>
+   <TYPES>
+*&quot;* USE THIS SOURCE FILE FOR ANY TYPE DECLARATIONS (CLASS
+*&quot;* definitions, interfaces or data types) you need for method
+*&quot;* IMPLEMENTATION OR PRIVATE METHOD&apos;S SIGNATURE</TYPES>
+   <IMPLEMENTATIONS>
+*&quot;* LOCAL CLASS IMPLEMENTATION FOR PUBLIC CLASS
+*&quot;* use this source file for the implementation part of
+*&quot;* LOCAL HELPER CLASSES</IMPLEMENTATIONS>
+   <MACROS>
+*&quot;* USE THIS SOURCE FILE FOR ANY MACRO DEFINITIONS YOU NEED
+*&quot;* IN THE IMPLEMENTATION PART OF THE CLASS</MACROS>
+  </LOCAL>
+  <REDEFINITIONS>
+   <ITEM REFCLSNAME="ZAPLINK_BADI_DATA" VERSION="1" MTDNAME="FROM_DATA">
+    <SOURCE>
+  DATA _fc    LIKE LINE OF functions_codes.
+  DATA _cc    LIKE LINE OF controls_composites.
+  DATA _scr   LIKE LINE OF subscreens.
+  DATA _t     LIKE LINE OF tables.
+*  DATA o_conn TYPE to_connector.
+*  CONSTANTS c_type TYPE td_comptype VALUE &apos;INTF&apos;.
+*  DATA _comp TYPE to_component.
+  FIELD-SYMBOLS:
+    &lt;fc&gt;  LIKE LINE OF fm_data-fcodes,
+    &lt;cc&gt;  LIKE LINE OF fm_data-cocos,
+    &lt;in&gt;  LIKE LINE OF fm_data-intas,
+    &lt;scr&gt; LIKE LINE OF fm_data-scrns,
+    &lt;me&gt;  LIKE LINE OF fm_data-methods,
+    &lt;it&gt;  LIKE LINE OF fm_data-inactive_tabstrips.
+
+  a0_maindata-main = fm_data-definition.
+  a0_maindata-mast_langu = fm_data-mast_langu.
+  a0_maindata-ext_clname = fm_data-ext_clname.
+
+  LOOP AT fm_data-intas ASSIGNING &lt;in&gt;
+    WHERE exit_name = a0_maindata-exit_name.
+    CLEAR _t.
+    _t = &lt;in&gt;.
+
+    CLEAR: _t-exit_name. &quot; VERSION
+    INSERT _t INTO TABLE tables.
+  ENDLOOP.
+
+  LOOP AT fm_data-cocos ASSIGNING &lt;cc&gt;
+    WHERE exit_name = a0_maindata-exit_name.
+    CLEAR _cc.
+    _cc = &lt;cc&gt;.
+
+    CLEAR: _cc-exit_name. &quot; VERSION
+    INSERT _cc INTO TABLE controls_composites.
+  ENDLOOP.
+
+  LOOP AT fm_data-fcodes ASSIGNING &lt;fc&gt;
+    WHERE exit_name = a0_maindata-exit_name.
+    CLEAR _fc.
+    _fc = &lt;fc&gt;.
+
+    CLEAR: _fc-exit_name. &quot; VERSION
+    INSERT _fc INTO TABLE functions_codes.
+  ENDLOOP.
+
+  LOOP AT fm_data-scrns ASSIGNING &lt;scr&gt;
+    WHERE exit_name = a0_maindata-exit_name.
+    CLEAR _scr.
+    _scr = &lt;scr&gt;.
+
+    CLEAR: _scr-exit_name. &quot; VERSION
+    INSERT _scr INTO TABLE subscreens.
+  ENDLOOP.</SOURCE>
+   </ITEM>
+   <ITEM REFCLSNAME="ZAPLINK_BADI_DATA" VERSION="1" MTDNAME="TO_DATA">
+    <SOURCE>
+  DATA _in  LIKE LINE OF fm_data-intas.
+  DATA _cc  LIKE LINE OF fm_data-cocos.
+  DATA _fc  LIKE LINE OF fm_data-fcodes.
+  DATA _scr LIKE LINE OF fm_data-scrns.
+  FIELD-SYMBOLS:
+    &lt;t&gt;   LIKE LINE OF tables,
+    &lt;scr&gt; LIKE LINE OF subscreens,
+    &lt;fc&gt;  LIKE LINE OF functions_codes,
+    &lt;cc&gt;  LIKE LINE OF controls_composites.
+
+*CLASS  TYPE  VSEOCLASS
+  fm_data-definition = a0_maindata-main.
+  fm_data-mast_langu = a0_maindata-mast_langu.
+  fm_data-ext_clname = a0_maindata-ext_clname.
+
+  LOOP AT tables ASSIGNING &lt;t&gt;.
+    CLEAR _in.
+    _in = &lt;t&gt;.
+
+    _in-exit_name = a0_maindata-exit_name.
+    INSERT _in INTO TABLE fm_data-intas.
+  ENDLOOP.
+
+  LOOP AT controls_composites ASSIGNING &lt;cc&gt;.
+    CLEAR _cc.
+    _cc = &lt;cc&gt;.
+
+    _cc-exit_name = a0_maindata-exit_name.
+    INSERT _cc INTO TABLE fm_data-cocos.
+  ENDLOOP.
+
+  LOOP AT functions_codes ASSIGNING &lt;fc&gt;.
+    CLEAR _fc.
+    _fc = &lt;fc&gt;.
+
+    _fc-exit_name = a0_maindata-exit_name.
+    INSERT _fc INTO TABLE fm_data-fcodes.
+  ENDLOOP.
+
+  LOOP AT subscreens ASSIGNING &lt;scr&gt;.
+    CLEAR _scr.
+    _scr = &lt;scr&gt;.
+
+    _scr-exit_name = a0_maindata-exit_name.
+    INSERT _scr INTO TABLE fm_data-scrns.
+  ENDLOOP.</SOURCE>
+   </ITEM>
+  </REDEFINITIONS>
+  <TYPEGROUPS>
+   <ITEM TYPEGROUP="SEEX" VERSION="1" EXPLICIT="X"/>
+  </TYPEGROUPS>
+  <TYPES>
+   <ITEM CMPNAME="TS_MAINDATA" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="6 " TYPTYPE="4" SRCROW1="15 " SRCCOLUMN1="4 " SRCROW2="20 " SRCCOLUMN2="21 " TYPESRC_LENG="162 ">
+    BEGIN OF ts_maindata.
+  INCLUDE TYPE badi_data AS main.
+  TYPES:
+      mast_langu  TYPE  sy-langu,
+      ext_clname  TYPE  seoclsname,
+    END OF ts_maindata
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="BADI Def Main data"/>
+    </TEXTS>
+   </ITEM>
+  </TYPES>
+ </RAW>
+</ZL_OBJECT>

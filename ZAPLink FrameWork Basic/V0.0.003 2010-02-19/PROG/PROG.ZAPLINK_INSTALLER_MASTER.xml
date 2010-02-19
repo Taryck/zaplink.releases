@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ZL_OBJECT CHECKSUM="2EDC9C79FF99A5C094D000A4A57A81D1" CONNECTOR="AAAD0A4B07A5A05AE1000000AC120173" NAME="ZAPLINK_INSTALLER_MASTER" TYPE="PROG" VERSION="1.0">
+ <DIRECTORY DEVCLASS="ZAPLINK-INSTALLER" MASTERLANG="E"/>
+ <RAW>
+  <A0_MAINDATA VARCL="X" SUBC="1" VERN="000012" RSTAT="K" RMAND="200" RLOAD="E" FIXPT="X" UCCHECK="X"/>
+  <SOURCE>
+*---------------------------------------------------------------------*
+* Report  ZAPLINK_INSTALLER_MASTER
+*---------------------------------------------------------------------*
+
+REPORT  zaplink_installer_master MESSAGE-ID zaplink_cx.
+
+INCLUDE zaplink_installer_classes.
+
+selection-screen begin of Line.
+  SELECTION-SCREEN COMMENT 1(30) t_file FOR FIELD p_file.
+  PARAMETERS p_file TYPE zaplink_file=&gt;t_filename OBLIGATORY.
+selection-screen end of Line.
+
+selection-screen begin of Line.
+  SELECTION-SCREEN COMMENT 1(30) t_uninst FOR FIELD uninst.
+  PARAMETERS uninst TYPE flag AS CHECKBOX.
+selection-screen end of Line.
+
+
+DATA o_file     TYPE REF TO zaplink_file.
+DATA cx_file    TYPE REF TO zaplink_cx_file.
+
+INITIALIZATION.
+  t_file = &apos;Container&apos;&apos;s file&apos;.
+  T_uninst = &apos;Unistall container if checked&apos;.
+  TRY.
+      CREATE OBJECT o_file.
+      o_file-&gt;set_filetype( zaplink_file=&gt;filetypes-local ).
+    CATCH zaplink_cx_file INTO cx_file.
+      cx_file-&gt;write( ).
+  ENDTRY.
+
+AT SELECTION-SCREEN ON VALUE-REQUEST FOR p_file.
+  TRY.
+      o_file-&gt;load_dialog( p_file ).
+      p_file = o_file-&gt;get_filename( ).
+    CATCH zaplink_cx_file INTO cx_file.
+      IF cx_file-&gt;textid &lt;&gt; zaplink_cx_file=&gt;dialog_canceled.
+        cx_file-&gt;write( ).
+      ENDIF.
+  ENDTRY.
+
+START-OF-SELECTION.
+  DATA o_list     TYPE zaplink_container_4inst=&gt;to_list.
+  DATA cx_list    TYPE REF TO zaplink_cx_list.
+  DATA o_xml     	TYPE REF TO zaplink_container_4inst.
+  DATA cx_xml     TYPE REF TO zaplink_cx_container.
+  DATA o_options  TYPE REF TO zaplink_options.
+  DATA o_o_dir    TYPE REF TO zaplink_opt_directory.
+  DATA o_o_devc   TYPE REF TO zaplink_opt_devclass.
+  DATA o_o_tr     TYPE REF TO zaplink_opt_transport_request.
+
+  TRY.
+      o_file-&gt;set_filename( p_file ).
+    CATCH zaplink_cx_file INTO cx_file.
+      cx_file-&gt;write( ).
+  ENDTRY.
+
+  TRY.
+      CREATE OBJECT o_options.
+      CREATE OBJECT o_o_dir.
+      CREATE OBJECT o_o_devc.
+      CREATE OBJECT o_o_tr.
+      o_options-&gt;set_directory( o_o_dir ).
+      o_o_dir-&gt;set_devclass( o_o_devc ).
+      o_o_dir-&gt;set_transport_request( o_o_tr ).
+      o_o_devc-&gt;set_substitutionkind( zaplink_opt_devclass=&gt;substitutionkinds-no_overwrite ).
+      o_o_tr-&gt;set_substitutionkind( zaplink_opt_transport_request=&gt;substitutionkinds-user ). &quot; let user select a transport request for all components
+      o_file-&gt;set_filename( p_file ).
+    CATCH zaplink_cx_file INTO cx_file.
+      cx_file-&gt;write( ).
+  ENDTRY.
+
+  TRY.
+      CREATE OBJECT o_xml
+        EXPORTING
+          o_file = o_file.
+      o_xml-&gt;set_options( o_options ).
+      o_xml-&gt;load_from_file( ).
+      TRY.
+          o_list = o_xml-&gt;get_content( ).
+          IF uninst IS INITIAL.
+            o_list-&gt;select_default( zaplink_list=&gt;sel_actions-import ).
+          ELSE.
+            o_list-&gt;select_default( zaplink_list=&gt;sel_actions-uninstall ).
+          ENDIF.
+          o_list-&gt;change_selection( ).
+        CATCH zaplink_cx_list INTO cx_list.
+          cx_list-&gt;write( ).
+      ENDTRY.
+      IF uninst IS INITIAL.
+        o_xml-&gt;transport_to_sap( o_list ).
+      ELSE.
+        o_xml-&gt;uninstall_from_sap( o_list ).
+      ENDIF.
+      o_xml-&gt;log-&gt;write( ).
+    CATCH zaplink_cx_container INTO cx_xml.
+      cx_xml-&gt;write( ).
+  ENDTRY.
+
+END-OF-SELECTION.</SOURCE>
+  <TEXTSPOOL>
+   <ITEM ID="R">
+    <TEXTS>
+     <ITEM LANGU="E" ENTRY="ZAP Link Installer Master" LENGTH="25 "/>
+    </TEXTS>
+   </ITEM>
+  </TEXTSPOOL>
+ </RAW>
+</ZL_OBJECT>

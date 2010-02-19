@@ -1,0 +1,449 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ZL_OBJECT CHECKSUM="B0AC5B7AA5F8E819C2F516E9659A539E" CONNECTOR="39AC0A4B07A5A05AE1000000AC120173" NAME="ZAPLINK_DOCUMENTATION" TYPE="CLAS" VERSION="1.01">
+ <DIRECTORY DEVCLASS="ZAPLINK-FRAMEWORK-CORE" MASTERLANG="E"/>
+ <RAW>
+  <A0_MAINDATA VERSION="1" LANGU="E" UUID="DCF8034B756EB95AE1000000AC120173" EXPOSURE="2" STATE="1" CLSCCINCL="X" FIXPT="X" UNICODE="X">
+   <TEXTS>
+    <ITEM LANGU="E" DESCRIPT="ZAPLink - Documentation tools"/>
+   </TEXTS>
+  </A0_MAINDATA>
+  <ALIASES>
+   <ITEM CMPNAME="LINE_SEPARATOR" VERSION="1" EXPOSURE="2" REFCLSNAME="ZAPLINK_DATATYPES" REFCMPNAME="LINE_SEPARATOR"/>
+   <ITEM CMPNAME="TD_DOC_ID" VERSION="1" EXPOSURE="2" CMPTYPE="3" REFCLSNAME="ZAPLINK_DATATYPES" REFCMPNAME="TD_DOC_ID"/>
+   <ITEM CMPNAME="TR_DOCID" VERSION="1" EXPOSURE="2" CMPTYPE="3" REFCLSNAME="ZAPLINK_DATATYPES" REFCMPNAME="TR_DOCID"/>
+   <ITEM CMPNAME="TS_HEAD" VERSION="1" EXPOSURE="2" CMPTYPE="3" REFCLSNAME="ZAPLINK_DATATYPES" REFCMPNAME="TS_HEAD"/>
+   <ITEM CMPNAME="TS_LANG" VERSION="1" EXPOSURE="2" CMPTYPE="3" REFCLSNAME="ZAPLINK_DATATYPES" REFCMPNAME="TS_LANG"/>
+   <ITEM CMPNAME="TT_DOCS" VERSION="1" EXPOSURE="2" CMPTYPE="3" REFCLSNAME="ZAPLINK_DATATYPES" REFCMPNAME="TT_DOCS"/>
+   <ITEM CMPNAME="TT_RAWTEXT" VERSION="1" EXPOSURE="2" CMPTYPE="3" REFCLSNAME="ZAPLINK_DATATYPES" REFCMPNAME="TT_RAWTEXT"/>
+  </ALIASES>
+  <ATTRIBUTS>
+   <ITEM CMPNAME="APPLICATION_LOG" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="2 " ATTDECLTYP="1" TYPTYPE="1" TYPE="TO_LOG">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Message Collector: Standard Implementation"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="NODE_NAME" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="1 " ATTDECLTYP="2" ATTVALUE="&apos;DOCS&apos;" TYPTYPE="1" TYPE="STRING">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Node name for documentaiton"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="O_CX" VERSION="1" STATE="1" EDITORDER="3 " ATTDECLTYP="1" TYPTYPE="1" TYPE="TO_ROOT_EXCEPTION">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="ZAPlink ROOT Exception"/>
+    </TEXTS>
+   </ITEM>
+  </ATTRIBUTS>
+  <INTERFACES>
+   <ITEM REFCLSNAME="ZAPLINK_DATATYPES" VERSION="1" EXPOSURE="2" STATE="1" RELTYPE="1"/>
+  </INTERFACES>
+  <LOCAL>
+   <TYPES>
+*&quot;* USE THIS SOURCE FILE FOR ANY TYPE DECLARATIONS (CLASS
+*&quot;* definitions, interfaces or data types) you need for method
+*&quot;* IMPLEMENTATION OR PRIVATE METHOD&apos;S SIGNATURE</TYPES>
+   <IMPLEMENTATIONS>
+*&quot;* LOCAL CLASS IMPLEMENTATION FOR PUBLIC CLASS
+*&quot;* use this source file for the implementation part of
+*&quot;* local helper classes
+CLASS ZAPLINK_DOC_DATA DEFINITION LOAD.</IMPLEMENTATIONS>
+   <MACROS>
+*&quot;* USE THIS SOURCE FILE FOR ANY MACRO DEFINITIONS YOU NEED
+*&quot;* IN THE IMPLEMENTATION PART OF THE CLASS</MACROS>
+  </LOCAL>
+  <METHODS>
+   <ITEM CMPNAME="CLASS_CONSTRUCTOR" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="1 " MTDTYPE="2" MTDDECLTYP="1">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="CLASS_CONSTRUCTOR"/>
+    </TEXTS>
+    <SOURCE>
+CREATE OBJECT application_log.</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="DOCU_GET" VERSION="1" STATE="1" EDITORDER="7 " MTDDECLTYP="1">
+    <PARAMETERS>
+     <ITEM SCONAME="DOCU" VERSION="1" CMPTYPE="1" EDITORDER="1 " PARPASSTYP="1" TYPTYPE="1" TYPE="DOKIL">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="Index for Documentation Table DOKH"/>
+      </TEXTS>
+     </ITEM>
+     <ITEM SCONAME="HEAD" VERSION="1" CMPTYPE="1" EDITORDER="2 " PARDECLTYP="1" PARPASSTYP="1" TYPTYPE="1" TYPE="TS_HEAD"/>
+     <ITEM SCONAME="LANG" VERSION="1" CMPTYPE="1" EDITORDER="3 " PARDECLTYP="1" PARPASSTYP="1" TYPTYPE="1" TYPE="TS_LANG"/>
+    </PARAMETERS>
+    <SOURCE>
+  DATA _text  TYPE tt_rawtext.
+
+  head-id = docu-id.
+  head-object = docu-object.
+  head-masterlang = docu-masterlang.
+  head-langu = docu-langu.
+  head-typ = docu-typ.
+  head-selfdef = docu-selfdef.
+  IF docu-selfdef = space.
+    CALL FUNCTION &apos;DOCU_GET&apos;
+      EXPORTING
+*       EXTEND_EXCEPT                = &apos; &apos;
+        id                           = docu-id
+        langu                        = docu-langu
+        object                       = docu-object
+        typ                          = docu-typ
+        version                      = docu-version
+        version_active_or_last       = &apos;A&apos;
+*         PRINT_PARAM_GET              = &apos;X&apos;
+      IMPORTING
+        dokstate                     = lang-state
+*         DOKTITLE                     =
+        head                         = lang-head
+*        doktyp                       = head-typ
+      TABLES
+        line                         = _text
+      EXCEPTIONS
+        no_docu_on_screen            = 1
+        no_docu_self_def             = 2
+        no_docu_temp                 = 3
+        ret_code                     = 4
+        OTHERS                       = 5
+              .
+    IF sy-subrc &lt;&gt; 0.
+      CALL METHOD application_log-&gt;add_symsg
+*          EXPORTING
+*            id_detlevel  =
+*            if_cumulate  =
+*            id_probclass =
+*            id_index     =
+*          IMPORTING
+*            es_message   =
+          .
+      EXIT.
+    ENDIF.
+    lang-_ = raw2string( _text ).
+    head-application = lang-tdobject.
+    head-dokform = lang-tdform.
+    head-dokstyle = lang-tdstyle.
+    CLEAR:
+      lang-tdobject,
+      lang-tdname,
+      lang-tdid,
+      lang-tdform,
+      lang-tdstyle.
+  ENDIF.</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="GET" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="2 " MTDDECLTYP="1">
+    <PARAMETERS>
+     <ITEM SCONAME="IDS" VERSION="1" CMPTYPE="1" EDITORDER="1 " PARPASSTYP="1" TYPTYPE="1" TYPE="TR_DOCID">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="Range of ID"/>
+      </TEXTS>
+     </ITEM>
+     <ITEM SCONAME="OBJECT" VERSION="1" CMPTYPE="1" EDITORDER="2 " PARPASSTYP="1" TYPTYPE="1" TYPE="DOKU_OBJ">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="Documentation Object"/>
+      </TEXTS>
+     </ITEM>
+     <ITEM SCONAME="T_DOCS" VERSION="1" CMPTYPE="1" EDITORDER="3 " PARDECLTYP="3" TYPTYPE="1" TYPE="TT_DOCS">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="Documents"/>
+      </TEXTS>
+     </ITEM>
+    </PARAMETERS>
+    <SOURCE>
+  DATA _obj   TYPE RANGE OF doku_obj.
+  DATA my_obj LIKE LINE OF _obj.
+  DATA docs   TYPE STANDARD TABLE OF dokil WITH DEFAULT KEY.
+  DATA doc    LIKE LINE OF t_docs.
+  DATA _lang  LIKE LINE OF doc-texts.
+  FIELD-SYMBOLS:
+    &lt;d&gt; LIKE LINE OF docs.
+
+  IF ids IS INITIAL.
+    EXIT.
+  ENDIF.
+
+  my_obj-sign = &apos;I&apos;. my_obj-option = &apos;CP&apos;.
+  my_obj-low = object. APPEND my_obj TO _obj.
+
+  SELECT * INTO TABLE docs
+    FROM dokil
+    WHERE id IN ids
+      AND object IN _obj.
+
+  IF docs IS INITIAL.
+    EXIT.
+  ENDIF.
+
+  reset( ).
+
+  SORT docs BY id object masterlang DESCENDING langu.
+
+  LOOP AT docs ASSIGNING &lt;d&gt;.
+    AT NEW object. &quot; ID + OBJECT
+      CLEAR doc.
+      CALL METHOD docu_get
+        EXPORTING
+          docu = &lt;d&gt;
+        IMPORTING
+          head = doc-head
+          lang = _lang.
+    ENDAT.
+
+    IF _lang IS INITIAL.
+      CALL METHOD docu_get
+        EXPORTING
+          docu   = &lt;d&gt;
+        IMPORTING
+*          head   = _head
+          lang   = _lang.
+    ENDIF.
+    IF NOT _lang IS INITIAL.
+      INSERT _lang INTO TABLE doc-texts.
+      CLEAR _lang.
+    ENDIF.
+
+    AT END OF object. &quot; ID + OBJECT
+      APPEND doc TO t_docs.
+    ENDAT.
+  ENDLOOP.</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="GET_AS_XML" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="4 " MTDDECLTYP="1">
+    <PARAMETERS>
+     <ITEM SCONAME="IDS" VERSION="1" CMPTYPE="1" EDITORDER="1 " PARPASSTYP="1" TYPTYPE="1" TYPE="TR_DOCID">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="Range of ID"/>
+      </TEXTS>
+     </ITEM>
+     <ITEM SCONAME="OBJECT" VERSION="1" CMPTYPE="1" EDITORDER="2 " PARPASSTYP="1" TYPTYPE="1" TYPE="DOKU_OBJ">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="Documentation Object"/>
+      </TEXTS>
+     </ITEM>
+     <ITEM SCONAME="XMLDOC" VERSION="1" CMPTYPE="1" EDITORDER="3 " PARDECLTYP="3" TYPTYPE="3" TYPE="IF_IXML_DOCUMENT">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="XML Code"/>
+      </TEXTS>
+     </ITEM>
+    </PARAMETERS>
+    <SOURCE>
+  DATA ezxml  TYPE REF TO zaplink_easyxml.
+  DATA t_docs TYPE tt_docs.
+
+  t_docs = get( ids = ids
+             object = object ).
+
+  IF NOT t_docs IS INITIAL.
+    CREATE OBJECT ezxml.
+    TRY.
+        CALL METHOD ezxml-&gt;any2xml
+          EXPORTING
+            any        = t_docs
+            type       = node_name
+*        attributes = &apos;&apos;
+          RECEIVING
+            xmldoc     = xmldoc.
+      CATCH zaplink_cx INTO o_cx.
+        CALL METHOD application_log-&gt;add_exception
+          EXPORTING
+            exception    = o_cx.
+    ENDTRY.
+    CALL METHOD application_log-&gt;add_from_instance
+      EXPORTING
+        io_msglist        = ezxml-&gt;application_log
+        if_add_as_subnode = abap_true
+*      if_cumulate       =
+        .
+  ENDIF.</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="RAW2STRING" VERSION="1" STATE="1" EDITORDER="5 " MTDDECLTYP="1">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="RawTexts to String"/>
+    </TEXTS>
+    <PARAMETERS>
+     <ITEM SCONAME="RAW" VERSION="1" CMPTYPE="1" EDITORDER="1 " PARPASSTYP="1" TYPTYPE="1" TYPE="TT_RAWTEXT"/>
+     <ITEM SCONAME="STRING" VERSION="1" CMPTYPE="1" EDITORDER="2 " PARDECLTYP="3" TYPTYPE="1" TYPE="STRING"/>
+    </PARAMETERS>
+    <SOURCE>
+FIELD-SYMBOLS &lt;l&gt; LIKE LINE OF raw.
+  DATA str TYPE string.
+
+  LOOP AT raw ASSIGNING &lt;l&gt;.
+    str = &lt;l&gt;.
+    IF string IS INITIAL.
+      string = str.
+    ELSE.
+      CONCATENATE string line_separator str INTO string.
+    ENDIF.
+  ENDLOOP.</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="RESET" VERSION="1" STATE="1" EDITORDER="4 " MTDDECLTYP="1">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Reset Bal Log"/>
+    </TEXTS>
+    <SOURCE>
+  DATA object	TYPE balobj_d.
+  DATA subobject  TYPE balsubobj.
+  DATA ext_id	TYPE balnrext.
+
+  IF NOT application_log IS BOUND.
+    EXIT.
+  ENDIF.
+
+  object = zaplink_connector=&gt;ballog_object.
+  subobject	= &apos;DOCT&apos;.
+*  CONCATENATE sy-uname sy-datum sy-uzeit INTO ext_id SEPARATED BY space.
+*01    Create
+*02    Change
+*03    Display
+*04    Modify (Direct Input: Create/Change)
+*06    Delete
+*11    Create defaults
+*12    Change defaults
+*13    Display defaults
+  CALL METHOD application_log-&gt;init
+    EXPORTING
+      id_object      = object
+      id_subobject   = subobject
+      id_extnumber   = ext_id
+      auto_upd_custo = abap_true
+      id_activity    = zaplink_message_collector=&gt;actions-create
+    EXCEPTIONS
+      error          = 1
+      OTHERS         = 2.
+  IF sy-subrc &lt;&gt; 0.
+* ignore
+  ENDIF.</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="SET" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="3 " MTDDECLTYP="1">
+    <PARAMETERS>
+     <ITEM SCONAME="T_DOCS" VERSION="1" CMPTYPE="1" EDITORDER="1 " PARPASSTYP="1" TYPTYPE="1" TYPE="TT_DOCS">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="Documents"/>
+      </TEXTS>
+     </ITEM>
+    </PARAMETERS>
+    <SOURCE>
+DATA _text  TYPE zaplink_doc_data=&gt;tt_text.
+  DATA _dokil TYPE dokil.
+  DATA _head  TYPE thead.
+  FIELD-SYMBOLS:
+    &lt;o&gt; LIKE LINE OF t_docs,
+    &lt;t&gt; LIKE LINE OF &lt;o&gt;-texts.
+
+  IF t_docs IS INITIAL.
+    EXIT. &quot;nothing to do
+  ENDIF.
+
+  LOOP AT t_docs ASSIGNING &lt;o&gt;.
+    _dokil-id = &lt;o&gt;-id.
+    _dokil-object = &lt;o&gt;-object.
+    _dokil-selfdef = &lt;o&gt;-selfdef.
+
+    CALL FUNCTION &apos;DOCU_SELFDEF_WRITE&apos;
+      EXPORTING
+        object_id   = _dokil-id
+        object_name = _dokil-object
+        selfdef     = _dokil-selfdef
+      EXCEPTIONS
+        not_deleted = 1
+        OTHERS      = 2.
+    IF sy-subrc &lt;&gt; 0.
+      CALL METHOD application_log-&gt;add_symsg
+*        EXPORTING
+*          id_detlevel  =
+*          if_cumulate  =
+*          id_probclass =
+*          id_index     =
+*        IMPORTING
+*          es_message   =
+          .
+    ENDIF.
+    LOOP AT &lt;o&gt;-texts ASSIGNING &lt;t&gt;.
+      _text = string2raw( &lt;t&gt;-_  ).
+      _head = &lt;t&gt;-head.
+*    head-application = lang-tdobject.
+*    head-dokform = lang-tdform.
+*    head-dokstyle = lang-tdstyle.
+      _head-tdobject = &lt;o&gt;-application.
+      _head-tdname = &lt;o&gt;-object.
+      _head-tdid = &lt;o&gt;-id.
+      _head-tdform = &lt;o&gt;-dokform.
+      _head-tdstyle = &lt;o&gt;-dokstyle.
+
+      IF &lt;o&gt;-selfdef IS INITIAL.
+        CALL FUNCTION &apos;DOCU_UPDATE&apos;
+          EXPORTING
+*       ACTCLASS            = &apos; &apos;
+            head                = _head
+*       NO_MASTERLANG       = &apos; &apos;
+            state               = &lt;t&gt;-state
+            typ                 = &lt;o&gt;-typ
+            version             = 0
+          TABLES
+            line                = _text.
+      ENDIF.
+    ENDLOOP.
+  ENDLOOP.</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="SET_AS_XML" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="5 " MTDDECLTYP="1">
+    <PARAMETERS>
+     <ITEM SCONAME="XML" VERSION="1" CMPTYPE="1" EDITORDER="1 " PARPASSTYP="1" TYPTYPE="3" TYPE="IF_IXML_ELEMENT">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="IF_IXML_ELEMENT"/>
+      </TEXTS>
+     </ITEM>
+    </PARAMETERS>
+    <SOURCE>
+DATA t_docs TYPE tt_docs.
+  DATA ezxml  TYPE REF TO zaplink_easyxml.
+
+  CREATE OBJECT ezxml.
+
+*  TRY.
+  CALL METHOD ezxml-&gt;_xml2any
+    EXPORTING
+      xml = xml
+    CHANGING
+      any = t_docs.
+*  ENDTRY.
+
+  IF t_docs IS INITIAL AND ezxml-&gt;application_log-&gt;has_messages_of_msgt( id_msgty = &apos;W&apos; ) IS INITIAL.
+    EXIT. &quot;nothing to do
+  ENDIF.
+
+  reset( ).
+
+  CALL METHOD application_log-&gt;add_from_instance
+    EXPORTING
+      io_msglist        = ezxml-&gt;application_log
+      if_add_as_subnode = abap_true
+*      if_cumulate       =
+      .
+
+  set( t_docs ).</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="STRING2RAW" VERSION="1" STATE="1" EDITORDER="6 " MTDDECLTYP="1">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="String to RawTexts"/>
+    </TEXTS>
+    <PARAMETERS>
+     <ITEM SCONAME="RAW" VERSION="1" CMPTYPE="1" EDITORDER="2 " PARDECLTYP="3" TYPTYPE="1" TYPE="TT_RAWTEXT"/>
+     <ITEM SCONAME="STRING" VERSION="1" CMPTYPE="1" EDITORDER="1 " PARPASSTYP="1" TYPTYPE="1" TYPE="STRING"/>
+    </PARAMETERS>
+    <SOURCE>
+SPLIT string AT LINE_SEPARATOR
+        INTO TABLE raw.</SOURCE>
+   </ITEM>
+  </METHODS>
+  <TYPEGROUPS>
+   <ITEM TYPEGROUP="ABAP" VERSION="1" IMPLICIT="X"/>
+  </TYPEGROUPS>
+  <TYPES>
+   <ITEM CMPNAME="TO_LOG" VERSION="1" EXPOSURE="2" STATE="1" TYPTYPE="3" TYPE="ZAPLINK_MESSAGE_COLLECTOR">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Message Collector"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TO_ROOT_EXCEPTION" VERSION="1" EXPOSURE="2" STATE="1" TYPTYPE="3" TYPE="ZAPLINK_CX">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="ZAPlink ROOT Exception"/>
+    </TEXTS>
+   </ITEM>
+  </TYPES>
+ </RAW>
+</ZL_OBJECT>
