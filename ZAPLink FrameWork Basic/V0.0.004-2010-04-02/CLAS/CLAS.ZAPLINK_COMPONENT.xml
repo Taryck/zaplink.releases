@@ -1,0 +1,858 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ZL_OBJECT CHECKSUM="909DCE88EEC1E138FA5A1EF08C75F156" CONNECTOR="39AC0A4B07A5A05AE1000000AC120173" NAME="ZAPLINK_COMPONENT" TYPE="CLAS" VERSION="1.01">
+ <DIRECTORY DEVCLASS="ZAPLINK-FRAMEWORK-CORE" MASTERLANG="E"/>
+ <RAW>
+  <A0_MAINDATA VERSION="1" LANGU="E" UUID="3FF8034B756EB95AE1000000AC120173" EXPOSURE="2" STATE="1" CLSCCINCL="X" FIXPT="X" UNICODE="X">
+   <TEXTS>
+    <ITEM LANGU="E" DESCRIPT="Zap Link Component"/>
+   </TEXTS>
+  </A0_MAINDATA>
+  <ALIASES>
+   <ITEM CMPNAME="TD_COMPEXISTS" VERSION="1" EXPOSURE="2" CMPTYPE="3" REFCLSNAME="ZAPLINK_DATATYPES" REFCMPNAME="TD_COMPEXISTS"/>
+   <ITEM CMPNAME="TD_COMPNAME" VERSION="1" EXPOSURE="2" CMPTYPE="3" REFCLSNAME="ZAPLINK_DATATYPES" REFCMPNAME="TD_COMPNAME"/>
+   <ITEM CMPNAME="TD_COMPTYPE" VERSION="1" EXPOSURE="2" CMPTYPE="3" REFCLSNAME="ZAPLINK_DATATYPES" REFCMPNAME="TD_COMPTYPE"/>
+   <ITEM CMPNAME="TD_CONNCLASS" VERSION="1" EXPOSURE="2" CMPTYPE="3" REFCLSNAME="ZAPLINK_DATATYPES" REFCMPNAME="TD_CONNCLASS"/>
+   <ITEM CMPNAME="TD_CONNEXISTS" VERSION="1" EXPOSURE="2" CMPTYPE="3" REFCLSNAME="ZAPLINK_DATATYPES" REFCMPNAME="TD_CONNEXISTS"/>
+   <ITEM CMPNAME="TD_CONNUUID" VERSION="1" EXPOSURE="2" CMPTYPE="3" REFCLSNAME="ZAPLINK_DATATYPES" REFCMPNAME="TD_CONNUUID"/>
+   <ITEM CMPNAME="TD_DEVCLASS" VERSION="1" EXPOSURE="2" CMPTYPE="3" REFCLSNAME="ZAPLINK_DATATYPES" REFCMPNAME="TD_DEVCLASS"/>
+   <ITEM CMPNAME="TD_OBJ_TYPE" VERSION="1" EXPOSURE="2" CMPTYPE="3" REFCLSNAME="ZAPLINK_DATATYPES" REFCMPNAME="TD_OBJ_TYPE"/>
+   <ITEM CMPNAME="TD_WITH_SUBCOMP" VERSION="1" EXPOSURE="2" CMPTYPE="3" REFCLSNAME="ZAPLINK_DATATYPES" REFCMPNAME="TD_WITH_SUBCOMP"/>
+   <ITEM CMPNAME="TS_COMPKEY" VERSION="1" EXPOSURE="2" CMPTYPE="3" REFCLSNAME="ZAPLINK_DATATYPES" REFCMPNAME="TS_COMPKEY"/>
+   <ITEM CMPNAME="TS_COMPONENT" VERSION="1" EXPOSURE="2" CMPTYPE="3" REFCLSNAME="ZAPLINK_DATATYPES" REFCMPNAME="TS_COMPONENT"/>
+   <ITEM CMPNAME="TS_CONN_CLASS" VERSION="1" EXPOSURE="1" CMPTYPE="3" REFCLSNAME="ZAPLINK_DATATYPES" REFCMPNAME="TS_CONN_CLASS"/>
+   <ITEM CMPNAME="TT_TYPES" VERSION="1" EXPOSURE="1" CMPTYPE="3" REFCLSNAME="ZAPLINK_DATATYPES" REFCMPNAME="TT_TYPES"/>
+  </ALIASES>
+  <ATTRIBUTS>
+   <ITEM CMPNAME="CONNEXISTS" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="1 " ATTDECLTYP="2" TYPTYPE="4" SRCROW1="45 " SRCCOLUMN1="4 " SRCROW2="48 " SRCCOLUMN2="24 " TYPESRC_LENG="213 " TYPESRC="BEGIN OF connexists,
+          exists     TYPE td_connexists VALUE ZAPLINK_DATATYPES~EXISTS-exists,
+          not_exists TYPE td_connexists VALUE ZAPLINK_DATATYPES~EXISTS-not_exists,
+        END OF connexists
+">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Connector Exists constants"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="LOCAL_DEVCLASS" VERSION="1" EXPOSURE="1" STATE="1" EDITORDER="9 " ATTDECLTYP="2" ATTVALUE="&apos;$LOCAL$&apos;" TYPTYPE="1" TYPE="TD_DEVCLASS">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Devclass for Local class"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="NAME" VERSION="1" EXPOSURE="1" STATE="1" EDITORDER="1 " TYPTYPE="1" TYPE="TD_COMPNAME">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Object Name"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="O_CX" VERSION="1" STATE="1" EDITORDER="2 " ATTDECLTYP="1" TYPTYPE="1" TYPE="TO_ROOT_EXCEPTION">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="ZAPlink ROOT Exception"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="O_MYCX" VERSION="1" STATE="1" EDITORDER="1 " ATTDECLTYP="1" TYPTYPE="1" TYPE="TO_EXCEPTION">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="ZAPlink ROOT Exception for Connectors"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TYPE" VERSION="1" EXPOSURE="1" STATE="1" EDITORDER="2 " TYPTYPE="1" TYPE="TD_COMPTYPE">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Object Type"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="WITH_SUBCOMP" VERSION="1" EXPOSURE="1" STATE="1" EDITORDER="11 " ATTVALUE="ABAP_TRUE" TYPTYPE="1" TYPE="TD_WITH_SUBCOMP">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Also do Sub Component"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="_CLASSES" VERSION="1" EXPOSURE="1" STATE="1" EDITORDER="7 " ATTDECLTYP="1" TYPTYPE="1" TYPE="TT_CLASSES">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Classe list"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="_CONNECTOR" VERSION="1" EXPOSURE="1" STATE="1" EDITORDER="3 " TYPTYPE="1" TYPE="TS_CONNDATA">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Connector Info"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="_DEVCLASS" VERSION="1" EXPOSURE="1" STATE="1" EDITORDER="8 " TYPTYPE="1" TYPE="TD_DEVCLASS">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Devlopment class"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="_EXCEPTION" VERSION="1" EXPOSURE="1" STATE="1" EDITORDER="5 " TYPTYPE="1" TYPE="TO_CONN_EXCEPTION">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="ZAPlink ROOT Exception for Connectors"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="_EXISTS" VERSION="1" EXPOSURE="1" STATE="1" EDITORDER="4 " TYPTYPE="1" TYPE="TD_COMPEXISTS">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Component exists in SAP"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="_MSG_COLL" VERSION="1" EXPOSURE="1" STATE="1" EDITORDER="6 " TYPTYPE="1" TYPE="TO_MSG_COLL">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Message Collector"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="_SUBCOMPONENTS" VERSION="1" EXPOSURE="1" STATE="1" EDITORDER="10 " TYPTYPE="1" TYPE="TO_LIST">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="ZapLink Components list"/>
+    </TEXTS>
+   </ITEM>
+  </ATTRIBUTS>
+  <FRIENDS>
+   <ITEM REFCLSNAME="ZAPLINK_LIST_" VERSION="1" STATE="1"/>
+  </FRIENDS>
+  <INTERFACES>
+   <ITEM REFCLSNAME="ZAPLINK_DATATYPES" VERSION="1" EXPOSURE="2" STATE="1" RELTYPE="1"/>
+  </INTERFACES>
+  <LOCAL>
+   <TYPES>
+*&quot;* USE THIS SOURCE FILE FOR ANY TYPE DECLARATIONS (CLASS
+*&quot;* definitions, interfaces or data types) you need for method
+*&quot;* IMPLEMENTATION OR PRIVATE METHOD&apos;S SIGNATURE</TYPES>
+   <IMPLEMENTATIONS>
+*&quot;* LOCAL CLASS IMPLEMENTATION FOR PUBLIC CLASS
+*&quot;* use this source file for the implementation part of
+*&quot;* LOCAL HELPER CLASSES</IMPLEMENTATIONS>
+   <MACROS>
+*&quot;* USE THIS SOURCE FILE FOR ANY MACRO DEFINITIONS YOU NEED
+*&quot;* in the implementation part of the class
+
+INCLUDE ZAPLINK_MACROS.</MACROS>
+  </LOCAL>
+  <METHODS>
+   <ITEM CMPNAME="CLONE" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="21 ">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Clone Component"/>
+    </TEXTS>
+    <PARAMETERS>
+     <ITEM SCONAME="RESULT" VERSION="1" CMPTYPE="1" EDITORDER="1 " PARDECLTYP="3" TYPTYPE="1" TYPE="TO_ME">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="Zap Link Component"/>
+      </TEXTS>
+     </ITEM>
+    </PARAMETERS>
+    <SOURCE>
+*  create object result.
+  result = me.</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="CONNECTOR" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="11 " MTDNEWEXC="X">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Connector : Getter"/>
+    </TEXTS>
+    <PARAMETERS>
+     <ITEM SCONAME="RESULT" VERSION="1" CMPTYPE="1" EDITORDER="1 " PARDECLTYP="3" TYPTYPE="1" TYPE="TO_CONNECTOR">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="ZAP Link Connector interface"/>
+      </TEXTS>
+     </ITEM>
+    </PARAMETERS>
+    <EXCEPTIONS>
+     <ITEM SCONAME="ZAPLINK_CX_COMPONENT" VERSION="1" LANGU="E" EDITORDER="1 ">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="ZAPlink Exception for Component"/>
+      </TEXTS>
+     </ITEM>
+    </EXCEPTIONS>
+    <SOURCE>
+result = _connector-o_conn.</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="CONNECTOR_EXISTS" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="10 " MTDNEWEXC="X">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Connector Exists : Getter"/>
+    </TEXTS>
+    <PARAMETERS>
+     <ITEM SCONAME="RESULT" VERSION="1" CMPTYPE="1" EDITORDER="1 " PARDECLTYP="3" TYPTYPE="1" TYPE="TD_CONNEXISTS">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="Connector exists (&apos;X&apos;) or not (&apos; &apos;)"/>
+      </TEXTS>
+     </ITEM>
+    </PARAMETERS>
+    <EXCEPTIONS>
+     <ITEM SCONAME="ZAPLINK_CX_COMPONENT" VERSION="1" LANGU="E" EDITORDER="1 ">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="ZAPlink Exception for Component"/>
+      </TEXTS>
+     </ITEM>
+    </EXCEPTIONS>
+    <SOURCE>
+result = _connector-exists.</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="CREATE_NEW" VERSION="1" EXPOSURE="1" STATE="1" EDITORDER="2 " MTDDECLTYP="1" MTDNEWEXC="X">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Create new component from key"/>
+    </TEXTS>
+    <PARAMETERS>
+     <ITEM SCONAME="KEY" VERSION="1" CMPTYPE="1" EDITORDER="1 " PARPASSTYP="1" TYPTYPE="1" TYPE="TS_COMPKEY">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="Component Key (unique)"/>
+      </TEXTS>
+     </ITEM>
+     <ITEM SCONAME="RESULT" VERSION="1" CMPTYPE="1" EDITORDER="2 " PARDECLTYP="3" TYPTYPE="1" TYPE="TO_ME">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="Zap Link Component"/>
+      </TEXTS>
+     </ITEM>
+    </PARAMETERS>
+    <EXCEPTIONS>
+     <ITEM SCONAME="ZAPLINK_CX_COMPONENT" VERSION="1" LANGU="E" EDITORDER="1 ">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="ZAPlink Exception for Component"/>
+      </TEXTS>
+     </ITEM>
+    </EXCEPTIONS>
+    <SOURCE>
+DATA _cx TYPE REF TO zaplink_cx_component.
+  TRY.
+      CREATE OBJECT result.
+      result-&gt;_set_key( key ).
+    CATCH zaplink_cx_component INTO _cx.
+      RAISE EXCEPTION _cx.
+  ENDTRY.</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="EXISTS" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="9 " MTDNEWEXC="X">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Component Exists : Getter"/>
+    </TEXTS>
+    <PARAMETERS>
+     <ITEM SCONAME="RESULT" VERSION="1" CMPTYPE="1" EDITORDER="1 " PARDECLTYP="3" TYPTYPE="1" TYPE="TD_COMPEXISTS"/>
+    </PARAMETERS>
+    <EXCEPTIONS>
+     <ITEM SCONAME="ZAPLINK_CX_COMPONENT" VERSION="1" LANGU="E" EDITORDER="1 ">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="ZAPlink Exception for Component"/>
+      </TEXTS>
+     </ITEM>
+    </EXCEPTIONS>
+    <SOURCE>
+  result = _exists.</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="GET_CONNUUID" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="12 " MTDNEWEXC="X">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Connector UUID : Getter"/>
+    </TEXTS>
+    <PARAMETERS>
+     <ITEM SCONAME="RESULT" VERSION="1" CMPTYPE="1" EDITORDER="1 " PARDECLTYP="3" TYPTYPE="1" TYPE="TD_CONNUUID">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="Connector UUID"/>
+      </TEXTS>
+     </ITEM>
+    </PARAMETERS>
+    <EXCEPTIONS>
+     <ITEM SCONAME="ZAPLINK_CX_COMPONENT" VERSION="1" LANGU="E" EDITORDER="1 ">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="ZAPlink Exception for Component"/>
+      </TEXTS>
+     </ITEM>
+    </EXCEPTIONS>
+    <SOURCE>
+  result = _connector-uuid.</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="GET_DEVCLASS" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="5 " MTDNEWEXC="X">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="DevClass : Getter"/>
+    </TEXTS>
+    <PARAMETERS>
+     <ITEM SCONAME="RESULT" VERSION="1" CMPTYPE="1" EDITORDER="1 " PARDECLTYP="3" TYPTYPE="1" TYPE="TD_DEVCLASS">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="Devlopment class"/>
+      </TEXTS>
+     </ITEM>
+    </PARAMETERS>
+    <EXCEPTIONS>
+     <ITEM SCONAME="ZAPLINK_CX_COMPONENT" VERSION="1" LANGU="E" EDITORDER="1 ">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="ZAPlink Exception for Component"/>
+      </TEXTS>
+     </ITEM>
+    </EXCEPTIONS>
+    <SOURCE>
+result = _devclass.</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="GET_EXCEPTION" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="15 " MTDNEWEXC="X">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Exception : Getter"/>
+    </TEXTS>
+    <PARAMETERS>
+     <ITEM SCONAME="RESULT" VERSION="1" CMPTYPE="1" EDITORDER="1 " PARDECLTYP="3" TYPTYPE="1" TYPE="TO_ROOT_EXCEPTION">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="ZAPlink ROOT Exception"/>
+      </TEXTS>
+     </ITEM>
+    </PARAMETERS>
+    <EXCEPTIONS>
+     <ITEM SCONAME="ZAPLINK_CX_COMPONENT" VERSION="1" LANGU="E" EDITORDER="1 ">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="ZAPlink Exception for Component"/>
+      </TEXTS>
+     </ITEM>
+    </EXCEPTIONS>
+    <SOURCE>
+result = _EXCEPTION.</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="GET_KEY" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="14 " MTDNEWEXC="X">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Key : Getter"/>
+    </TEXTS>
+    <PARAMETERS>
+     <ITEM SCONAME="RESULT" VERSION="1" CMPTYPE="1" EDITORDER="1 " PARDECLTYP="3" TYPTYPE="1" TYPE="TS_COMPONENT">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="Component Key (unique)"/>
+      </TEXTS>
+     </ITEM>
+    </PARAMETERS>
+    <EXCEPTIONS>
+     <ITEM SCONAME="ZAPLINK_CX_COMPONENT" VERSION="1" LANGU="E" EDITORDER="1 ">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="ZAPlink Exception for Component"/>
+      </TEXTS>
+     </ITEM>
+    </EXCEPTIONS>
+    <SOURCE>
+IF type IS INITIAL OR name IS INITIAL.
+    RAISE EXCEPTION TYPE zaplink_cx_component
+               EXPORTING textid = zaplink_cx_component=&gt;system_error.
+  ENDIF.
+  result-type = type.
+  result-name = name.</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="GET_MSG_COLL" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="17 " MTDNEWEXC="X">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Message Collector : Getter"/>
+    </TEXTS>
+    <PARAMETERS>
+     <ITEM SCONAME="RESULT" VERSION="1" CMPTYPE="1" EDITORDER="1 " PARDECLTYP="3" TYPTYPE="1" TYPE="TO_MSG_COLL">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="Object Type"/>
+      </TEXTS>
+     </ITEM>
+    </PARAMETERS>
+    <EXCEPTIONS>
+     <ITEM SCONAME="ZAPLINK_CX_COMPONENT" VERSION="1" LANGU="E" EDITORDER="1 ">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="ZAPlink Exception for Component"/>
+      </TEXTS>
+     </ITEM>
+    </EXCEPTIONS>
+    <SOURCE>
+result = _msg_coll.</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="GET_NAME" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="7 " MTDNEWEXC="X">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Name : Getter"/>
+    </TEXTS>
+    <PARAMETERS>
+     <ITEM SCONAME="RESULT" VERSION="1" CMPTYPE="1" EDITORDER="1 " PARDECLTYP="3" TYPTYPE="1" TYPE="TD_COMPNAME">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="Object Name"/>
+      </TEXTS>
+     </ITEM>
+    </PARAMETERS>
+    <EXCEPTIONS>
+     <ITEM SCONAME="ZAPLINK_CX_COMPONENT" VERSION="1" LANGU="E" EDITORDER="1 ">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="ZAPlink Exception for Component"/>
+      </TEXTS>
+     </ITEM>
+    </EXCEPTIONS>
+    <SOURCE>
+result = name.</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="GET_SUBCOMPONENTS" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="19 " MTDNEWEXC="X">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Sub-Components list : Getter"/>
+    </TEXTS>
+    <PARAMETERS>
+     <ITEM SCONAME="RESULT" VERSION="1" CMPTYPE="1" EDITORDER="1 " PARDECLTYP="3" TYPTYPE="1" TYPE="TO_LIST">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="Object Type"/>
+      </TEXTS>
+     </ITEM>
+    </PARAMETERS>
+    <EXCEPTIONS>
+     <ITEM SCONAME="ZAPLINK_CX_COMPONENT" VERSION="1" LANGU="E" EDITORDER="1 ">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="ZAPlink Exception for Component"/>
+      </TEXTS>
+     </ITEM>
+    </EXCEPTIONS>
+    <SOURCE>
+result = _subcomponents.</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="GET_TYPE" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="1 " MTDNEWEXC="X">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Type : Getter"/>
+    </TEXTS>
+    <PARAMETERS>
+     <ITEM SCONAME="RESULT" VERSION="1" CMPTYPE="1" EDITORDER="1 " PARDECLTYP="3" TYPTYPE="1" TYPE="TD_COMPTYPE">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="Object Type"/>
+      </TEXTS>
+     </ITEM>
+    </PARAMETERS>
+    <EXCEPTIONS>
+     <ITEM SCONAME="ZAPLINK_CX_COMPONENT" VERSION="1" LANGU="E" EDITORDER="1 ">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="ZAPlink Exception for Component"/>
+      </TEXTS>
+     </ITEM>
+    </EXCEPTIONS>
+    <SOURCE>
+result = type.</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="GET_WITH_SUBCOMP" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="3 " MTDNEWEXC="X">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="With Sub Component : Getter"/>
+    </TEXTS>
+    <PARAMETERS>
+     <ITEM SCONAME="RESULT" VERSION="1" CMPTYPE="1" EDITORDER="1 " PARDECLTYP="3" TYPTYPE="1" TYPE="TD_WITH_SUBCOMP">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="With subComp Flag"/>
+      </TEXTS>
+     </ITEM>
+    </PARAMETERS>
+    <EXCEPTIONS>
+     <ITEM SCONAME="ZAPLINK_CX_COMPONENT" VERSION="1" LANGU="E" EDITORDER="1 ">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="ZAPlink Exception for Component"/>
+      </TEXTS>
+     </ITEM>
+    </EXCEPTIONS>
+    <SOURCE>
+  result = with_subcomp.</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="ON_CHANGE_CLEAR" VERSION="1" STATE="1" EDITORDER="1 ">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Type or Name change : clear attr"/>
+    </TEXTS>
+    <SOURCE>
+  CLEAR: _exists.
+  CLEAR: _connector-uuid.</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="ON_CHANGE_UPDATE" VERSION="1" STATE="1" EDITORDER="2 " MTDNEWEXC="X">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Type or Name change : update attr"/>
+    </TEXTS>
+    <EXCEPTIONS>
+     <ITEM SCONAME="ZAPLINK_CX_COMPONENT" VERSION="1" LANGU="E" EDITORDER="1 ">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="ZAPlink Exception for Component"/>
+      </TEXTS>
+     </ITEM>
+    </EXCEPTIONS>
+    <SOURCE>
+  DATA o_cx_cnx TYPE REF TO zaplink_cx_connector.
+  IF _connector-o_conn IS BOUND AND NOT name IS INITIAL.
+    TRY.
+        _exists = _connector-o_conn-&gt;do_exists( me ).
+      CATCH zaplink_cx_connector INTO o_cx_cnx.
+        mac_cascade_raise o_mycx o_cx_cnx.
+    ENDTRY.
+    SELECT SINGLE devclass INTO _devclass
+      FROM tadir
+      WHERE pgmid = &apos;R3TR&apos;
+       AND object = type
+       AND obj_name = name.
+    _connector-uuid = _connector-o_conn-&gt;uuid.
+  ENDIF.</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="REFRESH" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="22 " MTDNEWEXC="X">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Refresh component informations"/>
+    </TEXTS>
+    <EXCEPTIONS>
+     <ITEM SCONAME="ZAPLINK_CX_COMPONENT" VERSION="1" LANGU="E" EDITORDER="1 ">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="ZAPlink ROOT Exception for Connectors"/>
+      </TEXTS>
+     </ITEM>
+    </EXCEPTIONS>
+    <SOURCE>
+  TRY.
+      on_change_update( ).                                  &quot; Issue 31
+    CATCH ZAPLINK_CX_COMPONENT INTO o_mycx.
+*      RAISE EXCEPTION o_mycx.    &quot; Exception is ignored
+  ENDTRY.</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="SET_CONNUUID" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="13 " MTDNEWEXC="X">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Connector UUID : Setter"/>
+    </TEXTS>
+    <PARAMETERS>
+     <ITEM SCONAME="DATA" VERSION="1" CMPTYPE="1" EDITORDER="1 " PARPASSTYP="1" TYPTYPE="1" TYPE="TD_CONNUUID">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="Connector UUID"/>
+      </TEXTS>
+     </ITEM>
+    </PARAMETERS>
+    <EXCEPTIONS>
+     <ITEM SCONAME="ZAPLINK_CX_COMPONENT" VERSION="1" LANGU="E" EDITORDER="1 ">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="ZAPlink Exception for Component"/>
+      </TEXTS>
+     </ITEM>
+    </EXCEPTIONS>
+    <SOURCE>
+  DATA _cx    TYPE REF TO zaplink_cx.
+  DATA o_conn TYPE to_connector.
+
+  CHECK data &lt;&gt; _connector-uuid.
+
+  TRY.
+      o_conn = zaplink_connectors=&gt;create_connector( type = type
+                                                 connuuid = data ).
+
+      _connector-o_conn = o_conn.
+      on_change_clear( ).
+      _connector-uuid = data.
+      IF o_conn IS BOUND.
+        _connector-exists = connexists-exists.
+      ELSE.
+        _connector-exists = connexists-not_exists.
+      ENDIF.
+      on_change_update( ).
+
+    CATCH zaplink_cx INTO o_cx.
+      mac_cascade_raise o_mycx o_cx.
+  ENDTRY.
+</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="SET_DEVCLASS" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="6 " MTDNEWEXC="X">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="DevClass : Setter"/>
+    </TEXTS>
+    <PARAMETERS>
+     <ITEM SCONAME="DATA" VERSION="1" CMPTYPE="1" EDITORDER="1 " PARPASSTYP="1" TYPTYPE="1" TYPE="TD_DEVCLASS">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="Devlopment class"/>
+      </TEXTS>
+     </ITEM>
+    </PARAMETERS>
+    <EXCEPTIONS>
+     <ITEM SCONAME="ZAPLINK_CX_COMPONENT" VERSION="1" LANGU="E" EDITORDER="1 ">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="ZAPlink Exception for Component"/>
+      </TEXTS>
+     </ITEM>
+    </EXCEPTIONS>
+    <SOURCE>
+  CHECK data &lt;&gt; _devclass.
+  _devclass = data.</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="SET_EXCEPTION" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="16 " MTDNEWEXC="X">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Exception : Setter"/>
+    </TEXTS>
+    <PARAMETERS>
+     <ITEM SCONAME="DATA" VERSION="1" CMPTYPE="1" EDITORDER="1 " PARPASSTYP="1" TYPTYPE="1" TYPE="TO_ROOT_EXCEPTION">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="ZAPlink ROOT Exception"/>
+      </TEXTS>
+     </ITEM>
+    </PARAMETERS>
+    <EXCEPTIONS>
+     <ITEM SCONAME="ZAPLINK_CX_COMPONENT" VERSION="1" LANGU="E" EDITORDER="1 ">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="ZAPlink Exception for Component"/>
+      </TEXTS>
+     </ITEM>
+    </EXCEPTIONS>
+    <SOURCE>
+DATA cx TYPE REF TO cx_root.
+  DATA _cx TYPE REF TO zaplink_cx_component.
+  DATA _desc TYPE REF TO cl_abap_typedescr.
+
+  IF data IS BOUND.
+    TRY.
+        _exception ?= data.
+      CATCH cx_root INTO cx.
+        _desc = cl_abap_typedescr=&gt;describe_by_object_ref( data ).
+* Can&apos;t set Exception to the provided object type : &apos;&amp;OBJTYPE&amp;&apos;
+        CREATE OBJECT _cx
+          EXPORTING
+            textid   = zaplink_cx_component=&gt;invalid_exception
+            objtype  = _desc-&gt;absolute_name
+            previous = cx.
+        _cx-&gt;update( ).
+        RAISE EXCEPTION _cx.
+    ENDTRY.
+  ELSE.
+    CLEAR _exception.
+  ENDIF.</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="SET_MSG_COLL" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="18 " MTDNEWEXC="X">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Message Collector : Setter"/>
+    </TEXTS>
+    <PARAMETERS>
+     <ITEM SCONAME="DATA" VERSION="1" CMPTYPE="1" EDITORDER="1 " PARPASSTYP="1" TYPTYPE="1" TYPE="TO_MSG_COLL">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="Object Type"/>
+      </TEXTS>
+     </ITEM>
+    </PARAMETERS>
+    <EXCEPTIONS>
+     <ITEM SCONAME="ZAPLINK_CX_COMPONENT" VERSION="1" LANGU="E" EDITORDER="1 ">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="ZAPlink Exception for Component"/>
+      </TEXTS>
+     </ITEM>
+    </EXCEPTIONS>
+    <SOURCE>
+DATA cx TYPE REF TO cx_root.
+  DATA _cx TYPE REF TO zaplink_cx_component.
+  DATA _desc TYPE REF TO cl_abap_typedescr.
+
+  IF data IS BOUND.
+    TRY.
+        _msg_coll ?= data.
+      CATCH cx_root INTO cx.
+        _desc = cl_abap_typedescr=&gt;describe_by_object_ref( data ).
+* Can&apos;t set Message Collector to the provided object type : &apos;&amp;OBJTYPE&amp;&apos;
+        CREATE OBJECT _cx
+          EXPORTING
+            textid   = zaplink_cx_component=&gt;invalid_msg_coll
+            objtype  = _desc-&gt;absolute_name
+            previous = cx.
+        _cx-&gt;update( ).
+        RAISE EXCEPTION _cx.
+    ENDTRY.
+  ELSE.
+    CLEAR _msg_coll.
+  ENDIF.</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="SET_NAME" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="8 " MTDNEWEXC="X">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Name : Setter"/>
+    </TEXTS>
+    <PARAMETERS>
+     <ITEM SCONAME="DATA" VERSION="1" CMPTYPE="1" EDITORDER="1 " PARPASSTYP="1" TYPTYPE="1" TYPE="ANY">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="Object Name"/>
+      </TEXTS>
+     </ITEM>
+    </PARAMETERS>
+    <EXCEPTIONS>
+     <ITEM SCONAME="ZAPLINK_CX_COMPONENT" VERSION="1" LANGU="E" EDITORDER="1 ">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="ZAPlink Exception for Component"/>
+      </TEXTS>
+     </ITEM>
+    </EXCEPTIONS>
+    <SOURCE>
+  CHECK data &lt;&gt; name.
+  name = data.
+  on_change_clear( ).
+  on_change_update( ).</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="SET_SUBCOMPONENTS" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="20 " MTDNEWEXC="X">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Sub-Components list : Setter"/>
+    </TEXTS>
+    <PARAMETERS>
+     <ITEM SCONAME="DATA" VERSION="1" CMPTYPE="1" EDITORDER="1 " PARPASSTYP="1" TYPTYPE="1" TYPE="TO_LIST">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="Object Type"/>
+      </TEXTS>
+     </ITEM>
+    </PARAMETERS>
+    <EXCEPTIONS>
+     <ITEM SCONAME="ZAPLINK_CX_COMPONENT" VERSION="1" LANGU="E" EDITORDER="1 ">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="ZAPlink Exception for Component"/>
+      </TEXTS>
+     </ITEM>
+    </EXCEPTIONS>
+    <SOURCE>
+DATA cx TYPE REF TO cx_root.
+  DATA _cx TYPE REF TO zaplink_cx_component.
+  DATA _desc TYPE REF TO cl_abap_typedescr.
+
+  IF data IS BOUND.
+    TRY.
+        _subcomponents ?= data.
+      CATCH cx_root INTO cx.
+        _desc = cl_abap_typedescr=&gt;describe_by_object_ref( data ).
+* Can&apos;t set Message Collector to the provided object type : &apos;&amp;OBJTYPE&amp;&apos;
+        CREATE OBJECT _cx
+          EXPORTING
+            textid   = zaplink_cx_component=&gt;invalid_subcomponents
+            objtype  = _desc-&gt;absolute_name
+            previous = cx.
+        _cx-&gt;update( ).
+        RAISE EXCEPTION _cx.
+    ENDTRY.
+  ELSE.
+    CLEAR _msg_coll.
+  ENDIF.</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="SET_TYPE" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="2 " MTDNEWEXC="X">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Type : Setter"/>
+    </TEXTS>
+    <PARAMETERS>
+     <ITEM SCONAME="DATA" VERSION="1" CMPTYPE="1" EDITORDER="1 " PARPASSTYP="1" TYPTYPE="1" TYPE="TD_COMPTYPE">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="Object Type"/>
+      </TEXTS>
+     </ITEM>
+    </PARAMETERS>
+    <EXCEPTIONS>
+     <ITEM SCONAME="ZAPLINK_CX_COMPONENT" VERSION="1" LANGU="E" EDITORDER="1 ">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="ZAPlink Exception for Component"/>
+      </TEXTS>
+     </ITEM>
+    </EXCEPTIONS>
+    <SOURCE>
+  DATA o_conn TYPE to_connector.
+
+  CHECK data &lt;&gt; type.
+
+  TRY.
+      o_conn = zaplink_connectors=&gt;create_connector( type = data ).
+
+      type = data.    CLEAR _connector.
+      on_change_clear( ).
+      _connector-o_conn = o_conn.
+      IF o_conn IS BOUND.   _connector-exists = connexists-exists.    ELSE.     _connector-exists = connexists-not_exists.    ENDIF.
+      on_change_update( ).
+
+    CATCH zaplink_cx INTO o_cx.
+      mac_cascade_raise o_mycx o_cx.
+  ENDTRY.
+</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="SET_WITH_SUBCOMP" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="4 " MTDNEWEXC="X">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="With Sub Component : Setter"/>
+    </TEXTS>
+    <PARAMETERS>
+     <ITEM SCONAME="DATA" VERSION="1" CMPTYPE="1" EDITORDER="1 " PARPASSTYP="1" TYPTYPE="1" TYPE="TD_WITH_SUBCOMP">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="With sub Comp Flag"/>
+      </TEXTS>
+     </ITEM>
+    </PARAMETERS>
+    <EXCEPTIONS>
+     <ITEM SCONAME="ZAPLINK_CX_COMPONENT" VERSION="1" LANGU="E" EDITORDER="1 ">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="ZAPlink Exception for Component"/>
+      </TEXTS>
+     </ITEM>
+    </EXCEPTIONS>
+    <SOURCE>
+  CHECK data &lt;&gt; with_subcomp.
+  with_subcomp = data.</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="_GET_KEY" VERSION="1" EXPOSURE="1" STATE="1" EDITORDER="1 ">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Key : Getter"/>
+    </TEXTS>
+    <PARAMETERS>
+     <ITEM SCONAME="RESULT" VERSION="1" CMPTYPE="1" EDITORDER="1 " PARDECLTYP="3" TYPTYPE="1" TYPE="TS_COMPKEY">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="Component Key (unique)"/>
+      </TEXTS>
+     </ITEM>
+    </PARAMETERS>
+    <SOURCE>
+result-type = type.
+  result-name = name.</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="_SET_KEY" VERSION="1" EXPOSURE="1" STATE="1" EDITORDER="3 " MTDNEWEXC="X">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Key : Setter"/>
+    </TEXTS>
+    <PARAMETERS>
+     <ITEM SCONAME="DATA" VERSION="1" CMPTYPE="1" EDITORDER="1 " TYPTYPE="1" TYPE="TS_COMPKEY">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="Component Key (unique)"/>
+      </TEXTS>
+     </ITEM>
+    </PARAMETERS>
+    <EXCEPTIONS>
+     <ITEM SCONAME="ZAPLINK_CX_COMPONENT" VERSION="1" LANGU="E" EDITORDER="1 ">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="ZAPlink Exception for Component"/>
+      </TEXTS>
+     </ITEM>
+    </EXCEPTIONS>
+    <SOURCE>
+DATA _cx TYPE REF TO zaplink_cx_component.
+  TRY.
+      set_type( data-type ).
+      set_name( data-name ).
+    CATCH zaplink_cx_component INTO _cx.
+      RAISE EXCEPTION _cx.
+  ENDTRY.</SOURCE>
+   </ITEM>
+  </METHODS>
+  <TYPEGROUPS>
+   <ITEM TYPEGROUP="ABAP" VERSION="1" IMPLICIT="X"/>
+  </TYPEGROUPS>
+  <TYPES>
+   <ITEM CMPNAME="TO_CONNECTOR" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="6 " TYPTYPE="3" TYPE="ZAPLINK_CONNECTOR">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="ZAP Link Connector interface"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TO_CONN_EXCEPTION" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="2 " TYPTYPE="3" TYPE="ZAPLINK_CX_CONNECTOR">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="ZAPlink Framework : Root exception class"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TO_EXCEPTION" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="4 " TYPTYPE="3" TYPE="ZAPLINK_CX_COMPONENT">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="ZAPlink ROOT Exception for Connectors"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TO_LIST" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="3 " TYPTYPE="3" TYPE="ZAPLINK_LIST">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="ZapLink Components list"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TO_ME" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="7 " TYPTYPE="3" TYPE="ZAPLINK_COMPONENT">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Zap Link Component"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TO_MSG_COLL" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="5 " TYPTYPE="3" TYPE="ZAPLINK_MESSAGE_COLLECTOR">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Message Collector"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TO_ROOT_EXCEPTION" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="1 " TYPTYPE="3" TYPE="ZAPLINK_CX">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="ZAPlink ROOT Exception"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TS_CLASS" VERSION="1" EXPOSURE="1" STATE="1" EDITORDER="2 " TYPTYPE="4" SRCROW1="18 " SRCCOLUMN1="4 " SRCROW2="22 " SRCCOLUMN2="16 " TYPESRC_LENG="122 ">BEGIN OF ts_class.
+INCLUDE TYPE ts_conn_class.
+TYPES:
+    types TYPE tt_types,   &quot; supported_types
+  END OF ts_class
+</ITEM>
+   <ITEM CMPNAME="TS_CONNDATA" VERSION="1" EXPOSURE="1" STATE="1" EDITORDER="1 " TYPTYPE="4" SRCROW1="11 " SRCCOLUMN1="4 " SRCROW2="16 " SRCCOLUMN2="25 " TYPESRC_LENG="212 ">
+    BEGIN OF ts_conndata,
+          uuid      type td_connuuid,
+          exists    TYPE td_connexists,
+*          classname TYPE td_connclass,
+          o_conn    TYPE to_connector,
+        END OF ts_conndata
+
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Connector Info"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TT_CLASSES" VERSION="1" EXPOSURE="1" STATE="1" EDITORDER="3 " TYPTYPE="4" SRCROW1="24 " SRCCOLUMN1="4 " SRCROW2="24 " SRCCOLUMN2="69 " TYPESRC_LENG="68 ">tt_classes TYPE SORTED TABLE OF ts_class WITH UNIQUE KEY classname
+</ITEM>
+   <ITEM CMPNAME="TT_SAPTYPES" VERSION="1" EXPOSURE="1" STATE="1" EDITORDER="4 " TYPTYPE="4" SRCROW1="26 " SRCCOLUMN1="4 " SRCROW2="26 " SRCCOLUMN2="64 " TYPESRC_LENG="63 ">
+    tt_saptypes TYPE HASHED TABLE OF ko100 WITH UNIQUE KEY object
+
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="List of SAP CTS Types"/>
+    </TEXTS>
+   </ITEM>
+  </TYPES>
+ </RAW>
+</ZL_OBJECT>

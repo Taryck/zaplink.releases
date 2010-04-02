@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ZL_OBJECT CHECKSUM="12FBD1F1E547B1A2BE91B6FA82231C19" CONNECTOR="39AC0A4B07A5A05AE1000000AC120173" NAME="ZAPLINK_RAW" TYPE="CLAS" VERSION="1.01">
+ <DEPENDENCIES>
+  <ITEM TYPE="CLAS" NAME="ZAPLINK_RAW_BASE"/>
+ </DEPENDENCIES>
+ <DIRECTORY DEVCLASS="ZAPLINK-FRAMEWORK-CORE" MASTERLANG="E"/>
+ <RAW>
+  <A0_MAINDATA VERSION="1" LANGU="E" UUID="A241094B66FB6A13E1000000AC120173" EXPOSURE="2" STATE="1" CLSCCINCL="X" FIXPT="X" UNICODE="X">
+   <INHERITANCE REFCLSNAME="ZAPLINK_RAW_BASE" VERSION="1" STATE="1"/>
+   <TEXTS>
+    <ITEM LANGU="E" DESCRIPT="RAW component with data"/>
+   </TEXTS>
+  </A0_MAINDATA>
+  <ATTRIBUTS>
+   <ITEM CMPNAME="RAW" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="1 " TYPTYPE="1" TYPE="TO_RAW_DATA">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Real data"/>
+    </TEXTS>
+   </ITEM>
+  </ATTRIBUTS>
+  <FRIENDS>
+   <ITEM REFCLSNAME="ZAPLINK_CONNECTOR" VERSION="1" STATE="1"/>
+   <ITEM REFCLSNAME="ZAPLINK_CONTAINER_4INST" VERSION="1" STATE="1"/>
+   <ITEM REFCLSNAME="ZAPLINK_EASYXML" VERSION="1" STATE="1"/>
+  </FRIENDS>
+  <LOCAL>
+   <TYPES>
+*&quot;* USE THIS SOURCE FILE FOR ANY TYPE DECLARATIONS (CLASS
+*&quot;* definitions, interfaces or data types) you need for method
+*&quot;* implementation or private method&apos;s signature
+</TYPES>
+   <IMPLEMENTATIONS>
+*&quot;* LOCAL CLASS IMPLEMENTATION FOR PUBLIC CLASS
+*&quot;* use this source file for the implementation part of
+*&quot;* local helper classes
+</IMPLEMENTATIONS>
+   <MACROS>
+*&quot;* USE THIS SOURCE FILE FOR ANY MACRO DEFINITIONS YOU NEED
+*&quot;* in the implementation part of the class
+
+INCLUDE ZAPLINK_MACROS.</MACROS>
+  </LOCAL>
+  <METHODS>
+   <ITEM CMPNAME="CONSTRUCTOR" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="1 " MTDTYPE="2">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="CONSTRUCTOR"/>
+    </TEXTS>
+    <PARAMETERS>
+     <ITEM SCONAME="O_COMP" VERSION="1" CMPTYPE="1" MTDTYPE="2" EDITORDER="1 " PARPASSTYP="1" TYPTYPE="1" TYPE="TO_COMPONENT" PAROPTIONL="X">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="Zap Link Component"/>
+      </TEXTS>
+     </ITEM>
+    </PARAMETERS>
+    <SOURCE>
+  super-&gt;constructor( o_comp ).</SOURCE>
+   </ITEM>
+  </METHODS>
+  <REDEFINITIONS>
+   <ITEM REFCLSNAME="ZAPLINK_RAW_BASE" VERSION="1" MTDNAME="UPDATE_CONNECTOR_DATA">
+    <SOURCE>
+  DATA o_raw_data      TYPE to_raw_data.
+
+  super-&gt;update_connector_data( o_connector = o_connector ).
+  o_raw_data = me-&gt;raw.
+  me-&gt;dependencies = o_raw_data-&gt;_dependencies. CLEAR o_raw_data-&gt;_dependencies.    &quot; Issue 47 : Introducing dependencies
+</SOURCE>
+   </ITEM>
+  </REDEFINITIONS>
+  <TYPES>
+   <ITEM CMPNAME="TO_RAW_DATA" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="1 " TYPTYPE="3" TYPE="ZAPLINK_RAW_DATA">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="ZAPLink : Abstract class for component data"/>
+    </TEXTS>
+   </ITEM>
+  </TYPES>
+ </RAW>
+</ZL_OBJECT>

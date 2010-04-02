@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ZL_OBJECT CHECKSUM="3C9C98A76F84362ACF5B26C853C0A137" CONNECTOR="39AC0A4B07A5A05AE1000000AC120173" NAME="ZAPLINK_TTYP_DATA" TYPE="CLAS" VERSION="1.01">
+ <DIRECTORY DEVCLASS="ZAPLINK-CONNECTORS-MAIN" MASTERLANG="E"/>
+ <RAW>
+  <A0_MAINDATA VERSION="1" LANGU="E" UUID="1B4B974BA10E256FE1000000AC120173" EXPOSURE="2" STATE="1" CLSCCINCL="X" FIXPT="X" UNICODE="X">
+   <INHERITANCE REFCLSNAME="ZAPLINK_RAW_DATA" VERSION="1" STATE="1"/>
+   <TEXTS>
+    <ITEM LANGU="E" DESCRIPT="Table (SE11) Datas"/>
+   </TEXTS>
+  </A0_MAINDATA>
+  <ALIASES>
+   <ITEM CMPNAME="TD_DOC_ID" VERSION="1" EXPOSURE="1" CMPTYPE="3" REFCLSNAME="ZAPLINK_DATATYPES" REFCMPNAME="TD_DOC_ID"/>
+   <ITEM CMPNAME="TR_DOCID" VERSION="1" EXPOSURE="1" CMPTYPE="3" REFCLSNAME="ZAPLINK_DATATYPES" REFCMPNAME="TR_DOCID"/>
+   <ITEM CMPNAME="TT_DOCS" VERSION="1" EXPOSURE="2" CMPTYPE="3" REFCLSNAME="ZAPLINK_DATATYPES" REFCMPNAME="TT_DOCS"/>
+   <ITEM CMPNAME="TT_TEXTS" VERSION="1" EXPOSURE="2" CMPTYPE="3" REFCLSNAME="ZAPLINK_DATATYPES" REFCMPNAME="TT_TEXTS"/>
+  </ALIASES>
+  <ATTRIBUTS>
+   <ITEM CMPNAME="A0_MAINDATA" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="1 " TYPTYPE="1" TYPE="TS_MAINDATA">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Line Type for Table with Package Data"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="DOC_IDS" VERSION="1" EXPOSURE="1" STATE="1" EDITORDER="2 " ATTDECLTYP="2" TYPTYPE="4" SRCROW1="12 " SRCCOLUMN1="4 " SRCROW2="14 " SRCCOLUMN2="17 " TYPESRC_LENG="80 " TYPESRC="BEGIN OF doc_ids,
+      header TYPE td_doc_id VALUE &apos;TT&apos;,
+    END OF doc_ids
+">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Documentation IDS"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="KEYS" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="3 " TYPTYPE="1" TYPE="TT_KEYS"/>
+   <ITEM CMPNAME="R_DOC_IDS" VERSION="1" EXPOSURE="1" STATE="1" EDITORDER="1 " ATTDECLTYP="1" TYPTYPE="1" TYPE="TR_DOCID">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Documentation IDS"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TEXTS" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="2 " TYPTYPE="1" TYPE="TT_TEXTS"/>
+  </ATTRIBUTS>
+  <DEFERRED>
+   <CLASSES>
+    <ITEM TYPEGROUP="ZAPLINK_DOCUMENTATION" VERSION="1" TPUTYPE="1" IMPLICIT="X"/>
+   </CLASSES>
+  </DEFERRED>
+  <FRIENDS>
+   <ITEM REFCLSNAME="ZAPLINK_DICTIONARY" VERSION="1" STATE="1"/>
+   <ITEM REFCLSNAME="ZAPLINK_EASYXML" VERSION="1" STATE="1"/>
+  </FRIENDS>
+  <INTERFACES>
+   <ITEM REFCLSNAME="ZAPLINK_DATATYPES" VERSION="1" EXPOSURE="2" STATE="1" RELTYPE="1"/>
+  </INTERFACES>
+  <LOCAL>
+   <TYPES>
+*&quot;* USE THIS SOURCE FILE FOR ANY TYPE DECLARATIONS (CLASS
+*&quot;* definitions, interfaces or data types) you need for method
+*&quot;* IMPLEMENTATION OR PRIVATE METHOD&apos;S SIGNATURE
+ CLASS ZAPLINK_DOCUMENTATION DEFINITION LOAD.</TYPES>
+   <IMPLEMENTATIONS>
+*&quot;* LOCAL CLASS IMPLEMENTATION FOR PUBLIC CLASS
+*&quot;* use this source file for the implementation part of
+*&quot;* LOCAL HELPER CLASSES</IMPLEMENTATIONS>
+   <MACROS>
+*&quot;* USE THIS SOURCE FILE FOR ANY MACRO DEFINITIONS YOU NEED
+*&quot;* IN THE IMPLEMENTATION PART OF THE CLASS</MACROS>
+  </LOCAL>
+  <METHODS>
+   <ITEM CMPNAME="ANONYMIZE" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="4 ">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Anonymized component data"/>
+    </TEXTS>
+    <SOURCE>
+  FIELD-SYMBOLS   &lt;t&gt; like LINE OF texts.
+
+  clear: a0_maindata-AS4USER, a0_maindata-AS4DATE, a0_maindata-AS4TIME.
+  loop at texts ASSIGNING &lt;t&gt;.    clear: &lt;t&gt;-LONG_TXT-TDFUSER, &lt;t&gt;-LONG_TXT-TDFDATE, &lt;t&gt;-LONG_TXT-TDFTIME.    endloop.</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="CLASS_CONSTRUCTOR" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="1 " MTDTYPE="2" MTDDECLTYP="1">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="CLASS_CONSTRUCTOR"/>
+    </TEXTS>
+    <SOURCE>
+  DATA _id LIKE LINE OF r_doc_ids.
+
+  _id-sign = &apos;I&apos;. _id-option = &apos;EQ&apos;.
+  _id-low = doc_ids-header. APPEND _id TO r_doc_ids.</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="FROM_DATA" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="2 ">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Convert FM Data to object attributes"/>
+    </TEXTS>
+    <PARAMETERS>
+     <ITEM SCONAME="FM_DATA" VERSION="1" CMPTYPE="1" EDITORDER="1 " PARPASSTYP="1" TYPTYPE="1" TYPE="TS_FM_DATA">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="Function Modules object Data"/>
+      </TEXTS>
+     </ITEM>
+    </PARAMETERS>
+    <SOURCE>
+  DATA s_text    LIKE LINE OF texts.
+  DATA s_key     LIKE LINE OF keys.
+  DATA t_docs    TYPE tt_docs.
+  FIELD-SYMBOLS:
+    &lt;d&gt;  LIKE LINE OF fm_data-docs,
+    &lt;dt&gt; LIKE LINE OF &lt;d&gt;-texts,
+    &lt;t&gt;  LIKE LINE OF fm_data-texts.
+
+  a0_maindata-hdr = fm_data-header.   CLEAR a0_maindata-ddtext.
+  keys = fm_data-keys.    MODIFY keys FROM s_key TRANSPORTING typename rowtypepos WHERE table_line IS NOT INITIAL.
+
+* Texts
+  t_docs = fm_data-docs.
+  READ TABLE t_docs ASSIGNING &lt;d&gt;
+       WITH KEY id = doc_ids-header
+            object = a0_maindata-typename.
+  LOOP AT fm_data-texts ASSIGNING &lt;t&gt;.
+    CLEAR s_text.   s_text-langu = &lt;t&gt;-ddlanguage.    s_text-short_txt = &lt;t&gt;-ddtext.
+    IF &lt;d&gt; IS ASSIGNED.
+      READ TABLE &lt;d&gt;-texts ASSIGNING &lt;dt&gt;
+          WITH KEY tdspras = s_text-langu.
+      IF sy-subrc = 0.    s_text-long_txt = &lt;dt&gt;.   CLEAR s_text-long_txt-tdspras.    DELETE TABLE &lt;d&gt;-texts FROM &lt;dt&gt;.    ENDIF.
+    ENDIF.
+    INSERT s_text INTO TABLE texts.
+  ENDLOOP.
+  IF &lt;d&gt; IS ASSIGNED.
+    LOOP AT &lt;d&gt;-texts ASSIGNING &lt;dt&gt;.
+      CLEAR s_text.    s_text-langu = &lt;dt&gt;-tdspras.   s_text-long_txt = &lt;dt&gt;.   CLEAR s_text-long_txt-tdspras.    INSERT s_text INTO TABLE texts.
+    ENDLOOP.
+  ENDIF.
+</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="TO_DATA" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="3 ">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Convert object attributes to FM Data"/>
+    </TEXTS>
+    <PARAMETERS>
+     <ITEM SCONAME="FM_DATA" VERSION="1" CMPTYPE="1" EDITORDER="1 " PARDECLTYP="3" TYPTYPE="1" TYPE="TS_FM_DATA">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="Function Modules object Data"/>
+      </TEXTS>
+     </ITEM>
+    </PARAMETERS>
+    <SOURCE>
+  DATA s_txt      LIKE LINE OF fm_data-texts.
+  DATA s_key      LIKE LINE OF fm_data-keys.
+  DATA s_doc      LIKE LINE OF fm_data-docs.
+  DATA s_doc_txt  LIKE LINE OF s_doc-texts.
+  FIELD-SYMBOLS:
+    &lt;d&gt;  LIKE LINE OF fm_data-docs,
+    &lt;t&gt;  LIKE LINE OF texts.
+
+  fm_data-header = a0_maindata-hdr.
+  s_key-typename = fm_data-header-typename.   fm_data-keys = keys.    MODIFY fm_data-keys FROM s_key TRANSPORTING typename WHERE table_line IS NOT INITIAL.
+
+* Texts
+*APPLICATION                                      DOKU
+*ID	                                   	RE
+*OBJECT	                                   	SAPLxxxx
+*LANGU                                      E
+*MASTERLANG	                                   	X
+*TYP                                      E
+*DOKFORM                                      S_DOCU_SHOW
+*DOKSTYLE	                                   	S_DOCUS1
+  s_doc-application = &apos;DOKU&apos;.   s_doc-id = doc_ids-header.   s_doc-object = fm_data-header-typename.
+  s_doc-masterlang = abap_true.   s_doc-typ = &apos;E&apos;.    s_doc-dokform = &apos;S_DOCU_SHOW&apos;.    s_doc-dokstyle = &apos;S_DOCUS1&apos;.
+  LOOP AT texts ASSIGNING &lt;t&gt;.
+    IF NOT &lt;t&gt;-short_txt IS INITIAL.    CLEAR s_txt.    s_txt-typename = fm_data-header-typename.   s_txt-ddlanguage = &lt;t&gt;-langu.   s_txt-ddtext = &lt;t&gt;-short_txt.   INSERT s_txt INTO TABLE fm_data-texts.    ENDIF.
+    IF NOT &lt;t&gt;-long_txt IS INITIAL.
+      CLEAR s_doc_txt.    s_doc_txt = &lt;t&gt;-long_txt.   s_doc_txt-tdspras = &lt;t&gt;-langu.    INSERT s_doc_txt INTO TABLE s_doc-texts.
+      IF s_doc-langu IS INITIAL.    s_doc-langu = s_doc_txt-tdspras.    ENDIF.
+    ENDIF.
+  ENDLOOP.
+  IF NOT s_doc-texts IS INITIAL.    INSERT s_doc INTO TABLE fm_data-docs.   ENDIF.
+</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="UNANONYMIZE" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="5 ">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="UnAnonymized component data"/>
+    </TEXTS>
+   </ITEM>
+  </METHODS>
+  <TYPES>
+   <ITEM CMPNAME="TS_FM_DATA" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="3 " TYPTYPE="4" SRCROW1="25 " SRCCOLUMN1="4 " SRCROW2="30 " SRCCOLUMN2="20 " TYPESRC_LENG="185 ">
+    BEGIN OF ts_fm_data,
+      header        TYPE dd40v,
+      texts         TYPE tt_dd40t,
+      keys          TYPE tt_dd42v,
+      docs          type tt_docs,
+    END OF ts_fm_data
+
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Function Module Data"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TS_MAINDATA" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="5 " TYPTYPE="4" SRCROW1="33 " SRCCOLUMN1="4 " SRCROW2="36 " SRCCOLUMN2="23 " TYPESRC_LENG="93 ">
+    BEGIN OF ts_maindata.
+    INCLUDE TYPE dd40v AS hdr.
+    TYPES:
+      END OF ts_maindata
+
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="General Data"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TT_DD40T" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="2 " TYPTYPE="4" SRCROW1="23 " SRCCOLUMN1="4 " SRCROW2="23 " SRCCOLUMN2="65 " TYPESRC_LENG="64 ">tt_dd40t TYPE SORTED TABLE OF dd40t WITH UNIQUE KEY ddlanguage
+</ITEM>
+   <ITEM CMPNAME="TT_DD42V" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="1 " TYPTYPE="4" SRCROW1="21 " SRCCOLUMN1="4 " SRCROW2="21 " SRCCOLUMN2="57 " TYPESRC_LENG="56 ">tt_dd42v TYPE STANDARD TABLE OF dd42v WITH DEFAULT KEY
+</ITEM>
+   <ITEM CMPNAME="TT_KEYS" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="4 " TYPTYPE="4" SRCROW1="31 " SRCCOLUMN1="8 " SRCROW2="31 " SRCCOLUMN2="66 " TYPESRC_LENG="61 ">tt_keys type SORTED TABLE OF dd42v with UNIQUE key KEYFDPOS
+</ITEM>
+  </TYPES>
+ </RAW>
+</ZL_OBJECT>

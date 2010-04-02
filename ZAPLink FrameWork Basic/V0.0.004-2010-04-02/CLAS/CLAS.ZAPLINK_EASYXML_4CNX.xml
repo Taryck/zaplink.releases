@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ZL_OBJECT CHECKSUM="168D23A450FB11B89B0032439DDBDF4A" CONNECTOR="39AC0A4B07A5A05AE1000000AC120173" NAME="ZAPLINK_EASYXML_4CNX" TYPE="CLAS" VERSION="1.01">
+ <DEPENDENCIES>
+  <ITEM TYPE="CLAS" NAME="ZAPLINK_EASYXML"/>
+ </DEPENDENCIES>
+ <DIRECTORY DEVCLASS="ZAPLINK-FRAMEWORK-CORE" MASTERLANG="E"/>
+ <RAW>
+  <A0_MAINDATA VERSION="1" LANGU="E" UUID="6115A24B0BEE6206E1000000AC120173" EXPOSURE="2" STATE="1" CLSCCINCL="X" FIXPT="X" UNICODE="X">
+   <INHERITANCE REFCLSNAME="ZAPLINK_EASYXML" VERSION="1" STATE="1"/>
+   <TEXTS>
+    <ITEM LANGU="E" DESCRIPT="EZXML for Connector"/>
+   </TEXTS>
+  </A0_MAINDATA>
+  <LOCAL>
+   <TYPES>
+*&quot;* USE THIS SOURCE FILE FOR ANY TYPE DECLARATIONS (CLASS
+*&quot;* definitions, interfaces or data types) you need for method
+*&quot;* implementation or private method&apos;s signature
+</TYPES>
+   <IMPLEMENTATIONS>
+*&quot;* LOCAL CLASS IMPLEMENTATION FOR PUBLIC CLASS
+*&quot;* use this source file for the implementation part of
+*&quot;* local helper classes
+</IMPLEMENTATIONS>
+   <MACROS>
+*&quot;* USE THIS SOURCE FILE FOR ANY MACRO DEFINITIONS YOU NEED
+*&quot;* in the implementation part of the class
+</MACROS>
+  </LOCAL>
+  <REDEFINITIONS>
+   <ITEM REFCLSNAME="ZAPLINK_EASYXML" VERSION="1" MTDNAME="READ_OBJECT">
+    <SOURCE>
+  DATA o_raw_base TYPE to_raw_base.
+  DATA data_type  TYPE string.
+  DATA o_conn     TYPE to_connector.
+  DATA _cx        TYPE REF TO cx_root.
+  DATA o_cx_cnx   TYPE REF TO zaplink_cx_connector.
+
+  CHECK object IS BOUND OR typedesc IS BOUND.
+  IF NOT object IS BOUND.
+    data_type = typedesc-&gt;get_relative_name( ).
+    TRY.
+        CREATE OBJECT object TYPE (data_type).
+      CATCH cx_root INTO _cx.
+        CALL METHOD application_log-&gt;add_exception
+          EXPORTING
+            exception = _cx.
+        EXIT.
+    ENDTRY.
+  ENDIF.
+
+  TRY.
+      o_raw_base ?= object.
+    CATCH cx_root.
+  ENDTRY.
+
+  IF o_raw_base IS BOUND.   &quot; object inherited from o_raw_base
+    TRY.
+        CLEAR o_raw_base.   o_raw_base = zaplink_connectors=&gt;node_2_raw( xml_node ).
+        o_conn = zaplink_connectors=&gt;create_connector( connuuid = o_raw_base-&gt;connector ).
+        object = o_conn-&gt;create_new_raw( type = o_raw_base-&gt;type ).
+      CATCH zaplink_cx_connector INTO o_cx_cnx.
+        CALL METHOD application_log-&gt;add_exception
+          EXPORTING
+            exception = _cx.
+        EXIT.
+    ENDTRY.
+  ENDIF.
+
+  CALL METHOD super-&gt;read_object
+    EXPORTING
+      xml_node = xml_node
+      typedesc = typedesc
+    CHANGING
+      object   = object.</SOURCE>
+   </ITEM>
+  </REDEFINITIONS>
+  <TYPES>
+   <ITEM CMPNAME="TO_CONNECTOR" VERSION="1" STATE="1" EDITORDER="2 " TYPTYPE="3" TYPE="ZAPLINK_CONNECTOR">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="ZAP Link Connector interface"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TO_RAW_BASE" VERSION="1" STATE="1" EDITORDER="1 " TYPTYPE="3" TYPE="ZAPLINK_RAW_BASE">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Base RAW component without data"/>
+    </TEXTS>
+   </ITEM>
+  </TYPES>
+ </RAW>
+</ZL_OBJECT>

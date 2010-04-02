@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ZL_OBJECT CHECKSUM="1EBDDEC71BF72600D3B38A2880DA932B" CONNECTOR="39AC0A4B07A5A05AE1000000AC120173" NAME="ZAPLINK_RAW_DATA" TYPE="CLAS" VERSION="1.01">
+ <DIRECTORY DEVCLASS="ZAPLINK-FRAMEWORK-CORE" MASTERLANG="E"/>
+ <RAW>
+  <A0_MAINDATA VERSION="1" LANGU="E" UUID="A674624B87531F63E1000000AC120173" EXPOSURE="2" STATE="1" CLSABSTRCT="X" CLSCCINCL="X" FIXPT="X" UNICODE="X">
+   <TEXTS>
+    <ITEM LANGU="E" DESCRIPT="ZAPLink : Abstract class for component data"/>
+   </TEXTS>
+  </A0_MAINDATA>
+  <ATTRIBUTS>
+   <ITEM CMPNAME="_DEPENDENCIES" VERSION="1" EXPOSURE="2" STATE="1" EDITORDER="1 " TYPTYPE="1" TYPE="ZAPLINK_DATATYPES=&gt;TT_COMPKEYS">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="List of components that are required to install this comp."/>
+    </TEXTS>
+   </ITEM>
+  </ATTRIBUTS>
+  <DEFERRED>
+   <INTERFACES>
+    <ITEM TYPEGROUP="ZAPLINK_DATATYPES" VERSION="1" TPUTYPE="2" IMPLICIT="X"/>
+   </INTERFACES>
+  </DEFERRED>
+  <LOCAL>
+   <TYPES>
+*&quot;* USE THIS SOURCE FILE FOR ANY TYPE DECLARATIONS (CLASS
+*&quot;* definitions, interfaces or data types) you need for method
+*&quot;* implementation or private method&apos;s signature
+</TYPES>
+   <IMPLEMENTATIONS>
+*&quot;* LOCAL CLASS IMPLEMENTATION FOR PUBLIC CLASS
+*&quot;* use this source file for the implementation part of
+*&quot;* local helper classes
+</IMPLEMENTATIONS>
+   <MACROS>
+*&quot;* USE THIS SOURCE FILE FOR ANY MACRO DEFINITIONS YOU NEED
+*&quot;* in the implementation part of the class
+</MACROS>
+  </LOCAL>
+ </RAW>
+</ZL_OBJECT>
