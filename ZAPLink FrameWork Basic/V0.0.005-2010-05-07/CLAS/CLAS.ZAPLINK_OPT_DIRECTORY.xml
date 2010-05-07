@@ -1,0 +1,474 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ZL_OBJECT CHECKSUM="956B7AD2CCC296841CC6B3755F2801BD" CODE_SIGNATURE="B05CE6D93C9527500D1C958853F0570B" CONNECTOR="39AC0A4B07A5A05AE1000000AC120173" NAME="ZAPLINK_OPT_DIRECTORY" TYPE="CLAS" VERSION="1.01">
+ <DIRECTORY DEVCLASS="ZAPLINK-FRAMEWORK-CORE" MASTERLANG="E"/>
+ <RAW>
+  <A0_MAINDATA VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" CLSCCINCL="X" FIXPT="X" UNICODE="X">
+   <TEXTS>
+    <ITEM LANGU="E" DESCRIPT="Zap Link Directory options"/>
+   </TEXTS>
+  </A0_MAINDATA>
+  <ALIASES>
+   <ITEM CMPNAME="BALLOG_OBJECT" EXPOSURE="2" REFCLSNAME="ZAPLINK_DATATYPES" REFCMPNAME="BALLOG_OBJECT"/>
+   <ITEM CMPNAME="TD_SUBSTITUTIONKIND" EXPOSURE="2" CMPTYPE="3" REFCLSNAME="ZAPLINK_DATATYPES" REFCMPNAME="TD_SUBSTITUTIONKIND"/>
+   <ITEM CMPNAME="TS_DIRECTORY" EXPOSURE="2" CMPTYPE="3" REFCLSNAME="ZAPLINK_DATATYPES" REFCMPNAME="TS_DIRECTORY"/>
+  </ALIASES>
+  <ATTRIBUTS>
+   <ITEM CMPNAME="BALLOG_SUBOBJECT" EXPOSURE="2" STATE="1" EDITORDER="1 " ATTDECLTYP="2" ATTVALUE="&apos;DIRECTORY&apos;" TYPTYPE="1" TYPE="BALSUBOBJ">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Application Log: Subobject"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="O_CX" STATE="1" EDITORDER="1 " ATTDECLTYP="1" TYPTYPE="1" TYPE="TO_ROOT_EXCEPTION">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="ZAPlink ROOT Exception"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="O_LOG" EXPOSURE="2" STATE="1" EDITORDER="3 " ATTRDONLY="X" TYPTYPE="1" TYPE="TO_LOG">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Zap Link Transport Request options"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="O_MYCX" EXPOSURE="1" STATE="1" EDITORDER="4 " TYPTYPE="1" TYPE="TO_EXCEPTION">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="ZAPlink Exception for Options"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="SUBSTITUTIONKINDS" EXPOSURE="2" STATE="1" EDITORDER="2 " ATTDECLTYP="2" TYPTYPE="4">
+    BEGIN OF substitutionkinds,
+        fixed          TYPE td_substitutionkind VALUE &apos;F&apos;,    &quot; Assign allways the same specified devclass
+        keep_container TYPE td_substitutionkind VALUE &apos;K&apos;,    &quot; Keep dev class in XML file
+        use_component  TYPE td_substitutionkind VALUE &apos;C&apos;,    &quot; Use devclass define in component
+        local          TYPE td_substitutionkind VALUE &apos;L&apos;,    &quot; Devclass = $TMP
+      END OF substitutionkinds
+`
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="All possible Devclass substitution Kinds"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="_DEVCLASS" EXPOSURE="1" STATE="1" EDITORDER="2 " TYPTYPE="1" TYPE="TO_DEVCLASS">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="DevClass"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="_SUBSTITUTION" EXPOSURE="1" STATE="1" EDITORDER="1 " TYPTYPE="1" TYPE="TD_SUBSTITUTIONKIND">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Devclass substitution Kind"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="_TR" EXPOSURE="1" STATE="1" EDITORDER="3 " TYPTYPE="1" TYPE="TO_TR">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Zap Link DevClass options"/>
+    </TEXTS>
+   </ITEM>
+  </ATTRIBUTS>
+  <INTERFACES>
+   <ITEM REFCLSNAME="ZAPLINK_DATATYPES" EXPOSURE="2" STATE="1" RELTYPE="1"/>
+  </INTERFACES>
+  <LOCAL>
+   <TYPES>`
+*&quot;* USE THIS SOURCE FILE FOR ANY TYPE DECLARATIONS (CLASS
+*&quot;* definitions, interfaces or data types) you need for method
+*&quot;* implementation or private method&apos;s signature</TYPES>
+   <IMPLEMENTATIONS>`
+*&quot;* LOCAL CLASS IMPLEMENTATION FOR PUBLIC CLASS
+*&quot;* use this source file for the implementation part of
+*&quot;* local helper classes</IMPLEMENTATIONS>
+   <MACROS>`
+*&quot;* USE THIS SOURCE FILE FOR ANY MACRO DEFINITIONS YOU NEED
+*&quot;* in the implementation part of the class
+
+INCLUDE zaplink_macros.</MACROS>
+  </LOCAL>
+  <METHODS>
+   <ITEM CMPNAME="CONSTRUCTOR" EXPOSURE="2" STATE="1" EDITORDER="1 " MTDTYPE="2">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="CONSTRUCTOR"/>
+    </TEXTS>
+    <SOURCE>`
+  CREATE OBJECT _devclass.
+  CREATE OBJECT _tr.
+  CREATE OBJECT o_log.
+  CALL METHOD o_log-&gt;init
+    EXPORTING
+      id_object      = ballog_object
+      id_subobject   = ballog_subobject
+*      id_extnumber   =
+      auto_upd_custo = abap_true
+*      id_activity    = ACT_CREATE
+    EXCEPTIONS
+      error          = 1
+      OTHERS         = 2.
+  IF sy-subrc &lt;&gt; 0.
+    MESSAGE ID sy-msgid TYPE sy-msgty NUMBER sy-msgno
+               WITH sy-msgv1 sy-msgv2 sy-msgv3 sy-msgv4.
+  ENDIF.</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="GET_DEVCLASS" EXPOSURE="2" STATE="1" EDITORDER="4 " MTDNEWEXC="X">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="DevClass : Getter"/>
+    </TEXTS>
+    <PARAMETERS>
+     <ITEM SCONAME="RESULT" CMPTYPE="1" EDITORDER="1 " PARDECLTYP="3" TYPTYPE="1" TYPE="TO_DEVCLASS">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="Zap Link DevClass options"/>
+      </TEXTS>
+     </ITEM>
+    </PARAMETERS>
+    <EXCEPTIONS>
+     <ITEM SCONAME="ZAPLINK_CX_OPTIONS" LANGU="E" EDITORDER="1 ">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="ZAPlink Exception for Options"/>
+      </TEXTS>
+     </ITEM>
+    </EXCEPTIONS>
+    <SOURCE>`
+result = _devclass.</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="GET_SUBSTITUTIONKIND_OFF" EXPOSURE="2" STATE="1" EDITORDER="2 " MTDNEWEXC="X">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Substitution Kind : Getter"/>
+    </TEXTS>
+    <PARAMETERS>
+     <ITEM SCONAME="RESULT" CMPTYPE="1" EDITORDER="1 " PARDECLTYP="3" TYPTYPE="1" TYPE="TD_SUBSTITUTIONKIND">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="Devclass substitution Kind"/>
+      </TEXTS>
+     </ITEM>
+    </PARAMETERS>
+    <EXCEPTIONS>
+     <ITEM SCONAME="ZAPLINK_CX_OPTIONS" LANGU="E" EDITORDER="1 ">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="ZAPlink Exception for Options"/>
+      </TEXTS>
+     </ITEM>
+    </EXCEPTIONS>
+    <SOURCE>`
+result = _substitution.</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="GET_TRANSPORT_REQUEST" EXPOSURE="2" STATE="1" EDITORDER="7 " MTDNEWEXC="X">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Transport Request : Getter"/>
+    </TEXTS>
+    <PARAMETERS>
+     <ITEM SCONAME="RESULT" CMPTYPE="1" EDITORDER="1 " PARDECLTYP="3" TYPTYPE="1" TYPE="TO_TR">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="Zap Link DevClass options"/>
+      </TEXTS>
+     </ITEM>
+    </PARAMETERS>
+    <EXCEPTIONS>
+     <ITEM SCONAME="ZAPLINK_CX_OPTIONS" LANGU="E" EDITORDER="1 ">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="ZAPlink Exception for Options"/>
+      </TEXTS>
+     </ITEM>
+    </EXCEPTIONS>
+    <SOURCE>`
+  result = _tr.</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="SET_DEVCLASS" EXPOSURE="2" STATE="1" EDITORDER="5 " MTDNEWEXC="X">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="DevClass : Setter"/>
+    </TEXTS>
+    <PARAMETERS>
+     <ITEM SCONAME="DATA" CMPTYPE="1" EDITORDER="1 " PARPASSTYP="1" TYPTYPE="1" TYPE="TO_DEVCLASS">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="DevClass"/>
+      </TEXTS>
+     </ITEM>
+    </PARAMETERS>
+    <EXCEPTIONS>
+     <ITEM SCONAME="ZAPLINK_CX_OPTIONS" LANGU="E" EDITORDER="1 ">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="ZAPlink Exception for Options"/>
+      </TEXTS>
+     </ITEM>
+    </EXCEPTIONS>
+    <SOURCE>`
+  CHECK data &lt;&gt; _devclass.
+
+*  IF _devclass IS INITIAL AND _substitution = substitutionkinds-fixed.
+*    RAISE EXCEPTION TYPE zaplink_cx_opt_devclass
+*          EXPORTING textid = zaplink_cx_opt_devclass=&gt;missing_devclass
+*                 substkind = _substitution.
+*  ENDIF.
+  _devclass = data.</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="SET_DIRECTORY" EXPOSURE="2" STATE="1" EDITORDER="6 " MTDNEWEXC="X">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Set directory : TADIR + TR"/>
+    </TEXTS>
+    <PARAMETERS>
+     <ITEM SCONAME="COMPONENT" CMPTYPE="1" EDITORDER="1 " PARPASSTYP="1" TYPTYPE="1" TYPE="TO_COMPONENT">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="Component in progress"/>
+      </TEXTS>
+     </ITEM>
+     <ITEM SCONAME="RESULT" CMPTYPE="1" EDITORDER="2 " PARDECLTYP="3" TYPTYPE="1" TYPE="TS_DIRECTORY"/>
+    </PARAMETERS>
+    <EXCEPTIONS>
+     <ITEM SCONAME="ZAPLINK_CX_OPTIONS" LANGU="E" EDITORDER="1 ">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="ZAPlink Exception for Options"/>
+      </TEXTS>
+     </ITEM>
+    </EXCEPTIONS>
+    <SOURCE>`
+  DATA _name        TYPE tadir-obj_name.
+  DATA _type        TYPE tadir-object.
+  DATA _act_devc    TYPE tadir-devclass.
+  DATA _exists      TYPE saus_dpara-tadirexist.
+
+  CHECK component IS BOUND.
+  result = component-&gt;directory.
+
+  TRY.
+
+      IF me-&gt;_devclass IS BOUND.
+        TRY.
+            result-devclass = me-&gt;_devclass-&gt;substitute( component ).
+          CATCH zaplink_cx_options INTO o_mycx.
+            RAISE EXCEPTION o_mycx.
+        ENDTRY.
+      ENDIF.
+
+      IF me-&gt;_tr IS BOUND.
+        TRY.
+            result-trkorr = _tr-&gt;substitute( component ).
+          CATCH zaplink_cx_options INTO o_mycx.
+            RAISE EXCEPTION o_mycx.
+        ENDTRY.
+      ENDIF.
+
+      _type = component-&gt;get_type( ).
+      _name = component-&gt;get_name( ).
+      CALL FUNCTION &apos;TRINT_TADIR_QUERY&apos;
+        EXPORTING
+          iv_pgmid           = &apos;R3TR&apos;
+          iv_object          = _type
+          iv_obj_name        = _name
+        IMPORTING
+*      EV_OBJECT          =
+*      EV_SRCSYSTEM       =
+          ev_devclass        = _act_devc
+*      EV_AUTHOR          =
+*      EV_GENFLAG         =
+          ev_exist           = _exists.
+      IF _exists IS INITIAL.
+        CALL FUNCTION &apos;TRINT_TADIR_INSERT&apos;
+          EXPORTING
+*        AUTHOR                     = SY-UNAME
+*        MASTERLANG                 = &apos; &apos;
+            devclass                   = result-devclass
+*        GENFLAG                    = &apos; &apos;
+            object                     = _type
+            obj_name                   = _name
+            pgmid                      = &apos;R3TR&apos;
+*        SRCSYSTEM                  = SY-SYSID
+*        EDTFLAG                    = &apos; &apos;
+*        SRCDEP                     =
+*        FORCE_MODE                 = &apos; &apos;
+*        PAKNOCHECK                 = &apos; &apos;
+*        OBJSTABLTY                 = &apos; &apos;
+*        TRANSL_TECH_TEXT           = &apos; &apos;
+*        DELFLAG                    = &apos; &apos;
+*      IMPORTING
+*        ES_TADIR                   =
+          EXCEPTIONS
+            object_exists_global       = 1
+            object_exists_local        = 2
+            OTHERS                     = 3.
+        IF sy-subrc &lt;&gt; 0.
+          o_mycx ?= zaplink_cx=&gt;create_from_mf_cx( classname = &apos;ZAPLINK_CX_OPT_DEVCLASS&apos;
+                                                    funcname = &apos;TRINT_TADIR_INSERT&apos;
+                                                       subrc = sy-subrc ).
+          o_log-&gt;add_symsg( ).
+          o_log-&gt;add_exception( o_mycx ).
+          CLEAR o_mycx.
+        ENDIF.
+      ELSEIF _act_devc &lt;&gt; result-devclass.
+        CALL FUNCTION &apos;TRINT_TADIR_MODIFY&apos;
+          EXPORTING
+*        AUTHOR                     = &apos;~&apos;
+*        CPROJECT                   = &apos;~&apos;
+            devclass                   = result-devclass
+*        EDTFLAG                    = &apos;~&apos;
+*        EXISTS                     = &apos;~&apos;
+*        GENFLAG                    = &apos;~&apos;
+*        MASTERLANG                 = &apos;~&apos;
+            object                     = _type
+            obj_name                   = _name
+            pgmid                      = &apos;R3TR&apos;
+*        SRCDEP                     = &apos;~&apos;
+*        SRCSYSTEM                  = &apos;~&apos;
+*        VERSID                     = &apos;~&apos;
+*        CHANGE_MASTERLANG          = &apos;~&apos;
+*        FORCE_MODE                 = &apos;~&apos;
+*        PAKNOCHECK                 = &apos;~&apos;
+*        OBJSTABLTY                 = &apos;~&apos;
+*        DELFLAG                    = &apos;~&apos;
+*        TRANSL_TECH_TEXT           = &apos;~&apos;
+*      IMPORTING
+*        ES_TADIR                   =
+          EXCEPTIONS
+            object_exists_global       = 1
+            object_exists_local        = 2
+            object_has_no_tadir        = 3
+            OTHERS                     = 4.
+        IF sy-subrc &lt;&gt; 0.
+          o_mycx ?= zaplink_cx=&gt;create_from_mf_cx( classname = &apos;ZAPLINK_CX_OPT_DEVCLASS&apos;
+                                                    funcname = &apos;TRINT_TADIR_MODIFY&apos;
+                                                       subrc = sy-subrc ).
+          o_log-&gt;add_symsg( ).
+          o_log-&gt;add_exception( o_mycx ).
+          CLEAR o_mycx.
+        ENDIF.
+      ENDIF.
+
+      CALL FUNCTION &apos;RS_CORR_INSERT&apos;
+        EXPORTING
+          object                         = _name
+          object_class                   = _type
+          mode                           = &apos;I&apos;        &quot; Insert
+          global_lock                    = abap_true        &quot; R3TR
+          devclass                       = result-devclass
+          korrnum                        = result-trkorr
+*      USE_KORRNUM_IMMEDIATEDLY       = &apos; &apos;
+*      AUTHOR                         = &apos; &apos;
+*      MASTER_LANGUAGE                = &apos; &apos;
+*      GENFLAG                        = &apos; &apos;
+*      PROGRAM                        = &apos; &apos;
+*      OBJECT_CLASS_SUPPORTS_MA       = &apos; &apos;
+*      EXTEND                         = &apos; &apos;
+*      SUPPRESS_DIALOG                = &apos; &apos;
+*      MOD_LANGU                      = &apos; &apos;
+*      ACTIVATION_CALL                = &apos; &apos;
+        IMPORTING
+*      DEVCLASS                       =
+          korrnum                        = result-trkorr
+*      ORDERNUM                       =
+*      NEW_CORR_ENTRY                 =
+*      AUTHOR                         =
+*      TRANSPORT_KEY                  =
+*      NEW_EXTEND                     =
+        EXCEPTIONS
+          cancelled                      = 1
+          permission_failure             = 2
+          unknown_objectclass            = 3
+          OTHERS                         = 4.
+      IF sy-subrc &lt;&gt; 0.
+        o_mycx ?= zaplink_cx=&gt;create_from_mf_cx( classname = &apos;ZAPLINK_CX_OPT_DEVCLASS&apos;
+                                                  funcname = &apos;RS_CORR_INSERT&apos;
+                                                     subrc = sy-subrc ).
+        o_log-&gt;add_symsg( ).
+        o_log-&gt;add_exception( o_mycx ).
+        CLEAR o_mycx.
+      ENDIF.
+
+    CATCH zaplink_cx_options INTO o_mycx.
+      RAISE EXCEPTION o_mycx.
+    CATCH zaplink_cx INTO o_cx.
+      mac_cascade_raise o_mycx o_cx.
+  ENDTRY.</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="SET_SUBSTITUTIONKIND_OFF" EXPOSURE="2" STATE="1" EDITORDER="3 " MTDNEWEXC="X">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Substitution Kind : Setter"/>
+    </TEXTS>
+    <PARAMETERS>
+     <ITEM SCONAME="DATA" CMPTYPE="1" EDITORDER="1 " PARPASSTYP="1" TYPTYPE="1" TYPE="TD_SUBSTITUTIONKIND">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="Devclass substitution Kind"/>
+      </TEXTS>
+     </ITEM>
+    </PARAMETERS>
+    <EXCEPTIONS>
+     <ITEM SCONAME="ZAPLINK_CX_OPTIONS" LANGU="E" EDITORDER="1 ">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="ZAPlink Exception for Options"/>
+      </TEXTS>
+     </ITEM>
+    </EXCEPTIONS>
+    <SOURCE>`
+CHECK data &lt;&gt; _substitution.
+
+  CASE data.
+    WHEN substitutionkinds-keep_container OR
+         substitutionkinds-use_component OR
+         substitutionkinds-local.
+    WHEN substitutionkinds-fixed.
+      IF _devclass IS INITIAL.
+        RAISE EXCEPTION TYPE zaplink_cx_opt_devclass
+              EXPORTING textid = zaplink_cx_opt_devclass=&gt;missing_devclass
+                     substkind = data.
+      ENDIF.
+    WHEN OTHERS.
+      RAISE EXCEPTION TYPE zaplink_cx_opt_devclass
+            EXPORTING textid = zaplink_cx_opt_devclass=&gt;invalid_substitutionkind
+                   substkind = data.
+  ENDCASE.
+  _substitution = data.</SOURCE>
+   </ITEM>
+   <ITEM CMPNAME="SET_TRANSPORT_REQUEST" EXPOSURE="2" STATE="1" EDITORDER="8 " MTDNEWEXC="X">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Transport Request : Setter"/>
+    </TEXTS>
+    <PARAMETERS>
+     <ITEM SCONAME="DATA" CMPTYPE="1" EDITORDER="1 " PARPASSTYP="1" TYPTYPE="1" TYPE="TO_TR">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="Zap Link DevClass options"/>
+      </TEXTS>
+     </ITEM>
+    </PARAMETERS>
+    <EXCEPTIONS>
+     <ITEM SCONAME="ZAPLINK_CX_OPTIONS" LANGU="E" EDITORDER="1 ">
+      <TEXTS>
+       <ITEM LANGU="E" DESCRIPT="ZAPlink Exception for Options"/>
+      </TEXTS>
+     </ITEM>
+    </EXCEPTIONS>
+    <SOURCE>`
+  CHECK data &lt;&gt; _tr.
+
+*  IF _devclass IS INITIAL AND _substitution = substitutionkinds-fixed.
+*    RAISE EXCEPTION TYPE zaplink_cx_opt_devclass
+*          EXPORTING textid = zaplink_cx_opt_devclass=&gt;missing_devclass
+*                 substkind = _substitution.
+*  ENDIF.
+  _tr = data.</SOURCE>
+   </ITEM>
+  </METHODS>
+  <TYPES>
+   <ITEM CMPNAME="TO_COMPONENT" EXPOSURE="2" STATE="1" EDITORDER="6 " TYPTYPE="3" TYPE="ZAPLINK_RAW_BASE">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Zap Link Component"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TO_DEVCLASS" EXPOSURE="2" STATE="1" EDITORDER="1 " TYPTYPE="3" TYPE="ZAPLINK_OPT_DEVCLASS">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Zap Link DevClass options"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TO_EXCEPTION" EXPOSURE="2" STATE="1" EDITORDER="2 " TYPTYPE="3" TYPE="ZAPLINK_CX_OPTIONS">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="ZAPlink ROOT Exception for Options"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TO_LOG" EXPOSURE="2" STATE="1" EDITORDER="3 " TYPTYPE="3" TYPE="ZAPLINK_MESSAGE_COLLECTOR">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Message Collector"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TO_ROOT_EXCEPTION" EXPOSURE="2" STATE="1" EDITORDER="4 " TYPTYPE="3" TYPE="ZAPLINK_CX">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="ZAPlink ROOT Exception"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TO_TR" EXPOSURE="2" STATE="1" EDITORDER="5 " TYPTYPE="3" TYPE="ZAPLINK_OPT_TRANSPORT_REQUEST">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Zap Link Transport Request options"/>
+    </TEXTS>
+   </ITEM>
+  </TYPES>
+ </RAW>
+</ZL_OBJECT>

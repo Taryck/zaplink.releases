@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ZL_OBJECT CHECKSUM="6E876372A25102AE1BFC267A35396F0C" CODE_SIGNATURE="A6F58F1A3FAA905A5187E49299363995" CONNECTOR="39AC0A4B07A5A05AE1000000AC120173" NAME="ZAPLINK_COMPONENT_4INST" TYPE="CLAS" VERSION="1.01">
+ <DIRECTORY DEVCLASS="ZAPLINK-FRAMEWORK-CORE" MASTERLANG="E"/>
+ <RAW>
+  <A0_MAINDATA VERSION="1" LANGU="E" EXPOSURE="1" STATE="1" CLSCCINCL="X" FIXPT="X" UNICODE="X">
+   <INHERITANCE REFCLSNAME="ZAPLINK_COMPONENT" STATE="1"/>
+   <TEXTS>
+    <ITEM LANGU="E" DESCRIPT="Component not for installation"/>
+   </TEXTS>
+  </A0_MAINDATA>
+  <FRIENDS>
+   <ITEM REFCLSNAME="ZAPLINK_INFOS" STATE="1"/>
+  </FRIENDS>
+  <LOCAL>
+   <TYPES>`
+*&quot;* use this source file for any type declarations (class
+*&quot;* definitions, interfaces or data types) you need for method
+*&quot;* implementation or private method&apos;s signature</TYPES>
+   <IMPLEMENTATIONS>`
+*&quot;* local class implementation for public class
+*&quot;* use this source file for the implementation part of
+*&quot;* local helper classes</IMPLEMENTATIONS>
+   <MACROS>`
+*&quot;* use this source file for any macro definitions you need
+*&quot;* in the implementation part of the class</MACROS>
+  </LOCAL>
+ </RAW>
+</ZL_OBJECT>

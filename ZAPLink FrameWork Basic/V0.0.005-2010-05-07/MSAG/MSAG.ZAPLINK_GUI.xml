@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ZL_OBJECT CHECKSUM="11AD0680D09B687D47CD4526478144F9" CONNECTOR="1FAC0A4B07A5A05AE1000000AC120173" NAME="ZAPLINK_GUI" TYPE="MSAG" VERSION="1.0">
+ <DIRECTORY DEVCLASS="ZAPLINK-FRAMEWORK-CORE" MASTERLANG="E"/>
+ <RAW>
+  <A0_MAINDATA MASTERLANG="E" RESPUSER="TBENSIAL"/>
+  <MESSAGES>
+   <ITEM MSGNR="000" SELFDEF="3">
+    <TEXTS>
+     <ITEM LANGU="E" SHORT_TXT="There is no ZAPLink connector installed for object type &apos;&amp;1&apos;"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM MSGNR="001" SELFDEF="3">
+    <TEXTS>
+     <ITEM LANGU="E" SHORT_TXT="Object &apos;&amp;2&apos; (&amp;1) already exists. Select it to overwrite"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM MSGNR="002" SELFDEF="3">
+    <TEXTS>
+     <ITEM LANGU="E" SHORT_TXT="Openning file &apos;&amp;1&apos; on local machine"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM MSGNR="003" SELFDEF="3">
+    <TEXTS>
+     <ITEM LANGU="E" SHORT_TXT="Object &apos;&amp;2&apos; (&amp;1) does not exists."/>
+    </TEXTS>
+   </ITEM>
+   <ITEM MSGNR="004" SELFDEF="3">
+    <TEXTS>
+     <ITEM LANGU="E" SHORT_TXT="Openning file &apos;&amp;1&apos; on ABAP Server"/>
+    </TEXTS>
+   </ITEM>
+  </MESSAGES>
+  <TEXTS>
+   <ITEM LANGU="E" SHORT_TXT="Message for class ZAPLINK_GUI"/>
+  </TEXTS>
+ </RAW>
+</ZL_OBJECT>

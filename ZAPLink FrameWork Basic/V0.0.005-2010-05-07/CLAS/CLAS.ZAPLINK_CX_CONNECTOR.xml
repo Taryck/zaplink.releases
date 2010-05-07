@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ZL_OBJECT CHECKSUM="CB12DA1D1F47C47C3DBBC3D4D1102CB9" CODE_SIGNATURE="B8A9CBBED888E9EC9AD379C9129283C5" CONNECTOR="39AC0A4B07A5A05AE1000000AC120173" NAME="ZAPLINK_CX_CONNECTOR" TYPE="CLAS" VERSION="1.01">
+ <DIRECTORY DEVCLASS="ZAPLINK-FRAMEWORK-ERR_HANDLING" MASTERLANG="E"/>
+ <RAW>
+  <A0_MAINDATA VERSION="1" LANGU="E" CATEGORY="40" EXPOSURE="2" STATE="1" CLSCCINCL="X" FIXPT="X" VARCL="X" UNICODE="X" RSTAT="S">
+   <INHERITANCE REFCLSNAME="ZAPLINK_CX" STATE="1"/>
+   <TEXTS>
+    <ITEM LANGU="E" DESCRIPT="ZAPlink ROOT Exception for Connectors">
+     <DOCUMENTATION TDFRELES="700" TDLINESIZE="072">U1&amp;FUNCTIONALITY&amp;
+ASZAPLINK_CONNECTOR&apos;s exception class. Exception class dedicated to error
+  handling of exception in connectors (ZAPLINK_CONNECTOR &amp; inheriting
+  classes &amp; ZAPLINK_CONNECTORS). Have a look to each Exception text for
+  more details.
+U1&amp;RELATIONS&amp;
+AS
+U1&amp;EXAMPLE&amp;
+AS
+U1&amp;HINTS&amp;
+AS
+U1&amp;FURTHER_SOURCES_OF_INF&amp;
+AS</DOCUMENTATION>
+    </ITEM>
+   </TEXTS>
+  </A0_MAINDATA>
+  <ALIASES>
+   <ITEM CMPNAME="TD_COMPNAME" EXPOSURE="2" CMPTYPE="3" REFCLSNAME="ZAPLINK_DATATYPES" REFCMPNAME="TD_COMPNAME"/>
+   <ITEM CMPNAME="TD_COMPTYPE" EXPOSURE="2" CMPTYPE="3" REFCLSNAME="ZAPLINK_DATATYPES" REFCMPNAME="TD_COMPTYPE"/>
+   <ITEM CMPNAME="TD_CONNCLASS" EXPOSURE="2" CMPTYPE="3" REFCLSNAME="ZAPLINK_DATATYPES" REFCMPNAME="TD_CONNCLASS"/>
+   <ITEM CMPNAME="TD_CONNUUID" EXPOSURE="2" CMPTYPE="3" REFCLSNAME="ZAPLINK_DATATYPES" REFCMPNAME="TD_CONNUUID"/>
+   <ITEM CMPNAME="TD_CONNVER" EXPOSURE="2" CMPTYPE="3" REFCLSNAME="ZAPLINK_DATATYPES" REFCMPNAME="TD_CONNVER"/>
+   <ITEM CMPNAME="TD_DEVCLASS" EXPOSURE="2" CMPTYPE="3" REFCLSNAME="ZAPLINK_DATATYPES" REFCMPNAME="TD_DEVCLASS"/>
+  </ALIASES>
+  <ATTRIBUTS>
+   <ITEM CMPNAME="CONNCLASS" EXPOSURE="2" STATE="1" EDITORDER="18 " ATTVALUE="&apos;[CONNCLASS]&apos;" TYPTYPE="1" TYPE="TD_CONNCLASS">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Connector ClassName"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="CONNUUID" EXPOSURE="2" STATE="1" EDITORDER="19 " ATTVALUE="&apos;00000000000000000000000000000000&apos;" TYPTYPE="1" TYPE="TD_CONNUUID">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Connector UUID"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="CONN_VER" EXPOSURE="2" STATE="1" EDITORDER="21 " ATTVALUE="&apos;[CONN_VER]&apos;" TYPTYPE="1" TYPE="TD_CONNVER">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Connector Version"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="DEVCLASS" EXPOSURE="2" STATE="1" EDITORDER="17 " ATTVALUE="&apos;[DEVCLASS]&apos;" TYPTYPE="1" TYPE="TD_DEVCLASS">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Devlopment Class"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="NAME" EXPOSURE="2" STATE="1" EDITORDER="15 " ATTVALUE="&apos;[NAME]&apos;" TYPTYPE="1" TYPE="TD_COMPNAME">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Object Name"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="NODE_NAME" EXPOSURE="2" STATE="1" EDITORDER="20 " ATTVALUE="&apos;[NODE_NAME]&apos;" TYPTYPE="1" TYPE="STRING">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Node name"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="OTHERCLASS" EXPOSURE="2" STATE="1" EDITORDER="22 " ATTVALUE="&apos;[OTHERCLASS]&apos;" TYPTYPE="1" TYPE="TD_CONNCLASS">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Connector ClassName"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TYPE" EXPOSURE="2" STATE="1" EDITORDER="16 " ATTVALUE="&apos;[TY]&apos;" TYPTYPE="1" TYPE="TD_COMPTYPE">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Object Type"/>
+    </TEXTS>
+   </ITEM>
+  </ATTRIBUTS>
+  <EXCEPTIONS_TEXTS>
+   <ITEM EDITORDER="5 ">
+    <TEXTS>
+     <ITEM LANGU="E" SHORT_TXT="ZapLink Connectors Root exception"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="FILE_ERROR" EDITORDER="1 ">
+    <TEXTS>
+     <ITEM LANGU="E" SHORT_TXT="Error with file"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="INVALID_CONNECTOR" EDITORDER="8 ">
+    <TEXTS>
+     <ITEM LANGU="E" SHORT_TXT="Connector &apos;&amp;CONNCLASS&amp;&apos; for type &apos;&amp;TYPE&amp;&apos; can&apos;t be instancied due to exception &apos;&amp;CX_NAME&amp;&apos;"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="INVALID_TYPE" EDITORDER="7 ">
+    <TEXTS>
+     <ITEM LANGU="E" SHORT_TXT="Type &apos;&amp;TYPE&amp;&apos; is not assigned to a ZAPLINK connector and is not a known SAPobject type (transaction SE01)."/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="INVALID_UUID" EDITORDER="9 ">
+    <TEXTS>
+     <ITEM LANGU="E" SHORT_TXT="Class &apos;&amp;CONNUUID&amp;&apos; for type &apos;&amp;TYPE&amp;&apos; is not a valid connector. Check attribute SUPPORTED_TYPES of Class &apos;&amp;CONNUUID&amp;&apos;"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="INVALID_XML" EDITORDER="10 ">
+    <TEXTS>
+     <ITEM LANGU="E" SHORT_TXT="Invalid XML : Component root node should be &apos;ZL_OBJECT&apos; and not &apos;&amp;NODE_NAME&amp;&apos;"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="NOT_AUTHORIZED" EDITORDER="2 ">
+    <TEXTS>
+     <ITEM LANGU="E" SHORT_TXT="Object &apos;&amp;NAME&amp;&apos; (&amp;TYPE&amp;) can&apos;t be found"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="NOT_FOUND" EDITORDER="3 ">
+    <TEXTS>
+     <ITEM LANGU="E" SHORT_TXT="Object &apos;&amp;NAME&amp;&apos; (&amp;TYPE&amp;) can&apos;t be found"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="OBJECT_LOCKED" EDITORDER="4 ">
+    <TEXTS>
+     <ITEM LANGU="E" SHORT_TXT="Object &apos;&amp;NAME&amp;&apos; (&amp;TYPE&amp;) is allready locked"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TWICE_CLASS" EDITORDER="6 ">
+    <TEXTS>
+     <ITEM LANGU="E" SHORT_TXT="Class &apos;&amp;CONNCLASS&amp;&apos; loaded twice."/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TWICE_UUID" EDITORDER="14 ">
+    <TEXTS>
+     <ITEM LANGU="E" SHORT_TXT="Class &apos;&amp;CONNCLASS&amp;&apos; and &apos;&amp;OTHERCLASS&amp;&apos; have the same UUID : &apos;&amp;CONNUUID&amp;&apos;."/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TYPE_NOT_SUPPORTED" EDITORDER="12 ">
+    <TEXTS>
+     <ITEM LANGU="E" SHORT_TXT="Type &apos;&amp;TYPE&amp;&apos; is not supported by this connector &apos;&amp;CONNCLASS&amp;&apos;"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="UNSUPORTED_VERSION" EDITORDER="11 ">
+    <TEXTS>
+     <ITEM LANGU="E" SHORT_TXT="Version &apos;&amp;CONN_VER&amp;&apos; is not (or no longer) suported by this connector."/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="XML_ERROR" EDITORDER="23 ">
+    <TEXTS>
+     <ITEM LANGU="E" SHORT_TXT="XML Error on component (&amp;TYPE&amp;) &amp;NAME&amp; =&gt; User abort"/>
+    </TEXTS>
+   </ITEM>
+  </EXCEPTIONS_TEXTS>
+  <INTERFACES>
+   <ITEM REFCLSNAME="ZAPLINK_DATATYPES" EXPOSURE="2" STATE="1" RELTYPE="1"/>
+  </INTERFACES>
+  <LOCAL>
+   <TYPES>`
+*&quot;* USE THIS SOURCE FILE FOR ANY TYPE DECLARATIONS (CLASS
+*&quot;* definitions, interfaces or data types) you need for method
+*&quot;* IMPLEMENTATION OR PRIVATE METHOD&apos;S SIGNATURE</TYPES>
+   <IMPLEMENTATIONS>`
+*&quot;* LOCAL CLASS IMPLEMENTATION FOR PUBLIC CLASS
+*&quot;* use this source file for the implementation part of
+*&quot;* LOCAL HELPER CLASSES</IMPLEMENTATIONS>
+   <MACROS>`
+*&quot;* USE THIS SOURCE FILE FOR ANY MACRO DEFINITIONS YOU NEED
+*&quot;* IN THE IMPLEMENTATION PART OF THE CLASS</MACROS>
+  </LOCAL>
+ </RAW>
+</ZL_OBJECT>

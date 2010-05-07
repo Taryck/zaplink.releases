@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ZL_OBJECT CHECKSUM="478E9DB63BF0B692484D6CC0911E0B5C" CODE_SIGNATURE="98E9D5FF34E45108AEE533B4AB23767D" CONNECTOR="39AC0A4B07A5A05AE1000000AC120173" NAME="ZAPLINK_CX_COMPONENT" TYPE="CLAS" VERSION="1.01">
+ <DIRECTORY DEVCLASS="ZAPLINK-FRAMEWORK-ERR_HANDLING" MASTERLANG="E"/>
+ <RAW>
+  <A0_MAINDATA VERSION="1" LANGU="E" CATEGORY="40" EXPOSURE="2" STATE="1" CLSCCINCL="X" FIXPT="X" VARCL="X" UNICODE="X" RSTAT="S">
+   <INHERITANCE REFCLSNAME="ZAPLINK_CX" STATE="1"/>
+   <TEXTS>
+    <ITEM LANGU="E" DESCRIPT="ZAPlink Exception for Component">
+     <DOCUMENTATION TDFRELES="700" TDLINESIZE="072">U1&amp;FUNCTIONALITY&amp;
+ASZAPLINK_COMPONENT&apos;s exception class. Exception class dedicated to error
+  handling of exception in ZAPLINK_COMPONENT. Have a look to each
+  Exception text for more details.
+U1&amp;RELATIONS&amp;
+AS
+U1&amp;EXAMPLE&amp;
+AS
+U1&amp;HINTS&amp;
+AS
+U1&amp;FURTHER_SOURCES_OF_INF&amp;
+AS</DOCUMENTATION>
+    </ITEM>
+   </TEXTS>
+  </A0_MAINDATA>
+  <ALIASES>
+   <ITEM CMPNAME="TD_COMPNAME" EXPOSURE="2" CMPTYPE="3" REFCLSNAME="ZAPLINK_DATATYPES" REFCMPNAME="TD_COMPNAME"/>
+   <ITEM CMPNAME="TD_COMPTYPE" EXPOSURE="2" CMPTYPE="3" REFCLSNAME="ZAPLINK_DATATYPES" REFCMPNAME="TD_COMPTYPE"/>
+   <ITEM CMPNAME="TD_CONNCLASS" EXPOSURE="2" CMPTYPE="3" REFCLSNAME="ZAPLINK_DATATYPES" REFCMPNAME="TD_CONNCLASS"/>
+   <ITEM CMPNAME="TD_OBJ_TYPE" EXPOSURE="2" CMPTYPE="3" REFCLSNAME="ZAPLINK_DATATYPES" REFCMPNAME="TD_OBJ_TYPE"/>
+  </ALIASES>
+  <ATTRIBUTS>
+   <ITEM CMPNAME="CONNCLASS" EXPOSURE="2" STATE="1" EDITORDER="10 " TYPTYPE="1" TYPE="TD_CONNCLASS">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Object Type Name"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="NAME" EXPOSURE="2" STATE="1" EDITORDER="8 " TYPTYPE="1" TYPE="TD_COMPNAME">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Object Name"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="OBJTYPE" EXPOSURE="2" STATE="1" EDITORDER="11 " TYPTYPE="1" TYPE="TD_OBJ_TYPE">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="ABAP Class type"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TYPE" EXPOSURE="2" STATE="1" EDITORDER="9 " TYPTYPE="1" TYPE="TD_COMPTYPE">
+    <TEXTS>
+     <ITEM LANGU="E" DESCRIPT="Object Type"/>
+    </TEXTS>
+   </ITEM>
+  </ATTRIBUTS>
+  <EXCEPTIONS_TEXTS>
+   <ITEM EDITORDER="13 ">
+    <TEXTS>
+     <ITEM LANGU="E" SHORT_TXT="SAP Link Component Root Exception"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="INVALID_CLASS" EDITORDER="13 ">
+    <TEXTS>
+     <ITEM LANGU="E" SHORT_TXT="Class &apos;&amp;CONNCLASS&amp;&apos; for type &apos;&amp;TYPE&amp;&apos; is not a valid connector. Check attribute SUPPORTED_TYPES of Class &apos;&amp;CONNCLASS&amp;&apos;"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="INVALID_CONNECTOR" EDITORDER="13 ">
+    <TEXTS>
+     <ITEM LANGU="E" SHORT_TXT="Connector &apos;&amp;CONNCLASS&amp;&apos; for type &apos;&amp;TYPE&amp;&apos; can&apos;t be instancied due to exception &apos;&amp;CX_NAME&amp;&apos;"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="INVALID_EXCEPTION" EDITORDER="13 ">
+    <TEXTS>
+     <ITEM LANGU="E" SHORT_TXT="Can&apos;t set Exception to the provided object type : &apos;&amp;OBJTYPE&amp;&apos;"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="INVALID_MSG_COLL" EDITORDER="13 ">
+    <TEXTS>
+     <ITEM LANGU="E" SHORT_TXT="Can&apos;t set Message Collector to the provided object type : &apos;&amp;OBJTYPE&amp;&apos;"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="INVALID_SUBCOMPONENTS" EDITORDER="13 ">
+    <TEXTS>
+     <ITEM LANGU="E" SHORT_TXT="Can&apos;t set sub-components list to the provided object type : &apos;&amp;OBJTYPE&amp;&apos;"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="INVALID_TYPE" EDITORDER="13 ">
+    <TEXTS>
+     <ITEM LANGU="E" SHORT_TXT="Type &apos;&amp;TYPE&amp;&apos; is not assigned to a ZAPLINK connector and is not a known SAPobject type (transaction SE01)."/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TWICE_CLASS" EDITORDER="13 ">
+    <TEXTS>
+     <ITEM LANGU="E" SHORT_TXT="Class &apos;&amp;CONNCLASS&amp;&apos; loaded twice."/>
+    </TEXTS>
+   </ITEM>
+  </EXCEPTIONS_TEXTS>
+  <INTERFACES>
+   <ITEM REFCLSNAME="ZAPLINK_DATATYPES" EXPOSURE="2" STATE="1" RELTYPE="1"/>
+  </INTERFACES>
+  <LOCAL>
+   <TYPES>`
+*&quot;* USE THIS SOURCE FILE FOR ANY TYPE DECLARATIONS (CLASS
+*&quot;* definitions, interfaces or data types) you need for method
+*&quot;* IMPLEMENTATION OR PRIVATE METHOD&apos;S SIGNATURE</TYPES>
+   <IMPLEMENTATIONS>`
+*&quot;* LOCAL CLASS IMPLEMENTATION FOR PUBLIC CLASS
+*&quot;* use this source file for the implementation part of
+*&quot;* LOCAL HELPER CLASSES</IMPLEMENTATIONS>
+   <MACROS>`
+*&quot;* USE THIS SOURCE FILE FOR ANY MACRO DEFINITIONS YOU NEED
+*&quot;* IN THE IMPLEMENTATION PART OF THE CLASS</MACROS>
+  </LOCAL>
+  <TYPEGROUPS>
+   <ITEM TYPEGROUP="ABAP" IMPLICIT="X"/>
+  </TYPEGROUPS>
+ </RAW>
+</ZL_OBJECT>
