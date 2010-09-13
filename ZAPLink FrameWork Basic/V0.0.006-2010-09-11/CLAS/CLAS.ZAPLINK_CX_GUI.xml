@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ZL_OBJECT CHECKSUM="7524A27F95C3B55D12F982C986580C91" CODE_SIGNATURE="42698B96E2CB91C0B0E1B5E153AF876B" CONNECTOR="39AC0A4B07A5A05AE1000000AC120173" NAME="ZAPLINK_CX_GUI" TYPE="CLAS" VERSION="1.01">
+ <DIRECTORY DEVCLASS="ZAPLINK-FRAMEWORK-ERR_HANDLING" MASTERLANG="E"/>
+ <RAW>
+  <A0_MAINDATA VERSION="1" LANGU="E" CATEGORY="40" EXPOSURE="2" STATE="1" CLSCCINCL="X" FIXPT="X" VARCL="X" UNICODE="X" RSTAT="S">
+   <INHERITANCE REFCLSNAME="ZAPLINK_CX" STATE="1"/>
+   <TEXTS>
+    <ITEM LANG="E" TEXT="ZAPlink Exception for GUI">U1&amp;FUNCTIONALITY&amp;
+ASZAPLINK_GUI&apos;s exception class. Exception class dedicated to error
+  handling of exception in ZAPLINK_GUI. Have a look to each Exception text
+  for more details.
+AS
+U1&amp;RELATIONS&amp;
+AS
+U1&amp;EXAMPLE&amp;
+AS
+U1&amp;HINTS&amp;
+AS
+U1&amp;FURTHER_SOURCES_OF_INF&amp;
+AS
+U1Memories
+ASThis application is dedicated to the memories of :
+B2My father : Lamri BENSIALI (1940-2004) without whom I never started
+  programming
+B2My uncle : Jacky BEDU (1934-2009) who died during the completion of this
+  application</ITEM>
+   </TEXTS>
+  </A0_MAINDATA>
+  <ALIASES>
+   <ITEM CMPNAME="TD_COMPTYPE" EXPOSURE="2" CMPTYPE="3" REFCLSNAME="ZAPLINK_DATATYPES" REFCMPNAME="TD_COMPTYPE"/>
+  </ALIASES>
+  <ATTRIBUTS>
+   <ITEM CMPNAME="TYPE" EXPOSURE="2" STATE="1" EDITORDER="9 " TYPTYPE="1" TYPE="TD_COMPTYPE"/>
+  </ATTRIBUTS>
+  <EXCEPTIONS_TEXTS>
+   <ITEM EDITORDER="6 ">
+    <TEXTS>
+     <ITEM LANGU="E" SHORT_TXT="SAP Link Exception !!!"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="CONNECTOR_NOT_EXISTS" EDITORDER="7 ">
+    <TEXTS>
+     <ITEM LANGU="E" SHORT_TXT="Connector doesn&apos;t exists for component types &apos;&amp;TYPE&amp;&apos;"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="FILE_ERROR" EDITORDER="2 ">
+    <TEXTS>
+     <ITEM LANGU="E" SHORT_TXT="Error with file"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="MISSING_CONTAINER_NAME" EDITORDER="8 ">
+    <TEXTS>
+     <ITEM LANGU="E" SHORT_TXT="Container name is mandatory. Please provide a container name"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="MISSING_FILENAME" EDITORDER="3 ">
+    <TEXTS>
+     <ITEM LANGU="E" SHORT_TXT="Filename is mandatory. Please provide a valid filename"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="MISSING_NAME" EDITORDER="4 ">
+    <TEXTS>
+     <ITEM LANGU="E" SHORT_TXT="Object name is mandatory. Please provide a valid object name"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="MISSING_OBJTYPE" EDITORDER="5 ">
+    <TEXTS>
+     <ITEM LANGU="E" SHORT_TXT="Object type is mandatory. Please provide a valid object type"/>
+    </TEXTS>
+   </ITEM>
+  </EXCEPTIONS_TEXTS>
+  <INTERFACES>
+   <ITEM REFCLSNAME="ZAPLINK_DATATYPES" EXPOSURE="2" STATE="1" RELTYPE="1"/>
+  </INTERFACES>
+  <LOCAL>
+   <TYPES>`
+*&quot;* USE THIS SOURCE FILE FOR ANY TYPE DECLARATIONS (CLASS
+*&quot;* definitions, interfaces or data types) you need for method
+*&quot;* IMPLEMENTATION OR PRIVATE METHOD&apos;S SIGNATURE</TYPES>
+   <IMPLEMENTATIONS>`
+*&quot;* LOCAL CLASS IMPLEMENTATION FOR PUBLIC CLASS
+*&quot;* use this source file for the implementation part of
+*&quot;* LOCAL HELPER CLASSES</IMPLEMENTATIONS>
+   <MACROS>`
+*&quot;* USE THIS SOURCE FILE FOR ANY MACRO DEFINITIONS YOU NEED
+*&quot;* IN THE IMPLEMENTATION PART OF THE CLASS</MACROS>
+  </LOCAL>
+ </RAW>
+</ZL_OBJECT>
