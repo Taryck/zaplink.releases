@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ZL_OBJECT CHECKSUM="1A826EACA9C9C01D8F73A162A0147683" CODE_SIGNATURE="2A9A8B489B4C545384C46776ED3FC7FD" CONNECTOR="39AC0A4B07A5A05AE1000000AC120173" NAME="ZAPLINK_CX_OPT_TRANSPORT_REQ" TYPE="CLAS" VERSION="1.01">
+ <DIRECTORY DEVCLASS="ZAPLINK-FRAMEWORK-ERR_HANDLING" MASTERLANG="E"/>
+ <RAW>
+  <A0_MAINDATA VERSION="1" LANGU="E" CATEGORY="40" EXPOSURE="2" STATE="1" CLSCCINCL="X" FIXPT="X" VARCL="X" UNICODE="X" RSTAT="S">
+   <INHERITANCE REFCLSNAME="ZAPLINK_CX_OPTIONS" STATE="1"/>
+   <TEXTS>
+    <ITEM LANG="E" TEXT="ZAPlink Exception for DevClass&apos;s Options">U1&amp;FUNCTIONALITY&amp;
+ASZAPLINK_OPT_DEVCLASS&apos;s exception class. Exception class dedicated to
+  error handling of exception in ZAPLINK_OPT_DEVCLASS. Have a look to each
+  Exception text for more details.
+U1&amp;RELATIONS&amp;
+AS
+U1&amp;EXAMPLE&amp;
+AS
+U1&amp;HINTS&amp;
+AS
+U1&amp;FURTHER_SOURCES_OF_INF&amp;
+AS
+U1Memories
+ASThis application is dedicated to the memories of :
+B2My father : Lamri BENSIALI (1940-2004) without whom I never started
+  programming
+B2My uncle : Jacky BEDU (1934-2009) who died during the completion of this
+  application</ITEM>
+   </TEXTS>
+  </A0_MAINDATA>
+  <ALIASES>
+   <ITEM CMPNAME="TD_SUBSTITUTIONKIND" EXPOSURE="2" CMPTYPE="3" REFCLSNAME="ZAPLINK_DATATYPES" REFCMPNAME="TD_SUBSTITUTIONKIND"/>
+   <ITEM CMPNAME="TD_TRANSPORT_REQUEST" EXPOSURE="2" CMPTYPE="3" REFCLSNAME="ZAPLINK_DATATYPES" REFCMPNAME="TD_TRANSPORT_REQUEST"/>
+  </ALIASES>
+  <ATTRIBUTS>
+   <ITEM CMPNAME="INVALID_SUBSTITUTIONKIND" EXPOSURE="2" STATE="1" ATTDECLTYP="2" TYPTYPE="4" LOCKED="X">begin of INVALID_SUBSTITUTIONKIND,
+      msgid type symsgid value &apos;ZAPLINK&apos;,
+      msgno type symsgno value &apos;254&apos;,
+      attr1 type scx_attrname value &apos;SUBSTKIND&apos;,
+      attr2 type scx_attrname value &apos;OPT_CAT&apos;,
+      attr3 type scx_attrname value &apos;&apos;,
+      attr4 type scx_attrname value &apos;&apos;,
+    end of INVALID_SUBSTITUTIONKIND
+`</ITEM>
+   <ITEM CMPNAME="MISSING_TRANSPORT_REQUEST" EXPOSURE="2" STATE="1" ATTDECLTYP="2" TYPTYPE="4" LOCKED="X">begin of MISSING_TRANSPORT_REQUEST,
+      msgid type symsgid value &apos;ZAPLINK&apos;,
+      msgno type symsgno value &apos;255&apos;,
+      attr1 type scx_attrname value &apos;SUBSTKIND&apos;,
+      attr2 type scx_attrname value &apos;OPT_CAT&apos;,
+      attr3 type scx_attrname value &apos;&apos;,
+      attr4 type scx_attrname value &apos;&apos;,
+    end of MISSING_TRANSPORT_REQUEST
+`</ITEM>
+   <ITEM CMPNAME="OPT_CAT" EXPOSURE="2" STATE="1" ATTDECLTYP="1" TYPTYPE="1" TYPE="STRING">
+    <TEXTS>
+     <ITEM LANG="E" TEXT="Pseudo constant : language dependant"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="SUBSTKIND" EXPOSURE="2" STATE="1" TYPTYPE="1" TYPE="TD_SUBSTITUTIONKIND">
+    <TEXTS>
+     <ITEM LANG="E" TEXT="TR substitution Kind"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TRANSPORT_REQUEST" EXPOSURE="2" STATE="1" TYPTYPE="1" TYPE="TD_TRANSPORT_REQUEST">
+    <TEXTS>
+     <ITEM LANG="E" TEXT="Transport Request"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="ZAPLINK_CX_OPT_TRANSPORT_REQ" EXPOSURE="2" STATE="1" ATTDECLTYP="2" TYPTYPE="4" LOCKED="X">begin of ZAPLINK_CX_OPT_TRANSPORT_REQ,
+      msgid type symsgid value &apos;ZAPLINK&apos;,
+      msgno type symsgno value &apos;111&apos;,
+      attr1 type scx_attrname value &apos;CX_NAME&apos;,
+      attr2 type scx_attrname value &apos;&apos;,
+      attr3 type scx_attrname value &apos;&apos;,
+      attr4 type scx_attrname value &apos;&apos;,
+    end of ZAPLINK_CX_OPT_TRANSPORT_REQ
+`</ITEM>
+  </ATTRIBUTS>
+  <INTERFACES>
+   <ITEM REFCLSNAME="ZAPLINK_DATATYPES" EXPOSURE="2" STATE="1" RELTYPE="1"/>
+  </INTERFACES>
+  <LOCAL>
+   <TYPES>`
+*&quot;* USE THIS SOURCE FILE FOR ANY TYPE DECLARATIONS (CLASS
+*&quot;* definitions, interfaces or data types) you need for method
+*&quot;* IMPLEMENTATION OR PRIVATE METHOD&apos;S SIGNATURE</TYPES>
+   <IMPLEMENTATIONS>`
+*&quot;* LOCAL CLASS IMPLEMENTATION FOR PUBLIC CLASS
+*&quot;* use this source file for the implementation part of
+*&quot;* LOCAL HELPER CLASSES</IMPLEMENTATIONS>
+   <MACROS>`
+*&quot;* USE THIS SOURCE FILE FOR ANY MACRO DEFINITIONS YOU NEED
+*&quot;* IN THE IMPLEMENTATION PART OF THE CLASS</MACROS>
+  </LOCAL>
+  <METHODS>
+   <ITEM CMPNAME="CLASS_CONSTRUCTOR" EXPOSURE="2" STATE="1" MTDTYPE="2" MTDDECLTYP="1">
+    <TEXTS>
+     <ITEM LANG="E" TEXT="CLASS_CONSTRUCTOR"/>
+    </TEXTS>
+    <SOURCE>`
+  opt_cat = &apos;Transport Request&apos;(cat).</SOURCE>
+   </ITEM>
+  </METHODS>
+  <TEXTSPOOL>
+   <ITEM ID="I" KEY="CAT">
+    <TEXTS>
+     <ITEM LANGU="E" ENTRY="Transport Request" LENGTH="50 "/>
+    </TEXTS>
+   </ITEM>
+  </TEXTSPOOL>
+ </RAW>
+</ZL_OBJECT>

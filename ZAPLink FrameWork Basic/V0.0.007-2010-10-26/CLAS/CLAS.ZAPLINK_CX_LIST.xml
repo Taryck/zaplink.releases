@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ZL_OBJECT CHECKSUM="A413D456171F4449CE03B1CEC69C6991" CODE_SIGNATURE="F967C5247C898E52139411269BD6235D" CONNECTOR="39AC0A4B07A5A05AE1000000AC120173" NAME="ZAPLINK_CX_LIST" TYPE="CLAS" VERSION="1.01">
+ <DIRECTORY DEVCLASS="ZAPLINK-FRAMEWORK-ERR_HANDLING" MASTERLANG="E"/>
+ <RAW>
+  <A0_MAINDATA VERSION="1" LANGU="E" CATEGORY="40" EXPOSURE="2" STATE="1" CLSCCINCL="X" FIXPT="X" VARCL="X" UNICODE="X" RSTAT="S">
+   <INHERITANCE REFCLSNAME="ZAPLINK_CX" STATE="1"/>
+   <TEXTS>
+    <ITEM LANG="E" TEXT="ZAPlink Exception for Component">U1&amp;FUNCTIONALITY&amp;
+ASZAPLINK_LIST&apos;s exception class. Exception class dedicated to error
+  handling of exception in ZAPLINK_LIST. Have a look to each Exception
+  text for more details.
+U1&amp;RELATIONS&amp;
+AS
+U1&amp;EXAMPLE&amp;
+AS
+U1&amp;HINTS&amp;
+AS
+U1&amp;FURTHER_SOURCES_OF_INF&amp;
+AS
+U1Memories
+ASThis application is dedicated to the memories of :
+B2My father : Lamri BENSIALI (1940-2004) without whom I never started
+  programming
+B2My uncle : Jacky BEDU (1934-2009) who died during the completion of this
+  application</ITEM>
+   </TEXTS>
+  </A0_MAINDATA>
+  <ALIASES>
+   <ITEM CMPNAME="TD_ACTION" EXPOSURE="2" CMPTYPE="3" REFCLSNAME="ZAPLINK_DATATYPES" REFCMPNAME="TD_ACTION"/>
+   <ITEM CMPNAME="TD_COMPNAME" EXPOSURE="2" CMPTYPE="3" REFCLSNAME="ZAPLINK_DATATYPES" REFCMPNAME="TD_COMPNAME"/>
+   <ITEM CMPNAME="TD_COMPTYPE" EXPOSURE="2" CMPTYPE="3" REFCLSNAME="ZAPLINK_DATATYPES" REFCMPNAME="TD_COMPTYPE"/>
+   <ITEM CMPNAME="TD_CONNCLASS" EXPOSURE="2" CMPTYPE="3" REFCLSNAME="ZAPLINK_DATATYPES" REFCMPNAME="TD_CONNCLASS"/>
+  </ALIASES>
+  <ATTRIBUTS>
+   <ITEM CMPNAME="ALREADY_EXISTS" EXPOSURE="2" STATE="1" ATTDECLTYP="2" TYPTYPE="4" LOCKED="X">begin of ALREADY_EXISTS,
+      msgid type symsgid value &apos;ZAPLINK&apos;,
+      msgno type symsgno value &apos;300&apos;,
+      attr1 type scx_attrname value &apos;TYPE&apos;,
+      attr2 type scx_attrname value &apos;NAME&apos;,
+      attr3 type scx_attrname value &apos;&apos;,
+      attr4 type scx_attrname value &apos;&apos;,
+    end of ALREADY_EXISTS
+`</ITEM>
+   <ITEM CMPNAME="CONNCLASS" EXPOSURE="2" STATE="1" TYPTYPE="1" TYPE="TD_CONNCLASS">
+    <TEXTS>
+     <ITEM LANG="E" TEXT="Object Type Name"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="INVALID_ACTION" EXPOSURE="2" STATE="1" ATTDECLTYP="2" TYPTYPE="4" LOCKED="X">begin of INVALID_ACTION,
+      msgid type symsgid value &apos;ZAPLINK&apos;,
+      msgno type symsgno value &apos;301&apos;,
+      attr1 type scx_attrname value &apos;SEL_ACTION&apos;,
+      attr2 type scx_attrname value &apos;&apos;,
+      attr3 type scx_attrname value &apos;&apos;,
+      attr4 type scx_attrname value &apos;&apos;,
+    end of INVALID_ACTION
+`</ITEM>
+   <ITEM CMPNAME="ITERATOR_NOT_INITIALIZE" EXPOSURE="2" STATE="1" ATTDECLTYP="2" TYPTYPE="4" LOCKED="X">begin of ITERATOR_NOT_INITIALIZE,
+      msgid type symsgid value &apos;ZAPLINK&apos;,
+      msgno type symsgno value &apos;302&apos;,
+      attr1 type scx_attrname value &apos;&apos;,
+      attr2 type scx_attrname value &apos;&apos;,
+      attr3 type scx_attrname value &apos;&apos;,
+      attr4 type scx_attrname value &apos;&apos;,
+    end of ITERATOR_NOT_INITIALIZE
+`</ITEM>
+   <ITEM CMPNAME="NAME" EXPOSURE="2" STATE="1" TYPTYPE="1" TYPE="TD_COMPNAME">
+    <TEXTS>
+     <ITEM LANG="E" TEXT="Object Name"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="NOT_FOUND" EXPOSURE="2" STATE="1" ATTDECLTYP="2" TYPTYPE="4" LOCKED="X">begin of NOT_FOUND,
+      msgid type symsgid value &apos;ZAPLINK&apos;,
+      msgno type symsgno value &apos;303&apos;,
+      attr1 type scx_attrname value &apos;TYPE&apos;,
+      attr2 type scx_attrname value &apos;NAME&apos;,
+      attr3 type scx_attrname value &apos;&apos;,
+      attr4 type scx_attrname value &apos;&apos;,
+    end of NOT_FOUND
+`</ITEM>
+   <ITEM CMPNAME="SEL_ACTION" EXPOSURE="2" STATE="1" TYPTYPE="1" TYPE="TD_ACTION">
+    <TEXTS>
+     <ITEM LANG="E" TEXT="Selection Action : Export, Import, Uninstall"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="TYPE" EXPOSURE="2" STATE="1" TYPTYPE="1" TYPE="TD_COMPTYPE">
+    <TEXTS>
+     <ITEM LANG="E" TEXT="Object Type"/>
+    </TEXTS>
+   </ITEM>
+   <ITEM CMPNAME="ZAPLINK_CX_LIST" EXPOSURE="2" STATE="1" ATTDECLTYP="2" TYPTYPE="4" LOCKED="X">begin of ZAPLINK_CX_LIST,
+      msgid type symsgid value &apos;ZAPLINK&apos;,
+      msgno type symsgno value &apos;110&apos;,
+      attr1 type scx_attrname value &apos;CX_NAME&apos;,
+      attr2 type scx_attrname value &apos;&apos;,
+      attr3 type scx_attrname value &apos;&apos;,
+      attr4 type scx_attrname value &apos;&apos;,
+    end of ZAPLINK_CX_LIST
+`</ITEM>
+  </ATTRIBUTS>
+  <INTERFACES>
+   <ITEM REFCLSNAME="ZAPLINK_DATATYPES" EXPOSURE="2" STATE="1" RELTYPE="1"/>
+  </INTERFACES>
+  <LOCAL>
+   <TYPES>`
+*&quot;* USE THIS SOURCE FILE FOR ANY TYPE DECLARATIONS (CLASS
+*&quot;* definitions, interfaces or data types) you need for method
+*&quot;* IMPLEMENTATION OR PRIVATE METHOD&apos;S SIGNATURE</TYPES>
+   <IMPLEMENTATIONS>`
+*&quot;* LOCAL CLASS IMPLEMENTATION FOR PUBLIC CLASS
+*&quot;* use this source file for the implementation part of
+*&quot;* LOCAL HELPER CLASSES</IMPLEMENTATIONS>
+   <MACROS>`
+*&quot;* USE THIS SOURCE FILE FOR ANY MACRO DEFINITIONS YOU NEED
+*&quot;* IN THE IMPLEMENTATION PART OF THE CLASS</MACROS>
+  </LOCAL>
+ </RAW>
+</ZL_OBJECT>

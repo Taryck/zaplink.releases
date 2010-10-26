@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ZL_OBJECT CHECKSUM="80B955DB3943BEA4F7F998F4B01A0D4A" CODE_SIGNATURE="C0D1D14357A11D4DA892CD1AC59E5F95" CONNECTOR="39AC0A4B07A5A05AE1000000AC120173" NAME="ZAPLINK_CX_CONTAINER" TYPE="CLAS" VERSION="1.01">
+ <DIRECTORY DEVCLASS="ZAPLINK-FRAMEWORK-ERR_HANDLING" MASTERLANG="E"/>
+ <RAW>
+  <A0_MAINDATA VERSION="1" LANGU="E" CATEGORY="40" EXPOSURE="2" STATE="1" CLSCCINCL="X" FIXPT="X" VARCL="X" UNICODE="X" RSTAT="S">
+   <INHERITANCE REFCLSNAME="ZAPLINK_CX" STATE="1"/>
+   <TEXTS>
+    <ITEM LANG="E" TEXT="ZAPlink Exception for Component">U1&amp;FUNCTIONALITY&amp;
+ASZAPLINK_CONTAINER&apos;s exception class. Exception class dedicated to error
+  handling of exception in ZAPLINK_CONTAINER. Have a look to each
+  Exception text for more details.
+U1&amp;RELATIONS&amp;
+AS
+U1&amp;EXAMPLE&amp;
+AS
+U1&amp;HINTS&amp;
+AS
+U1&amp;FURTHER_SOURCES_OF_INF&amp;
+AS
+U1Memories
+ASThis application is dedicated to the memories of :
+B2My father : Lamri BENSIALI (1940-2004) without whom I never started
+  programming
+B2My uncle : Jacky BEDU (1934-2009) who died during the completion of this
+  application</ITEM>
+   </TEXTS>
+  </A0_MAINDATA>
+  <ATTRIBUTS>
+   <ITEM CMPNAME="ADD_COMP_FAILED" EXPOSURE="2" STATE="1" ATTDECLTYP="2" TYPTYPE="4" LOCKED="X">begin of ADD_COMP_FAILED,
+      msgid type symsgid value &apos;ZAPLINK&apos;,
+      msgno type symsgno value &apos;150&apos;,
+      attr1 type scx_attrname value &apos;TYPE&apos;,
+      attr2 type scx_attrname value &apos;NAME&apos;,
+      attr3 type scx_attrname value &apos;&apos;,
+      attr4 type scx_attrname value &apos;&apos;,
+    end of ADD_COMP_FAILED
+`</ITEM>
+   <ITEM CMPNAME="ADD_FAILED" EXPOSURE="2" STATE="1" ATTDECLTYP="2" TYPTYPE="4" LOCKED="X">begin of ADD_FAILED,
+      msgid type symsgid value &apos;ZAPLINK&apos;,
+      msgno type symsgno value &apos;151&apos;,
+      attr1 type scx_attrname value &apos;CX_NAME&apos;,
+      attr2 type scx_attrname value &apos;&apos;,
+      attr3 type scx_attrname value &apos;&apos;,
+      attr4 type scx_attrname value &apos;&apos;,
+    end of ADD_FAILED
+`</ITEM>
+   <ITEM CMPNAME="CIRCULAR_DEPENDENCIES" EXPOSURE="2" STATE="1" ATTDECLTYP="2" TYPTYPE="4" LOCKED="X">begin of CIRCULAR_DEPENDENCIES,
+      msgid type symsgid value &apos;ZAPLINK&apos;,
+      msgno type symsgno value &apos;152&apos;,
+      attr1 type scx_attrname value &apos;&apos;,
+      attr2 type scx_attrname value &apos;&apos;,
+      attr3 type scx_attrname value &apos;&apos;,
+      attr4 type scx_attrname value &apos;&apos;,
+    end of CIRCULAR_DEPENDENCIES
+`</ITEM>
+   <ITEM CMPNAME="NAME" EXPOSURE="2" STATE="1" TYPTYPE="1" TYPE="ZAPLINK_CX_COMPONENT=&gt;TD_COMPNAME"/>
+   <ITEM CMPNAME="TYPE" EXPOSURE="2" STATE="1" TYPTYPE="1" TYPE="ZAPLINK_CX_COMPONENT=&gt;TD_COMPTYPE"/>
+   <ITEM CMPNAME="ZAPLINK_CX_CONTAINER" EXPOSURE="2" STATE="1" ATTDECLTYP="2" TYPTYPE="4" LOCKED="X">begin of ZAPLINK_CX_CONTAINER,
+      msgid type symsgid value &apos;ZAPLINK&apos;,
+      msgno type symsgno value &apos;107&apos;,
+      attr1 type scx_attrname value &apos;CX_NAME&apos;,
+      attr2 type scx_attrname value &apos;&apos;,
+      attr3 type scx_attrname value &apos;&apos;,
+      attr4 type scx_attrname value &apos;&apos;,
+    end of ZAPLINK_CX_CONTAINER
+`</ITEM>
+  </ATTRIBUTS>
+  <LOCAL>
+   <TYPES>`
+*&quot;* USE THIS SOURCE FILE FOR ANY TYPE DECLARATIONS (CLASS
+*&quot;* definitions, interfaces or data types) you need for method
+*&quot;* IMPLEMENTATION OR PRIVATE METHOD&apos;S SIGNATURE</TYPES>
+   <IMPLEMENTATIONS>`
+*&quot;* LOCAL CLASS IMPLEMENTATION FOR PUBLIC CLASS
+*&quot;* use this source file for the implementation part of
+*&quot;* LOCAL HELPER CLASSES</IMPLEMENTATIONS>
+   <MACROS>`
+*&quot;* USE THIS SOURCE FILE FOR ANY MACRO DEFINITIONS YOU NEED
+*&quot;* IN THE IMPLEMENTATION PART OF THE CLASS</MACROS>
+  </LOCAL>
+ </RAW>
+</ZL_OBJECT>
