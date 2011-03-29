@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-16"?>
-<ZL_OBJECT CHECKSUM="C9007827DF2C44DFA0BD624A5A1D64CB" CODE_SIGNATURE="CBA92F26CEF93E725337961AB29FDDEE" CONNECTOR="39AC0A4B07A5A05AE1000000AC120173" NAME="ZAPLINK_CONTAINER_4INST" TYPE="CLAS" VERSION="1.01">
+<ZL_OBJECT CHECKSUM="DCD45B9AF2B78554E00732AC47A02415" CODE_SIGNATURE="EC41114691A0E484FBA68B8B76DB7FD1" CONNECTOR="39AC0A4B07A5A05AE1000000AC120173" NAME="ZAPLINK_CONTAINER_4INST" TYPE="CLAS" VERSION="1.01">
  <DIRECTORY DEVCLASS="ZAPLINK-FRAMEWORK-CORE" MASTERLANG="E"/>
  <RAW>
   <A0_MAINDATA VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" CLSCCINCL="X" FIXPT="X" UNICODE="X" MSG_ID="ZAPLINK">
@@ -456,6 +456,7 @@ check data &lt;&gt; _options.
               o_deplist-&gt;display_progress = abap_false.
               o_deplist-&gt;init_iter( ).
               o_chk_exist = o_deplist-&gt;get_next( ).
+              f_dep_ok = abap_true.     &quot; by default OK : Hot fix
               WHILE o_chk_exist IS BOUND.
                 f_dep_ok = o_chk_exist-&gt;do_exists( ).
                 IF f_dep_ok = abap_false.
